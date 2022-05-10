@@ -1,14 +1,14 @@
 //
-//  voicify_ios_sdkTests.swift
-//  voicify-ios-sdkTests
+//  voicify_assistant_sdkTests.swift
+//  voicify-assistant-sdkTests
 //
 //  Created by Alex Dunn on 5/10/22.
 //
 
 import XCTest
-@testable import voicify_ios_sdk
+@testable import voicify_assistant_sdk
 
-class voicify_ios_sdkTests: XCTestCase {
+class voicify_assistant_sdkTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

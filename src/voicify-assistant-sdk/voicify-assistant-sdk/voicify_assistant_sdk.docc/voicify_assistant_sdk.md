@@ -1,4 +1,4 @@
-# ``voicify_ios_sdk``
+# ``voicify_assistant_sdk``
 
 <!--@START_MENU_TOKEN@-->Summary<!--@END_MENU_TOKEN@-->
 
