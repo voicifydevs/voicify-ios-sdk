@@ -6,11 +6,20 @@
 //
 
 import SwiftUI
-
+import voicify_assistant_sdk
 struct ContentView: View {
+//    var device: CustomAssistantDevice = CustomAssistantDevice(id: "", name: "", supportsVideo: false, supportsForegroundImage: false, supportsBackgroundImage: false, supportsAudio: false, supportsSsml: false, supportsDisplayText: false, supportsVoiceInput: false, supportsTextInput: false)
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            HStack{
+                Spacer()
+                Button("Click me to open \nthe assistant"){
+                    
+                }
+            }
+            Spacer()
+        }
+            
     }
 }
 
