@@ -25,6 +25,11 @@
 		FE9AC31A29097AEB0030C67E /* VoicifySessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC31929097AEB0030C67E /* VoicifySessionData.swift */; };
 		FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC31B29097B390030C67E /* VoicifySessionEffect.swift */; };
 		FE9AC31E29097BB00030C67E /* VoicifyUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC31D29097BB00030C67E /* VoicifyUserData.swift */; };
+		FE9AC32129097C550030C67E /* VoicifyTextToSpeechProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32029097C550030C67E /* VoicifyTextToSpeechProvider.swift */; };
+		FE9AC32329097DB90030C67E /* VoicifySpeechToTextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32229097DB90030C67E /* VoicifySpeechToTextProvider.swift */; };
+		FE9AC32529097E2F0030C67E /* VoicifyTextToSpeechSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */; };
+		FE9AC32729097EF60030C67E /* VoicifyAssistantSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */; };
+		FE9AC32929097FCB0030C67E /* VoicifySTTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +84,11 @@
 		FE9AC31929097AEB0030C67E /* VoicifySessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySessionData.swift; sourceTree = "<group>"; };
 		FE9AC31B29097B390030C67E /* VoicifySessionEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySessionEffect.swift; sourceTree = "<group>"; };
 		FE9AC31D29097BB00030C67E /* VoicifyUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyUserData.swift; sourceTree = "<group>"; };
+		FE9AC32029097C550030C67E /* VoicifyTextToSpeechProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyTextToSpeechProvider.swift; sourceTree = "<group>"; };
+		FE9AC32229097DB90030C67E /* VoicifySpeechToTextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySpeechToTextProvider.swift; sourceTree = "<group>"; };
+		FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyTextToSpeechSettings.swift; sourceTree = "<group>"; };
+		FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyAssistantSettings.swift; sourceTree = "<group>"; };
+		FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySTTProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,7 @@
 		C962F2EE282AB12800990915 /* voicify-assistant-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				FE9AC31F29097C3E0030C67E /* assistant */,
 				FE82DFD42907319D000275C2 /* models */,
 				C962F2EF282AB12800990915 /* voicify_assistant_sdk.h */,
 				C962F2F0282AB12800990915 /* voicify_assistant_sdk.docc */,
@@ -166,6 +177,18 @@
 				FE9AC31D29097BB00030C67E /* VoicifyUserData.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		FE9AC31F29097C3E0030C67E /* assistant */ = {
+			isa = PBXGroup;
+			children = (
+				FE9AC32029097C550030C67E /* VoicifyTextToSpeechProvider.swift */,
+				FE9AC32229097DB90030C67E /* VoicifySpeechToTextProvider.swift */,
+				FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */,
+				FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */,
+				FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */,
+			);
+			path = assistant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE9AC32129097C550030C67E /* VoicifyTextToSpeechProvider.swift in Sources */,
 				FE9AC2FE290868110030C67E /* CustomAssistantListItem.swift in Sources */,
 				FE9AC303290868700030C67E /* CustomAssistantRequest.swift in Sources */,
 				FE9AC31329097A6B0030C67E /* TTSData.swift in Sources */,
@@ -316,12 +340,16 @@
 				FE9AC305290868E10030C67E /* CustomAssistantRequestContext.swift in Sources */,
 				FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */,
 				FE9AC30F29086D990030C67E /* SsmlRequest.swift in Sources */,
+				FE9AC32929097FCB0030C67E /* VoicifySTTProvider.swift in Sources */,
+				FE9AC32529097E2F0030C67E /* VoicifyTextToSpeechSettings.swift in Sources */,
+				FE9AC32329097DB90030C67E /* VoicifySpeechToTextProvider.swift in Sources */,
 				FE9AC30729086ACE0030C67E /* CustomAssistantResponse.swift in Sources */,
 				FE9AC30D29086D3F0030C67E /* MediaItemModel.swift in Sources */,
 				FE82DFD329072EEC000275C2 /* CustomAssistantDevice.swift in Sources */,
 				FE9AC31A29097AEB0030C67E /* VoicifySessionData.swift in Sources */,
 				FE9AC31E29097BB00030C67E /* VoicifyUserData.swift in Sources */,
 				FE9AC31829097AA30030C67E /* TTSRequest.swift in Sources */,
+				FE9AC32729097EF60030C67E /* VoicifyAssistantSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
