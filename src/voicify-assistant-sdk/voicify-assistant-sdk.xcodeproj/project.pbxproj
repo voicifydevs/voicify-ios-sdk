@@ -20,6 +20,11 @@
 		FE9AC30B29086CA40030C67E /* EffectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC30A29086CA40030C67E /* EffectModel.swift */; };
 		FE9AC30D29086D3F0030C67E /* MediaItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC30C29086D3F0030C67E /* MediaItemModel.swift */; };
 		FE9AC30F29086D990030C67E /* SsmlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC30E29086D990030C67E /* SsmlRequest.swift */; };
+		FE9AC31329097A6B0030C67E /* TTSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC31229097A6B0030C67E /* TTSData.swift */; };
+		FE9AC31829097AA30030C67E /* TTSRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC31729097AA30030C67E /* TTSRequest.swift */; };
+		FE9AC31A29097AEB0030C67E /* VoicifySessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC31929097AEB0030C67E /* VoicifySessionData.swift */; };
+		FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC31B29097B390030C67E /* VoicifySessionEffect.swift */; };
+		FE9AC31E29097BB00030C67E /* VoicifyUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC31D29097BB00030C67E /* VoicifyUserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +74,11 @@
 		FE9AC30A29086CA40030C67E /* EffectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectModel.swift; sourceTree = "<group>"; };
 		FE9AC30C29086D3F0030C67E /* MediaItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemModel.swift; sourceTree = "<group>"; };
 		FE9AC30E29086D990030C67E /* SsmlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SsmlRequest.swift; sourceTree = "<group>"; };
+		FE9AC31229097A6B0030C67E /* TTSData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSData.swift; sourceTree = "<group>"; };
+		FE9AC31729097AA30030C67E /* TTSRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSRequest.swift; sourceTree = "<group>"; };
+		FE9AC31929097AEB0030C67E /* VoicifySessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySessionData.swift; sourceTree = "<group>"; };
+		FE9AC31B29097B390030C67E /* VoicifySessionEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySessionEffect.swift; sourceTree = "<group>"; };
+		FE9AC31D29097BB00030C67E /* VoicifyUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyUserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +159,11 @@
 				FE9AC30A29086CA40030C67E /* EffectModel.swift */,
 				FE9AC30C29086D3F0030C67E /* MediaItemModel.swift */,
 				FE9AC30E29086D990030C67E /* SsmlRequest.swift */,
+				FE9AC31229097A6B0030C67E /* TTSData.swift */,
+				FE9AC31729097AA30030C67E /* TTSRequest.swift */,
+				FE9AC31929097AEB0030C67E /* VoicifySessionData.swift */,
+				FE9AC31B29097B390030C67E /* VoicifySessionEffect.swift */,
+				FE9AC31D29097BB00030C67E /* VoicifyUserData.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -294,14 +309,19 @@
 			files = (
 				FE9AC2FE290868110030C67E /* CustomAssistantListItem.swift in Sources */,
 				FE9AC303290868700030C67E /* CustomAssistantRequest.swift in Sources */,
+				FE9AC31329097A6B0030C67E /* TTSData.swift in Sources */,
 				FE9AC30B29086CA40030C67E /* EffectModel.swift in Sources */,
 				FE9AC30929086BDF0030C67E /* CustomAssistantUser.swift in Sources */,
 				C962F2F1282AB12800990915 /* voicify_assistant_sdk.docc in Sources */,
 				FE9AC305290868E10030C67E /* CustomAssistantRequestContext.swift in Sources */,
+				FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */,
 				FE9AC30F29086D990030C67E /* SsmlRequest.swift in Sources */,
 				FE9AC30729086ACE0030C67E /* CustomAssistantResponse.swift in Sources */,
 				FE9AC30D29086D3F0030C67E /* MediaItemModel.swift in Sources */,
 				FE82DFD329072EEC000275C2 /* CustomAssistantDevice.swift in Sources */,
+				FE9AC31A29097AEB0030C67E /* VoicifySessionData.swift in Sources */,
+				FE9AC31E29097BB00030C67E /* VoicifyUserData.swift in Sources */,
+				FE9AC31829097AA30030C67E /* TTSRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
