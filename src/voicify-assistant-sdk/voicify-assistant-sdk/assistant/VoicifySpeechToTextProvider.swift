@@ -10,9 +10,9 @@ import UIKit
 public protocol VoicifySpeechToTextProvider
 {
     func initialize(locale: String)
-    func addPartialListener(callback: (String) -> Void)
-    func addFinalResultListener (callback: (String) -> Void)
-    func addErrorListener (callback: (String) -> Void)
+    func addPartialListener(callback: @escaping (String) -> Void)
+    func addFinalResultListener (callback: @escaping (String) -> Void)
+    func addErrorListener (callback: @escaping (String) -> Void)
     func startListening ()
     func stopListening ()
 }
