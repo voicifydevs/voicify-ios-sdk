@@ -14,7 +14,6 @@ import Accelerate
 public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
 {
     private var speechStartHandlers: Array<() -> Void> = []
-    private var speechReadyHandlers: Array<() -> Void> = []
     private var speechPartialHandlers: Array<(String) -> Void> = []
     private var speechEndHandlers: Array<() -> Void> = []
     private var speechResultHandlers: Array<(String) -> Void> = []
@@ -29,7 +28,6 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     private var cancel = false
     private var averagePowerForChannel0: Float = 0.0
     private var averagePowerForChannel1: Float = 0.0
-//    private var frameCount = 0
         
     public init() {
 
@@ -64,12 +62,12 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     public func startListening() {
         if !cancel
         {
+            self.speechStartHandlers.forEach{speechStart in
+                speechStart()
+            }
             self.speechTimeOut = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
                 self.audioEngine?.stop()
                 self.audioEngine?.inputNode.removeTap(onBus: 0)
-                    self.speechEndHandlers.forEach{speechEndHandler in
-                        speechEndHandler()
-                    }
                     self.reset()
             }
             DispatchQueue(label: "Speech Recognizer Queue", qos: .background).async { [weak self] in
@@ -210,11 +208,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     public func addStartListener(callback: @escaping () -> Void) {
         self.speechStartHandlers.append(callback)
     }
-    
-    public func addSpeechReadyListener(callback: @escaping () -> Void) {
-        self.speechReadyHandlers.append(callback)
-    }
-    
+        
     public func addPartialListener(callback: @escaping (String) -> Void) {
         self.speechPartialHandlers.append(callback)
     }
@@ -241,6 +235,9 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
         audioEngine = nil
         request = nil
         task = nil
+        self.speechEndHandlers.forEach{speechEndHandler in
+            speechEndHandler()
+        }
     }
     
     public func clearHandlers() {
@@ -250,7 +247,6 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
         self.speechResultHandlers = []
         self.speechErrorHandlers = []
         self.speechVolumeHandlers = []
-        self.speechReadyHandlers = []
     }
     
     enum RecognizerError: Error {
