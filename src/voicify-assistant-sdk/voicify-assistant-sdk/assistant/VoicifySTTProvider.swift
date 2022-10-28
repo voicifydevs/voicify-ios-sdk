@@ -68,7 +68,10 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
             self.speechTimeOut = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
                 self.audioEngine?.stop()
                 self.audioEngine?.inputNode.removeTap(onBus: 0)
-                    self.reset()
+                self.reset()
+                self.speechEndHandlers.forEach{speechEndHandler in
+                    speechEndHandler()
+                }
             }
             DispatchQueue(label: "Speech Recognizer Queue", qos: .background).async { [weak self] in
                 guard let self = self, let recognizer = self.recognizer, recognizer.isAvailable else {
@@ -95,6 +98,9 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     
     public func stopListening() {
         self.reset()
+        self.speechEndHandlers.forEach{speechEndHandler in
+            speechEndHandler()
+        }
     }
     
     private func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
@@ -164,10 +170,13 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                 speechTimeOut = Timer.scheduledTimer(withTimeInterval: 0.9, repeats: false) { timer in
                     self.audioEngine?.stop()
                     self.audioEngine?.inputNode.removeTap(onBus: 0)
-                        self.speechResultHandlers.forEach{fullResultHandler in
-                            fullResultHandler(result.bestTranscription.formattedString)
-                        }
-                        self.reset()
+                    self.speechResultHandlers.forEach{fullResultHandler in
+                        fullResultHandler(result.bestTranscription.formattedString)
+                    }
+                    self.reset()
+                    self.speechEndHandlers.forEach{speechEndHandler in
+                        speechEndHandler()
+                    }
                 }
             }
             else
@@ -175,15 +184,16 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                 speechTimeOut = Timer.scheduledTimer(withTimeInterval: 0.9, repeats: false) { timer in
                     self.audioEngine?.stop()
                     self.audioEngine?.inputNode.removeTap(onBus: 0)
-                   
-                        self.speechResultHandlers.forEach{fullResultHandler in
-                            fullResultHandler(result.bestTranscription.formattedString)
-                        }
-                        self.reset()
+                    self.speechResultHandlers.forEach{fullResultHandler in
+                        fullResultHandler(result.bestTranscription.formattedString)
+                    }
+                    self.reset()
+                    self.speechEndHandlers.forEach{speechEndHandler in
+                        speechEndHandler()
+                    }
                     
                 }
             }
-        
         
             self.speechPartialHandlers.forEach{ partialResultHandler in
                 partialResultHandler(result.bestTranscription.formattedString)
@@ -235,9 +245,6 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
         audioEngine = nil
         request = nil
         task = nil
-        self.speechEndHandlers.forEach{speechEndHandler in
-            speechEndHandler()
-        }
     }
     
     public func clearHandlers() {

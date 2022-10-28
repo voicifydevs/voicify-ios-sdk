@@ -11,6 +11,7 @@ struct ContentView: View {
     @StateObject var voicifySTT = VoicifySTTProvider()
     @State var inputSpeech = ""
     @State var speechVolume: Float = 0
+    @State var isListening = false
     
     var body: some View {
         VStack{
@@ -18,12 +19,17 @@ struct ContentView: View {
                 Spacer()
                 Button("Click me to open \nthe assistant"){
                     voicifySTT.reset()
-                    voicifySTT.startListening()
+                    if(!isListening)
+                    {
+                        voicifySTT.startListening()
+                    }
+                    else {
+                        voicifySTT.stopListening()
+                    }
+                   
                 }
                 Text(inputSpeech).font(.system(size: 34))
                 Text(String(speechVolume)).font(.system(size: 34))
-                
-                
             }
             Spacer()
         }.onAppear{
@@ -36,6 +42,12 @@ struct ContentView: View {
             }
             voicifySTT.addVolumeListener{(volume: Float) -> Void in
                 speechVolume = volume
+            }
+            voicifySTT.addStartListener {
+                isListening = true
+            }
+            voicifySTT.addEndListener {
+                isListening = false
             }
         }
     }
