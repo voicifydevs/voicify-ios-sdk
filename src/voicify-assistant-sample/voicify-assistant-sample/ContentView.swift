@@ -10,7 +10,7 @@ import voicify_assistant_sdk
 struct ContentView: View {
     @StateObject var voicifySTT = VoicifySTTProvider()
     @State var inputSpeech = ""
-    @State var speechVolume: Double = 0
+    @State var speechVolume: Float = 0
     
     var body: some View {
         VStack{
@@ -34,7 +34,7 @@ struct ContentView: View {
             voicifySTT.addPartialListener{(partialResult:String) -> Void in
                 inputSpeech = partialResult
             }
-            voicifySTT.addVolumeListener{(volume: Double) -> Void in
+            voicifySTT.addVolumeListener{(volume: Float) -> Void in
                 speechVolume = volume
             }
         }

@@ -9,6 +9,7 @@ import AVFoundation
 import Foundation
 import Speech
 import SwiftUI
+import Accelerate
 
 public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
 {
@@ -18,7 +19,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     private var speechEndHandlers: Array<() -> Void> = []
     private var speechResultHandlers: Array<(String) -> Void> = []
     private var speechErrorHandlers: Array<(String) -> Void> = []
-    private var speechVolumeHandlers: Array<(Double) -> Void> = []
+    private var speechVolumeHandlers: Array<(Float) -> Void> = []
     private var locale: String = ""
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
@@ -26,10 +27,12 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     private var recognizer: SFSpeechRecognizer?
     private var speechTimeOut = Timer()
     private var cancel = false
+    private var averagePowerForChannel0: Float = 0.0
+    private var averagePowerForChannel1: Float = 0.0
 //    private var frameCount = 0
         
     public init() {
-        
+
     }
     
     deinit {
@@ -61,6 +64,14 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     public func startListening() {
         if !cancel
         {
+            self.speechTimeOut = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
+                self.audioEngine?.stop()
+                self.audioEngine?.inputNode.removeTap(onBus: 0)
+                    self.speechEndHandlers.forEach{speechEndHandler in
+                        speechEndHandler()
+                    }
+                    self.reset()
+            }
             DispatchQueue(label: "Speech Recognizer Queue", qos: .background).async { [weak self] in
                 guard let self = self, let recognizer = self.recognizer, recognizer.isAvailable else {
                     self?.speechErrorHandlers.forEach{ errorHandler in
@@ -69,7 +80,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                     return
                 }
                 do {
-                    let (audioEngine, request) = try Self.prepareEngine()
+                    let (audioEngine, request) = try self.prepareEngine()
                     self.audioEngine = audioEngine
                     self.request = request
                     self.task = recognizer.recognitionTask(with: request, resultHandler: self.recognitionHandler(result:error:))
@@ -88,21 +99,47 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
         self.reset()
     }
     
-    private static func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
+    private func prepareEngine() throws -> (AVAudioEngine, SFSpeechAudioBufferRecognitionRequest) {
         let audioEngine = AVAudioEngine()
         
         let request = SFSpeechAudioBufferRecognitionRequest()
         request.shouldReportPartialResults = true
-        
         let audioSession = AVAudioSession.sharedInstance()
+        
         try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
         try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         let inputNode = audioEngine.inputNode
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
+            let inNumberFrames = buffer.frameLength
+            let LEVEL_LOWPASS_TRIG: Float = 0.5
+            if buffer.format.channelCount>0
+            {
+                let samples = buffer.floatChannelData?[0] as? UnsafeMutablePointer<Float32>
+                var avgValue: Float32 = 0
+                vDSP_maxmgv(samples!, 1, &avgValue, vDSP_Length(Float32(inNumberFrames)))
+            
+                let leftSide = LEVEL_LOWPASS_TRIG * (avgValue == 0 ? -100 : 20.0 * log10f(avgValue))
+                let rightSide = (1 - LEVEL_LOWPASS_TRIG) * self.averagePowerForChannel0
+                self.averagePowerForChannel0 = leftSide + rightSide
+                self.averagePowerForChannel1 = self.averagePowerForChannel0
+            }
+            if buffer.format.channelCount > 1 {
+                let samples = buffer.floatChannelData?[0] as? UnsafeMutablePointer<Float32>
+                var avgValue: Float32 = 0
+                vDSP_maxmgv(samples!, vDSP_Stride(1), &avgValue, vDSP_Length(inNumberFrames))
+                let leftSide = (LEVEL_LOWPASS_TRIG * ((Int(avgValue) == 0) ? -100 : 20.0 * log10f(avgValue)))
+                let rightSide = ((1 - LEVEL_LOWPASS_TRIG) * self.averagePowerForChannel1)
+                self.averagePowerForChannel1 = leftSide + rightSide
+            }
+            let normalDb = self.normalizeDb(db: self.averagePowerForChannel0) * 10
+            self.speechVolumeHandlers.forEach{volumeHandler in
+                volumeHandler(normalDb)
+            }
             request.append(buffer)
         }
+        
         audioEngine.prepare()
         try audioEngine.start()
         
@@ -122,42 +159,52 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                 speechErrorHandler(error?.localizedDescription ?? "")
             }
         }
-        if speechTimeOut.isValid
-        {
-            speechTimeOut.invalidate()
-            speechTimeOut = Timer.scheduledTimer(withTimeInterval: 0.9, repeats: false) { timer in
-                self.audioEngine?.stop()
-                self.audioEngine?.inputNode.removeTap(onBus: 0)
-                if let result = result {
-                    self.speechResultHandlers.forEach{fullResultHandler in
-                        fullResultHandler(result.bestTranscription.formattedString)
-                    }
-                    self.reset()
-                }
-            }
-        }
-        else
-        {
-            speechTimeOut = Timer.scheduledTimer(withTimeInterval: 0.9, repeats: false) { timer in
-                self.audioEngine?.stop()
-                self.audioEngine?.inputNode.removeTap(onBus: 0)
-                if let result = result {
-                    self.speechResultHandlers.forEach{fullResultHandler in
-                        fullResultHandler(result.bestTranscription.formattedString)
-                    }
-                    self.reset()
-                }
-            }
-        }
-        
         if let result = result {
+            if speechTimeOut.isValid
+            {
+                speechTimeOut.invalidate()
+                speechTimeOut = Timer.scheduledTimer(withTimeInterval: 0.9, repeats: false) { timer in
+                    self.audioEngine?.stop()
+                    self.audioEngine?.inputNode.removeTap(onBus: 0)
+                        self.speechResultHandlers.forEach{fullResultHandler in
+                            fullResultHandler(result.bestTranscription.formattedString)
+                        }
+                        self.reset()
+                }
+            }
+            else
+            {
+                speechTimeOut = Timer.scheduledTimer(withTimeInterval: 0.9, repeats: false) { timer in
+                    self.audioEngine?.stop()
+                    self.audioEngine?.inputNode.removeTap(onBus: 0)
+                   
+                        self.speechResultHandlers.forEach{fullResultHandler in
+                            fullResultHandler(result.bestTranscription.formattedString)
+                        }
+                        self.reset()
+                    
+                }
+            }
+        
+        
             self.speechPartialHandlers.forEach{ partialResultHandler in
                 partialResultHandler(result.bestTranscription.formattedString)
             }
-//            self.speechVolumeHandlers.forEach{volumeHandler in
-//                volumeHandler(result.speechRecognitionMetadata?.voiceAnalytics?.shimmer.acousticFeatureValuePerFrame[(result.speechRecognitionMetadata?.voiceAnalytics?.shimmer.acousticFeatureValuePerFrame.endIndex ?? 0) - 1] ?? 0)
-//            }
         }
+        
+    }
+    
+    private func normalizeDb (db: Float) -> Float{
+        if (db < -80.0 || db == 0.0) {
+                return 0.0
+            }
+        let power = powf((powf(10.0, 0.05 * db) - powf(10.0, 0.05 * -80.0)) * (1.0 / (1.0 - powf(10.0, 0.05 * -80.0))), 1.0 / 2.0)
+        
+        if (power < 1.0) {
+               return power;
+           }else{
+               return 1.0;
+           }
     }
     
     public func addStartListener(callback: @escaping () -> Void) {
@@ -180,7 +227,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
         self.speechResultHandlers.append(callback)
     }
     
-    public func addVolumeListener(callback: @escaping(Double) -> Void){
+    public func addVolumeListener(callback: @escaping(Float) -> Void){
         self.speechVolumeHandlers.append(callback)
     }
     
