@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class TTSData
+public class TTSData : Decodable
 {
     var rootElementType: String
     var url: String

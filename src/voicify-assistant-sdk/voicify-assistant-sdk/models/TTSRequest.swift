@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class TTSRequest
+public class TTSRequest : Codable
 {
     var applicationId: String
     var applicationSecret: String

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class SsmlRequest
+public class SsmlRequest : Codable
 {
     var ssml: String
     var locale: String

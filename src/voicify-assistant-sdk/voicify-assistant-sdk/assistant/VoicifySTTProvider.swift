@@ -19,7 +19,6 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     private var speechResultHandlers: Array<(String) -> Void> = []
     private var speechErrorHandlers: Array<(String) -> Void> = []
     private var speechVolumeHandlers: Array<(Float) -> Void> = []
-    private var locale: String = ""
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?

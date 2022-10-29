@@ -74,6 +74,7 @@
 		C962F329282AB14F00990915 /* voicify-assistant-sampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962F32D282AB14F00990915 /* voicify_assistant_sampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleUITests.swift; sourceTree = "<group>"; };
 		C962F32F282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FE1F4E27290CE8C900D1B447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "voicify-assistant-sdk.xcodeproj"; path = "../../voicify-assistant-sdk/voicify-assistant-sdk.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +128,7 @@
 		C962F311282AB14D00990915 /* voicify-assistant-sample */ = {
 			isa = PBXGroup;
 			children = (
+				FE1F4E27290CE8C900D1B447 /* Info.plist */,
 				C962F312282AB14D00990915 /* voicify_assistant_sampleApp.swift */,
 				FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */,
 				C962F314282AB14D00990915 /* ContentView.swift */,
@@ -496,6 +498,7 @@
 				DEVELOPMENT_TEAM = R6Q36R4DVT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "voicify-assistant-sample/Info.plist";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to capture your input for the assistant";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "You can talk to the voicify assistant";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -527,6 +530,7 @@
 				DEVELOPMENT_TEAM = R6Q36R4DVT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "voicify-assistant-sample/Info.plist";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to capture your input for the assistant";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "You can talk to the voicify assistant";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
