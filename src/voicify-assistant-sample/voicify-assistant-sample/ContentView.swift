@@ -13,7 +13,9 @@ struct ContentView: View {
     @State var inputSpeech = ""
     @State var speechVolume: Float = 0
     @State var isListening = false
-    
+    @State var isSpeaking = true
+    @State var speechEndedMessage = ""
+
     var body: some View {
         VStack{
             HStack{
@@ -27,17 +29,26 @@ struct ContentView: View {
                     else {
                         voicifySTT.stopListening()
                     }
+                    if(isSpeaking)
+                    {
+                        voicifyTTS.stop()
+                    }
                    
                 }
                 Text(inputSpeech).font(.system(size: 34))
                 Text(String(speechVolume)).font(.system(size: 34))
+                Text(speechEndedMessage).font(.system(size: 34))
             }
             Spacer()
         }.onAppear{
             voicifySTT.initialize(locale: "en-US")
             voicifyTTS.initialize(locale: "en-US")
+            voicifyTTS.addFinishListener {() -> Void in
+                speechEndedMessage = "speech has ended"
+            }
             voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
                 inputSpeech = fullResult
+                isSpeaking = true
                 voicifyTTS.speakSsml(ssml: fullResult)
             }
             voicifySTT.addPartialListener{(partialResult:String) -> Void in

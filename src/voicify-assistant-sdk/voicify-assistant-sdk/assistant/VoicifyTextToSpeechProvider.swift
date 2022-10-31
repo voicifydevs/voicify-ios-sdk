@@ -11,7 +11,7 @@ public protocol VoicifyTextToSpeechProvider
 {
     func initialize (locale: String)
     func speakSsml (ssml: String)
-    func addFinishListener (callback: () -> Void)
+    func addFinishListener (callback: @escaping () -> Void)
     func clearHandlers ()
     func stop ()
 }
