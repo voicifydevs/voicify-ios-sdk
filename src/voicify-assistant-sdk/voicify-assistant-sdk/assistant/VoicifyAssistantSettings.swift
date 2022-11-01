@@ -13,14 +13,14 @@ public class VoicifyAssistantSettings
     var locale: String
     var channel: String
     var device: String
-    var autoRunConversation: String
+    var autoRunConversation: Bool
     var initializeWithWelcomeMessage: Bool
     var initializeWithText: Bool
     var useVoiceInput: Bool
     var useDraftContent: Bool
     var useOutputSpeech: Bool
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, autoRunConversation: String, initializeWithWelcomeMessage: Bool, initializeWithText: Bool, useVoiceInput: Bool, useDraftContent: Bool, useOutputSpeech: Bool) {
+    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, initializeWithText: Bool, useVoiceInput: Bool, useDraftContent: Bool, useOutputSpeech: Bool) {
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey

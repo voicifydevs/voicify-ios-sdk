@@ -12,6 +12,7 @@
 		C962F2FC282AB12800990915 /* voicify_assistant_sdkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F2FB282AB12800990915 /* voicify_assistant_sdkTests.swift */; };
 		C962F2FD282AB12800990915 /* voicify_assistant_sdk.h in Headers */ = {isa = PBXBuildFile; fileRef = C962F2EF282AB12800990915 /* voicify_assistant_sdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE1F4E21290C5CCD00D1B447 /* VoicifyTTSProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F4E20290C5CCD00D1B447 /* VoicifyTTSProvider.swift */; };
+		FE1F4E292910110900D1B447 /* VoicifyAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */; };
 		FE82DFD329072EEC000275C2 /* CustomAssistantDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82DFD229072EEC000275C2 /* CustomAssistantDevice.swift */; };
 		FE9AC2FE290868110030C67E /* CustomAssistantListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC2FD290868110030C67E /* CustomAssistantListItem.swift */; };
 		FE9AC303290868700030C67E /* CustomAssistantRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC302290868700030C67E /* CustomAssistantRequest.swift */; };
@@ -72,6 +73,7 @@
 		C962F2FB282AB12800990915 /* voicify_assistant_sdkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sdkTests.swift; sourceTree = "<group>"; };
 		C962F33C282AB14F00990915 /* voicify-assistant-sample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "voicify-assistant-sample.xcodeproj"; path = "../voicify-assistant-sample/voicify-assistant-sample.xcodeproj"; sourceTree = "<group>"; };
 		FE1F4E20290C5CCD00D1B447 /* VoicifyTTSProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyTTSProvider.swift; sourceTree = "<group>"; };
+		FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyAssistant.swift; sourceTree = "<group>"; };
 		FE82DFD229072EEC000275C2 /* CustomAssistantDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAssistantDevice.swift; sourceTree = "<group>"; };
 		FE9AC2FD290868110030C67E /* CustomAssistantListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAssistantListItem.swift; sourceTree = "<group>"; };
 		FE9AC302290868700030C67E /* CustomAssistantRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAssistantRequest.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				C962F2EE282AB12800990915 /* voicify-assistant-sdk */,
 				C962F2FA282AB12800990915 /* voicify-assistant-sdkTests */,
 				C962F2ED282AB12800990915 /* Products */,
+				FE1F4E2C29104D8700D1B447 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +163,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FE1F4E2C29104D8700D1B447 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FE82DFD42907319D000275C2 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +200,7 @@
 				FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */,
 				FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */,
 				FE1F4E20290C5CCD00D1B447 /* VoicifyTTSProvider.swift */,
+				FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */,
 			);
 			path = assistant;
 			sourceTree = "<group>";
@@ -222,6 +233,8 @@
 			dependencies = (
 			);
 			name = "voicify-assistant-sdk";
+			packageProductDependencies = (
+			);
 			productName = "voicify-assistant-sdk";
 			productReference = C962F2EC282AB12800990915 /* voicify_assistant_sdk.framework */;
 			productType = "com.apple.product-type.framework";
@@ -271,6 +284,8 @@
 				Base,
 			);
 			mainGroup = C962F2E2282AB12800990915;
+			packageReferences = (
+			);
 			productRefGroup = C962F2ED282AB12800990915 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -341,6 +356,7 @@
 				FE9AC30929086BDF0030C67E /* CustomAssistantUser.swift in Sources */,
 				C962F2F1282AB12800990915 /* voicify_assistant_sdk.docc in Sources */,
 				FE9AC305290868E10030C67E /* CustomAssistantRequestContext.swift in Sources */,
+				FE1F4E292910110900D1B447 /* VoicifyAssistant.swift in Sources */,
 				FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */,
 				FE9AC30F29086D990030C67E /* SsmlRequest.swift in Sources */,
 				FE1F4E21290C5CCD00D1B447 /* VoicifyTTSProvider.swift in Sources */,

@@ -13,7 +13,7 @@ public class CustomAssistantRequestContext
     var noTracking: Bool
     var requestType: String
     var requestName: String
-    var slots: String
+    var slots: Dictionary<String, String>
     var originialInput: String
     var channel: String
     var requiresLanguageUnderstanding: Bool
@@ -22,18 +22,18 @@ public class CustomAssistantRequestContext
     var additionalSessionAttributes: Dictionary<String, Any>
     var additionalSessionFlags: Array<String>
     
-    public init(sessionId: String, noTracking: Bool, requestType: String, requestName: String, slots: String, originialInput: String, channel: String, requiresLanguageUnderstanding: Bool, locale: String, additionalRequestAttributes: Dictionary<String, Any>, additionalSessionAttributes: Dictionary<String, Any>, additionalSessionFlags: Array<String>) {
+    public init(sessionId: String, noTracking: Bool? = false, requestType: String, requestName: String? = nil, slots: Dictionary<String, String>? = nil, originialInput: String, channel: String, requiresLanguageUnderstanding: Bool, locale: String, additionalRequestAttributes: Dictionary<String, Any>, additionalSessionAttributes: Dictionary<String, Any>, additionalSessionFlags: Array<String>? = []) {
         self.sessionId = sessionId
-        self.noTracking = noTracking
+        self.noTracking = noTracking ?? false
         self.requestType = requestType
-        self.requestName = requestName
-        self.slots = slots
+        self.requestName = requestName ?? ""
+        self.slots = slots ?? [:]
         self.originialInput = originialInput
         self.channel = channel
         self.requiresLanguageUnderstanding = requiresLanguageUnderstanding
         self.locale = locale
         self.additionalRequestAttributes = additionalRequestAttributes
         self.additionalSessionAttributes = additionalSessionAttributes
-        self.additionalSessionFlags = additionalSessionFlags
+        self.additionalSessionFlags = additionalSessionFlags ?? []
     }
 }

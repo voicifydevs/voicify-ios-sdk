@@ -6,7 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 //! Project version number for voicify_assistant_sdk.
 FOUNDATION_EXPORT double voicify_assistant_sdkVersionNumber;
 

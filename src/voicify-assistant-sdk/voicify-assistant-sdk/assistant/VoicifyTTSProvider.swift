@@ -79,8 +79,8 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
                 }
             }.resume()
         }
-        catch{
-            print("error")
+        catch let ttsError{
+            print(ttsError)
         }
     }
     

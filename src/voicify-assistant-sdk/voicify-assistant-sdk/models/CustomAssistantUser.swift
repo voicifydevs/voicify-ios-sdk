@@ -15,11 +15,11 @@ public class CustomAssistantUser
     var additionalSessionAttributes: Dictionary<String, Any>
     var additionalSessionFlags: Array<String>
     
-    public init(id: String, name: String, accessToken: String, additionalSessionAttributes: Dictionary<String, Any>, additionalSessionFlags: Array<String>) {
+    public init(id: String, name: String? = nil, accessToken: String? = nil, additionalSessionAttributes: Dictionary<String, Any>? = nil, additionalSessionFlags: Array<String>? = nil) {
         self.id = id
-        self.name = name
-        self.accessToken = accessToken
-        self.additionalSessionAttributes = additionalSessionAttributes
-        self.additionalSessionFlags = additionalSessionFlags
+        self.name = name ?? ""
+        self.accessToken = accessToken ?? ""
+        self.additionalSessionAttributes = additionalSessionAttributes ?? [:]
+        self.additionalSessionFlags = additionalSessionFlags ?? []
     }
 }
