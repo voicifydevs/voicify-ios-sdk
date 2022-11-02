@@ -9,19 +9,19 @@ import UIKit
 
 public class CustomAssistantResponse
 {
-    var responseId: String
-    var ssml: String?
-    var outputSpeech: String?
-    var displayText: String
-    var responseTemplate: String
-    var foregroundImage: String
-    var backgroundImage: String
-    var audioFile: MediaItemModel?
-    var videoFile: MediaItemModel?
-    var sessionAttributes: Dictionary<String, Any>?
-    var hints: Array<String>?
-    var listItems: Array<CustomAssistantListItem>?
-    var endSession: Bool?
+    public var responseId: String
+    public var ssml: String?
+    public var outputSpeech: String?
+    public var displayText: String
+    public var responseTemplate: String
+    public var foregroundImage: String
+    public var backgroundImage: String
+    public var audioFile: MediaItemModel?
+    public var videoFile: MediaItemModel?
+    public var sessionAttributes: Dictionary<String, Any>?
+    public var hints: Array<String>?
+    public var listItems: Array<CustomAssistantListItem>?
+    public var endSession: Bool?
     
     public init(responseId: String, ssml: String? = nil, outputSpeech: String? = nil, displayText: String, responseTemplate: String, foregroundImage: String, backgroundImage: String, audioFile: MediaItemModel? = nil, videoFile: MediaItemModel? = nil, sessionAttributes: Dictionary<String, Any>? = nil, hints: Array<String>? = nil, listItems: Array<CustomAssistantListItem>? = nil, endSession: Bool? = false) {
         self.responseId = responseId

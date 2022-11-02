@@ -50,6 +50,12 @@ struct ContentView: View {
                     voicifyAsssitant.initializeAndStart()
                     voicifyAsssitant.startNewSession()
                     voicifyAsssitant.makeTextRequest(text: "play how we got here", inputType: "Text")
+                    voicifyAsssitant.onRequestStarted {(request: CustomAssistantRequest) -> Void in
+                        
+                    }
+                    voicifyAsssitant.onResponseReceived{(response: CustomAssistantResponse) -> Void in
+                        print ("HERE IS THE RESPONSE!!!!")
+                    }
 //                    voicifySTT.reset()
 //                    if(!isListening)
 //                    {

@@ -25,8 +25,8 @@ public class VoicifyAssistant : ObservableObject
     private var endSessionHandlers: Array<(CustomAssistantResponse) -> Void> = []
     private var audioHandlers: Array<(MediaItemModel? ) -> Void> = []
     private var videoHandlers: Array<(MediaItemModel? ) -> Void> = []
-    private var currentSessionInfo: VoicifySessionData? = nil
-    private var currentUserInfo: VoicifyUserData? = nil
+    public var currentSessionInfo: VoicifySessionData? = nil
+    public var currentUserInfo: VoicifyUserData? = nil
     
     public init (speechToTextProvider: VoicifySpeechToTextProvider,
                  textToSpeechProivder: VoicifyTextToSpeechProvider,
@@ -147,17 +147,22 @@ public class VoicifyAssistant : ObservableObject
                                     DispatchQueue.main.async {
                                         do {
                                             let sessionDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                                            let sessionDataResponse = converDictionaryToSessionData(response: sessionDataResponseDictionary!)
-                                            print(sessionDataResponse)
-                                            let effects = sessionDataResponse?.sessionAttributes["effects"] as? Array<VoicifySessionEffect>
-                                            self.currentSessionInfo = sessionDataResponse
-                                            effects?.filter{effect in
-                                                return effect.requestId == request.requestId
-                                            }.forEach{effect in
-                                                self.effectHandlers.filter{ effectHandler in
-                                                    return effectHandler.effect == effect.effectName
-                                                }.forEach{effectHandler in
-                                                    effectHandler.callback(effect.data)
+                                            if(!sessionDataResponseDictionary!.isEmpty){
+                                                let sessionDataResponse = self.convertDictionaryToSessionData(response: sessionDataResponseDictionary!)
+                                                let effectDictionary = sessionDataResponse.sessionAttributes?["effects"] as? Array<[String: Any]>
+                                                if(!effectDictionary!.isEmpty)
+                                                {
+                                                    let effects = self.decodeEffectsArray(effects: effectDictionary!)
+                                                    self.currentSessionInfo = sessionDataResponse
+                                                    effects.filter{effect in
+                                                        return effect.requestId == request.requestId
+                                                    }.forEach{effect in
+                                                        self.effectHandlers.filter{ effectHandler in
+                                                            return effectHandler.effect == effect.effectName
+                                                        }.forEach{effectHandler in
+                                                            effectHandler.callback(effect.data)
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -183,7 +188,8 @@ public class VoicifyAssistant : ObservableObject
                                     guard let data = data else { return }
                                     DispatchQueue.main.async {
                                         do{
-                                            let userDataResponse = try JSONSerialization.jsonObject(with: data) as? VoicifyUserData
+                                            let userDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                                            let userDataResponse = self.convertDictionaryToUserData(response: userDataResponseDictionary!)
                                             self.currentUserInfo = userDataResponse
                                         }
                                         catch let error {
@@ -333,7 +339,29 @@ public class VoicifyAssistant : ObservableObject
         return request
     }
     
-    func converDictionaryToSessionData(response: Dictionary<String, Any>) -> VoicifySessionData{
+    func decodeEffectsArray(effects: Array<Dictionary<String, Any>>) -> Array<VoicifySessionEffect>{
+        var sessionEffects: Array<VoicifySessionEffect> = []
+        effects.forEach{effect in
+            sessionEffects.append(
+                VoicifySessionEffect(
+                    effectName: String(describing: effect["effectName"]),
+                    requestId: String(describing: effect["requestId"]),
+                    data: effect["data"] as Any
+                )
+            )
+        }
+        return sessionEffects
+    }
+    
+    func convertDictionaryToUserData(response: Dictionary<String, Any>) -> VoicifyUserData{
+        return VoicifyUserData(
+            id: String(describing: response["id"]),
+            userFlags: response["userFlags"] as? Array<String>,
+            userAttributes: response["userAttributes"] as? Dictionary<String, Any>
+        )
+    }
+    
+    func convertDictionaryToSessionData(response: Dictionary<String, Any>) -> VoicifySessionData{
         return VoicifySessionData(
             id: String(describing: response["id"]),
             sessionFlags: response["sessionFlags"] as? Array<String>,

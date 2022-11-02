@@ -9,9 +9,9 @@ import UIKit
 
 public class SsmlRequest : Codable
 {
-    var ssml: String
-    var locale: String
-    var voice: String
+    public var ssml: String
+    public var locale: String
+    public var voice: String
     
     public init(ssml: String, locale: String, voice: String) {
         self.ssml = ssml

@@ -9,16 +9,16 @@ import UIKit
 
 public class CustomAssistantDevice : Encodable
 {
-    var id: String
-    var name: String
-    var supportsVideo: Bool
-    var supportsForegroundImage: Bool
-    var supportsBackgroundImage: Bool
-    var supportsAudio: Bool
-    var supportsSsml: Bool
-    var supportsDisplayText: Bool
-    var supportsVoiceInput: Bool
-    var supportsTextInput: Bool
+    public var id: String
+    public var name: String
+    public var supportsVideo: Bool
+    public var supportsForegroundImage: Bool
+    public var supportsBackgroundImage: Bool
+    public var supportsAudio: Bool
+    public var supportsSsml: Bool
+    public var supportsDisplayText: Bool
+    public var supportsVoiceInput: Bool
+    public var supportsTextInput: Bool
     
     public init(id: String, name: String, supportsVideo: Bool? = false, supportsForegroundImage: Bool? = false, supportsBackgroundImage: Bool? = false, supportsAudio: Bool? = false, supportsSsml: Bool? = false, supportsDisplayText: Bool? = false, supportsVoiceInput: Bool? = false, supportsTextInput: Bool? = false) {
         self.id = id

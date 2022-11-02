@@ -9,13 +9,13 @@ import UIKit
 
 public class VoicifyUserData
 {
-    var id: String
-    var userFlags: Array<String>
-    var sessionAttributes: Dictionary<String, Any>
+    public var id: String?
+    public var userFlags: Array<String>?
+    public  var userAttributes: Dictionary<String, Any>?
     
-    public init(id: String, userFlags: Array<String>, sessionAttributes: Dictionary<String, Any>) {
+    public init(id: String? = nil, userFlags: Array<String>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
         self.id = id
         self.userFlags = userFlags
-        self.sessionAttributes = sessionAttributes
+        self.userAttributes = userAttributes
     }
 }

@@ -9,9 +9,9 @@ import UIKit
 
 public class MediaItemModel
 {
-    var id: String?
-    var url: String?
-    var name: String?
+    public var id: String?
+    public var url: String?
+    public var name: String?
 
     public init(id: String? = nil, url: String? = nil, name: String? = nil) {
         self.id = id

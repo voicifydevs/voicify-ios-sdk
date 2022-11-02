@@ -9,10 +9,10 @@ import UIKit
 
 public class CustomAssistantListItem : Decodable
 {
-    var id: String
-    var title: String
-    var description: String
-    var image: String
+    public var id: String
+    public var title: String
+    public var description: String
+    public var image: String
     
     public init(id: String, title: String, description: String, image: String) {
         self.id = id

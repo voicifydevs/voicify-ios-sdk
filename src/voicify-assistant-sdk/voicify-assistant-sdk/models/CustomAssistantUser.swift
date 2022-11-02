@@ -9,11 +9,11 @@ import UIKit
 
 public class CustomAssistantUser
 {
-    var id: String
-    var name: String
-    var accessToken: String
-    var additionalSessionAttributes: Dictionary<String, Any>
-    var additionalSessionFlags: Array<String>
+    public var id: String
+    public var name: String
+    public var accessToken: String
+    public var additionalSessionAttributes: Dictionary<String, Any>
+    public var additionalSessionFlags: Array<String>
     
     public init(id: String, name: String? = nil, accessToken: String? = nil, additionalSessionAttributes: Dictionary<String, Any>? = nil, additionalSessionFlags: Array<String>? = nil) {
         self.id = id

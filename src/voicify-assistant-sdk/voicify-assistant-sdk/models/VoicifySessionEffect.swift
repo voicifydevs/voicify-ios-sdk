@@ -9,13 +9,13 @@ import UIKit
 
 public class VoicifySessionEffect
 {
+    public var effectName: String
+    public var requestId: String
+    public var data: Any
+    
     public init(effectName: String, requestId: String, data: Any) {
         self.effectName = effectName
         self.requestId = requestId
         self.data = data
     }
-    
-    var effectName: String
-    var requestId: String
-    var data: Any    
 }

@@ -9,10 +9,10 @@ import UIKit
 
 public class CustomAssistantRequest
 {
-    var requestId: String
-    var context: CustomAssistantRequestContext
-    var device: CustomAssistantDevice
-    var user: CustomAssistantUser
+    public var requestId: String
+    public var context: CustomAssistantRequestContext
+    public var device: CustomAssistantDevice
+    public var user: CustomAssistantUser
     
     public init(requestId: String, context: CustomAssistantRequestContext, device: CustomAssistantDevice, user: CustomAssistantUser) {
         self.requestId = requestId

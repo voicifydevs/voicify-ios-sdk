@@ -9,9 +9,9 @@ import UIKit
 
 public class TTSRequest : Codable
 {
-    var applicationId: String
-    var applicationSecret: String
-    var ssmlRequest: SsmlRequest
+    public var applicationId: String
+    public var applicationSecret: String
+    public var ssmlRequest: SsmlRequest
     
     public init(applicationId: String, applicationSecret: String, ssmlRequest: SsmlRequest) {
         self.applicationId = applicationId

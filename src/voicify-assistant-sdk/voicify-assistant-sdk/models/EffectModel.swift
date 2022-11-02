@@ -9,8 +9,8 @@ import UIKit
 
 public class EffectModel
 {
-    var effect: String
-    var callback: (Any) -> Void
+    public var effect: String
+    public var callback: (Any) -> Void
     
     public init(effect: String, callback: @escaping (Any) -> Void) {
         self.effect = effect
