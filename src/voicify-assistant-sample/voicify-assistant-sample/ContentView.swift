@@ -33,7 +33,8 @@ struct ContentView: View {
             initializeWithText: true,
             useVoiceInput: true,
             useDraftContent: false,
-            useOutputSpeech: true
+            useOutputSpeech: true,
+            noTracking: false
         )
     )
     @State var inputSpeech = ""
@@ -56,6 +57,11 @@ struct ContentView: View {
                     voicifyAsssitant.onResponseReceived{(response: CustomAssistantResponse) -> Void in
                         print ("HERE IS THE RESPONSE!!!!")
                     }
+                    voicifyAsssitant.onEffect(effectName: "Play"){(data: Any) -> Void in
+                        print("WE GOT A PLAY EFFECT HERE!!!!")
+                        print(data)
+                    }
+                        
 //                    voicifySTT.reset()
 //                    if(!isListening)
 //                    {

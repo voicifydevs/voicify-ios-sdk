@@ -19,8 +19,9 @@ public class VoicifyAssistantSettings
     var useVoiceInput: Bool
     var useDraftContent: Bool
     var useOutputSpeech: Bool
+    var noTracking: Bool
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, initializeWithText: Bool, useVoiceInput: Bool, useDraftContent: Bool, useOutputSpeech: Bool) {
+    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, initializeWithText: Bool, useVoiceInput: Bool, useDraftContent: Bool, useOutputSpeech: Bool, noTracking: Bool) {
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey
@@ -33,5 +34,6 @@ public class VoicifyAssistantSettings
         self.useVoiceInput = useVoiceInput
         self.useDraftContent = useDraftContent
         self.useOutputSpeech = useOutputSpeech
+        self.noTracking = noTracking
     }
 }

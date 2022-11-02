@@ -10,20 +10,20 @@ import UIKit
 public class CustomAssistantResponse
 {
     public var responseId: String
-    public var ssml: String?
-    public var outputSpeech: String?
+    public var ssml: String
+    public var outputSpeech: String
     public var displayText: String
     public var responseTemplate: String
     public var foregroundImage: String
     public var backgroundImage: String
-    public var audioFile: MediaItemModel?
-    public var videoFile: MediaItemModel?
-    public var sessionAttributes: Dictionary<String, Any>?
-    public var hints: Array<String>?
-    public var listItems: Array<CustomAssistantListItem>?
-    public var endSession: Bool?
+    public var audioFile: MediaItemModel
+    public var videoFile: MediaItemModel
+    public var sessionAttributes: Dictionary<String, Any>
+    public var hints: Array<String>
+    public var listItems: Array<CustomAssistantListItem>
+    public var endSession: Bool
     
-    public init(responseId: String, ssml: String? = nil, outputSpeech: String? = nil, displayText: String, responseTemplate: String, foregroundImage: String, backgroundImage: String, audioFile: MediaItemModel? = nil, videoFile: MediaItemModel? = nil, sessionAttributes: Dictionary<String, Any>? = nil, hints: Array<String>? = nil, listItems: Array<CustomAssistantListItem>? = nil, endSession: Bool? = false) {
+    public init(responseId: String, ssml: String, outputSpeech: String, displayText: String, responseTemplate: String, foregroundImage: String, backgroundImage: String, audioFile: MediaItemModel, videoFile: MediaItemModel, sessionAttributes: Dictionary<String, Any>, hints: Array<String>, listItems: Array<CustomAssistantListItem>, endSession: Bool) {
         self.responseId = responseId
         self.ssml = ssml
         self.outputSpeech = outputSpeech

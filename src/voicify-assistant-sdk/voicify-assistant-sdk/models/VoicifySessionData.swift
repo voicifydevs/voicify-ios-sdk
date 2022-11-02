@@ -9,11 +9,11 @@ import UIKit
 
 public class VoicifySessionData
 {
-    public var id: String?
-    public var sessionFlags: Array<String>?
-    public var sessionAttributes: Dictionary<String, Any>?
+    public var id: String
+    public var sessionFlags: Array<String>
+    public var sessionAttributes: Dictionary<String, Any>
     
-    public init(id: String? = nil, sessionFlags: Array<String>? = nil, sessionAttributes: Dictionary<String, Any>? = nil) {
+    public init(id: String, sessionFlags: Array<String>, sessionAttributes: Dictionary<String, Any>) {
         self.id = id
         self.sessionFlags = sessionFlags
         self.sessionAttributes = sessionAttributes

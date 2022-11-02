@@ -124,13 +124,8 @@ public class VoicifyAssistant : ObservableObject
                             }
                             if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech)
                             {
-                                if(customAssistantResponse.ssml != nil)
-                                {
-                                    self.textToSpeechProvider?.speakSsml(ssml: customAssistantResponse.ssml!)
-                                }
-                                else if (customAssistantResponse.outputSpeech != nil){
-                                    self.textToSpeechProvider?.speakSsml(ssml: customAssistantResponse.outputSpeech!)
-                                }
+                                self.textToSpeechProvider?.speakSsml(ssml: customAssistantResponse.ssml)
+                                self.textToSpeechProvider?.speakSsml(ssml: customAssistantResponse.outputSpeech)
                             }
                             guard let sessionDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/session/\( self.sessionId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
                             let sessionDataRequest = self.generateGetRequest(url: sessionDataRequestUrl)
@@ -146,21 +141,22 @@ public class VoicifyAssistant : ObservableObject
                                     guard let data = data else { return }
                                     DispatchQueue.main.async {
                                         do {
-                                            let sessionDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                                            if(!sessionDataResponseDictionary!.isEmpty){
-                                                let sessionDataResponse = self.convertDictionaryToSessionData(response: sessionDataResponseDictionary!)
-                                                let effectDictionary = sessionDataResponse.sessionAttributes?["effects"] as? Array<[String: Any]>
-                                                if(!effectDictionary!.isEmpty)
+                                            if let sessionDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                                            {
+                                                let sessionDataResponse = self.convertDictionaryToSessionData(response: sessionDataResponseDictionary)
+                                                self.currentSessionInfo = sessionDataResponse
+                                                if let effectDictionary = sessionDataResponse.sessionAttributes["effects"] as? Array<[String: Any]>
                                                 {
-                                                    let effects = self.decodeEffectsArray(effects: effectDictionary!)
-                                                    self.currentSessionInfo = sessionDataResponse
+                                                    let effects = self.decodeEffectsArray(effects: effectDictionary)
                                                     effects.filter{effect in
+                                                        print(effect.requestId)
+                                                        print(request.requestId)
                                                         return effect.requestId == request.requestId
                                                     }.forEach{effect in
                                                         self.effectHandlers.filter{ effectHandler in
                                                             return effectHandler.effect == effect.effectName
                                                         }.forEach{effectHandler in
-                                                            effectHandler.callback(effect.data)
+                                                            effectHandler.callback(effect.data as Any)
                                                         }
                                                     }
                                                 }
@@ -203,15 +199,11 @@ public class VoicifyAssistant : ObservableObject
                             self.responseHandlers.forEach{responseHandler in
                                 responseHandler(customAssistantResponse)
                             }
-                            if(customAssistantResponse.audioFile != nil){
-                                self.audioHandlers.forEach{audioHandler in
-                                    audioHandler(customAssistantResponse.audioFile)
-                                }
+                            self.audioHandlers.forEach{audioHandler in
+                                audioHandler(customAssistantResponse.audioFile)
                             }
-                            if(customAssistantResponse.videoFile != nil){
-                                self.videoHandlers.forEach{videoHandler in
-                                    videoHandler(customAssistantResponse.videoFile)
-                                }
+                            self.videoHandlers.forEach{videoHandler in
+                                videoHandler(customAssistantResponse.videoFile)
                             }
                             if(customAssistantResponse.endSession == true){
                                 self.endSessionHandlers.forEach{endSessionHandler in
@@ -247,13 +239,17 @@ public class VoicifyAssistant : ObservableObject
             requestId: UUID().uuidString,
             context: CustomAssistantRequestContext(
                 sessionId: self.sessionId ?? "",
+                noTracking: settings.noTracking,
                 requestType: "IntentRequest",
+                requestName: "",
+                slots: [:],
                 originialInput: text,
                 channel: self.settings.channel,
                 requiresLanguageUnderstanding: true,
                 locale: self.settings.locale,
                 additionalRequestAttributes: requestAttributes ?? [:],
-                additionalSessionAttributes: self.sessionAttributes ?? [:]
+                additionalSessionAttributes: self.sessionAttributes ?? [:],
+                additionalSessionFlags: []
             ),
             device: generateDevice(),
             user: generateUser()
@@ -276,14 +272,16 @@ public class VoicifyAssistant : ObservableObject
             requestId: UUID().uuidString,
             context: CustomAssistantRequestContext(
                 sessionId: self.sessionId ?? "",
-                requestType: "IntentRequest",
+                noTracking: settings.noTracking, requestType: "IntentRequest",
                 requestName: "VoicifyWelcome",
+                slots: [:],
                 originialInput: "[Automated]",
                 channel: self.settings.channel,
                 requiresLanguageUnderstanding: false,
                 locale: self.settings.locale,
                 additionalRequestAttributes: requestAttributes ?? [:],
-                additionalSessionAttributes: self.sessionAttributes ?? [:]
+                additionalSessionAttributes: self.sessionAttributes ?? [:],
+                additionalSessionFlags: []
             ),
             device: generateDevice(),
             user: generateUser()
@@ -292,10 +290,10 @@ public class VoicifyAssistant : ObservableObject
     public func generateUser() -> CustomAssistantUser{
         return CustomAssistantUser(
             id: self.userId ?? "",
-            name: self.userId,
-            accessToken: self.accessToken,
-            additionalSessionAttributes:
-            self.userAttributes
+            name: self.userId ?? "",
+            accessToken: self.accessToken ?? "",
+            additionalSessionAttributes: self.userAttributes ?? [:],
+            additionalSessionFlags: []
         )
     }
     
@@ -303,6 +301,10 @@ public class VoicifyAssistant : ObservableObject
         return CustomAssistantDevice(
             id: self.settings.device,
             name: self.settings.device,
+            supportsVideo: true,
+            supportsForegroundImage: true,
+            supportsBackgroundImage: true,
+            supportsAudio: true,
             supportsSsml: true,
             supportsDisplayText: true,
             supportsVoiceInput: true,
@@ -342,58 +344,130 @@ public class VoicifyAssistant : ObservableObject
     func decodeEffectsArray(effects: Array<Dictionary<String, Any>>) -> Array<VoicifySessionEffect>{
         var sessionEffects: Array<VoicifySessionEffect> = []
         effects.forEach{effect in
-            sessionEffects.append(
-                VoicifySessionEffect(
-                    effectName: String(describing: effect["effectName"]),
-                    requestId: String(describing: effect["requestId"]),
-                    data: effect["data"] as Any
-                )
-            )
+            let sessionEffect = VoicifySessionEffect(effectName: "", requestId: "", data: {})
+            if let name = effect["effectName"] as? String{
+                sessionEffect.effectName = name
+            }
+            if let id = effect["requestId"] as? String{
+                sessionEffect.requestId = id
+            }
+            if let data = effect["data"]{
+                sessionEffect.data = data
+            }
+            sessionEffects.append(sessionEffect)
         }
         return sessionEffects
     }
     
     func convertDictionaryToUserData(response: Dictionary<String, Any>) -> VoicifyUserData{
-        return VoicifyUserData(
-            id: String(describing: response["id"]),
-            userFlags: response["userFlags"] as? Array<String>,
-            userAttributes: response["userAttributes"] as? Dictionary<String, Any>
-        )
+        let userData = VoicifyUserData(id: "", userFlags: [], userAttributes: [:])
+        if let id = response["id"] as? String {
+            userData.id = id
+        }
+        if let userFlags = response["userFlags"] as? [String]{
+            userData.userFlags = userFlags
+        }
+        if let userAttributes = response["userAttributes"] as? [String : Any]{
+            userData.userAttributes = userAttributes
+        }
+        return userData
     }
     
     func convertDictionaryToSessionData(response: Dictionary<String, Any>) -> VoicifySessionData{
-        return VoicifySessionData(
-            id: String(describing: response["id"]),
-            sessionFlags: response["sessionFlags"] as? Array<String>,
-            sessionAttributes: response["sessionAttributes"] as? Dictionary<String, Any>
-        )
+        let sessionData = VoicifySessionData(id: "", sessionFlags: [], sessionAttributes: [:])
+        if let id = response["id"] as? String{
+            sessionData.id = id
+        }
+        if let sessionFlags = response["sessionFlags"] as? Array<String>{
+            sessionData.sessionFlags = sessionFlags
+        }
+        if let sessionAttributes = response["sessionAttributes"] as? Dictionary<String, Any>{
+            sessionData.sessionAttributes = sessionAttributes
+        }
+        return sessionData
     }
     
     func convertDictionaryToResponseObject(response: Dictionary<String, Any>) -> CustomAssistantResponse{
-        let audioFile =  response["audioFile"] as? [String: Any]
-        let videoFile =  response["videoFile"] as? [String: Any]
-        return CustomAssistantResponse(
-            responseId: String(describing: response["responseId"]),
-            ssml: String(describing: response["ssml"]),
-            outputSpeech: String(describing: response["outputSpeech"]),
-            displayText: String(describing: response["displayText"]),
-            responseTemplate: String(describing: response["responseTemplate"]),
-            foregroundImage: String(describing: response["foregroundImage"]),
-            backgroundImage: String(describing: response["backgroundImage"]),
-            audioFile: MediaItemModel(
-                id: String(describing: audioFile?["id"]),
-                url: String(describing: audioFile?["url"]),
-                name: String(describing: audioFile?["name"])
-            ),
-            videoFile: MediaItemModel(
-                id: String(describing: videoFile?["id"]),
-                url: String(describing: videoFile?["url"]),
-                name: String(describing: videoFile?["name"])
-            ),
-            sessionAttributes: response["sessionAttributes"] as? Dictionary<String, Any>,
-            hints: response["hints"] as? Array<String>,
-            listItems: response["listItems"] as? Array<CustomAssistantListItem>,
-            endSession: response["endSession"] as? Bool)
+        let decodedResponse = CustomAssistantResponse(responseId: "", ssml: "", outputSpeech: "", displayText: "", responseTemplate: "", foregroundImage: "", backgroundImage: "", audioFile: MediaItemModel(id: "", url: "", name: ""), videoFile: MediaItemModel(id: "", url: "", name: ""), sessionAttributes: [:], hints: [], listItems: [], endSession: false)
+        if let responseId = response["responseId"] as? String{
+            decodedResponse.responseId = responseId
+        }
+        if let ssml = response["ssml"] as? String {
+            decodedResponse.ssml = ssml
+        }
+        if let outputSpeech = response["outputSpeech"] as? String {
+            decodedResponse.outputSpeech = outputSpeech
+        }
+        if let displayText = response["displayText"] as? String {
+            decodedResponse.displayText = displayText
+        }
+        if let responseTemplate = response["responseTemplate"] as? String{
+            decodedResponse.responseTemplate = responseTemplate
+        }
+        if let foregroundImage = response["foregroundImage"] as? String{
+            decodedResponse .foregroundImage = foregroundImage
+        }
+        if let backgroundImage = response["backgroundImage"] as? String{
+            decodedResponse.backgroundImage = backgroundImage
+        }
+        if let audioFile = response["audioFile"] as? [String: Any]
+        {
+            if let audioFileId = audioFile["id"] as? String{
+                decodedResponse.audioFile.id = audioFileId
+            }
+            
+            if let audioUrl = audioFile["url"] as? String{
+                decodedResponse.audioFile.url = audioUrl
+            }
+            
+            if let audioName = audioFile["name"] as? String{
+                decodedResponse.audioFile.name = audioName
+            }
+        }
+        if let videoFile = response["videoFile"] as? [String: Any]
+        {
+            if let videoFileId = videoFile["id"] as? String{
+                decodedResponse.videoFile.id = videoFileId
+            }
+            
+            if let videoUrl = videoFile["url"] as? String{
+                decodedResponse.videoFile.url = videoUrl
+            }
+            
+            if let videoName = videoFile["name"] as? String{
+                decodedResponse.videoFile.name = videoName
+            }
+        }
+        if let sessionAttributes = response["sessionAttributes"] as? [String: Any] {
+            decodedResponse.sessionAttributes = sessionAttributes
+        }
+        if let hints = response["hints"] as? [String]{
+            decodedResponse.hints = hints
+        }
+        if let assistantListItems = response["listItems"] as? Array<[String: Any]>{
+            var listItems: Array<CustomAssistantListItem> = []
+            assistantListItems.forEach{assistantListItem in
+                let listItem = CustomAssistantListItem(id: "", title: "", description: "", image: "")
+                if let listItemId = assistantListItem["id"] as? String {
+                    listItem.id = listItemId
+                }
+                if let listItemTitle = assistantListItem["title"] as? String {
+                    listItem.title = listItemTitle
+                }
+                if let listItemDescription = assistantListItem["description"] as? String {
+                    listItem.description = listItemDescription
+                }
+                if let listItemImage = assistantListItem["image"] as? String {
+                    listItem.image = listItemImage
+                }
+                listItems.append(listItem)
+            }
+            decodedResponse.listItems = listItems
+        }
+        if let endSession = response["endSession"] as? Bool{
+            decodedResponse.endSession = endSession
+        }
+        return decodedResponse
     }
     
     func convertRequestToDictionary(request: CustomAssistantRequest) -> Dictionary<String, Any>{
