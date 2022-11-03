@@ -27,7 +27,6 @@ public struct AssistantDrawerUI: View {
                 }
             }
         }
-        .presentationDetents(isPresented: <#T##SwiftUI.Binding<Bool>#>, content: <#T##() -> Content#>)
     }
 }
 
