@@ -32,6 +32,8 @@
 		FE9AC32529097E2F0030C67E /* VoicifyTextToSpeechSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */; };
 		FE9AC32729097EF60030C67E /* VoicifyAssistantSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */; };
 		FE9AC32929097FCB0030C67E /* VoicifySTTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */; };
+		FEBB244829140B4F001BF773 /* AssistantDrawerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */; };
+		FEBB244A2914133B001BF773 /* AssistantSettingsProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyTextToSpeechSettings.swift; sourceTree = "<group>"; };
 		FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyAssistantSettings.swift; sourceTree = "<group>"; };
 		FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySTTProvider.swift; sourceTree = "<group>"; };
+		FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUI.swift; sourceTree = "<group>"; };
+		FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSettingsProps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 		C962F2EE282AB12800990915 /* voicify-assistant-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				FEBB244629140AF9001BF773 /* components */,
+				FEBB244229140AE0001BF773 /* assistantDrawerUiTypes */,
 				FE9AC31F29097C3E0030C67E /* assistant */,
 				FE82DFD42907319D000275C2 /* models */,
 				C962F2EF282AB12800990915 /* voicify_assistant_sdk.h */,
@@ -201,8 +207,24 @@
 				FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */,
 				FE1F4E20290C5CCD00D1B447 /* VoicifyTTSProvider.swift */,
 				FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */,
+				FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */,
 			);
 			path = assistant;
+			sourceTree = "<group>";
+		};
+		FEBB244229140AE0001BF773 /* assistantDrawerUiTypes */ = {
+			isa = PBXGroup;
+			children = (
+				FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */,
+			);
+			path = assistantDrawerUiTypes;
+			sourceTree = "<group>";
+		};
+		FEBB244629140AF9001BF773 /* components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +382,7 @@
 				FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */,
 				FE9AC30F29086D990030C67E /* SsmlRequest.swift in Sources */,
 				FE1F4E21290C5CCD00D1B447 /* VoicifyTTSProvider.swift in Sources */,
+				FEBB244829140B4F001BF773 /* AssistantDrawerUI.swift in Sources */,
 				FE9AC32929097FCB0030C67E /* VoicifySTTProvider.swift in Sources */,
 				FE9AC32529097E2F0030C67E /* VoicifyTextToSpeechSettings.swift in Sources */,
 				FE9AC32329097DB90030C67E /* VoicifySpeechToTextProvider.swift in Sources */,
@@ -369,6 +392,7 @@
 				FE9AC31A29097AEB0030C67E /* VoicifySessionData.swift in Sources */,
 				FE9AC31E29097BB00030C67E /* VoicifyUserData.swift in Sources */,
 				FE9AC31829097AA30030C67E /* TTSRequest.swift in Sources */,
+				FEBB244A2914133B001BF773 /* AssistantSettingsProps.swift in Sources */,
 				FE9AC32729097EF60030C67E /* VoicifyAssistantSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

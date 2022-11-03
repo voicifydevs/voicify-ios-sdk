@@ -8,61 +8,63 @@
 import SwiftUI
 import voicify_assistant_sdk
 struct ContentView: View {
-//    @StateObject var voicifySTT = VoicifySTTProvider()
-//    @StateObject var voicifyTTS = VoicifyTTSProivder(settings: VoicifyTextToSpeechSettings(appId: "99a803b7-5b37-426c-a02e-63c8215c71eb", appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3", voice: "", serverRootUrl: "https://assistant.voicify.com", provider: "Google"))
-    @StateObject var voicifyAsssitant = VoicifyAssistant(
-        speechToTextProvider: VoicifySTTProvider(),
-        textToSpeechProivder: VoicifyTTSProivder(
-            settings: VoicifyTextToSpeechSettings(
-                appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
-                appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
-                voice: "",
-                serverRootUrl: "https://assistant.voicify.com",
-                provider: "Google"
-            )
-        ),
-        settings: VoicifyAssistantSettings(
-            serverRootUrl: "https://assistant.voicify.com",
-            appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
-            appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
-            locale: "en-US",
-            channel: "test",
-            device: "test",
-            autoRunConversation: true,
-            initializeWithWelcomeMessage: false,
-            initializeWithText: true,
-            useVoiceInput: true,
-            useDraftContent: false,
-            useOutputSpeech: true,
-            noTracking: false
-        )
-    )
-    @State var inputSpeech = ""
-    @State var speechVolume: Float = 0
-    @State var isListening = false
-    @State var isSpeaking = true
-    @State var speechEndedMessage = ""
+////    @StateObject var voicifySTT = VoicifySTTProvider()
+////    @StateObject var voicifyTTS = VoicifyTTSProivder(settings: VoicifyTextToSpeechSettings(appId: "99a803b7-5b37-426c-a02e-63c8215c71eb", appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3", voice: "", serverRootUrl: "https://assistant.voicify.com", provider: "Google"))
+//    @StateObject var voicifyAsssitant = VoicifyAssistant(
+//        speechToTextProvider: VoicifySTTProvider(),
+//        textToSpeechProivder: VoicifyTTSProivder(
+//            settings: VoicifyTextToSpeechSettings(
+//                appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
+//                appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
+//                voice: "",
+//                serverRootUrl: "https://assistant.voicify.com",
+//                provider: "Google"
+//            )
+//        ),
+//        settings: VoicifyAssistantSettings(
+//            serverRootUrl: "https://assistant.voicify.com",
+//            appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
+//            appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
+//            locale: "en-US",
+//            channel: "test",
+//            device: "test",
+//            autoRunConversation: true,
+//            initializeWithWelcomeMessage: false,
+//            initializeWithText: true,
+//            useVoiceInput: true,
+//            useDraftContent: false,
+//            useOutputSpeech: true,
+//            noTracking: false
+//        )
+//    )
+//    @State var inputSpeech = ""
+//    @State var speechVolume: Float = 0
+//    @State var isListening = false
+//    @State var isSpeaking = true
+//    @State var speechEndedMessage = ""
+    @State var assistantIsOpen = false
 
     var body: some View {
         VStack{
             HStack{
                 Spacer()
                 Button("Click me to open \nthe assistant"){
-                    voicifyAsssitant.initializeAndStart()
-                    voicifyAsssitant.startNewSession()
-                    voicifyAsssitant.makeTextRequest(text: "play how we got here", inputType: "Text")
-                    voicifyAsssitant.onRequestStarted {(request: CustomAssistantRequest) -> Void in
-                        
-                    }
-                    voicifyAsssitant.onResponseReceived{(response: CustomAssistantResponse) -> Void in
-                        print ("HERE IS THE RESPONSE!!!!")
-                        print(response.ssml)
-                        print(voicifyAsssitant.currentSessionInfo.id)
-                    }
-                    voicifyAsssitant.onEffect(effectName: "Play"){(data: Any) -> Void in
-                        print("WE GOT A PLAY EFFECT HERE!!!!")
-                        print(data)
-                    }
+                    self.assistantIsOpen = true
+//                    voicifyAsssitant.initializeAndStart()
+//                    voicifyAsssitant.startNewSession()
+//                    voicifyAsssitant.makeTextRequest(text: "im good", inputType: "Text")
+//                    voicifyAsssitant.onRequestStarted {(request: CustomAssistantRequest) -> Void inAs
+//
+//                    }
+//                    voicifyAsssitant.onResponseReceived{(response: CustomAssistantResponse) -> Void in
+//                        print ("HERE IS THE RESPONSE!!!!")
+//                        print(response.ssml)
+//                        print(voicifyAsssitant.currentSessionInfo.id)
+//                    }
+//                    voicifyAsssitant.onEffect(effectName: "Play"){(data: Any) -> Void in
+//                        print("WE GOT A PLAY EFFECT HERE!!!!")
+//                        print(data)
+//                    }
                         
 //                    voicifySTT.reset()
 //                    if(!isListening)
@@ -78,11 +80,9 @@ struct ContentView: View {
 //                    }
                    
                 }
-                Text(inputSpeech).font(.system(size: 34))
-                Text(String(speechVolume)).font(.system(size: 34))
-                Text(speechEndedMessage).font(.system(size: 34))
             }
             Spacer()
+            AssistantDrawerUI(assistantSettings: AssistantSettingsProps(serverRootUrl: "https://assistant.voicify.com", appId: "99a803b7-5b37-426c-a02e-63c8215c71eb", appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3", locale: "en-US", channel: "My App", device: "My Device", autoRunConversation: true, initializeWithWelcomeMessage: false, textToSpeechProvider: "Google", useVoiceInput: true, useOutputSpeech: true, initializeWithText: false, useDraftContent: false, noTracking: false, effects: [], assistantIsOpen: self.assistantIsOpen), assistantIsOpen: $assistantIsOpen)
         }.onAppear{
 //            voicifySTT.initialize(locale: "en-US")
 //            voicifyTTS.initialize(locale: "en-US")
