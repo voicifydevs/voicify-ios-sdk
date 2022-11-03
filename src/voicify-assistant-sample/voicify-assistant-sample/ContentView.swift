@@ -56,6 +56,8 @@ struct ContentView: View {
                     }
                     voicifyAsssitant.onResponseReceived{(response: CustomAssistantResponse) -> Void in
                         print ("HERE IS THE RESPONSE!!!!")
+                        print(response.ssml)
+                        print(voicifyAsssitant.currentSessionInfo.id)
                     }
                     voicifyAsssitant.onEffect(effectName: "Play"){(data: Any) -> Void in
                         print("WE GOT A PLAY EFFECT HERE!!!!")

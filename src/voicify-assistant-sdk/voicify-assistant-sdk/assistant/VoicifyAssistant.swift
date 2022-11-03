@@ -25,8 +25,8 @@ public class VoicifyAssistant : ObservableObject
     private var endSessionHandlers: Array<(CustomAssistantResponse) -> Void> = []
     private var audioHandlers: Array<(MediaItemModel? ) -> Void> = []
     private var videoHandlers: Array<(MediaItemModel? ) -> Void> = []
-    public var currentSessionInfo: VoicifySessionData? = nil
-    public var currentUserInfo: VoicifyUserData? = nil
+    public var currentSessionInfo = VoicifySessionData(id: "", sessionFlags: [], sessionAttributes: [:])
+    public var currentUserInfo = VoicifyUserData(id: "", userFlags: [], userAttributes: [:])
     
     public init (speechToTextProvider: VoicifySpeechToTextProvider,
                  textToSpeechProivder: VoicifyTextToSpeechProvider,
@@ -46,8 +46,8 @@ public class VoicifyAssistant : ObservableObject
         self.userId = self.userId ?? UUID().uuidString
         self.sessionAttributes = sessionAttributes
         self.userAttributes = userAttributes
-        self.currentSessionInfo = nil
-        self.currentUserInfo = nil
+        self.currentSessionInfo = VoicifySessionData(id: "", sessionFlags: [], sessionAttributes: [:])
+        self.currentUserInfo = VoicifyUserData(id: "", userFlags: [], userAttributes: [:])
         if(settings.initializeWithWelcomeMessage)
         {
             makeWelcomeMessage(requestAttributes: nil)
@@ -93,140 +93,192 @@ public class VoicifyAssistant : ObservableObject
     }
     
     public func makeRequest(request: CustomAssistantRequest, inputType: String){
-        do{
-            textToSpeechProvider?.stop()
-            requestStartedHandlers.forEach{requestStartedHandler in
-                requestStartedHandler(request)
+        textToSpeechProvider?.stop()
+        requestStartedHandlers.forEach{requestStartedHandler in
+            requestStartedHandler(request)
+        }
+        
+        customAssistantRequest(request: request){(result: Result) in     // make the custom assistant request
+            switch result {
+            case .failure(let error):
+                self.errorHandlers.forEach{errorHandler in
+                    errorHandler(error.localizedDescription)
+                }
+            case .success(let assistantResponse):
+                self.sessionDataRequest(assistantResponse: assistantResponse, inputType: inputType){(result: Result) in // make the session data request
+                    switch result {
+                    case .failure(let error):
+                        self.errorHandlers.forEach{errorHandler in
+                            errorHandler(error.localizedDescription)
+                        }
+                    case .success(let sessionResponse):
+                        self.userDataRequest(sessionData: sessionResponse, inputType: inputType, assistantResponse: assistantResponse, request: request)
+                            
+                
+                    }
+            
+                }
             }
+        }
+    }
+    
+    public func tempRequest(request: CustomAssistantRequest, inputType: String){
+       
+    }
+    
+    private func customAssistantRequest(request: CustomAssistantRequest, completion: @escaping (Result<CustomAssistantResponse, Error>) -> Void){
+        do{
             let useDraftContent = settings.useDraftContent ? "&useDraftContent=true" : ""
             guard let customRequestUrl = URL(string: "\(settings.serverRootUrl)/api/customAssistant/handlerequest?applicationId=\(settings.appId)&applicationSecret=\(settings.appKey)\(useDraftContent)") else { fatalError("Missing URL") }
             let encodedCustomRequestBody = try JSONSerialization.data(withJSONObject: convertRequestToDictionary(request: request), options: [])
             let customAssistantRequest = generatePostRequest(requestBody: encodedCustomRequestBody, url: customRequestUrl)
-            URLSession.shared.dataTask(with: customAssistantRequest) { (data, response, error) in
-                if let error = error {
-                    self.errorHandlers.forEach{errorHandler in
-                        errorHandler(error.localizedDescription)
+                URLSession.shared.dataTask(with: customAssistantRequest) { (data, response, error) in
+                    if let error = error {
+                        self.errorHandlers.forEach{errorHandler in
+                            errorHandler(error.localizedDescription)
+                        }
+                        return
                     }
-                    return
-                }
-                guard let response = response as? HTTPURLResponse else { return }
-                if response.statusCode == 200 {
-                    guard let data = data else { return }
-                    DispatchQueue.main.async { [self] in
-                        do {
-                            let customAssistantResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                            let customAssistantResponse = convertDictionaryToResponseObject(response: customAssistantResponseDictionary!)
-                            self.textToSpeechProvider?.clearHandlers()
-                            self.textToSpeechProvider?.addFinishListener {
-                                if(self.settings.autoRunConversation && self.settings.useVoiceInput && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && customAssistantResponse.endSession != false){
-                                    self.speechToTextProvider?.startListening()
+                    guard let response = response as? HTTPURLResponse else { return }
+                    if response.statusCode == 200 {
+                        guard let data = data else { return }
+                        DispatchQueue.main.async { [self] in
+                            do {
+                                if let customAssistantResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                                {
+                                    let customAssistantResponse = convertDictionaryToResponseObject(response: customAssistantResponseDictionary)
+                                    completion(.success(customAssistantResponse))
                                 }
-                            }
-                            if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech)
-                            {
-                                self.textToSpeechProvider?.speakSsml(ssml: customAssistantResponse.ssml)
-                                self.textToSpeechProvider?.speakSsml(ssml: customAssistantResponse.outputSpeech)
-                            }
-                            guard let sessionDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/session/\( self.sessionId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
-                            let sessionDataRequest = self.generateGetRequest(url: sessionDataRequestUrl)
-                            URLSession.shared.dataTask(with: sessionDataRequest) { (data, response, error) in
-                                if let error = error {
+                                else{
                                     self.errorHandlers.forEach{errorHandler in
-                                        errorHandler(error.localizedDescription)
-                                    }
-                                    return
-                                }
-                                guard let response = response as? HTTPURLResponse else { return }
-                                if response.statusCode == 200 {
-                                    guard let data = data else { return }
-                                    DispatchQueue.main.async {
-                                        do {
-                                            if let sessionDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                                            {
-                                                let sessionDataResponse = self.convertDictionaryToSessionData(response: sessionDataResponseDictionary)
-                                                self.currentSessionInfo = sessionDataResponse
-                                                if let effectDictionary = sessionDataResponse.sessionAttributes["effects"] as? Array<[String: Any]>
-                                                {
-                                                    let effects = self.decodeEffectsArray(effects: effectDictionary)
-                                                    effects.filter{effect in
-                                                        print(effect.requestId)
-                                                        print(request.requestId)
-                                                        return effect.requestId == request.requestId
-                                                    }.forEach{effect in
-                                                        self.effectHandlers.filter{ effectHandler in
-                                                            return effectHandler.effect == effect.effectName
-                                                        }.forEach{effectHandler in
-                                                            effectHandler.callback(effect.data as Any)
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        catch let error {
-                                            self.errorHandlers.forEach{errorHandler in
-                                                errorHandler(error.localizedDescription)
-                                            }
-                                        }
+                                        errorHandler("empty response")
                                     }
                                 }
-                            }.resume()
-                            guard let userDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/\( self.userId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
-                            let userDataRequest = self.generateGetRequest(url: userDataRequestUrl)
-                            URLSession.shared.dataTask(with: userDataRequest) { (data, response, error) in
-                                if let error = error {
-                                    self.errorHandlers.forEach{errorHandler in
-                                        errorHandler(error.localizedDescription)
-                                    }
-                                    return
+                            }
+                            catch let error {
+                                self.errorHandlers.forEach{errorHandler in
+                                    errorHandler(error.localizedDescription)
                                 }
-                                guard let response = response as? HTTPURLResponse else { return }
-                                if response.statusCode == 200 {
-                                    guard let data = data else { return }
-                                    DispatchQueue.main.async {
-                                        do{
-                                            let userDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                                            let userDataResponse = self.convertDictionaryToUserData(response: userDataResponseDictionary!)
-                                            self.currentUserInfo = userDataResponse
-                                        }
-                                        catch let error {
-                                            self.errorHandlers.forEach{errorHandler in
-                                                errorHandler(error.localizedDescription)
-                                            }
-                                        }
-                                    }
-                                }
-                            }.resume()
-                            self.responseHandlers.forEach{responseHandler in
-                                responseHandler(customAssistantResponse)
-                            }
-                            self.audioHandlers.forEach{audioHandler in
-                                audioHandler(customAssistantResponse.audioFile)
-                            }
-                            self.videoHandlers.forEach{videoHandler in
-                                videoHandler(customAssistantResponse.videoFile)
-                            }
-                            if(customAssistantResponse.endSession == true){
-                                self.endSessionHandlers.forEach{endSessionHandler in
-                                    endSessionHandler(customAssistantResponse)
-                                }
-                            }
-                            if(self.settings.autoRunConversation && self.settings.useVoiceInput && customAssistantResponse.endSession != true && inputType == "Speech" && (self.textToSpeechProvider != nil || !self.settings.useOutputSpeech)){
-                                self.speechToTextProvider?.startListening()
-                            }
-                        } catch let error {
-                            self.errorHandlers.forEach{errorHandler in
-                                errorHandler(error.localizedDescription)
                             }
                         }
                     }
-                }
-            }.resume()
+                }.resume()
         }
-        catch let requestError{
-            self.errorHandlers.forEach{errorHandler in
-                errorHandler(requestError.localizedDescription)
+        catch{
+            
+        }
+    }
+    
+    private func sessionDataRequest(assistantResponse: CustomAssistantResponse, inputType: String, completion: @escaping (Result<VoicifySessionData, Error>) -> Void){
+        self.textToSpeechProvider?.clearHandlers()
+        self.textToSpeechProvider?.addFinishListener {
+            if(self.settings.autoRunConversation && self.settings.useVoiceInput && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != false){
+                self.speechToTextProvider?.startListening()
             }
         }
+        if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech)
+        {
+            self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.ssml)
+            self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.outputSpeech)
+        }
+        guard let sessionDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/session/\( self.sessionId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
+        let sessionDataRequest = self.generateGetRequest(url: sessionDataRequestUrl)
+        URLSession.shared.dataTask(with: sessionDataRequest) { (data, response, error) in
+            if let error = error {
+                self.errorHandlers.forEach{errorHandler in
+                    errorHandler(error.localizedDescription)
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse else { return }
+            if response.statusCode == 200 {
+                guard let data = data else { return }
+                DispatchQueue.main.async {
+                    do {
+                        if let sessionDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                        {
+                            let sessionDataResponse = self.convertDictionaryToSessionData(response: sessionDataResponseDictionary)
+                            completion(.success(sessionDataResponse))
+                        }
+                        else{
+                            self.errorHandlers.forEach{errorHandler in
+                                errorHandler("session data empty")
+                            }
+                        }
+                    }
+                    catch let error {
+                        self.errorHandlers.forEach{errorHandler in
+                            errorHandler(error.localizedDescription)
+                        }
+                    }
+                }
+            }
+        }.resume()
+        
+    }
+    
+    private func userDataRequest(sessionData: VoicifySessionData, inputType: String, assistantResponse: CustomAssistantResponse, request: CustomAssistantRequest){
+        self.currentSessionInfo = sessionData
+        if let effectDictionary = sessionData.sessionAttributes["effects"] as? Array<[String: Any]>
+        {
+            let effects = self.decodeEffectsArray(effects: effectDictionary)
+            effects.filter{effect in
+                print(effect.requestId)
+                print(request.requestId)
+                return effect.requestId == request.requestId
+            }.forEach{effect in
+                self.effectHandlers.filter{ effectHandler in
+                    return effectHandler.effect == effect.effectName
+                }.forEach{effectHandler in
+                    effectHandler.callback(effect.data as Any)
+                }
+            }
+        }
+        guard let userDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/\( self.userId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
+        let userDataRequest = self.generateGetRequest(url: userDataRequestUrl)
+        URLSession.shared.dataTask(with: userDataRequest) { (data, response, error) in
+            if let error = error {
+                self.errorHandlers.forEach{errorHandler in
+                    errorHandler(error.localizedDescription)
+                }
+                return
+            }
+            guard let response = response as? HTTPURLResponse else { return }
+            if response.statusCode == 200 {
+                guard let data = data else { return }
+                DispatchQueue.main.async {
+                    do{
+                        print(assistantResponse)
+                        let userDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                        let userDataResponse = self.convertDictionaryToUserData(response: userDataResponseDictionary!)
+                        self.currentUserInfo = userDataResponse
+                        self.responseHandlers.forEach{responseHandler in
+                            responseHandler(assistantResponse)
+                        }
+                        self.audioHandlers.forEach{audioHandler in
+                            audioHandler(assistantResponse.audioFile)
+                        }
+                        self.videoHandlers.forEach{videoHandler in
+                            videoHandler(assistantResponse.videoFile)
+                        }
+                        if(assistantResponse.endSession == true){
+                            self.endSessionHandlers.forEach{endSessionHandler in
+                                endSessionHandler(assistantResponse)
+                            }
+                        }
+                        if(self.settings.autoRunConversation && self.settings.useVoiceInput && assistantResponse.endSession != true && inputType == "Speech" && (self.textToSpeechProvider != nil || !self.settings.useOutputSpeech)){
+                            self.speechToTextProvider?.startListening()
+                        }
+                    }
+                    catch let error {
+                        self.errorHandlers.forEach{errorHandler in
+                            errorHandler(error.localizedDescription)
+                        }
+                    }
+                }
+            }
+        }.resume()
+        
     }
     
     public func makeTextRequest(text: String, requestAttributes: Dictionary<String, Any>? = nil, inputType: String){
