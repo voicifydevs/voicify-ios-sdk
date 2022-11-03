@@ -114,18 +114,12 @@ public class VoicifyAssistant : ObservableObject
                     case .success(let sessionResponse):
                         self.userDataRequest(sessionData: sessionResponse, inputType: inputType, assistantResponse: assistantResponse, request: request)
                             
-                
                     }
-            
                 }
             }
         }
     }
-    
-    public func tempRequest(request: CustomAssistantRequest, inputType: String){
-       
-    }
-    
+        
     private func customAssistantRequest(request: CustomAssistantRequest, completion: @escaping (Result<CustomAssistantResponse, Error>) -> Void){
         do{
             let useDraftContent = settings.useDraftContent ? "&useDraftContent=true" : ""
