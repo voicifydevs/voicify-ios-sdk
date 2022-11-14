@@ -70,6 +70,7 @@ public struct AssistantDrawerUI: View {
                     {
                         Text("How can i help?")
                             .italic()
+                            .font(.system(size: 16))
                             .foregroundColor(Color.init(hex: "#8F97A1"))
                     }
                     Spacer()
@@ -101,10 +102,15 @@ public struct AssistantDrawerUI: View {
                     
                     HStack{
                         Text("SPEAK")
+                            .font(.system(size: 14))
+                            .foregroundColor(Color.init(hex: isUsingSpeech ? "#3E77A5" : "#8F97A1"))
                         Text("TYPE")
+                            .font(.system(size: 14))
+                            .foregroundColor(Color.init(hex: isUsingSpeech ? "#8F97A1" : "#3E77A5"))
+                            .padding(.leading, 12)
+                        Spacer()
                     }
-                    .padding(.top, 10)
-                    .padding(.trailing, 230)
+                    .padding(.leading, 4)
                     HStack{
                         Button(action: {
                             if(isListening)
