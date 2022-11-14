@@ -13,6 +13,7 @@ public class AssistantSettingsProps : ObservableObject
     public var appId: String
     public var appKey: String
     public var locale: String
+    public var voice: String
     public var channel: String
     public var device: String
     public var autoRunConversation: Bool
@@ -26,12 +27,13 @@ public class AssistantSettingsProps : ObservableObject
     public var effects: Array<String>
     public var assistantIsOpen: Bool
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, effects: Array<String>, assistantIsOpen: Bool) {
+    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, voice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, effects: Array<String>, assistantIsOpen: Bool) {
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey
         self.locale = locale
         self.channel = channel
+        self.voice = voice
         self.device = device
         self.autoRunConversation = autoRunConversation
         self.initializeWithWelcomeMessage = initializeWithWelcomeMessage

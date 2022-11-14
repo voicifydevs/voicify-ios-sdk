@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class CustomAssistantListItem : Decodable
+public class CustomAssistantListItem
 {
     public var id: String
     public var title: String

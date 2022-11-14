@@ -112,7 +112,7 @@ public class VoicifyAssistant : ObservableObject
                             errorHandler(error.localizedDescription)
                         }
                     case .success(let sessionResponse):
-                        self.userDataRequest(sessionData: sessionResponse, inputType: inputType, assistantResponse: assistantResponse, request: request)
+                        self.userDataRequest(sessionData: sessionResponse, inputType: inputType, assistantResponse: assistantResponse, request: request) // make the user data request
                             
                     }
                 }

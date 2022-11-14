@@ -37,5 +37,7 @@ public class CustomAssistantResponse
         self.hints = hints
         self.listItems = listItems
         self.endSession = endSession
+        
+        
     }
 }
