@@ -136,11 +136,10 @@ public class VoicifyAssistant : ObservableObject
                     guard let response = response as? HTTPURLResponse else { return }
                     if response.statusCode == 200 {
                         guard let data = data else { return }
-                        DispatchQueue.main.async { [self] in
                             do {
                                 if let customAssistantResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
                                 {
-                                    let customAssistantResponse = convertDictionaryToResponseObject(response: customAssistantResponseDictionary)
+                                    let customAssistantResponse = self.convertDictionaryToResponseObject(response: customAssistantResponseDictionary)
                                     completion(.success(customAssistantResponse))
                                 }
                                 else{
@@ -154,7 +153,6 @@ public class VoicifyAssistant : ObservableObject
                                     errorHandler(error.localizedDescription)
                                 }
                             }
-                        }
                     }
                 }.resume()
         }
@@ -187,7 +185,6 @@ public class VoicifyAssistant : ObservableObject
             guard let response = response as? HTTPURLResponse else { return }
             if response.statusCode == 200 {
                 guard let data = data else { return }
-                DispatchQueue.main.async {
                     do {
                         if let sessionDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
                         {
@@ -205,7 +202,6 @@ public class VoicifyAssistant : ObservableObject
                             errorHandler(error.localizedDescription)
                         }
                     }
-                }
             }
         }.resume()
         
@@ -240,7 +236,6 @@ public class VoicifyAssistant : ObservableObject
             guard let response = response as? HTTPURLResponse else { return }
             if response.statusCode == 200 {
                 guard let data = data else { return }
-                DispatchQueue.main.async {
                     do{
                         print(assistantResponse)
                         let userDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
@@ -269,7 +264,6 @@ public class VoicifyAssistant : ObservableObject
                             errorHandler(error.localizedDescription)
                         }
                     }
-                }
             }
         }.resume()
         

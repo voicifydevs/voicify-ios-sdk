@@ -45,12 +45,13 @@ public struct AssistantDrawerUI: View {
             noTracking: false
         )
     )
-    @State var inputSpeech = ""
+    @State var inputSpeech = " "
     @State var speechVolume: Float = 0
     @State var isListening = false
     @State var isSpeaking = true
     @State var speechEndedMessage = ""
     @State var responseText = ""
+    @State var isUsingSpeech = true
 
     public init(assistantSettings: AssistantSettingsProps, assistantIsOpen: Binding<Bool>) {
         self.assistantSettingsProps = assistantSettings
@@ -60,59 +61,77 @@ public struct AssistantDrawerUI: View {
     public var body: some View {
         BottomSheet(isPresented: $assistantIsOpen, height: isFullScreen ? UIScreen.main.bounds.height : UIScreen.main.bounds.height/2.2, topBarHeight: 0 , showTopIndicator: false){
             VStack(){
-                Text(responseText)
                 HStack{
-                    Text("How can i help?")
-                        .italic()
-                        .foregroundColor(Color.init(hex: "#8F97A1"))
+                    if isFullScreen{
+                        Text("Voicify Assistant")
+                            .foregroundColor(Color.init(hex: "#000000"))
+                    }
+                    else
+                    {
+                        Text("How can i help?")
+                            .italic()
+                            .foregroundColor(Color.init(hex: "#8F97A1"))
+                    }
                     Spacer()
-                    KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
+                    Button(action: {
+                        assistantIsOpen = false
+                    }){
+                        KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
+                    }
                 }
                 .padding(.bottom, 30)
-                .padding(.top, 0)
-                HStack(){
-                    Text(isListening ? "Listening..." : "")
-                        .italic()
+                Spacer()
+                VStack(){
+                    HStack(){
+                        Text(isListening ? "Listening..." : " ")
+                            .italic()
+                            .foregroundColor(Color.init(hex: "#8F97A1"))
+                        Spacer()
+                    }
+                   
+                    Text(inputSpeech)
+                        .frame(maxWidth: .infinity, minHeight: 40)
+                        .background(Color.init(hex: "#00000080"))
+                    
+                    Line()
+                        .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
+                        .padding(.top, 20)
                         .foregroundColor(Color.init(hex: "#8F97A1"))
-                    Spacer()
-                }
-               
-                Text(inputSpeech)
-                    .frame(maxWidth: .infinity)
-                    .padding(.bottom, 10)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    HStack{
+                        Text("SPEAK")
+                        Text("TYPE")
+                    }
                     .padding(.top, 10)
-                    .background(Color.init(hex: "#00000080"))
-                
-                Divider().frame(maxWidth: .infinity)
-                    .padding(.top, 20)
-                
-                HStack{
-                    Text("SPEAK")
-                    Text("TYPE")
+                    .padding(.trailing, 230)
+                    HStack{
+                        Button(action: {
+                            if(isListening)
+                            {
+                                voicifySTT.stopListening()
+                            }
+                            else{
+                                voicifySTT.startListening()
+                            }
+                               }) {
+                                   VStack{
+                                       KFImage(URL(string: isUsingSpeech ? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
+                                   }
+                                   .padding(.all, 4)
+                                   .background(Color.init(hex: isListening ? "#1e7eb91f" : "00000000"))
+                                   .cornerRadius(CGFloat(40))
+                               }
+                        TextField("TextInput", text: $inputText)
+                            .padding(.leading, 20)
+                            .overlay(VStack{Divider().offset(x: 0, y: 15)}.padding(.leading, 20))
+                    }
+                    .padding(.top, 10)
                 }
-                .padding(.top, 10)
-                .padding(.trailing, 230)
-                HStack{
-                    Button(action: {
-                        if(isListening)
-                        {
-                            voicifySTT.stopListening()
-                        }
-                        else{
-                            voicifySTT.startListening()
-                        }
-                           }) {
-                               KFImage(URL(string: isListening ? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
-                           }
-                    TextField("TextInput", text: $inputText)
-                        .padding(.leading, 20)
-                        .overlay(VStack{Divider().offset(x: 0, y: 15)}.padding(.leading, 20))
-                }
-                .padding(.top, 10)
-                
             }
             .padding(.horizontal, 20)
-            .padding(.top, 0)
+            .padding(.top, isFullScreen ? 40 : 40)
+            .padding(.bottom, isFullScreen ? 40: 40)
         }
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){
@@ -145,20 +164,30 @@ public struct AssistantDrawerUI: View {
                     }
                 voicifyAsssitant.onResponseReceived{response in
                     responseText = response.displayText
-//                    print("we are here")
-//                    inputSpeech = ""
-//                    isFull = true
+                    print("we are here")
+                    inputSpeech = ""
+                    isFullScreen = true
                 }
                 voicifyAsssitant.startNewSession()
                 voicifyAsssitant.initializeAndStart()
                 voicifySTT.startListening()
             }
             else{
+                isFullScreen = false
                 voicifySTT.stopListening()
                 voicifyTTS.stop()
             }
         }
         .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct Line: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: rect.width, y: 0))
+        return path
     }
 }
 
