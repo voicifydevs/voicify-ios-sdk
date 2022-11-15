@@ -13,6 +13,7 @@ import Kingfisher
 public struct AssistantDrawerUI: View {
     var assistantSettingsProps: AssistantSettingsProps
     @Binding var assistantIsOpen: Bool
+    @State var messages: Array<Message> = []
     @State var isFullScreen: Bool = false
     @State var height = UIScreen.main.bounds.height/2.2
     @State var inputText = ""
@@ -59,17 +60,22 @@ public struct AssistantDrawerUI: View {
     }
     
     public var body: some View {
-        BottomSheet(isPresented: $assistantIsOpen, height: isFullScreen ? UIScreen.main.bounds.height : UIScreen.main.bounds.height/2.2, topBarHeight: 0 , showTopIndicator: false){
+        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : UIScreen.main.bounds.height/2.2, topBarHeight: 0 , showTopIndicator: false){
             VStack(){
                 HStack{
                     if isFullScreen{
                         VStack{
                             KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                                .resizable()
+                                .frame(width: CGFloat(32), height: CGFloat(32))
+                                .fixedSize()
                         }
                         .padding(.all, 4)
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
                         .background(Color.init(hex: "#ffffff"))
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 1))
+                        .cornerRadius(CGFloat(20))
                         Text("Voicify Assistant")
+                            .font(.system(size: 18))
                             .foregroundColor(Color.init(hex: "#000000"))
                             .padding(.leading, 4)
                     }
@@ -92,8 +98,44 @@ public struct AssistantDrawerUI: View {
                 .padding(.bottom, isFullScreen ? 10 : 30)
                 if isFullScreen {
                     VStack{
+                        ForEach(messages){ message in
+                            if message.origin == "Received"{
+                                HStack{
+                                    VStack{
+                                        KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                                            .fixedSize()
+                                    }
+                                    .padding(.all, 4)
+                                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
+                                    .background(Color.init(hex: "#ffffff"))
+                                    .cornerRadius(CGFloat(20))
+                                    VStack{
+                                        Text(message.text)
+                                            .foregroundColor(Color.init(hex:"#000000"))
+                                            .font(.system(size: 14))
+                                    }
+                                    .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
+                                    .background(Color.init(hex: "#0000000d"))
+                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 1))
+
+                                    Spacer()
+                                }
+                            }
+                            else{
+                                HStack{
+                                    Spacer()
+                                    Text(message.text)
+                                        .font(.system(size: 14))
+                                }
+                            }
+                        }
+                        .background(Color.init(hex: "00000000"))
                         Spacer()
                     }
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .border(Color.init(hex: "#8F97A1")!)
                     .background(Color.init(hex: "#F4F4F6"))
@@ -174,6 +216,7 @@ public struct AssistantDrawerUI: View {
                     voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
                         inputSpeech = fullResult
                         isSpeaking = false
+                        messages.append(Message(text: fullResult, origin: "Sent"))
                         voicifyAsssitant.makeTextRequest(text: fullResult, inputType: "Speak")
                     }
                     voicifySTT.addPartialListener{(partialResult:String) -> Void in
@@ -195,10 +238,17 @@ public struct AssistantDrawerUI: View {
                     print("we are here")
                     inputSpeech = ""
                     isFullScreen = true
+                    messages.append(Message(text: response.displayText, origin: "Received"))
                 }
                 voicifyAsssitant.startNewSession()
                 voicifyAsssitant.initializeAndStart()
-                voicifySTT.startListening()
+                if(assistantSettingsProps.initializeWithWelcomeMessage)
+                {
+                    voicifyAsssitant.makeWelcomeMessage()
+                }
+                else if (assistantSettingsProps.initializeWithText == false){
+                    voicifySTT.startListening()
+                }
             }
             else{
                 isFullScreen = false

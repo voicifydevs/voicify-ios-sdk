@@ -60,7 +60,7 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
                             if (self.player != nil)
                             {
                                 self.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
-                                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default)
+                                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, mode: .default)
                                 try AVAudioSession.sharedInstance().setActive(true)
                                 self.player?.play()
                             }
