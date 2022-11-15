@@ -63,14 +63,21 @@ public struct AssistantDrawerUI: View {
             VStack(){
                 HStack{
                     if isFullScreen{
+                        VStack{
+                            KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                        }
+                        .padding(.all, 4)
+                        .background(Color.init(hex: "#ffffff"))
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 1))
                         Text("Voicify Assistant")
                             .foregroundColor(Color.init(hex: "#000000"))
+                            .padding(.leading, 4)
                     }
                     else
                     {
                         Text("How can i help?")
                             .italic()
-                            .font(.system(size: 16))
+                            .font(.system(size: 18))
                             .foregroundColor(Color.init(hex: "#8F97A1"))
                     }
                     Spacer()
@@ -80,19 +87,31 @@ public struct AssistantDrawerUI: View {
                         KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
                     }
                 }
-                .padding(.bottom, 30)
-                Spacer()
+                .padding(.trailing, isFullScreen ? 20 : 20) //if full screen, use header props top padding, otherwise use tool bar props top padding
+                .padding(.leading, isFullScreen ? 20 : 20) //if full screen, use header props top padding, otherwise use tool bar props top padding
+                .padding(.bottom, isFullScreen ? 10 : 30)
+                if isFullScreen {
+                    VStack{
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .border(Color.init(hex: "#8F97A1")!)
+                    .background(Color.init(hex: "#F4F4F6"))
+                }
                 VStack(){
                     HStack(){
                         Text(isListening ? "Listening..." : " ")
                             .italic()
                             .foregroundColor(Color.init(hex: "#8F97A1"))
+                            .font(.system(size: 16))
                         Spacer()
                     }
+                    .padding(.bottom, -4)
                    
                     Text(inputSpeech)
                         .frame(maxWidth: .infinity, minHeight: 40)
                         .background(Color.init(hex: "#00000080"))
+                        .cornerRadius(CGFloat(10))
                     
                     Line()
                         .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
@@ -134,14 +153,17 @@ public struct AssistantDrawerUI: View {
                     }
                     .padding(.top, 10)
                 }
+                .padding(.leading, 20)
+                .padding(.trailing, 20)
             }
-            .padding(.horizontal, 20)
-            .padding(.top, isFullScreen ? 40 : 40)
-            .padding(.bottom, isFullScreen ? 40: 40)
+            .padding(.top, isFullScreen ? 40 : 40) //if full screen, use header props top padding, otherwise use tool bar props top padding
+            .padding(.bottom, isFullScreen ? 40: 40) //if full screen, use header props top padding, otherwise use tool bar props top padding
         }
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){
                 print("opened")
+                voicifyAsssitant.ClearHandlers()
+                voicifySTT.clearHandlers()
                 inputSpeech = ""
                 responseText = ""
                     voicifySTT.initialize(locale: "en-US")
