@@ -135,8 +135,8 @@ public struct AssistantDrawerUI: View {
                                                 .background(Color.init(hex: "#00000080"))
                                                 .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#00000000")!, lineWidth: 1))
                                         }
-                                        .padding(.leading, 40)
-                                        .padding(.top, 20)
+                                        .padding(.leading, 50)
+                                        .padding(.top, 30)
                                     }
                                 }
                                 Spacer()
