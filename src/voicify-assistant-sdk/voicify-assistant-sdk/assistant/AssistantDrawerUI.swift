@@ -97,48 +97,55 @@ public struct AssistantDrawerUI: View {
                 .padding(.leading, isFullScreen ? 20 : 20) //if full screen, use header props top padding, otherwise use tool bar props top padding
                 .padding(.bottom, isFullScreen ? 10 : 30)
                 if isFullScreen {
-                    VStack{
-                        ForEach(messages){ message in
-                            if message.origin == "Received"{
-                                HStack{
-                                    VStack{
-                                        KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
-                                            .fixedSize()
-                                    }
-                                    .padding(.all, 4)
-                                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
-                                    .background(Color.init(hex: "#ffffff"))
-                                    .cornerRadius(CGFloat(20))
-                                    VStack{
-                                        Text(message.text)
-                                            .foregroundColor(Color.init(hex:"#000000"))
-                                            .font(.system(size: 14))
-                                    }
-                                    .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                    .background(Color.init(hex: "#0000000d"))
-                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 1))
+                        ScrollView{
+                            VStack{
+                                ForEach(messages){ message in
+                                    if message.origin == "Received"{
+                                        HStack{
+                                            VStack{
+                                                KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                                                    .fixedSize()
+                                                    .padding(.all, 4)
+                                                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
+                                                    .background(Color.init(hex: "#ffffff"))
+                                                    .cornerRadius(CGFloat(20))
+                                            }
+                                            VStack{
+                                                Text(message.text)
+                                                    .foregroundColor(Color.init(hex:"#000000"))
+                                                    .font(.system(size: 14))
+                                                    .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
+                                                    .background(Color.init(hex: "#0000000d"))
+                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 1))
 
-                                    Spacer()
+                                            }
+                                            .padding(.bottom, -50)
+                                            Spacer()
+                                        }
+                                    }
+                                    else{
+                                        HStack{
+                                            Spacer()
+                                            Text(message.text)
+                                                .font(.system(size: 14))
+                                                .foregroundColor(Color.init(hex:"#ffffff"))
+                                                .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
+                                                .background(Color.init(hex: "#00000080"))
+                                                .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#00000000")!, lineWidth: 1))
+                                        }
+                                        .padding(.top, 50)
+                                    }
                                 }
+                                Spacer()
                             }
-                            else{
-                                HStack{
-                                    Spacer()
-                                    Text(message.text)
-                                        .font(.system(size: 14))
-                                }
-                            }
+                            .padding(.top, 20) //body padding here
+                            .padding(.bottom, 60) // basline padding is 50, add the props padding to it
+                            .padding(.leading, 20)
+                            .padding(.trailing, 20)
                         }
-                        .background(Color.init(hex: "00000000"))
-                        Spacer()
-                    }
-                    .padding(.leading, 20)
-                    .padding(.trailing, 20)
-                    .padding(.top, 20)
-                    .padding(.bottom, 20)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .border(Color.init(hex: "#8F97A1")!)
-                    .background(Color.init(hex: "#F4F4F6"))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .border(Color.init(hex: "#8F97A1")!)
+                        .background(Color.init(hex: "#F4F4F6"))
                 }
                 VStack(){
                     HStack(){
@@ -149,11 +156,17 @@ public struct AssistantDrawerUI: View {
                         Spacer()
                     }
                     .padding(.bottom, -4)
+                    
+                    HStack{
+                        Text(inputSpeech)
+                            .foregroundColor(Color.init(hex: "#ffffff"))
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 40)
+                    .padding(.horizontal, 8)
+                    .background(Color.init(hex: "#00000080"))
+                    .cornerRadius(CGFloat(10))
                    
-                    Text(inputSpeech)
-                        .frame(maxWidth: .infinity, minHeight: 40)
-                        .background(Color.init(hex: "#00000080"))
-                        .cornerRadius(CGFloat(10))
                     
                     Line()
                         .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
@@ -213,32 +226,36 @@ public struct AssistantDrawerUI: View {
                     voicifyTTS.addFinishListener {() -> Void in
                         speechEndedMessage = "speech has ended"
                     }
+                    voicifySTT.addPartialListener{(partialResult:String) -> Void in
+                        inputSpeech = partialResult
+                        print("got partial result")
+                    }
                     voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
+                        print("got full result")
                         inputSpeech = fullResult
                         isSpeaking = false
                         messages.append(Message(text: fullResult, origin: "Sent"))
+                        inputSpeech = ""
                         voicifyAsssitant.makeTextRequest(text: fullResult, inputType: "Speak")
-                    }
-                    voicifySTT.addPartialListener{(partialResult:String) -> Void in
-                        inputSpeech = partialResult
                     }
                     voicifySTT.addVolumeListener{(volume: Float) -> Void in
                         speechVolume = volume
                     }
                     voicifySTT.addStartListener {
                         isListening = true
-                        inputSpeech = ""
-                        responseText = ""
                     }
                     voicifySTT.addEndListener {
                         isListening = false
                     }
+                voicifyAsssitant.onRequestStarted{request in
+                    
+                }
                 voicifyAsssitant.onResponseReceived{response in
-                    responseText = response.displayText
-                    print("we are here")
                     inputSpeech = ""
+                    print(response.displayText.trimmingCharacters(in: .whitespacesAndNewlines))
+                    print("we are here")
                     isFullScreen = true
-                    messages.append(Message(text: response.displayText, origin: "Received"))
+                    messages.append(Message(text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
                 }
                 voicifyAsssitant.startNewSession()
                 voicifyAsssitant.initializeAndStart()
@@ -251,6 +268,7 @@ public struct AssistantDrawerUI: View {
                 }
             }
             else{
+                messages = []
                 isFullScreen = false
                 voicifySTT.stopListening()
                 voicifyTTS.stop()

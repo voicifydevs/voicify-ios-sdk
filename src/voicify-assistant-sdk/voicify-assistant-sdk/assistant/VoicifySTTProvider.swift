@@ -27,6 +27,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     private var cancel = false
     private var averagePowerForChannel0: Float = 0.0
     private var averagePowerForChannel1: Float = 0.0
+    private var gotFullResult = false
         
     public init() {
 
@@ -61,6 +62,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     public func startListening() {
         if !cancel
         {
+            gotFullResult = false
             self.speechStartHandlers.forEach{speechStart in
                 speechStart()
             }
@@ -176,6 +178,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                     self.speechEndHandlers.forEach{speechEndHandler in
                         speechEndHandler()
                     }
+                    self.gotFullResult = true
                 }
             }
             else
@@ -190,12 +193,15 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                     self.speechEndHandlers.forEach{speechEndHandler in
                         speechEndHandler()
                     }
+                    self.gotFullResult = true
                     
                 }
             }
-        
-            self.speechPartialHandlers.forEach{ partialResultHandler in
-                partialResultHandler(result.bestTranscription.formattedString)
+            if(!gotFullResult)
+            {
+                self.speechPartialHandlers.forEach{ partialResultHandler in
+                    partialResultHandler(result.bestTranscription.formattedString)
+                }
             }
         }
         
