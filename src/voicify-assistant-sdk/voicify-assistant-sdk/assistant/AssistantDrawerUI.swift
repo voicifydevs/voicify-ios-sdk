@@ -109,6 +109,7 @@ public struct AssistantDrawerUI: View {
                                                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
                                                     .background(Color.init(hex: "#ffffff"))
                                                     .cornerRadius(CGFloat(20))
+                                                Spacer()
                                             }
                                             VStack{
                                                 Text(message.text)
@@ -117,11 +118,12 @@ public struct AssistantDrawerUI: View {
                                                     .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
                                                     .background(Color.init(hex: "#0000000d"))
                                                     .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 1))
-
                                             }
-                                            .padding(.bottom, -50)
+                                            .padding(.top, 20)
                                             Spacer()
                                         }
+                                        .padding(.trailing, 40)
+                                        .padding(.top, 10)
                                     }
                                     else{
                                         HStack{
@@ -133,7 +135,8 @@ public struct AssistantDrawerUI: View {
                                                 .background(Color.init(hex: "#00000080"))
                                                 .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#00000000")!, lineWidth: 1))
                                         }
-                                        .padding(.top, 50)
+                                        .padding(.leading, 40)
+                                        .padding(.top, 20)
                                     }
                                 }
                                 Spacer()
