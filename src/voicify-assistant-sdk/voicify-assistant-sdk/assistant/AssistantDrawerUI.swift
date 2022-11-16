@@ -173,49 +173,70 @@ public struct AssistantDrawerUI: View {
                     
                     Line()
                         .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
-                        .padding(.top, 20)
+                        .padding(.top, 15)
                         .foregroundColor(Color.init(hex: "#8F97A1"))
                         .fixedSize(horizontal: false, vertical: true)
                     
                     HStack{
-                        Text("SPEAK")
-                            .font(.system(size: 14))
-                            .foregroundColor(Color.init(hex: isUsingSpeech ? "#3E77A5" : "#8F97A1"))
-                        Text("TYPE")
-                            .font(.system(size: 14))
-                            .foregroundColor(Color.init(hex: isUsingSpeech ? "#8F97A1" : "#3E77A5"))
-                            .padding(.leading, 12)
-                        Spacer()
-                    }
-                    .padding(.leading, 4)
-                    HStack{
-                        Button(action: {
-                            if(isListening)
-                            {
-                                voicifySTT.stopListening()
-                            }
-                            else{
-                                voicifySTT.startListening()
-                            }
-                               }) {
-                                   VStack{
-                                       KFImage(URL(string: isUsingSpeech ? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
+                        VStack{
+                            Text("SPEAK")
+                                .font(.system(size: 14))
+                                .foregroundColor(Color.init(hex: isUsingSpeech ? "#3E77A5" : "#8F97A1"))
+                                .padding(.bottom, 10)
+                            Button(action: {
+                                isUsingSpeech = true
+                                if(isListening)
+                                {
+                                    voicifySTT.stopListening()
+                                }
+                                else{
+                                    voicifySTT.startListening()
+                                }
+                                   }) {
+                                       VStack{
+                                           KFImage(URL(string: isUsingSpeech ? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
+                                       }
+                                       .padding(.all, 4)
+                                       .background(Color.init(hex: isListening && isUsingSpeech ? "#1e7eb91f" : "00000000"))
+                                       .cornerRadius(CGFloat(40))
                                    }
-                                   .padding(.all, 4)
-                                   .background(Color.init(hex: isListening ? "#1e7eb91f" : "00000000"))
-                                   .cornerRadius(CGFloat(40))
-                               }
-                        TextField("TextInput", text: $inputText)
-                            .padding(.leading, 20)
-                            .overlay(VStack{Divider().offset(x: 0, y: 15)}.padding(.leading, 20))
+                        }
+                        VStack{
+                            HStack{
+                                Text("TYPE")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(Color.init(hex: isUsingSpeech ? "#8F97A1" : "#3E77A5"))
+                                Spacer()
+                            }
+                            HStack{
+                                TextField("TextInput", text: $inputText){focused in
+                                    if(focused){
+                                        isUsingSpeech = false
+                                    }
+                                    voicifySTT.stopListening()
+                                }
+                                .padding(.leading, 10)
+                                .overlay(VStack{Divider().offset(x: 0, y: 15)}.padding(.leading, 10))
+                                Button(action:{
+                                    
+                                }){
+                                    KFImage(URL(string: isUsingSpeech ? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/0c5aa61c-7d6c-4272-abd2-75d9f5771214/Send-2-.png": "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/7a39bc6f-eef5-4185-bcf8-2a645aff53b2/Send-3-.png"))
+                                }
+                            }
+                            .padding(.top, 22)
+                            .padding(.bottom, 10)
+                            .padding(.trailing, 10)
+                            .background(Color.init(hex: !isUsingSpeech ? "#1e7eb91f" : "00000000"))
+                            .cornerRadius(CGFloat(10))
+                        }
+                        .padding(.leading, 6)
                     }
-                    .padding(.top, 10)
                 }
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
             }
-            .padding(.top, isFullScreen ? 40 : 40) //if full screen, use header props top padding, otherwise use tool bar props top padding
-            .padding(.bottom, isFullScreen ? 40: 40) //if full screen, use header props top padding, otherwise use tool bar props top padding
+            .padding(.top, isFullScreen ? 40 : 10) //if full screen, use header props top padding, otherwise use tool bar props top padding
+            .padding(.bottom, isFullScreen ? 20: 10) //if full screen, use header props top padding, otherwise use tool bar props top padding
         }
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){
@@ -278,6 +299,7 @@ public struct AssistantDrawerUI: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .padding(.bottom, 0.1) // if keyboard is active - causes view to lift
     }
 }
 
