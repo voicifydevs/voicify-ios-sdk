@@ -18,35 +18,9 @@ public struct AssistantDrawerUI: View {
     @State var isFullScreen: Bool = false
     @State var height = UIScreen.main.bounds.height/2.2
     @State var inputText = ""
-    @StateObject var voicifySTT = VoicifySTTProvider()
-    @StateObject var voicifyTTS = VoicifyTTSProivder(settings: VoicifyTextToSpeechSettings(appId: "99a803b7-5b37-426c-a02e-63c8215c71eb", appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3", voice: "", serverRootUrl: "https://assistant.voicify.com", provider: "Google"))
-    @StateObject var voicifyAsssitant = VoicifyAssistant(
-        speechToTextProvider: VoicifySTTProvider(),
-        textToSpeechProivder: VoicifyTTSProivder(
-            settings: VoicifyTextToSpeechSettings(
-                appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
-                appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
-                voice: "",
-                serverRootUrl: "https://assistant.voicify.com",
-                provider: "Google"
-            )
-        ),
-        settings: VoicifyAssistantSettings(
-            serverRootUrl: "https://assistant.voicify.com",
-            appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
-            appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
-            locale: "en-US",
-            channel: "test",
-            device: "test",
-            autoRunConversation: true,
-            initializeWithWelcomeMessage: false,
-            initializeWithText: true,
-            useVoiceInput: true,
-            useDraftContent: false,
-            useOutputSpeech: true,
-            noTracking: false
-        )
-    )
+    var voicifySTT: VoicifySTTProvider
+    var voicifyTTS: VoicifyTTSProivder
+    var voicifyAsssitant: VoicifyAssistant
     @State var inputSpeech = " "
     @State var speechVolume: Float = 0
     @State var isListening = false
@@ -58,6 +32,9 @@ public struct AssistantDrawerUI: View {
     public init(assistantSettings: AssistantSettingsProps, assistantIsOpen: Binding<Bool>) {
         self.assistantSettingsProps = assistantSettings
         self._assistantIsOpen = assistantIsOpen
+        voicifySTT = VoicifySTTProvider()
+        voicifyTTS = VoicifyTTSProivder(settings: VoicifyTextToSpeechSettings(appId: assistantSettings.appId, appKey: assistantSettings.appKey, voice: assistantSettings.voice, serverRootUrl: assistantSettings.serverRootUrl, provider: assistantSettings.textToSpeechProvider))
+        voicifyAsssitant = VoicifyAssistant(speechToTextProvider: voicifySTT, textToSpeechProvider: voicifyTTS, settings: VoicifyAssistantSettings(serverRootUrl: assistantSettings.serverRootUrl, appId: assistantSettings.appId, appKey: assistantSettings.appKey, locale: assistantSettings.locale, channel: assistantSettings.channel, device: assistantSettings.device, autoRunConversation: assistantSettings.autoRunConversation, initializeWithWelcomeMessage: assistantSettings.initializeWithWelcomeMessage, initializeWithText: assistantSettings.initializeWithText, useVoiceInput: assistantSettings.useVoiceInput, useDraftContent: assistantSettings.useDraftContent, useOutputSpeech: assistantSettings.useOutputSpeech, noTracking: assistantSettings.noTracking))
     }
     
     public var body: some View {
@@ -263,7 +240,7 @@ public struct AssistantDrawerUI: View {
                                     if !inputText.isEmpty {
                                         UIApplication.shared.endEditing()
                                         messages.append(Message(text: inputText, origin: "Sent"))
-                                        voicifyAsssitant.makeTextRequest(text: inputText, inputType: "Speak")
+                                        voicifyAsssitant.makeTextRequest(text: inputText, inputType: "text")
                                         inputText = ""
                                         hints = []
                                     }
@@ -288,45 +265,42 @@ public struct AssistantDrawerUI: View {
         }
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){
-                print("opened")
                 voicifyAsssitant.ClearHandlers()
                 voicifySTT.clearHandlers()
                 inputSpeech = ""
                 responseText = ""
-                    voicifySTT.initialize(locale: "en-US")
-                    voicifyTTS.initialize(locale: "en-US")
-                    voicifyTTS.addFinishListener {() -> Void in
-                        speechEndedMessage = "speech has ended"
-                    }
-                    voicifySTT.addPartialListener{(partialResult:String) -> Void in
-                        inputSpeech = partialResult
-                        print("got partial result")
-                    }
-                    voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
-                        print("got full result")
-                        inputSpeech = fullResult
-                        isSpeaking = false
-                        messages.append(Message(text: fullResult, origin: "Sent"))
-                        inputSpeech = ""
-                        hints = []
-                        voicifyAsssitant.makeTextRequest(text: fullResult, inputType: "Speak")
-                    }
-                    voicifySTT.addVolumeListener{(volume: Float) -> Void in
-                        speechVolume = volume
-                    }
-                    voicifySTT.addStartListener {
-                        isListening = true
-                    }
-                    voicifySTT.addEndListener {
-                        isListening = false
-                    }
+                voicifySTT.initialize(locale: "en-US")
+                voicifyTTS.initialize(locale: "en-US")
+                voicifyTTS.addFinishListener {() -> Void in
+                    speechEndedMessage = "speech has ended"
+                }
+                voicifySTT.addPartialListener{(partialResult:String) -> Void in
+                    inputSpeech = partialResult
+                    print("got partial result")
+                }
+                voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
+                    print("got full result")
+                    inputSpeech = fullResult
+                    isSpeaking = false
+                    messages.append(Message(text: fullResult, origin: "Sent"))
+                    inputSpeech = ""
+                    hints = []
+                    voicifyAsssitant.makeTextRequest(text: fullResult, inputType: "Speech")
+                }
+                voicifySTT.addVolumeListener{(volume: Float) -> Void in
+                    speechVolume = volume
+                }
+                voicifySTT.addStartListener {
+                    isListening = true
+                }
+                voicifySTT.addEndListener {
+                    isListening = false
+                }
                 voicifyAsssitant.onRequestStarted{request in
                     
                 }
                 voicifyAsssitant.onResponseReceived{response in
                     inputSpeech = ""
-                    print(response.displayText.trimmingCharacters(in: .whitespacesAndNewlines))
-                    print("we are here")
                     isFullScreen = true
                     response.hints.forEach{ hint in
                         hints.append(Hint(text: hint))

@@ -28,11 +28,11 @@ public class VoicifyAssistant : ObservableObject
     public var currentSessionInfo = VoicifySessionData(id: "", sessionFlags: [], sessionAttributes: [:])
     public var currentUserInfo = VoicifyUserData(id: "", userFlags: [], userAttributes: [:])
     
-    public init (speechToTextProvider: VoicifySpeechToTextProvider,
-                 textToSpeechProivder: VoicifyTextToSpeechProvider,
+    public init (speechToTextProvider: VoicifySpeechToTextProvider?,
+                 textToSpeechProvider: VoicifyTextToSpeechProvider?,
                  settings: VoicifyAssistantSettings){
         self.speechToTextProvider = speechToTextProvider
-        self.textToSpeechProvider = textToSpeechProivder
+        self.textToSpeechProvider = textToSpeechProvider
         self.settings = settings
     }
     
@@ -164,14 +164,21 @@ public class VoicifyAssistant : ObservableObject
     private func sessionDataRequest(assistantResponse: CustomAssistantResponse, inputType: String, completion: @escaping (Result<VoicifySessionData, Error>) -> Void){
         self.textToSpeechProvider?.clearHandlers()
         self.textToSpeechProvider?.addFinishListener {
-            if(self.settings.autoRunConversation && self.settings.useVoiceInput && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != false){
+            print(inputType)
+            if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
+                print("telling the stt provider to start listening")
                 self.speechToTextProvider?.startListening()
             }
         }
         if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech)
         {
-            self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.ssml)
-            self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.outputSpeech)
+            if(!assistantResponse.ssml.isEmpty){
+                self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.ssml)
+            }
+            else if (!assistantResponse.outputSpeech.isEmpty)
+            {
+                self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.outputSpeech)
+            }
         }
         guard let sessionDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/session/\( self.sessionId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
         let sessionDataRequest = self.generateGetRequest(url: sessionDataRequestUrl)
@@ -213,8 +220,6 @@ public class VoicifyAssistant : ObservableObject
         {
             let effects = self.decodeEffectsArray(effects: effectDictionary)
             effects.filter{effect in
-                print(effect.requestId)
-                print(request.requestId)
                 return effect.requestId == request.requestId
             }.forEach{effect in
                 self.effectHandlers.filter{ effectHandler in
@@ -237,7 +242,6 @@ public class VoicifyAssistant : ObservableObject
             if response.statusCode == 200 {
                 guard let data = data else { return }
                     do{
-                        print(assistantResponse)
                         let userDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
                         let userDataResponse = self.convertDictionaryToUserData(response: userDataResponseDictionary!)
                         self.currentUserInfo = userDataResponse

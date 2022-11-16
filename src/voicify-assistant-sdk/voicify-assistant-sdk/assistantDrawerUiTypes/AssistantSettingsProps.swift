@@ -25,9 +25,8 @@ public class AssistantSettingsProps : ObservableObject
     public var useDraftContent: Bool
     public var noTracking: Bool
     public var effects: Array<String>
-    public var assistantIsOpen: Bool
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, voice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, effects: Array<String>, assistantIsOpen: Bool) {
+    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, voice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, effects: Array<String>) {
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey
@@ -44,6 +43,5 @@ public class AssistantSettingsProps : ObservableObject
         self.useDraftContent = useDraftContent
         self.noTracking = noTracking
         self.effects = effects
-        self.assistantIsOpen = assistantIsOpen
     }
 }
