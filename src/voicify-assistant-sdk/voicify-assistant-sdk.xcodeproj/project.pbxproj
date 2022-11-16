@@ -35,6 +35,7 @@
 		FE9AC32929097FCB0030C67E /* VoicifySTTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */; };
 		FEBB244829140B4F001BF773 /* AssistantDrawerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */; };
 		FEBB244A2914133B001BF773 /* AssistantSettingsProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */; };
+		FED1FDC72925823B006783C8 /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1FDC62925823B006783C8 /* Hint.swift */; };
 		FEDE15C1291BF42A00D03181 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FEDE15C0291BF42A00D03181 /* Kingfisher */; };
 		FEDE15C7291C6EB400D03181 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = FEDE15C6291C6EB400D03181 /* BottomSheet */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySTTProvider.swift; sourceTree = "<group>"; };
 		FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUI.swift; sourceTree = "<group>"; };
 		FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSettingsProps.swift; sourceTree = "<group>"; };
+		FED1FDC62925823B006783C8 /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 			children = (
 				FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */,
 				FE581DD72923E0EF00E1D77F /* Message.swift */,
+				FED1FDC62925823B006783C8 /* Hint.swift */,
 			);
 			path = assistantDrawerUiTypes;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			files = (
 				FE9AC32129097C550030C67E /* VoicifyTextToSpeechProvider.swift in Sources */,
 				FE9AC2FE290868110030C67E /* CustomAssistantListItem.swift in Sources */,
+				FED1FDC72925823B006783C8 /* Hint.swift in Sources */,
 				FE9AC303290868700030C67E /* CustomAssistantRequest.swift in Sources */,
 				FE9AC31329097A6B0030C67E /* TTSData.swift in Sources */,
 				FE9AC30B29086CA40030C67E /* EffectModel.swift in Sources */,
