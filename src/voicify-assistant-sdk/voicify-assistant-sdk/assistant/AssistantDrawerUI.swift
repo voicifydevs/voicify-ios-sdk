@@ -260,11 +260,13 @@ public struct AssistantDrawerUI: View {
                                 .padding(.leading, 10)
                                 .overlay(VStack{Divider().offset(x: 0, y: 15)}.padding(.leading, 10))
                                 Button(action:{
-                                    UIApplication.shared.endEditing()
-                                    messages.append(Message(text: inputText, origin: "Sent"))
-                                    voicifyAsssitant.makeTextRequest(text: inputText, inputType: "Speak")
-                                    inputText = ""
-                                    hints = []
+                                    if !inputText.isEmpty {
+                                        UIApplication.shared.endEditing()
+                                        messages.append(Message(text: inputText, origin: "Sent"))
+                                        voicifyAsssitant.makeTextRequest(text: inputText, inputType: "Speak")
+                                        inputText = ""
+                                        hints = []
+                                    }
                                 }){
                                     KFImage(URL(string: isUsingSpeech ? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/0c5aa61c-7d6c-4272-abd2-75d9f5771214/Send-2-.png": "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/7a39bc6f-eef5-4185-bcf8-2a645aff53b2/Send-3-.png"))
                                 }
