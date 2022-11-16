@@ -164,22 +164,23 @@ public struct AssistantDrawerUI: View {
                                                 hints = []
                                             }){
                                                 Text(hint.text)
+                                                    .lineLimit(1)
+                                                    .font(.system(size: 14))
+                                                    .foregroundColor(Color.init(hex: "#000000"))
+                                                    .padding(.leading, 8)
+                                                    .padding(.trailing, 8)
+                                                    .padding(.top, 8)
+                                                    .padding(.bottom, 8)
+                                                    .background(Color.init(hex: "#ffffff"))
+                                                    .cornerRadius(CGFloat(20))
+                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(20)).inset(by: CGFloat(1)).stroke(Color.init(hex: "#CCCCCC")!, lineWidth: 1.5))
                                             }
-                                            .lineLimit(1)
-                                            .font(.system(size: 14))
-                                            .foregroundColor(Color.init(hex: "#000000"))
-                                            .padding(.leading, 8)
-                                            .padding(.trailing, 8)
-                                            .padding(.top, 8)
-                                            .padding(.bottom, 8)
-                                            .background(Color.init(hex: "#ffffff"))
-                                            .cornerRadius(30)
                                         }
                                     }
                                 }
                             }
                             .padding(.bottom, 10)
-                            .padding(.leading, 8)
+                            .padding(.leading, 10)
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -228,6 +229,7 @@ public struct AssistantDrawerUI: View {
                                 if(isListening)
                                 {
                                     voicifySTT.stopListening()
+                                    inputSpeech = ""
                                 }
                                 else{
                                     voicifySTT.startListening()
