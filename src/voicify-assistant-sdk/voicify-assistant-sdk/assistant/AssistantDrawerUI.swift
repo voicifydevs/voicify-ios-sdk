@@ -264,6 +264,7 @@ public struct AssistantDrawerUI: View {
                                     messages.append(Message(text: inputText, origin: "Sent"))
                                     voicifyAsssitant.makeTextRequest(text: inputText, inputType: "Speak")
                                     inputText = ""
+                                    hints = []
                                 }){
                                     KFImage(URL(string: isUsingSpeech ? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/0c5aa61c-7d6c-4272-abd2-75d9f5771214/Send-2-.png": "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/7a39bc6f-eef5-4185-bcf8-2a645aff53b2/Send-3-.png"))
                                 }
@@ -305,6 +306,7 @@ public struct AssistantDrawerUI: View {
                         isSpeaking = false
                         messages.append(Message(text: fullResult, origin: "Sent"))
                         inputSpeech = ""
+                        hints = []
                         voicifyAsssitant.makeTextRequest(text: fullResult, inputType: "Speak")
                     }
                     voicifySTT.addVolumeListener{(volume: Float) -> Void in
