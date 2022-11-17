@@ -259,7 +259,7 @@ public class VoicifyAssistant : ObservableObject
                                 endSessionHandler(assistantResponse)
                             }
                         }
-                        if(self.settings.autoRunConversation && self.settings.useVoiceInput && assistantResponse.endSession != true && inputType == "Speech" && (self.textToSpeechProvider != nil || !self.settings.useOutputSpeech)){
+                        if(self.settings.autoRunConversation && self.settings.useVoiceInput && assistantResponse.endSession != true && inputType == "Speech" && (self.textToSpeechProvider == nil || !self.settings.useOutputSpeech)){
                             self.speechToTextProvider?.startListening()
                         }
                     }

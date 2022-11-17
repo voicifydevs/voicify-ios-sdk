@@ -92,13 +92,12 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
     @objc public func onSpeechEnd() -> Void{
         speechEndHandlers.forEach{speechEndHandler in
             print("we are firing the speech end handlers")
-            print(speechEndHandler)
             speechEndHandler()
         }
     }
  
     public func addFinishListener(callback: @escaping () -> Void) {
-        print("we are adding the callback")
+        print("we are adding the finish listener")
         self.speechEndHandlers.append(callback)
     }
     

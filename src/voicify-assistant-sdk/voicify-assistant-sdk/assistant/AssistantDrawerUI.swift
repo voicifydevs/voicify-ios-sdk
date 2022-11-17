@@ -267,10 +267,9 @@ public struct AssistantDrawerUI: View {
             if(assistantIsOpen == true){
                 voicifyAsssitant.ClearHandlers()
                 voicifySTT.clearHandlers()
+                voicifyAsssitant.initializeAndStart()
                 inputSpeech = ""
                 responseText = ""
-                voicifySTT.initialize(locale: "en-US")
-                voicifyTTS.initialize(locale: "en-US")
                 voicifyTTS.addFinishListener {() -> Void in
                     speechEndedMessage = "speech has ended"
                 }
@@ -308,7 +307,6 @@ public struct AssistantDrawerUI: View {
                     messages.append(Message(text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
                 }
                 voicifyAsssitant.startNewSession()
-                voicifyAsssitant.initializeAndStart()
                 if(assistantSettingsProps.initializeWithWelcomeMessage)
                 {
                     voicifyAsssitant.makeWelcomeMessage()
