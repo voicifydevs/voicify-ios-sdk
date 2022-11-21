@@ -38,7 +38,6 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     }
     
     public func initialize(locale: String) {
-        print(locale)
         recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: locale))
         Task(priority: .background) {
             do {
@@ -63,9 +62,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
         if !cancel
         {
             gotFullResult = false
-            print(self.speechStartHandlers)
             self.speechStartHandlers.forEach{speechStart in
-                print("we are firing the speech start handlers ")
                 speechStart()
             }
             self.speechTimeOut = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
@@ -91,7 +88,6 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                 } catch {
                     self.reset()
                     self.speechErrorHandlers.forEach{ speechErrorHandler in
-                        print(error.localizedDescription)
                         speechErrorHandler(error.localizedDescription)
                     }
                 }
@@ -155,7 +151,6 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     }
     
     private func recognitionHandler(result: SFSpeechRecognitionResult?, error: Error?) {
-        print("we are in the recognition handler")
         let receivedError = error != nil
         if(receivedError)
         {
@@ -224,7 +219,6 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     }
     
     public func addStartListener(callback: @escaping () -> Void) {
-        print("adding the start handler")
         self.speechStartHandlers.append(callback)
     }
         

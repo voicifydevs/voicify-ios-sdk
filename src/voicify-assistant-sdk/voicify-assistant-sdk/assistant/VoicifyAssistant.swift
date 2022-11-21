@@ -105,17 +105,7 @@ public class VoicifyAssistant : ObservableObject
                     errorHandler(error.localizedDescription)
                 }
             case .success(let assistantResponse):
-                self.sessionDataRequest(assistantResponse: assistantResponse, inputType: inputType){(result: Result) in // make the session data request
-                    switch result {
-                    case .failure(let error):
-                        self.errorHandlers.forEach{errorHandler in
-                            errorHandler(error.localizedDescription)
-                        }
-                    case .success(let sessionResponse):
-                        self.userDataRequest(sessionData: sessionResponse, inputType: inputType, assistantResponse: assistantResponse, request: request) // make the user data request
-                            
-                    }
-                }
+                self.userDataRequest(inputType: inputType, assistantResponse: assistantResponse, request: request) // make the user data request
             }
         }
     }
@@ -161,12 +151,10 @@ public class VoicifyAssistant : ObservableObject
         }
     }
     
-    private func sessionDataRequest(assistantResponse: CustomAssistantResponse, inputType: String, completion: @escaping (Result<VoicifySessionData, Error>) -> Void){
+    private func userDataRequest(inputType: String, assistantResponse: CustomAssistantResponse, request: CustomAssistantRequest){
         self.textToSpeechProvider?.clearHandlers()
         self.textToSpeechProvider?.addFinishListener {
-            print(inputType)
             if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
-                print("telling the stt provider to start listening")
                 self.speechToTextProvider?.startListening()
             }
         }
@@ -180,43 +168,8 @@ public class VoicifyAssistant : ObservableObject
                 self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.outputSpeech)
             }
         }
-        guard let sessionDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/session/\( self.sessionId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
-        let sessionDataRequest = self.generateGetRequest(url: sessionDataRequestUrl)
-        URLSession.shared.dataTask(with: sessionDataRequest) { (data, response, error) in
-            if let error = error {
-                self.errorHandlers.forEach{errorHandler in
-                    errorHandler(error.localizedDescription)
-                }
-                return
-            }
-            guard let response = response as? HTTPURLResponse else { return }
-            if response.statusCode == 200 {
-                guard let data = data else { return }
-                    do {
-                        if let sessionDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                        {
-                            let sessionDataResponse = self.convertDictionaryToSessionData(response: sessionDataResponseDictionary)
-                            completion(.success(sessionDataResponse))
-                        }
-                        else{
-                            self.errorHandlers.forEach{errorHandler in
-                                errorHandler("session data empty")
-                            }
-                        }
-                    }
-                    catch let error {
-                        self.errorHandlers.forEach{errorHandler in
-                            errorHandler(error.localizedDescription)
-                        }
-                    }
-            }
-        }.resume()
-        
-    }
-    
-    private func userDataRequest(sessionData: VoicifySessionData, inputType: String, assistantResponse: CustomAssistantResponse, request: CustomAssistantRequest){
-        self.currentSessionInfo = sessionData
-        if let effectDictionary = sessionData.sessionAttributes["effects"] as? Array<[String: Any]>
+        self.currentSessionInfo = VoicifySessionData(id: "", sessionFlags: assistantResponse.sessionFlags, sessionAttributes: assistantResponse.sessionAttributes)
+        if let effectDictionary = assistantResponse.sessionAttributes["effects"] as? Array<[String: Any]>
         {
             let effects = self.decodeEffectsArray(effects: effectDictionary)
             effects.filter{effect in
@@ -432,7 +385,7 @@ public class VoicifyAssistant : ObservableObject
     }
     
     func convertDictionaryToResponseObject(response: Dictionary<String, Any>) -> CustomAssistantResponse{
-        let decodedResponse = CustomAssistantResponse(responseId: "", ssml: "", outputSpeech: "", displayText: "", responseTemplate: "", foregroundImage: "", backgroundImage: "", audioFile: MediaItemModel(id: "", url: "", name: ""), videoFile: MediaItemModel(id: "", url: "", name: ""), sessionAttributes: [:], hints: [], listItems: [], endSession: false)
+        let decodedResponse = CustomAssistantResponse(responseId: "", ssml: "", outputSpeech: "", displayText: "", responseTemplate: "", foregroundImage: "", backgroundImage: "", audioFile: MediaItemModel(id: "", url: "", name: ""), videoFile: MediaItemModel(id: "", url: "", name: ""), sessionAttributes: [:], sessionFlags: [], hints: [], listItems: [], endSession: false)
         if let responseId = response["responseId"] as? String{
             decodedResponse.responseId = responseId
         }
@@ -484,6 +437,9 @@ public class VoicifyAssistant : ObservableObject
         }
         if let sessionAttributes = response["sessionAttributes"] as? [String: Any] {
             decodedResponse.sessionAttributes = sessionAttributes
+        }
+        if let sessionFlags = response["sessionFlags"] as? [String]{
+            decodedResponse.sessionFlags = sessionFlags
         }
         if let hints = response["hints"] as? [String]{
             decodedResponse.hints = hints

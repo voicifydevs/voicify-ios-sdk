@@ -19,11 +19,13 @@ public class CustomAssistantResponse
     public var audioFile: MediaItemModel
     public var videoFile: MediaItemModel
     public var sessionAttributes: Dictionary<String, Any>
+    public var sessionFlags: Array<String>
     public var hints: Array<String>
     public var listItems: Array<CustomAssistantListItem>
     public var endSession: Bool
     
-    public init(responseId: String, ssml: String, outputSpeech: String, displayText: String, responseTemplate: String, foregroundImage: String, backgroundImage: String, audioFile: MediaItemModel, videoFile: MediaItemModel, sessionAttributes: Dictionary<String, Any>, hints: Array<String>, listItems: Array<CustomAssistantListItem>, endSession: Bool) {
+    public init(responseId: String, ssml: String, outputSpeech: String, displayText: String, responseTemplate: String, foregroundImage: String, backgroundImage: String, audioFile: MediaItemModel, videoFile: MediaItemModel, sessionAttributes: Dictionary<String, Any>,
+                sessionFlags: Array<String>, hints: Array<String>, listItems: Array<CustomAssistantListItem>, endSession: Bool) {
         self.responseId = responseId
         self.ssml = ssml
         self.outputSpeech = outputSpeech
@@ -34,6 +36,7 @@ public class CustomAssistantResponse
         self.audioFile = audioFile
         self.videoFile = videoFile
         self.sessionAttributes = sessionAttributes
+        self.sessionFlags = sessionFlags
         self.hints = hints
         self.listItems = listItems
         self.endSession = endSession
