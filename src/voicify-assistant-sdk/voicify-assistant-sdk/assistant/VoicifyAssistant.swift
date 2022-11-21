@@ -113,7 +113,7 @@ public class VoicifyAssistant : ObservableObject
     private func customAssistantRequest(request: CustomAssistantRequest, completion: @escaping (Result<CustomAssistantResponse, Error>) -> Void){
         do{
             let useDraftContent = settings.useDraftContent ? "&useDraftContent=true" : ""
-            guard let customRequestUrl = URL(string: "\(settings.serverRootUrl)/api/customAssistant/handlerequest?applicationId=\(settings.appId)&applicationSecret=\(settings.appKey)\(useDraftContent)") else { fatalError("Missing URL") }
+            guard let customRequestUrl = URL(string: "\(settings.serverRootUrl)/api/customAssistant/handlerequest?applicationId=\(settings.appId)&applicationSecret=\(settings.appKey)\(useDraftContent)&includeSessionAttributes=true") else { fatalError("Missing URL") }
             let encodedCustomRequestBody = try JSONSerialization.data(withJSONObject: convertRequestToDictionary(request: request), options: [])
             let customAssistantRequest = generatePostRequest(requestBody: encodedCustomRequestBody, url: customRequestUrl)
                 URLSession.shared.dataTask(with: customAssistantRequest) { (data, response, error) in
