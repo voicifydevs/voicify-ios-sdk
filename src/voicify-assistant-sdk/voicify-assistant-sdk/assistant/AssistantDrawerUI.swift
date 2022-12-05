@@ -268,12 +268,6 @@ public struct AssistantDrawerUI: View {
                 voicifyAsssitant.ClearHandlers()
                 voicifySTT.clearHandlers()
                 voicifyAsssitant.initializeAndStart()
-                voicifyAsssitant.onEffect(effectName: "closeAssistant"){data in
-                    print("WE GOT THE CLOSE EFFECT")
-                }
-                voicifyAsssitant.onEffect(effectName: "Play"){data in
-                    print("WE GOT THE PLAY EFFECT")
-                }
                 inputSpeech = ""
                 responseText = ""
                 voicifyTTS.addFinishListener {() -> Void in
@@ -313,7 +307,6 @@ public struct AssistantDrawerUI: View {
                     messages.append(Message(text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
                     print("RESPONSE RECEIVED!!!")
                 }
-                voicifyAsssitant.startNewSession()
                 if(assistantSettingsProps.initializeWithWelcomeMessage)
                 {
                     if(assistantSettingsProps.initializeWithText == false)
@@ -331,6 +324,12 @@ public struct AssistantDrawerUI: View {
                 else{
                     isUsingSpeech = false
                 }
+                assistantSettingsProps.effects.forEach{effect in
+                    voicifyAsssitant.onEffect(effectName: effect){data in
+                        assistantSettingsProps.onEffect(effect, data)
+                    }
+                }
+                voicifyAsssitant.startNewSession()
             }
             else{
                 UIApplication.shared.endEditing()

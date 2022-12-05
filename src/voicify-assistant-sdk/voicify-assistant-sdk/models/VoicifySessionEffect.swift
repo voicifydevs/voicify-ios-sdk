@@ -13,9 +13,9 @@ public class VoicifySessionEffect
     public var effectName: String
     public var requestId: String
     public var name: String
-    public var data: Any
+    public var data: Dictionary<String,Any>
     
-    public init(id: String, effectName: String, requestId: String, name: String, data: Any) {
+    public init(id: String, effectName: String, requestId: String, name: String, data: Dictionary<String,Any>) {
         self.id = id
         self.effectName = effectName
         self.requestId = requestId

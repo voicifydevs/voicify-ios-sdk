@@ -55,7 +55,7 @@ public class VoicifyAssistant : ObservableObject
         }
     }
     
-    public func onEffect(effectName: String, callback: @escaping (Any) -> Void){
+    public func onEffect(effectName: String, callback: @escaping (Dictionary<String, Any>) -> Void){
         self.effectHandlers.append(EffectModel(effect: effectName, callback: callback))
     }
     
@@ -187,7 +187,7 @@ public class VoicifyAssistant : ObservableObject
                             self.effectHandlers.filter{effectHandler in
                                 return effectHandler.effect == effect.name
                             }.forEach{ effectHandler in
-                                effectHandler.callback(effect.data as Any)
+                                effectHandler.callback(effect.data)
                             }
                         }
                     }
@@ -199,7 +199,7 @@ public class VoicifyAssistant : ObservableObject
                             self.effectHandlers.filter{ effectHandler in
                                 return effectHandler.effect == effect.effectName
                             }.forEach{effectHandler in
-                                effectHandler.callback(effect.data as Any)
+                                effectHandler.callback(effect.data)
                             }
                         }
                     }
@@ -391,14 +391,14 @@ public class VoicifyAssistant : ObservableObject
     func decodeEffectsArray(effects: Array<Dictionary<String, Any>>) -> Array<VoicifySessionEffect>{
         var sessionEffects: Array<VoicifySessionEffect> = []
         effects.forEach{effect in
-            let sessionEffect = VoicifySessionEffect(id: "", effectName: "", requestId: "", name: "", data: {})
+            let sessionEffect = VoicifySessionEffect(id: "", effectName: "", requestId: "", name: "", data: [:])
             if let effectName = effect["effectName"] as? String{
                 sessionEffect.effectName = effectName
             }
             if let requestId = effect["requestId"] as? String{
                 sessionEffect.requestId = requestId
             }
-            if let data = effect["data"]{
+            if let data = effect["data"] as? Dictionary<String, Any>{
                 sessionEffect.data = data
             }
             if let id = effect["id"] as? String{
