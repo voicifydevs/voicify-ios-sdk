@@ -10,6 +10,7 @@ import SwiftUI
 
 public class VoicifyAssistant : ObservableObject
 {
+    private var effects: Array<VoicifySessionEffect>? = nil
     private var speechToTextProvider: VoicifySpeechToTextProvider? = nil
     private var textToSpeechProvider: VoicifyTextToSpeechProvider? = nil
     private var settings: VoicifyAssistantSettings
@@ -152,12 +153,7 @@ public class VoicifyAssistant : ObservableObject
     }
     
     private func userDataRequest(inputType: String, assistantResponse: CustomAssistantResponse, request: CustomAssistantRequest){
-        self.textToSpeechProvider?.clearHandlers()
-        self.textToSpeechProvider?.addFinishListener {
-            if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
-                self.speechToTextProvider?.startListening()
-            }
-        }
+        
         if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech)
         {
             if(!assistantResponse.ssml.isEmpty){
@@ -169,17 +165,56 @@ public class VoicifyAssistant : ObservableObject
             }
         }
         self.currentSessionInfo = VoicifySessionData(id: "", sessionFlags: assistantResponse.sessionFlags, sessionAttributes: assistantResponse.sessionAttributes)
-        if let effectDictionary = assistantResponse.sessionAttributes["effects"] as? Array<[String: Any]>
+        
+        if(!assistantResponse.effects.isEmpty)
         {
-            let effects = self.decodeEffectsArray(effects: effectDictionary)
-            effects.filter{effect in
-                return effect.requestId == request.requestId
-            }.forEach{effect in
-                self.effectHandlers.filter{ effectHandler in
-                    return effectHandler.effect == effect.effectName
-                }.forEach{effectHandler in
-                    effectHandler.callback(effect.data as Any)
+            effects = assistantResponse.effects
+        }
+        else if let effectDictionary = assistantResponse.sessionAttributes["effects"] as? Array<[String: Any]>
+        {
+            if(!effectDictionary.isEmpty)
+            {
+                effects = self.decodeEffectsArray(effects: effectDictionary)
+            }            
+        }
+        
+        self.textToSpeechProvider?.clearHandlers()
+        self.textToSpeechProvider?.addFinishListener {
+            if let effectsToFire = self.effects {
+                if(!effectsToFire.isEmpty)
+                {
+                    if(!effectsToFire[0].name.isEmpty)
+                    {
+                        effectsToFire.forEach{ effect in
+                            self.effectHandlers.filter{effectHandler in
+                                return effectHandler.effect == effect.name
+                            }.forEach{ effectHandler in
+                                effectHandler.callback(effect.data as Any)
+                            }
+                        }
+                    }
+                    else if(!effectsToFire[0].effectName.isEmpty)
+                    {
+                        effectsToFire.filter{effect in
+                            return effect.requestId == request.requestId
+                        }.forEach{effect in
+                            self.effectHandlers.filter{ effectHandler in
+                                return effectHandler.effect == effect.effectName
+                            }.forEach{effectHandler in
+                                effectHandler.callback(effect.data as Any)
+                            }
+                        }
+                    }
+                    else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
+                        self.speechToTextProvider?.startListening()
+                    }
                 }
+                else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
+                    self.speechToTextProvider?.startListening()
+                }
+            }
+            else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
+                self.speechToTextProvider?.startListening()
             }
         }
         guard let userDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/\( self.userId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
@@ -341,15 +376,21 @@ public class VoicifyAssistant : ObservableObject
     func decodeEffectsArray(effects: Array<Dictionary<String, Any>>) -> Array<VoicifySessionEffect>{
         var sessionEffects: Array<VoicifySessionEffect> = []
         effects.forEach{effect in
-            let sessionEffect = VoicifySessionEffect(effectName: "", requestId: "", data: {})
-            if let name = effect["effectName"] as? String{
-                sessionEffect.effectName = name
+            let sessionEffect = VoicifySessionEffect(id: "", effectName: "", requestId: "", name: "", data: {})
+            if let effectName = effect["effectName"] as? String{
+                sessionEffect.effectName = effectName
             }
-            if let id = effect["requestId"] as? String{
-                sessionEffect.requestId = id
+            if let requestId = effect["requestId"] as? String{
+                sessionEffect.requestId = requestId
             }
             if let data = effect["data"]{
                 sessionEffect.data = data
+            }
+            if let id = effect["id"] as? String{
+                sessionEffect.id = id
+            }
+            if let name = effect["name"] as? String{
+                sessionEffect.name = name
             }
             sessionEffects.append(sessionEffect)
         }
@@ -385,7 +426,7 @@ public class VoicifyAssistant : ObservableObject
     }
     
     func convertDictionaryToResponseObject(response: Dictionary<String, Any>) -> CustomAssistantResponse{
-        let decodedResponse = CustomAssistantResponse(responseId: "", ssml: "", outputSpeech: "", displayText: "", responseTemplate: "", foregroundImage: "", backgroundImage: "", audioFile: MediaItemModel(id: "", url: "", name: ""), videoFile: MediaItemModel(id: "", url: "", name: ""), sessionAttributes: [:], sessionFlags: [], hints: [], listItems: [], endSession: false)
+        let decodedResponse = CustomAssistantResponse(responseId: "", ssml: "", outputSpeech: "", displayText: "", responseTemplate: "", foregroundImage: "", backgroundImage: "", audioFile: MediaItemModel(id: "", url: "", name: ""), videoFile: MediaItemModel(id: "", url: "", name: ""), sessionAttributes: [:], sessionFlags: [], effects: [], hints: [], listItems: [], endSession: false)
         if let responseId = response["responseId"] as? String{
             decodedResponse.responseId = responseId
         }
@@ -440,6 +481,9 @@ public class VoicifyAssistant : ObservableObject
         }
         if let sessionFlags = response["sessionFlags"] as? [String]{
             decodedResponse.sessionFlags = sessionFlags
+        }
+        if let responseEffects = response["effects"] as? Array<Dictionary<String, Any>>{
+            decodedResponse.effects = decodeEffectsArray(effects: responseEffects)
         }
         if let hints = response["hints"] as? [String]{
             decodedResponse.hints = hints

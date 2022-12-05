@@ -268,6 +268,12 @@ public struct AssistantDrawerUI: View {
                 voicifyAsssitant.ClearHandlers()
                 voicifySTT.clearHandlers()
                 voicifyAsssitant.initializeAndStart()
+                voicifyAsssitant.onEffect(effectName: "closeAssistant"){data in
+                    print("WE GOT THE CLOSE EFFECT")
+                }
+                voicifyAsssitant.onEffect(effectName: "Play"){data in
+                    print("WE GOT THE PLAY EFFECT")
+                }
                 inputSpeech = ""
                 responseText = ""
                 voicifyTTS.addFinishListener {() -> Void in
