@@ -153,7 +153,6 @@ public class VoicifyAssistant : ObservableObject
     }
     
     private func userDataRequest(inputType: String, assistantResponse: CustomAssistantResponse, request: CustomAssistantRequest){
-        
         if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech)
         {
             if(!assistantResponse.ssml.isEmpty){
@@ -165,7 +164,6 @@ public class VoicifyAssistant : ObservableObject
             }
         }
         self.currentSessionInfo = VoicifySessionData(id: "", sessionFlags: assistantResponse.sessionFlags, sessionAttributes: assistantResponse.sessionAttributes)
-        
         if(!assistantResponse.effects.isEmpty)
         {
             effects = assistantResponse.effects
@@ -226,13 +224,21 @@ public class VoicifyAssistant : ObservableObject
                 }
                 return
             }
-            guard let response = response as? HTTPURLResponse else { return }
-            if response.statusCode == 200 {
+            guard let response = response as? HTTPURLResponse else {return}
+            if response.statusCode == 200 || response.statusCode == 204 {
                 guard let data = data else { return }
                     do{
-                        let userDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                        let userDataResponse = self.convertDictionaryToUserData(response: userDataResponseDictionary!)
-                        self.currentUserInfo = userDataResponse
+                        if(!data.isEmpty)
+                        {
+                            if let userDataResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                                if(!userDataResponseDictionary.isEmpty)
+                                {
+                                    let userDataResponse = self.convertDictionaryToUserData(response: userDataResponseDictionary)
+                                    self.currentUserInfo = userDataResponse
+                                }
+                            }
+                        }
+                        
                         self.responseHandlers.forEach{responseHandler in
                             responseHandler(assistantResponse)
                         }
@@ -256,6 +262,11 @@ public class VoicifyAssistant : ObservableObject
                             errorHandler(error.localizedDescription)
                         }
                     }
+            }
+            else{
+                self.errorHandlers.forEach{errorHandler in
+                    errorHandler(error.localizedDescription)
+                }
             }
         }.resume()
         

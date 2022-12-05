@@ -311,6 +311,7 @@ public struct AssistantDrawerUI: View {
                         hints.append(Hint(text: hint))
                     }
                     messages.append(Message(text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
+                    print("RESPONSE RECEIVED!!!")
                 }
                 voicifyAsssitant.startNewSession()
                 if(assistantSettingsProps.initializeWithWelcomeMessage)
