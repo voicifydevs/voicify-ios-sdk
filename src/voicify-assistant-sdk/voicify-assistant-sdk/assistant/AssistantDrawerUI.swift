@@ -316,10 +316,20 @@ public struct AssistantDrawerUI: View {
                 voicifyAsssitant.startNewSession()
                 if(assistantSettingsProps.initializeWithWelcomeMessage)
                 {
-                    voicifyAsssitant.makeWelcomeMessage()
+                    if(assistantSettingsProps.initializeWithText == false)
+                    {
+                        isUsingSpeech = true
+                    }
+                    else{
+                        isUsingSpeech = false
+                    }
                 }
                 else if (assistantSettingsProps.initializeWithText == false){
                     voicifySTT.startListening()
+                    isUsingSpeech = true
+                }
+                else{
+                    isUsingSpeech = false
                 }
             }
             else{

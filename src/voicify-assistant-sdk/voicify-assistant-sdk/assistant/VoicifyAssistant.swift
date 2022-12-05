@@ -265,7 +265,9 @@ public class VoicifyAssistant : ObservableObject
             }
             else{
                 self.errorHandlers.forEach{errorHandler in
-                    errorHandler(error.localizedDescription)
+                    if let description = error?.localizedDescription{
+                        errorHandler(description)
+                    }
                 }
             }
         }.resume()
@@ -301,11 +303,13 @@ public class VoicifyAssistant : ObservableObject
     
     public func makeWelcomeMessage(requestAttributes: Dictionary<String, Any>? = nil){
         let request = generateWelcomeRequest(requestAttributes: requestAttributes)
-        if(settings.autoRunConversation)
+        if(settings.autoRunConversation && settings.initializeWithText == false)
         {
+            print("howdy")
             makeRequest(request: request, inputType: "Speech")
         }
         else{
+            print("partner")
             makeRequest(request: request,inputType: "Text")
         }
     }
