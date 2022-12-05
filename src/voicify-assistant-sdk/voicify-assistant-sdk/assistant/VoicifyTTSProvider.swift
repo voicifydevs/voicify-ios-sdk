@@ -59,10 +59,20 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
                             guard let url = URL(string: audioUrl ?? "") else {return}
                             if (self.player != nil)
                             {
-                                self.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
-                                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, mode: .default)
-                                try AVAudioSession.sharedInstance().setActive(true)
-                                self.player?.play()
+                                if(self.player?.currentItem != nil)
+                                {
+                                    self.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
+                                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default)
+                                    try AVAudioSession.sharedInstance().setActive(true)
+                                    self.player?.play()
+                                }
+                                else{
+                                    let playerItem = AVPlayerItem(url: url)
+                                    self.player = AVPlayer(playerItem: playerItem)
+                                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default)
+                                    try AVAudioSession.sharedInstance().setActive(true)
+                                    self.player?.play()
+                                }
                             }
                             else{
                                 let playerItem = AVPlayerItem(url: url)
