@@ -337,6 +337,9 @@ public struct AssistantDrawerUI: View {
                 isFullScreen = false
                 voicifySTT.stopListening()
                 voicifyTTS.stop()
+                voicifyTTS.clearHandlers()
+                voicifySTT.clearHandlers()
+                voicifyAsssitant.ClearHandlers()
             }
         }
         .edgesIgnoringSafeArea(.all)
