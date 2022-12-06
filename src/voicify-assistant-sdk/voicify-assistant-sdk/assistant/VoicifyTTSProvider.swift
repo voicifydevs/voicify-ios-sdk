@@ -15,7 +15,7 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
     private var ttsResponse: Array<TTSData>? = nil
     private var currentPlayingIndex: Int = 0
     private var locale = ""
-    private var cancelSpeech: Bool = false
+    public var cancelSpeech: Bool = false
     private var player: AVPlayer? = nil
     private var obeserver: NSObjectProtocol? = nil
     
@@ -64,7 +64,9 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
                                     self.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
                                     try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default)
                                     try AVAudioSession.sharedInstance().setActive(true)
-                                    self.player?.play()
+                                    if(!self.cancelSpeech){
+                                        self.player?.play()
+                                    }
                                 }
                             }
                             else{
@@ -72,7 +74,9 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
                                 self.player = AVPlayer(playerItem: playerItem)
                                 try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default)
                                 try AVAudioSession.sharedInstance().setActive(true)
-                                self.player?.play()
+                                if(!self.cancelSpeech){
+                                    self.player?.play()
+                                }
                             }
                         } catch let error {
                             print("Error decoding: ", error)

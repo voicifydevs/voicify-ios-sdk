@@ -326,6 +326,8 @@ public struct AssistantDrawerUI: View {
         }
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){
+                voicifyTTS.cancelSpeech = false
+                voicifySTT.cancel = false
                 voicifyAsssitant.ClearHandlers()
                 voicifySTT.clearHandlers()
                 voicifyAsssitant.initializeAndStart()
@@ -416,6 +418,8 @@ public struct AssistantDrawerUI: View {
             else{
                 UIApplication.shared.endEditing()
                 messages = []
+                voicifyTTS.cancelSpeech = true
+                voicifySTT.cancel = true
                 isFullScreen = false
                 voicifySTT.stopListening()
                 voicifyTTS.stop()

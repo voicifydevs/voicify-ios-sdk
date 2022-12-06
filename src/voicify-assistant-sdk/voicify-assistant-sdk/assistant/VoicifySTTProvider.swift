@@ -24,7 +24,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     private var task: SFSpeechRecognitionTask?
     private var recognizer: SFSpeechRecognizer?
     private var speechTimeOut = Timer()
-    private var cancel = false
+    public var cancel = false
     private var averagePowerForChannel0: Float = 0.0
     private var averagePowerForChannel1: Float = 0.0
     private var gotFullResult = false
