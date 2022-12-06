@@ -29,6 +29,7 @@ public struct AssistantDrawerUI: View {
     @State var isUsingSpeech = true
     @State var animationValues: Array<CGFloat> = [CGFloat](repeating: 0.1, count: 8)
     @State var assistantStateText = " "
+    @State var isFinalSpeech = false
 
     public init(assistantSettings: AssistantSettingsProps, assistantIsOpen: Binding<Bool>) {
         self.assistantSettingsProps = assistantSettings
@@ -237,7 +238,7 @@ public struct AssistantDrawerUI: View {
                         
                         HStack{
                             Text(inputSpeech)
-                                .foregroundColor(Color.init(hex: "#ffffff"))
+                                .foregroundColor(Color.init(hex: !isFinalSpeech ? "#ffffff33" : "#ffffff"))
                             Spacer()
                         }
                         .frame(maxWidth: .infinity, minHeight: 40)
@@ -336,11 +337,10 @@ public struct AssistantDrawerUI: View {
                 }
                 voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
                     print("got full result")
+                    isFinalSpeech = true
                     assistantStateText = " "
                     inputSpeech = fullResult
-                    messages.append(Message(text: fullResult, origin: "Sent"))
-                    hints = []
-                    voicifyAsssitant.makeTextRequest(text: fullResult, inputType: "Speech")
+                    voicifyAsssitant.makeTextRequest(text: inputSpeech, inputType: "Speech")
                 }
                 voicifySTT.addVolumeListener{(volume: Float) -> Void in
                     for i in 0...7 {
@@ -355,6 +355,7 @@ public struct AssistantDrawerUI: View {
                 }
                 voicifySTT.addStartListener {
                     isListening = true
+                    isFinalSpeech = false
                     assistantStateText = "Listening..."
                 }
                 voicifySTT.addEndListener {
@@ -367,7 +368,6 @@ public struct AssistantDrawerUI: View {
                     else {
                         assistantStateText = " "
                     }
-                    inputSpeech = ""
                     for i in 0...7 {
                         animationValues[i] = CGFloat(1)
                     }
@@ -376,6 +376,8 @@ public struct AssistantDrawerUI: View {
                     
                 }
                 voicifyAsssitant.onResponseReceived{response in
+                    messages.append(Message(text: inputSpeech, origin: "Sent"))
+                    hints = []
                     inputSpeech = ""
                     isFullScreen = true
                     response.hints.forEach{ hint in
