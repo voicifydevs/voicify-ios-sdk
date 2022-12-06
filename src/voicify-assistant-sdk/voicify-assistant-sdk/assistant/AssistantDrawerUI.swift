@@ -93,7 +93,7 @@ public struct AssistantDrawerUI: View {
                                                 Spacer()
                                             }
                                             VStack{
-                                                Text(message.text)
+                                                Text(.init(message.text) )
                                                     .foregroundColor(Color.init(hex:"#000000"))
                                                     .font(.system(size: 14))
                                                     .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))

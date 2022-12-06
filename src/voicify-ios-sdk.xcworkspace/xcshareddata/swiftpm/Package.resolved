@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "cdmarkdownkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/chrisdhaan/CDMarkdownKit",
-      "state" : {
-        "revision" : "c23c1378a9d34965197b6d993104bba11f4e0858",
-        "version" : "2.4.0"
-      }
-    },
-    {
       "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
