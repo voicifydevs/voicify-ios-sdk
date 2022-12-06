@@ -12,22 +12,22 @@ import BottomSheet
 import Kingfisher
 public struct AssistantDrawerUI: View {
     var assistantSettingsProps: AssistantSettingsProps
+    var voicifySTT: VoicifySTTProvider
+    var voicifyTTS: VoicifyTTSProivder
+    var voicifyAsssitant: VoicifyAssistant
     @Binding var assistantIsOpen: Bool
     @State var messages: Array<Message> = []
     @State var hints: Array<Hint> = []
     @State var isFullScreen: Bool = false
     @State var height = UIScreen.main.bounds.height/2.2
     @State var inputText = ""
-    var voicifySTT: VoicifySTTProvider
-    var voicifyTTS: VoicifyTTSProivder
-    var voicifyAsssitant: VoicifyAssistant
     @State var inputSpeech = " "
     @State var speechVolume: Float = 0
     @State var isListening = false
     @State var isSpeaking = false
     @State var responseText = ""
     @State var isUsingSpeech = true
-    @State var animationValues: Array<CGFloat> = [CGFloat](repeating: 0.1, count: 8)
+    @State var animationValues: Array<CGFloat> = [CGFloat](repeating: 0.0001, count: 8)
     @State var assistantStateText = " "
     @State var isFinalSpeech = false
 

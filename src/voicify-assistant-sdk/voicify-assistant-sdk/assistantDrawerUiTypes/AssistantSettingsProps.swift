@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-public class AssistantSettingsProps : ObservableObject
+public class AssistantSettingsProps
 {
     public var serverRootUrl: String
     public var appId: String

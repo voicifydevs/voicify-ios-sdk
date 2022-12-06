@@ -34,6 +34,9 @@
 		FE9AC32729097EF60030C67E /* VoicifyAssistantSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */; };
 		FE9AC32929097FCB0030C67E /* VoicifySTTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */; };
 		FEAD780D293F9BBB00483B70 /* AnimationValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAD780C293F9BBB00483B70 /* AnimationValue.swift */; };
+		FEAD7812293FD8A700483B70 /* HeaderProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAD7811293FD8A700483B70 /* HeaderProps.swift */; };
+		FEAD7814293FDCF600483B70 /* BodyProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAD7813293FDCF600483B70 /* BodyProps.swift */; };
+		FEAD7818293FDE7800483B70 /* ToolBarProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAD7817293FDE7800483B70 /* ToolBarProps.swift */; };
 		FEBB244829140B4F001BF773 /* AssistantDrawerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */; };
 		FEBB244A2914133B001BF773 /* AssistantSettingsProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */; };
 		FED1FDC72925823B006783C8 /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1FDC62925823B006783C8 /* Hint.swift */; };
@@ -102,6 +105,9 @@
 		FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyAssistantSettings.swift; sourceTree = "<group>"; };
 		FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySTTProvider.swift; sourceTree = "<group>"; };
 		FEAD780C293F9BBB00483B70 /* AnimationValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationValue.swift; sourceTree = "<group>"; };
+		FEAD7811293FD8A700483B70 /* HeaderProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProps.swift; sourceTree = "<group>"; };
+		FEAD7813293FDCF600483B70 /* BodyProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyProps.swift; sourceTree = "<group>"; };
+		FEAD7817293FDE7800483B70 /* ToolBarProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarProps.swift; sourceTree = "<group>"; };
 		FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUI.swift; sourceTree = "<group>"; };
 		FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSettingsProps.swift; sourceTree = "<group>"; };
 		FED1FDC62925823B006783C8 /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
@@ -229,6 +235,9 @@
 				FE581DD72923E0EF00E1D77F /* Message.swift */,
 				FED1FDC62925823B006783C8 /* Hint.swift */,
 				FEAD780C293F9BBB00483B70 /* AnimationValue.swift */,
+				FEAD7811293FD8A700483B70 /* HeaderProps.swift */,
+				FEAD7813293FDCF600483B70 /* BodyProps.swift */,
+				FEAD7817293FDE7800483B70 /* ToolBarProps.swift */,
 			);
 			path = assistantDrawerUiTypes;
 			sourceTree = "<group>";
@@ -400,11 +409,13 @@
 				FEAD780D293F9BBB00483B70 /* AnimationValue.swift in Sources */,
 				FE1F4E292910110900D1B447 /* VoicifyAssistant.swift in Sources */,
 				FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */,
+				FEAD7812293FD8A700483B70 /* HeaderProps.swift in Sources */,
 				FE9AC30F29086D990030C67E /* SsmlRequest.swift in Sources */,
 				FE1F4E21290C5CCD00D1B447 /* VoicifyTTSProvider.swift in Sources */,
 				FEBB244829140B4F001BF773 /* AssistantDrawerUI.swift in Sources */,
 				FE9AC32929097FCB0030C67E /* VoicifySTTProvider.swift in Sources */,
 				FE9AC32529097E2F0030C67E /* VoicifyTextToSpeechSettings.swift in Sources */,
+				FEAD7814293FDCF600483B70 /* BodyProps.swift in Sources */,
 				FE9AC32329097DB90030C67E /* VoicifySpeechToTextProvider.swift in Sources */,
 				FE9AC30729086ACE0030C67E /* CustomAssistantResponse.swift in Sources */,
 				FE9AC30D29086D3F0030C67E /* MediaItemModel.swift in Sources */,
@@ -413,6 +424,7 @@
 				FE9AC31E29097BB00030C67E /* VoicifyUserData.swift in Sources */,
 				FE9AC31829097AA30030C67E /* TTSRequest.swift in Sources */,
 				FEBB244A2914133B001BF773 /* AssistantSettingsProps.swift in Sources */,
+				FEAD7818293FDE7800483B70 /* ToolBarProps.swift in Sources */,
 				FE9AC32729097EF60030C67E /* VoicifyAssistantSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
