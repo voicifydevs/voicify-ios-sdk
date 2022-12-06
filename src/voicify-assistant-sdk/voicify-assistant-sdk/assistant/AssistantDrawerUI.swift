@@ -12,6 +12,9 @@ import BottomSheet
 import Kingfisher
 public struct AssistantDrawerUI: View {
     var assistantSettingsProps: AssistantSettingsProps
+    var headerProps: HeaderProps? = nil
+    var bodyProps: BodyProps? = nil
+    var toolBarProps: ToolBarProps? = nil
     var voicifySTT: VoicifySTTProvider
     var voicifyTTS: VoicifyTTSProivder
     var voicifyAsssitant: VoicifyAssistant
@@ -31,8 +34,11 @@ public struct AssistantDrawerUI: View {
     @State var assistantStateText = " "
     @State var isFinalSpeech = false
 
-    public init(assistantSettings: AssistantSettingsProps) {
+    public init(assistantSettings: AssistantSettingsProps, headerProps: HeaderProps?, bodyProps: BodyProps?, toolBarProps: ToolBarProps?) {
         self.assistantSettingsProps = assistantSettings
+        self.headerProps = headerProps
+        self.bodyProps = bodyProps
+        self.toolBarProps = toolBarProps
         self._assistantIsOpen = assistantSettingsProps.assistantIsOpen
         voicifySTT = VoicifySTTProvider()
         voicifyTTS = VoicifyTTSProivder(settings: VoicifyTextToSpeechSettings(appId: assistantSettings.appId, appKey: assistantSettings.appKey, voice: assistantSettings.voice, serverRootUrl: assistantSettings.serverRootUrl, provider: assistantSettings.textToSpeechProvider))

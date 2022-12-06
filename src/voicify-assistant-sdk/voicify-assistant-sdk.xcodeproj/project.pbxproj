@@ -216,6 +216,7 @@
 		FE9AC31F29097C3E0030C67E /* assistant */ = {
 			isa = PBXGroup;
 			children = (
+				FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */,
 				FE9AC32029097C550030C67E /* VoicifyTextToSpeechProvider.swift */,
 				FE9AC32229097DB90030C67E /* VoicifySpeechToTextProvider.swift */,
 				FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */,
@@ -223,7 +224,6 @@
 				FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */,
 				FE1F4E20290C5CCD00D1B447 /* VoicifyTTSProvider.swift */,
 				FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */,
-				FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */,
 			);
 			path = assistant;
 			sourceTree = "<group>";
