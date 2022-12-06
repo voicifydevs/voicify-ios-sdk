@@ -57,18 +57,11 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
                             self.ttsResponse = try JSONDecoder().decode([TTSData].self, from: data)
                             let audioUrl = self.ttsResponse?[0].url
                             guard let url = URL(string: audioUrl ?? "") else {return}
-                            if (self.player != nil)
+                            if (self.player != nil && self.player?.currentItem != nil)
                             {
-                                if(self.player?.currentItem != nil)
+                                if(self.ttsResponse?.count == 1)
                                 {
                                     self.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
-                                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default)
-                                    try AVAudioSession.sharedInstance().setActive(true)
-                                    self.player?.play()
-                                }
-                                else{
-                                    let playerItem = AVPlayerItem(url: url)
-                                    self.player = AVPlayer(playerItem: playerItem)
                                     try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default)
                                     try AVAudioSession.sharedInstance().setActive(true)
                                     self.player?.play()
@@ -100,13 +93,46 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
     }
     
     @objc public func onSpeechEnd() -> Void{
-        speechEndHandlers.forEach{speechEndHandler in
-            speechEndHandler()
+        if let count = self.ttsResponse?.count{
+            currentPlayingIndex+=1
+            print(count)
+            print(currentPlayingIndex)
+            if (currentPlayingIndex < count)
+            {
+                playNext()
+            }
+            else{
+                currentPlayingIndex = 0
+                speechEndHandlers.forEach{speechEndHandler in
+                    speechEndHandler()
+                }
+            }
         }
+        else{
+            speechEndHandlers.forEach{speechEndHandler in
+                speechEndHandler()
+            }
+        }
+        
     }
- 
+    
     public func addFinishListener(callback: @escaping () -> Void) {
         self.speechEndHandlers.append(callback)
+    }
+    
+    private func playNext(){
+        do{
+            let audioUrl = self.ttsResponse?[currentPlayingIndex].url
+            guard let url = URL(string: audioUrl ?? "") else {return}
+            self.player?.replaceCurrentItem(with: AVPlayerItem(url: url))
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            self.player?.play()
+        }
+        catch let error {
+           print("Error decoding: ", error)
+       
+       }
     }
     
     private func generateTTSRequest(ssml: String) -> TTSRequest {

@@ -37,7 +37,7 @@ struct ContentView: View {
                 }
                 Spacer()
             }
-            AssistantDrawerUI(assistantSettings: AssistantSettingsProps(serverRootUrl: "https://assistant.voicify.com", appId: "99a803b7-5b37-426c-a02e-63c8215c71eb", appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3", locale: "en-US", channel: "My App", device: "My Device", voice: "", autoRunConversation: true, initializeWithWelcomeMessage: false, textToSpeechProvider: "Google", useVoiceInput: true, useOutputSpeech: true, initializeWithText: false, useDraftContent: false, noTracking: false, effects: ["Play", "closeAssistant"], onEffect: onEffect ), assistantIsOpen: $assistantIsOpen)
+            AssistantDrawerUI(assistantSettings: AssistantSettingsProps(serverRootUrl: "https://assistant.voicify.com", appId: "99a803b7-5b37-426c-a02e-63c8215c71eb", appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3", locale: "en-US", channel: "My App", device: "My Device", voice: "", autoRunConversation: true, initializeWithWelcomeMessage: false, textToSpeechProvider: "Polly", useVoiceInput: true, useOutputSpeech: true, initializeWithText: false, useDraftContent: false, noTracking: false, effects: ["Play", "closeAssistant"], onEffect: onEffect ), assistantIsOpen: $assistantIsOpen)
         }
     }
 }
