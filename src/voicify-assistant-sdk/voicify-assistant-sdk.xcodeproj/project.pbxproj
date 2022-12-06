@@ -33,6 +33,7 @@
 		FE9AC32529097E2F0030C67E /* VoicifyTextToSpeechSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */; };
 		FE9AC32729097EF60030C67E /* VoicifyAssistantSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */; };
 		FE9AC32929097FCB0030C67E /* VoicifySTTProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */; };
+		FEAD780D293F9BBB00483B70 /* AnimationValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAD780C293F9BBB00483B70 /* AnimationValue.swift */; };
 		FEBB244829140B4F001BF773 /* AssistantDrawerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */; };
 		FEBB244A2914133B001BF773 /* AssistantSettingsProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */; };
 		FED1FDC72925823B006783C8 /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1FDC62925823B006783C8 /* Hint.swift */; };
@@ -100,6 +101,7 @@
 		FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyTextToSpeechSettings.swift; sourceTree = "<group>"; };
 		FE9AC32629097EF60030C67E /* VoicifyAssistantSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyAssistantSettings.swift; sourceTree = "<group>"; };
 		FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifySTTProvider.swift; sourceTree = "<group>"; };
+		FEAD780C293F9BBB00483B70 /* AnimationValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationValue.swift; sourceTree = "<group>"; };
 		FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUI.swift; sourceTree = "<group>"; };
 		FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSettingsProps.swift; sourceTree = "<group>"; };
 		FED1FDC62925823B006783C8 /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */,
 				FE581DD72923E0EF00E1D77F /* Message.swift */,
 				FED1FDC62925823B006783C8 /* Hint.swift */,
+				FEAD780C293F9BBB00483B70 /* AnimationValue.swift */,
 			);
 			path = assistantDrawerUiTypes;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				C962F2F1282AB12800990915 /* voicify_assistant_sdk.docc in Sources */,
 				FE581DD82923E0EF00E1D77F /* Message.swift in Sources */,
 				FE9AC305290868E10030C67E /* CustomAssistantRequestContext.swift in Sources */,
+				FEAD780D293F9BBB00483B70 /* AnimationValue.swift in Sources */,
 				FE1F4E292910110900D1B447 /* VoicifyAssistant.swift in Sources */,
 				FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */,
 				FE9AC30F29086D990030C67E /* SsmlRequest.swift in Sources */,

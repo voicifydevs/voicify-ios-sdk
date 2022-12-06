@@ -24,10 +24,11 @@ public struct AssistantDrawerUI: View {
     @State var inputSpeech = " "
     @State var speechVolume: Float = 0
     @State var isListening = false
-    @State var isSpeaking = true
-    @State var speechEndedMessage = ""
+    @State var isSpeaking = false
     @State var responseText = ""
     @State var isUsingSpeech = true
+    @State var animationValues: Array<CGFloat> = [CGFloat](repeating: 0.1, count: 8)
+    @State var assistantStateText = " "
 
     public init(assistantSettings: AssistantSettingsProps, assistantIsOpen: Binding<Bool>) {
         self.assistantSettingsProps = assistantSettings
@@ -166,8 +167,67 @@ public struct AssistantDrawerUI: View {
                 }
                 VStack(){
                     if isUsingSpeech{
+                        HStack{
+                            VStack{
+                                
+                            }
+                            .frame(width: 4, height: 1)
+                            .background(Color.init(hex: "#00000080"))
+                            .scaleEffect(x: 1, y: isSpeaking ? animationValues[0] * 5 : 1, anchor: .bottom)
+                            .padding(.trailing, -10)
+                            VStack{
+                                
+                            }
+                            .frame(width: 4, height: 1)
+                            .background(Color.init(hex: "#00000080"))
+                            .scaleEffect(x: 1, y: isSpeaking ? animationValues[1] * 10 : 1, anchor: .bottom)
+                            .padding(.trailing, -10)
+                            VStack{
+                                
+                            }
+                            .frame(width: 4, height: 1)
+                            .background(Color.init(hex: "#00000080"))
+                            .scaleEffect(x: 1, y: isSpeaking ? animationValues[2] * 11 : 1, anchor: .bottom)
+                            .padding(.trailing, -10)
+                            VStack{
+                                
+                            }
+                            .frame(width: 4, height: 1)
+                            .background(Color.init(hex: "#00000080"))
+                            .scaleEffect(x: 1, y: isSpeaking ? animationValues[3] * 13 : 1, anchor: .bottom)
+                            .padding(.trailing, -10)
+                            VStack{
+                                
+                            }
+                            .frame(width: 4, height: 1)
+                            .background(Color.init(hex: "#00000080"))
+                            .scaleEffect(x: 1, y: isSpeaking ? animationValues[4] * 13 : 1, anchor: .bottom)
+                            .padding(.trailing, -10)
+                            VStack{
+                                
+                            }
+                            .frame(width: 4, height: 1)
+                            .background(Color.init(hex: "#00000080"))
+                            .scaleEffect(x: 1, y: isSpeaking ? animationValues[5] * 11 : 1, anchor: .bottom)
+                            .padding(.trailing, -10)
+                            VStack{
+                                
+                            }
+                            .frame(width: 4, height: 1)
+                            .background(Color.init(hex: "#00000080"))
+                            .scaleEffect(x: 1, y: isSpeaking ? animationValues[6] * 10 : 1, anchor: .bottom)
+                            .padding(.trailing, -10)
+                            VStack{
+                                
+                            }
+                            .frame(width: 4, height: 1)
+                            .background(Color.init(hex: "#00000080"))
+                            .scaleEffect(x: 1, y: isSpeaking ? animationValues[7] * 5 : 1, anchor: .bottom)
+                        }
+                        .frame(minHeight: 10)
+                        .padding(.top, isFullScreen ? 36 : 0)
                         HStack(){
-                            Text(isListening ? "Listening..." : " ")
+                            Text(assistantStateText)
                                 .italic()
                                 .foregroundColor(Color.init(hex: "#8F97A1"))
                                 .font(.system(size: 16))
@@ -228,7 +288,7 @@ public struct AssistantDrawerUI: View {
                                 Spacer()
                             }
                             HStack{
-                                TextField("TextInput", text: $inputText){focused in
+                                TextField("Enter a message...", text: $inputText){focused in
                                     if(focused){
                                         isUsingSpeech = false
                                     }
@@ -270,30 +330,47 @@ public struct AssistantDrawerUI: View {
                 voicifyAsssitant.initializeAndStart()
                 inputSpeech = ""
                 responseText = ""
-                voicifyTTS.addFinishListener {() -> Void in
-                    speechEndedMessage = "speech has ended"
-                }
                 voicifySTT.addPartialListener{(partialResult:String) -> Void in
                     inputSpeech = partialResult
                     print("got partial result")
                 }
                 voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
                     print("got full result")
+                    assistantStateText = " "
                     inputSpeech = fullResult
-                    isSpeaking = false
                     messages.append(Message(text: fullResult, origin: "Sent"))
-                    inputSpeech = ""
                     hints = []
                     voicifyAsssitant.makeTextRequest(text: fullResult, inputType: "Speech")
                 }
                 voicifySTT.addVolumeListener{(volume: Float) -> Void in
-                    speechVolume = volume
+                    for i in 0...7 {
+                        let value = CGFloat.random(in: 0...CGFloat(volume))
+                        animationValues[i] = value
+                    }
+                    if isSpeaking == false{
+                        isSpeaking = true
+                    }
+
+                    print("heres the volume \(volume)")
                 }
                 voicifySTT.addStartListener {
                     isListening = true
+                    assistantStateText = "Listening..."
                 }
                 voicifySTT.addEndListener {
                     isListening = false
+                    isSpeaking = false
+                    if(inputSpeech.isEmpty)
+                    {
+                        assistantStateText = "I didn't catch that..."
+                    }
+                    else {
+                        assistantStateText = " "
+                    }
+                    inputSpeech = ""
+                    for i in 0...7 {
+                        animationValues[i] = CGFloat(1)
+                    }
                 }
                 voicifyAsssitant.onRequestStarted{request in
                     
