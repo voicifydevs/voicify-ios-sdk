@@ -232,12 +232,12 @@
 			isa = PBXGroup;
 			children = (
 				FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */,
-				FE581DD72923E0EF00E1D77F /* Message.swift */,
-				FED1FDC62925823B006783C8 /* Hint.swift */,
-				FEAD780C293F9BBB00483B70 /* AnimationValue.swift */,
 				FEAD7811293FD8A700483B70 /* HeaderProps.swift */,
 				FEAD7813293FDCF600483B70 /* BodyProps.swift */,
 				FEAD7817293FDE7800483B70 /* ToolBarProps.swift */,
+				FEAD780C293F9BBB00483B70 /* AnimationValue.swift */,
+				FED1FDC62925823B006783C8 /* Hint.swift */,
+				FE581DD72923E0EF00E1D77F /* Message.swift */,
 			);
 			path = assistantDrawerUiTypes;
 			sourceTree = "<group>";
