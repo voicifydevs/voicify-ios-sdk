@@ -324,6 +324,7 @@
 			packageReferences = (
 				FEDE15BF291BF42A00D03181 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				FEDE15C5291C6EB400D03181 /* XCRemoteSwiftPackageReference "bottom-sheet" */,
+				FEAD780E293FBFB800483B70 /* XCRemoteSwiftPackageReference "CDMarkdownKit" */,
 			);
 			productRefGroup = C962F2ED282AB12800990915 /* Products */;
 			projectDirPath = "";
@@ -681,6 +682,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FEAD780E293FBFB800483B70 /* XCRemoteSwiftPackageReference "CDMarkdownKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chrisdhaan/CDMarkdownKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		FEDE15BF291BF42A00D03181 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";

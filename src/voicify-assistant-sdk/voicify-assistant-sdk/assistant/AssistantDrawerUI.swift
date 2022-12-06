@@ -381,8 +381,8 @@ public struct AssistantDrawerUI: View {
                         messages.append(Message(text: inputSpeech, origin: "Sent"))
                         hints = []
                         inputSpeech = ""
-                        isFullScreen = true
                     }
+                    isFullScreen = true
                     response.hints.forEach{ hint in
                         hints.append(Hint(text: hint))
                     }
