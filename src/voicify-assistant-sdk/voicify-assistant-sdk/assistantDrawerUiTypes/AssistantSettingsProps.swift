@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public class AssistantSettingsProps : ObservableObject
 {
@@ -26,8 +27,9 @@ public class AssistantSettingsProps : ObservableObject
     public var noTracking: Bool
     public var effects: Array<String>
     public var onEffect: (String, Dictionary<String, Any>) -> Void
+    public var assistantIsOpen: Binding<Bool>
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, voice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, effects: Array<String>, onEffect: @escaping (String, Dictionary<String, Any>) -> Void) {
+    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, voice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, effects: Array<String>, onEffect: @escaping (String, Dictionary<String, Any>) -> Void, assistantIsOpen: Binding<Bool>) {
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey
@@ -45,5 +47,6 @@ public class AssistantSettingsProps : ObservableObject
         self.noTracking = noTracking
         self.effects = effects
         self.onEffect = onEffect
+        self.assistantIsOpen = assistantIsOpen
     }
 }

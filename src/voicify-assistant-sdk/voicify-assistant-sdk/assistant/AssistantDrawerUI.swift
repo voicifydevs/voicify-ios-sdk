@@ -31,9 +31,9 @@ public struct AssistantDrawerUI: View {
     @State var assistantStateText = " "
     @State var isFinalSpeech = false
 
-    public init(assistantSettings: AssistantSettingsProps, assistantIsOpen: Binding<Bool>) {
+    public init(assistantSettings: AssistantSettingsProps) {
         self.assistantSettingsProps = assistantSettings
-        self._assistantIsOpen = assistantIsOpen
+        self._assistantIsOpen = assistantSettingsProps.assistantIsOpen
         voicifySTT = VoicifySTTProvider()
         voicifyTTS = VoicifyTTSProivder(settings: VoicifyTextToSpeechSettings(appId: assistantSettings.appId, appKey: assistantSettings.appKey, voice: assistantSettings.voice, serverRootUrl: assistantSettings.serverRootUrl, provider: assistantSettings.textToSpeechProvider))
         voicifyAsssitant = VoicifyAssistant(speechToTextProvider: voicifySTT, textToSpeechProvider: voicifyTTS, settings: VoicifyAssistantSettings(serverRootUrl: assistantSettings.serverRootUrl, appId: assistantSettings.appId, appKey: assistantSettings.appKey, locale: assistantSettings.locale, channel: assistantSettings.channel, device: assistantSettings.device, autoRunConversation: assistantSettings.autoRunConversation, initializeWithWelcomeMessage: assistantSettings.initializeWithWelcomeMessage, initializeWithText: assistantSettings.initializeWithText, useVoiceInput: assistantSettings.useVoiceInput, useDraftContent: assistantSettings.useDraftContent, useOutputSpeech: assistantSettings.useOutputSpeech, noTracking: assistantSettings.noTracking))
