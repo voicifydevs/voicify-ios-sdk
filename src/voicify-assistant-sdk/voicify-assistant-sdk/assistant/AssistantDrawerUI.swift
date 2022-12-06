@@ -40,7 +40,7 @@ public struct AssistantDrawerUI: View {
     }
     
     public var body: some View {
-        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? UIScreen.main.bounds.height/3.5 : UIScreen.main.bounds.height/2.2, topBarHeight: 0 , showTopIndicator: false){
+        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? UIScreen.main.bounds.height/3.5 : UIScreen.main.bounds.height/2.3, topBarHeight: 0 , showTopIndicator: false){
             VStack(){
                 HStack{
                     if isFullScreen{
@@ -376,10 +376,13 @@ public struct AssistantDrawerUI: View {
                     
                 }
                 voicifyAsssitant.onResponseReceived{response in
-                    messages.append(Message(text: inputSpeech, origin: "Sent"))
-                    hints = []
-                    inputSpeech = ""
-                    isFullScreen = true
+                    if(!inputSpeech.isEmpty)
+                    {
+                        messages.append(Message(text: inputSpeech, origin: "Sent"))
+                        hints = []
+                        inputSpeech = ""
+                        isFullScreen = true
+                    }
                     response.hints.forEach{ hint in
                         hints.append(Hint(text: hint))
                     }
