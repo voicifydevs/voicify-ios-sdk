@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 public class ToolBarProps {
     public var backgroundColor: String? = nil
     public var micBorderRadius: Float? = nil
-    public var micImagePadding: Int? = nil
+    public var micImagePadding: Float? = nil
     public var micImageBorderWidth: Int? = nil
     //val micImageBorderStyle: String? = null,
     public var micImageBorderColor: String? = nil
     public var micImageHeight: Int? = nil
     public var micImageWidth: Int? = nil
+    public var sendImageWidth: Int? = nil
+    public var sendImageHeight: Int? = nil
     public var micActiveImage: String? = nil
     public var micInactiveImage: String? = nil
     public var micActiveHighlightColor: String? = nil
@@ -49,7 +52,7 @@ public class ToolBarProps {
     public var assistantStateTextColor: String? = nil
     public var assistantStateFontSize: Float? = nil
     public var equalizerColor: String? = nil
-    public  init(backgroundColor: String? = nil, micBorderRadius: Float? = nil, micImagePadding: Int? = nil, micImageBorderWidth: Int? = nil, micImageBorderColor: String? = nil, micImageHeight: Int? = nil, micImageWidth: Int? = nil, micActiveImage: String? = nil, micInactiveImage: String? = nil, micActiveHighlightColor: String? = nil, micInactiveHighlightColor: String? = nil, sendActiveImage: String? = nil, sendInactiveImage: String? = nil, speakFontSize: Float? = nil, speakActiveTitleColor: String? = nil, speakInactiveTitleColor: String? = nil, typeFontSize: Float? = nil, typeActiveTitleColor: String? = nil, typeInactiveTitleColor: String? = nil, textBoxFontSize: Float? = nil, textBoxActiveHighlightColor: String? = nil, textBoxInactiveHighlightColor: String? = nil, partialSpeechResultTextColor: String? = nil, fullSpeechResultTextColor: String? = nil, speechResultBoxBackgroundColor: String? = nil, textInputLineColor: String? = nil, textInputCursorColor: String? = nil, textInputTextColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, placeholder: String? = nil, helpText: String? = nil, helpTextFontSize: Float? = nil, helpTextFontColor: String? = nil, assistantStateTextColor: String? = nil, assistantStateFontSize: Float? = nil, equalizerColor: String? = nil) {
+    public  init(backgroundColor: String? = nil, micBorderRadius: Float? = nil, micImagePadding: Float? = nil, micImageBorderWidth: Int? = nil, micImageBorderColor: String? = nil, micImageHeight: Int? = nil, micImageWidth: Int? = nil, micActiveImage: String? = nil, sendImageWidth: Int?, sendImageHeight: Int?, micInactiveImage: String? = nil, micActiveHighlightColor: String? = nil, micInactiveHighlightColor: String? = nil, sendActiveImage: String? = nil, sendInactiveImage: String? = nil, speakFontSize: Float? = nil, speakActiveTitleColor: String? = nil, speakInactiveTitleColor: String? = nil, typeFontSize: Float? = nil, typeActiveTitleColor: String? = nil, typeInactiveTitleColor: String? = nil, textBoxFontSize: Float? = nil, textBoxActiveHighlightColor: String? = nil, textBoxInactiveHighlightColor: String? = nil, partialSpeechResultTextColor: String? = nil, fullSpeechResultTextColor: String? = nil, speechResultBoxBackgroundColor: String? = nil, textInputLineColor: String? = nil, textInputCursorColor: String? = nil, textInputTextColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, placeholder: String? = nil, helpText: String? = nil, helpTextFontSize: Float? = nil, helpTextFontColor: String? = nil, assistantStateTextColor: String? = nil, assistantStateFontSize: Float? = nil, equalizerColor: String? = nil) {
         self.backgroundColor = backgroundColor
         self.micBorderRadius = micBorderRadius
         self.micImagePadding = micImagePadding
@@ -57,6 +60,8 @@ public class ToolBarProps {
         self.micImageBorderColor = micImageBorderColor
         self.micImageHeight = micImageHeight
         self.micImageWidth = micImageWidth
+        self.sendImageWidth = sendImageWidth
+        self.sendImageHeight = sendImageHeight
         self.micActiveImage = micActiveImage
         self.micInactiveImage = micInactiveImage
         self.micActiveHighlightColor = micActiveHighlightColor

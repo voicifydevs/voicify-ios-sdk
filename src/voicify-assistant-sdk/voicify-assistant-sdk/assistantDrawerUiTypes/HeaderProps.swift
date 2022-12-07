@@ -14,7 +14,7 @@ public class HeaderProps
     public var assistantImage: String?
     public var assistantImageBackgroundColor: String?
     public var assistantName: String?
-    public var assistantNameTextColor: String
+    public var assistantNameTextColor: String?
     public var assistantImageBorderRadius: Float?
     public var assistantImageBorderColor: String?
     public var assistantImageBorderWidth: Int?
