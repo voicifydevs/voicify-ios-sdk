@@ -47,43 +47,38 @@ public struct AssistantDrawerUI: View {
     
     public var body: some View {
         BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? UIScreen.main.bounds.height/3.5 : UIScreen.main.bounds.height/2.2, topBarHeight: 0 , showTopIndicator: false){
-                VStack(){
+            VStack(spacing: 0){
+                if isFullScreen {
                     HStack{
-                        if isFullScreen{
-                            VStack{
-                                KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
-                                    .resizable()
-                                    .frame(width: CGFloat(32), height: CGFloat(32))
-                                    .fixedSize()
-                            }
-                            .padding(.all, 4)
-                            .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
-                            .background(Color.init(hex: "#ffffff"))
-                            .cornerRadius(CGFloat(20))
-                            Text("Voicify Assistant")
-                                .font(.system(size: CGFloat(headerProps?.fontSize ?? 18)))
-                                .foregroundColor(Color.init(hex: "#000000"))
-                                .padding(.leading, 4)
+                        VStack{
+                            KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                                .resizable()
+                                .frame(width: CGFloat(32), height: CGFloat(32))
+                                .fixedSize()
                         }
-                        else
-                        {
-                            Text(toolBarProps?.helpText ?? "How can i help?")
-                                .italic()
-                                .font(.system(size: CGFloat(toolBarProps?.helpTextFontSize ?? 18)))
-                                .foregroundColor(Color.init(hex: toolBarProps?.helpTextFontColor ?? "#8F97A1"))
-                        }
+                        .padding(.all, 4)
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
+                        .background(Color.init(hex: "#ffffff"))
+                        .cornerRadius(CGFloat(20))
+                        
+                        Text("Voicify Assistant")
+                            .font(.system(size: CGFloat(headerProps?.fontSize ?? 18)))
+                            .foregroundColor(Color.init(hex: "#000000"))
+                            .padding(.leading, 4)
+                        
                         Spacer()
+                        
                         Button(action: {
                             assistantIsOpen = false
                         }){
                             KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
                         }
                     }
-                    .padding(.trailing, isFullScreen ? 20 : 20) //if full screen, use header props top padding, otherwise use tool bar props top padding
-                    .padding(.leading, isFullScreen ? 20 : 20) //if full screen, use header props top padding, otherwise use tool bar props top padding
-
-                Spacer()
-                if isFullScreen {
+                    .padding(.leading, CGFloat(headerProps?.paddingLeft ?? 20))
+                    .padding(.trailing, CGFloat(headerProps?.paddingRight ?? 20))
+                    .padding(.top, CGFloat(headerProps?.paddingTop ?? 20))
+                    .padding(.bottom, CGFloat(headerProps?.paddingBottom ?? 20))
+                    .background(Color(hex: headerProps?.backgroundColor ?? "#ffffff"))
                     VStack{
                         ScrollView{
                             VStack{
@@ -127,7 +122,6 @@ public struct AssistantDrawerUI: View {
                                         .padding(.top, 30)
                                     }
                                 }
-                                Spacer()
                             }
                             .padding(.top, 20) //body padding here
                             .padding(.bottom, 10) // basline padding is 50, add the props padding to it
@@ -174,6 +168,21 @@ public struct AssistantDrawerUI: View {
                     .background(Color.init(hex: "#F4F4F6"))
                 }
                 VStack(){
+                    if (!isFullScreen){
+                        HStack{
+                            Text(toolBarProps?.helpText ?? "How can i help?")
+                                .italic()
+                                .font(.system(size: CGFloat(toolBarProps?.helpTextFontSize ?? 18)))
+                                .foregroundColor(Color.init(hex: toolBarProps?.helpTextFontColor ?? "#8F97A1"))
+                            Spacer()
+                            Button(action: {
+                                assistantIsOpen = false
+                            }){
+                                KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
+                            }
+                        }
+                        Spacer()
+                    }
                     if isUsingSpeech{
                         HStack{
                             VStack{
@@ -334,10 +343,10 @@ public struct AssistantDrawerUI: View {
                 }
                 .padding(.leading, CGFloat(toolBarProps?.paddingLeft ?? 20))
                 .padding(.trailing, CGFloat(toolBarProps?.paddingRight ?? 20))
+                .padding(.bottom, CGFloat(toolBarProps?.paddingBottom ?? 20))
+                .padding(.top, CGFloat(toolBarProps?.paddingTop ?? 10))
+                .background(Color(hex: toolBarProps?.backgroundColor ?? "#ffffff"))
             }
-                .padding(.top, isFullScreen ? 40 : CGFloat(toolBarProps?.paddingTop ?? 10)) //if full screen, use header props top padding, otherwise use tool bar props top padding
-                .padding(.bottom, isFullScreen ? 20 : CGFloat(toolBarProps?.paddingBottom ?? 10)) //if full screen, use header props top padding, otherwise use tool bar props top padding
-            .background(Color(hex: toolBarProps?.backgroundColor ?? "#ffffff"))
         }
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){

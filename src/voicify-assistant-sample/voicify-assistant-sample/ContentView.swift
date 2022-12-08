@@ -58,12 +58,32 @@ struct ContentView: View {
                     onEffect: onEffect,
                     assistantIsOpen: $assistantIsOpen
                 ),
-                headerProps: HeaderProps(fontSize: 10, backgroundColor: "#000000", assistantImage: nil, assistantImageBackgroundColor: nil, assistantName: nil, assistantNameTextColor: "", assistantImageBorderRadius: nil, assistantImageBorderColor: nil, assistantImageBorderWidth: nil, closeAssistantButtonImage: nil, closeAssistantButtonBorderRadius: nil, closeAssistantButtonBackgroundColor: nil, closeAssistantButtonBorderWidth: nil, closeAssistantButtonBorderColor: nil, paddingLeft: nil, paddingRight: nil, paddingTop: nil, paddingBottom: nil),
+                headerProps:
+                    HeaderProps(
+                        fontSize: 10,
+                        backgroundColor: "345671",
+                        assistantImage: nil,
+                        assistantImageBackgroundColor: nil,
+                        assistantName: nil,
+                        assistantNameTextColor: "",
+                        assistantImageBorderRadius: nil,
+                        assistantImageBorderColor: nil,
+                        assistantImageBorderWidth: nil,
+                        closeAssistantButtonImage: nil,
+                        closeAssistantButtonBorderRadius: nil,
+                        closeAssistantButtonBackgroundColor: nil,
+                        closeAssistantButtonBorderWidth: nil,
+                        closeAssistantButtonBorderColor: nil,
+                        paddingLeft: 20,
+                        paddingRight: 20,
+                        paddingTop: nil,
+                        paddingBottom: nil
+                    ),
                 bodyProps: nil,
                 toolBarProps:
                     nil
 //                    ToolBarProps(
-//                    backgroundColor: "#ffffff",
+//                    backgroundColor: "#00ffff",
 //                    micBorderRadius: 40,
 //                    micImagePadding: 4,
 //                    micImageBorderWidth: 0,
@@ -88,7 +108,7 @@ struct ContentView: View {
 //                    textBoxInactiveHighlightColor: "#345671",
 //                    partialSpeechResultTextColor: "#00ffff",
 //                    fullSpeechResultTextColor: "#345671",
-//                    speechResultBoxBackgroundColor: "#00ffff",
+//                    speechResultBoxBackgroundColor: "#000000",
 //                    textInputLineColor: "#ffffff",
 //                    textInputCursorColor: "#ffffff",
 //                    textInputTextColor: "#ffffff",
