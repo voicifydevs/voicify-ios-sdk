@@ -92,21 +92,22 @@ public struct AssistantDrawerUI: View {
                                     if message.origin == "Received"{
                                         HStack{
                                             VStack{
-                                                KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
-                                                    .fixedSize()
+                                                KFImage(URL(string: bodyProps?.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                                                    .resizable()
                                                     .padding(.all, 4)
-                                                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
-                                                    .background(Color.init(hex: "#ffffff"))
-                                                    .cornerRadius(CGFloat(20))
+                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: bodyProps?.assistantImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.assistantImageBorderWidth ?? 2)))
+                                                    .frame(width: CGFloat(bodyProps?.assistantImageWidth ?? 35), height: CGFloat(bodyProps?.assistantImageHeight ?? 35))
+                                                    .background(Color.init(hex: bodyProps?.assistantImageBackgroundColor ?? "#ffffff"))
+                                                    .cornerRadius(CGFloat(bodyProps?.assistantImageBorderRadius ?? 20))
                                                 Spacer()
                                             }
                                             VStack{
                                                 Text(.init(message.text) )
-                                                    .foregroundColor(Color.init(hex:"#000000"))
-                                                    .font(.system(size: 14))
+                                                    .foregroundColor(Color.init(hex: bodyProps?.messageReceivedTextColor ?? "#000000"))
+                                                    .font(.system(size: CGFloat(bodyProps?.messageReceivedFontSize ?? 14)))
                                                     .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                                    .background(Color.init(hex: "#0000000d"))
-                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 1))
+                                                    .background(Color.init(hex: bodyProps?.messageReceivedBackgroundColor ?? "#0000000d"))
+                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: bodyProps?.messageReceivedBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 1)))
                                             }
                                             .padding(.top, 20)
                                             Spacer()
@@ -118,21 +119,21 @@ public struct AssistantDrawerUI: View {
                                         HStack{
                                             Spacer()
                                             Text(message.text)
-                                                .font(.system(size: 14))
-                                                .foregroundColor(Color.init(hex:"#ffffff"))
+                                                .font(.system(size: CGFloat(bodyProps?.messageSentFontSize ?? 14)))
+                                                .foregroundColor(Color.init(hex:bodyProps?.messageSentTextColor ?? "#ffffff"))
                                                 .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                                .background(Color.init(hex: "#00000080"))
-                                                .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: "#00000000")!, lineWidth: 1))
+                                                .background(Color.init(hex: bodyProps?.messageSentBackgroundColor ?? "#00000080"))
+                                                .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: bodyProps?.messageSentBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.messageSentBorderWidth ?? 0)))
                                         }
                                         .padding(.leading, 50)
                                         .padding(.top, 30)
                                     }
                                 }
                             }
-                            .padding(.top, 20) //body padding here
-                            .padding(.bottom, 10) // basline padding is 50, add the props padding to it
-                            .padding(.leading, 20)
-                            .padding(.trailing, 20)
+                            .padding(.top, CGFloat(bodyProps?.paddingTop ?? 20))
+                            .padding(.bottom, CGFloat(bodyProps?.paddingBottom ?? 10))
+                            .padding(.leading, CGFloat(bodyProps?.paddingLeft ?? 20))
+                            .padding(.trailing, CGFloat(bodyProps?.paddingRight ?? 20))
                         }
                         if !hints.isEmpty {
                             ScrollView(.horizontal, showsIndicators: false){
@@ -170,8 +171,8 @@ public struct AssistantDrawerUI: View {
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .border(Color.init(hex: "#8F97A1")!)
-                    .background(Color.init(hex: "#F4F4F6"))
+                    .border(Color.init(hex: bodyProps?.borderColor ?? "#8F97A1")!)
+                    .background(Color.init(hex: bodyProps?.backgroundColor ?? "#F4F4F6"))
                 }
                 VStack(){
                     if (!isFullScreen){
