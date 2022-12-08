@@ -51,19 +51,19 @@ public struct AssistantDrawerUI: View {
                 if isFullScreen {
                     HStack{
                         VStack{
-                            KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                            KFImage(URL(string: headerProps?.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
                                 .resizable()
-                                .frame(width: CGFloat(32), height: CGFloat(32))
+                                .frame(width: CGFloat(headerProps?.assistantImageWidth ?? 32), height: CGFloat(headerProps?.assistantImageHeight ?? 32))
                                 .fixedSize()
                         }
                         .padding(.all, 4)
-                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.init(hex: "#8F97A1")!, lineWidth: 2))
-                        .background(Color.init(hex: "#ffffff"))
-                        .cornerRadius(CGFloat(20))
+                        .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: headerProps?.assistantImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(headerProps?.assistantImageBorderWidth ?? 2)))
+                        .background(Color.init(hex: headerProps?.assistantImageBackgroundColor ?? "#ffffff"))
+                        .cornerRadius(CGFloat(headerProps?.assistantImageBorderRadius ?? 20))
                         
-                        Text("Voicify Assistant")
+                        Text(headerProps?.assistantName ?? "Voicify Assistant")
                             .font(.system(size: CGFloat(headerProps?.fontSize ?? 18)))
-                            .foregroundColor(Color.init(hex: "#000000"))
+                            .foregroundColor(Color.init(hex: headerProps?.assistantNameTextColor ?? "#000000"))
                             .padding(.leading, 4)
                         
                         Spacer()
@@ -71,12 +71,18 @@ public struct AssistantDrawerUI: View {
                         Button(action: {
                             assistantIsOpen = false
                         }){
-                            KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
+                            KFImage(URL(string: headerProps?.closeAssistantButtonImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
+                                .resizable()
+                                .padding(.all, 4)
+                                .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? 0)).stroke(Color.init(hex: headerProps?.closeAssistantButtonBorderColor ?? "#00000000")!, lineWidth: CGFloat(headerProps?.closeAssistantButtonBorderWidth ?? 0)))
+                                .frame(width: CGFloat(headerProps?.closeAssistantButtonImageWidth ?? 35), height: CGFloat(headerProps?.closeAssistantButtonImageHeight ?? 35))
+                                .background(Color.init(hex: headerProps?.closeAssistantButtonBackgroundColor ?? "#00000000"))
+                                .cornerRadius(CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? 0))
                         }
                     }
                     .padding(.leading, CGFloat(headerProps?.paddingLeft ?? 20))
                     .padding(.trailing, CGFloat(headerProps?.paddingRight ?? 20))
-                    .padding(.top, CGFloat(headerProps?.paddingTop ?? 20))
+                    .padding(.top, CGFloat(headerProps?.paddingTop ?? 40))
                     .padding(.bottom, CGFloat(headerProps?.paddingBottom ?? 20))
                     .background(Color(hex: headerProps?.backgroundColor ?? "#ffffff"))
                     VStack{
@@ -178,7 +184,13 @@ public struct AssistantDrawerUI: View {
                             Button(action: {
                                 assistantIsOpen = false
                             }){
-                                KFImage(URL(string: "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
+                                KFImage(URL(string: headerProps?.closeAssistantButtonImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
+                                    .resizable()
+                                    .padding(.all, 4)
+                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? 0)).stroke(Color.init(hex: headerProps?.closeAssistantButtonBorderColor ?? "#00000000")!, lineWidth: CGFloat(headerProps?.closeAssistantButtonBorderWidth ?? 0)))
+                                    .frame(width: CGFloat(headerProps?.closeAssistantButtonImageWidth ?? 35), height: CGFloat(headerProps?.closeAssistantButtonImageHeight ?? 35))
+                                    .background(Color.init(hex: headerProps?.closeAssistantButtonBackgroundColor ?? "#00000000"))
+                                    .cornerRadius(CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? 0))
                             }
                         }
                         Spacer()

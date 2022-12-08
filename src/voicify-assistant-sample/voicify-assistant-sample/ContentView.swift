@@ -38,50 +38,55 @@ struct ContentView: View {
                 Spacer()
             }
             AssistantDrawerUI(
-                assistantSettings: AssistantSettingsProps(
-                    serverRootUrl: "https://assistant.voicify.com",
-                    appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
-                    appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
-                    locale: "en-US",
-                    channel: "My App",
-                    device: "My Device",
-                    voice: "",
-                    autoRunConversation: true,
-                    initializeWithWelcomeMessage: false,
-                    textToSpeechProvider: "Google",
-                    useVoiceInput: true,
-                    useOutputSpeech: true,
-                    initializeWithText: false,
-                    useDraftContent: false,
-                    noTracking: false,
-                    effects: ["Play", "closeAssistant"],
-                    onEffect: onEffect,
-                    assistantIsOpen: $assistantIsOpen
-                ),
-                headerProps:
-                    HeaderProps(
-                        fontSize: 10,
-                        backgroundColor: "345671",
-                        assistantImage: nil,
-                        assistantImageBackgroundColor: nil,
-                        assistantName: nil,
-                        assistantNameTextColor: "",
-                        assistantImageBorderRadius: nil,
-                        assistantImageBorderColor: nil,
-                        assistantImageBorderWidth: nil,
-                        closeAssistantButtonImage: nil,
-                        closeAssistantButtonBorderRadius: nil,
-                        closeAssistantButtonBackgroundColor: nil,
-                        closeAssistantButtonBorderWidth: nil,
-                        closeAssistantButtonBorderColor: nil,
-                        paddingLeft: 20,
-                        paddingRight: 20,
-                        paddingTop: nil,
-                        paddingBottom: nil
+                assistantSettings:
+                    AssistantSettingsProps(
+                        serverRootUrl: "https://assistant.voicify.com",
+                        appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
+                        appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
+                        locale: "en-US",
+                        channel: "My App",
+                        device: "My Device",
+                        voice: "",
+                        autoRunConversation: true,
+                        initializeWithWelcomeMessage: false,
+                        textToSpeechProvider: "Google",
+                        useVoiceInput: true,
+                        useOutputSpeech: true,
+                        initializeWithText: false,
+                        useDraftContent: false,
+                        noTracking: false,
+                        effects: ["Play", "closeAssistant"],
+                        onEffect: onEffect,
+                        assistantIsOpen: $assistantIsOpen
                     ),
+                headerProps: nil
+//                    HeaderProps(
+//                        fontSize: 16,
+//                        backgroundColor: "#345671",
+//                        assistantImage: "https://media.istockphoto.com/id/1141495869/photo/3d-render-blue-pink-neon-round-frame-circle-ring-shape-empty-space-ultraviolet-light-80s.jpg?s=612x612&w=0&k=20&c=s_k3XrnKy9qRzTR2vdLg_BC6smrY1WymKpBsBfAvLNU=",
+//                        assistantImageBackgroundColor: "#00000000",
+//                        assistantImageHeight: 80,
+//                        assistantImageWidth: 80,
+//                        assistantName: "Im Your Assistant",
+//                        assistantNameTextColor: "#ffffff",
+//                        assistantImageBorderRadius: 0,
+//                        assistantImageBorderColor: "#000000",
+//                        assistantImageBorderWidth: 5,
+//                        closeAssistantButtonImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Xbox_button_X.svg/2048px-Xbox_button_X.svg.png",
+//                        closeAssistantButtonImageHeight: 80,
+//                        closeAssistantButtonImageWidth: 80,
+//                        closeAssistantButtonBorderRadius: 200,
+//                        closeAssistantButtonBackgroundColor: "#ffffff",
+//                        closeAssistantButtonBorderWidth: 15,
+//                        closeAssistantButtonBorderColor: "#000000",
+//                        paddingLeft: 20,
+//                        paddingRight: 20,
+//                        paddingTop: 40,
+//                        paddingBottom: 20
+//                    )
+                ,
                 bodyProps: nil,
-                toolBarProps:
-                    nil
+                toolBarProps: nil
 //                    ToolBarProps(
 //                    backgroundColor: "#00ffff",
 //                    micBorderRadius: 40,
@@ -115,7 +120,7 @@ struct ContentView: View {
 //                    paddingLeft: 20,
 //                    paddingRight: 20,
 //                    paddingTop: 10,
-//                    paddingBottom: 10,
+//                    paddingBottom: 20,
 //                    placeholder: "just enter it...",
 //                    helpText: "What do you want?",
 //                    helpTextFontSize: 18,
