@@ -46,7 +46,7 @@ public struct AssistantDrawerUI: View {
     }
     
     public var body: some View {
-        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? UIScreen.main.bounds.height/3.5 : UIScreen.main.bounds.height/2.3, topBarHeight: 0 , showTopIndicator: false){
+        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? UIScreen.main.bounds.height/3.5 : UIScreen.main.bounds.height/2.2, topBarHeight: 0 , showTopIndicator: false){
                 VStack(){
                     HStack{
                         if isFullScreen{
@@ -67,10 +67,10 @@ public struct AssistantDrawerUI: View {
                         }
                         else
                         {
-                            Text("How can i help?")
+                            Text(toolBarProps?.helpText ?? "How can i help?")
                                 .italic()
-                                .font(.system(size: 18))
-                                .foregroundColor(Color.init(hex: "#8F97A1"))
+                                .font(.system(size: CGFloat(toolBarProps?.helpTextFontSize ?? 18)))
+                                .foregroundColor(Color.init(hex: toolBarProps?.helpTextFontColor ?? "#8F97A1"))
                         }
                         Spacer()
                         Button(action: {
@@ -180,56 +180,56 @@ public struct AssistantDrawerUI: View {
                                 
                             }
                             .frame(width: 4, height: 1)
-                            .background(Color.init(hex: "#00000080"))
+                            .background(Color.init(hex: toolBarProps?.equalizerColor ?? "#00000080"))
                             .scaleEffect(x: 1, y: isSpeaking ? animationValues[0] * 5 : 1, anchor: .bottom)
                             .padding(.trailing, -10)
                             VStack{
                                 
                             }
                             .frame(width: 4, height: 1)
-                            .background(Color.init(hex: "#00000080"))
+                            .background(Color.init(hex: toolBarProps?.equalizerColor ?? "#00000080"))
                             .scaleEffect(x: 1, y: isSpeaking ? animationValues[1] * 10 : 1, anchor: .bottom)
                             .padding(.trailing, -10)
                             VStack{
                                 
                             }
                             .frame(width: 4, height: 1)
-                            .background(Color.init(hex: "#00000080"))
+                            .background(Color.init(hex: toolBarProps?.equalizerColor ?? "#00000080"))
                             .scaleEffect(x: 1, y: isSpeaking ? animationValues[2] * 11 : 1, anchor: .bottom)
                             .padding(.trailing, -10)
                             VStack{
                                 
                             }
                             .frame(width: 4, height: 1)
-                            .background(Color.init(hex: "#00000080"))
+                            .background(Color.init(hex: toolBarProps?.equalizerColor ?? "#00000080"))
                             .scaleEffect(x: 1, y: isSpeaking ? animationValues[3] * 13 : 1, anchor: .bottom)
                             .padding(.trailing, -10)
                             VStack{
                                 
                             }
                             .frame(width: 4, height: 1)
-                            .background(Color.init(hex: "#00000080"))
+                            .background(Color.init(hex: toolBarProps?.equalizerColor ?? "#00000080"))
                             .scaleEffect(x: 1, y: isSpeaking ? animationValues[4] * 13 : 1, anchor: .bottom)
                             .padding(.trailing, -10)
                             VStack{
                                 
                             }
                             .frame(width: 4, height: 1)
-                            .background(Color.init(hex: "#00000080"))
+                            .background(Color.init(hex: toolBarProps?.equalizerColor ?? "#00000080"))
                             .scaleEffect(x: 1, y: isSpeaking ? animationValues[5] * 11 : 1, anchor: .bottom)
                             .padding(.trailing, -10)
                             VStack{
                                 
                             }
                             .frame(width: 4, height: 1)
-                            .background(Color.init(hex: "#00000080"))
+                            .background(Color.init(hex: toolBarProps?.equalizerColor ?? "#00000080"))
                             .scaleEffect(x: 1, y: isSpeaking ? animationValues[6] * 10 : 1, anchor: .bottom)
                             .padding(.trailing, -10)
                             VStack{
                                 
                             }
                             .frame(width: 4, height: 1)
-                            .background(Color.init(hex: "#00000080"))
+                            .background(Color.init(hex: toolBarProps?.equalizerColor ?? "#00000080"))
                             .scaleEffect(x: 1, y: isSpeaking ? animationValues[7] * 5 : 1, anchor: .bottom)
                         }
                         .frame(minHeight: 10)
@@ -237,8 +237,8 @@ public struct AssistantDrawerUI: View {
                         HStack(){
                             Text(assistantStateText)
                                 .italic()
-                                .foregroundColor(Color.init(hex: "#8F97A1"))
-                                .font(.system(size: 16))
+                                .foregroundColor(Color.init(hex: toolBarProps?.assistantStateTextColor ?? "#8F97A1"))
+                                .font(.system(size: CGFloat(toolBarProps?.assistantStateFontSize ?? 16)))
                             Spacer()
                         }
                         .padding(.bottom, -4)
@@ -290,14 +290,14 @@ public struct AssistantDrawerUI: View {
                                            .frame(width: CGFloat(toolBarProps?.micImageWidth ?? 40), height: CGFloat(toolBarProps?.micImageHeight ?? 40))
                                    }
                                    .padding(.all, CGFloat(toolBarProps?.micImagePadding ?? 4))
-                                   .overlay(RoundedRectangle(cornerRadius: CGFloat(toolBarProps?.micBorderRadius ?? 40)).stroke(Color.init(hex: toolBarProps?.micImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(toolBarProps?.micImageBorderWidth ?? 2)))
+                                   .overlay(RoundedRectangle(cornerRadius: CGFloat(toolBarProps?.micBorderRadius ?? 40)).stroke(Color.init(hex: toolBarProps?.micImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(toolBarProps?.micImageBorderWidth ?? 0)))
                                    .background(Color.init(hex: isListening && isUsingSpeech ? toolBarProps?.micActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.micInactiveHighlightColor ?? "00000000"))
                                    .cornerRadius(CGFloat(toolBarProps?.micBorderRadius ?? 40))
                             }
                                .frame(minWidth: 44, minHeight: 44)
                         Spacer()
                         HStack{
-                            TextField("Enter a message...", text: $inputText){focused in
+                            TextField(toolBarProps?.placeholder ?? "Enter a message...", text: $inputText){focused in
                                 if(focused){
                                     isUsingSpeech = false
                                 }
@@ -305,7 +305,9 @@ public struct AssistantDrawerUI: View {
                             }
                             .font(.system(size: CGFloat(toolBarProps?.textBoxFontSize ?? 16)))
                             .padding(.leading, 10)
-                            .overlay(VStack{Divider().offset(x: 0, y: 15)}.padding(.leading, 10))
+                            .overlay(VStack{Divider().background(Color(hex: toolBarProps?.textInputLineColor ?? "#000000")).offset(x: 0, y: 15)}.padding(.leading, 10))
+                            .accentColor(Color.init(hex: toolBarProps?.textInputCursorColor ?? "#000000"))
+                            .foregroundColor(Color.init(hex: toolBarProps?.textInputTextColor ?? "#000000"))
                             Button(action:{
                                 if !inputText.isEmpty {
                                     UIApplication.shared.endEditing()
@@ -318,7 +320,7 @@ public struct AssistantDrawerUI: View {
                                 KFImage(URL(string: isUsingSpeech ? toolBarProps?.sendInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/0c5aa61c-7d6c-4272-abd2-75d9f5771214/Send-2-.png":
                                                 toolBarProps?.sendActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/7a39bc6f-eef5-4185-bcf8-2a645aff53b2/Send-3-.png"))
                                 .resizable()
-                                .frame(width: CGFloat(toolBarProps?.sendImageWidth ?? 40), height: CGFloat(toolBarProps?.sendImageHeight ?? 40))
+                                .frame(width: CGFloat(toolBarProps?.sendImageWidth ?? 28), height: CGFloat(toolBarProps?.sendImageHeight ?? 28))
                                 
                             }
                         }
@@ -330,11 +332,11 @@ public struct AssistantDrawerUI: View {
                     }
                             
                 }
-                .padding(.leading, 20)
-                .padding(.trailing, 20)
+                .padding(.leading, CGFloat(toolBarProps?.paddingLeft ?? 20))
+                .padding(.trailing, CGFloat(toolBarProps?.paddingRight ?? 20))
             }
-            .padding(.top, isFullScreen ? 40 : 10) //if full screen, use header props top padding, otherwise use tool bar props top padding
-            .padding(.bottom, isFullScreen ? 20: 10) //if full screen, use header props top padding, otherwise use tool bar props top padding
+                .padding(.top, isFullScreen ? 40 : CGFloat(toolBarProps?.paddingTop ?? 10)) //if full screen, use header props top padding, otherwise use tool bar props top padding
+                .padding(.bottom, isFullScreen ? 20 : CGFloat(toolBarProps?.paddingBottom ?? 10)) //if full screen, use header props top padding, otherwise use tool bar props top padding
             .background(Color(hex: toolBarProps?.backgroundColor ?? "#ffffff"))
         }
         .onChange(of: assistantIsOpen){ _ in
