@@ -152,15 +152,15 @@ public struct AssistantDrawerUI: View {
                                             }){
                                                 Text(hint.text)
                                                     .lineLimit(1)
-                                                    .font(.system(size: 14))
-                                                    .foregroundColor(Color.init(hex: "#000000"))
-                                                    .padding(.leading, 8)
-                                                    .padding(.trailing, 8)
-                                                    .padding(.top, 8)
-                                                    .padding(.bottom, 8)
-                                                    .background(Color.init(hex: "#ffffff"))
-                                                    .cornerRadius(CGFloat(20))
-                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(20)).inset(by: CGFloat(1)).stroke(Color.init(hex: "#CCCCCC")!, lineWidth: 1.5))
+                                                    .font(.system(size: CGFloat(bodyProps?.hintsFontSize ?? 14)))
+                                                    .foregroundColor(Color.init(hex: bodyProps?.hintsTextColor ?? "#000000"))
+                                                    .padding(.leading, CGFloat(bodyProps?.hintsPaddingLeft ?? 8))
+                                                    .padding(.trailing, CGFloat(bodyProps?.hintsPaddingRight ?? 8))
+                                                    .padding(.top, CGFloat(bodyProps?.hintsPaddingTop ?? 8))
+                                                    .padding(.bottom, CGFloat(bodyProps?.hintsPaddingBottom ?? 8))
+                                                    .background(Color.init(hex: bodyProps?.hintsBackgroundColor ?? "#ffffff"))
+                                                    .cornerRadius(CGFloat(bodyProps?.hintsBorderRadius ?? 20))
+                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.hintsBorderRadius ?? 20)).inset(by: CGFloat(1)).stroke(Color.init(hex: bodyProps?.hintsBorderColor ?? "#CCCCCC")!, lineWidth: CGFloat(bodyProps?.hintsBorderWidth ?? 1.5)))
                                             }
                                         }
                                     }
