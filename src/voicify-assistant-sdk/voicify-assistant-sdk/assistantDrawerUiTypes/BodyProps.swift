@@ -45,6 +45,7 @@ public class BodyProps {
 //    val borderTopColor: String? = null,
 //    val borderBottomColor: String? = null,
     public var borderColor: String? = nil
+    public var borderWidth: Float? = nil
     public var hintsTextColor: String? = nil
     public var hintsFontSize: Float? = nil
     public var hintsPaddingTop: Int? = nil
@@ -57,7 +58,7 @@ public class BodyProps {
     //val hintsBorderStyle: String? = null,
     public var hintsBorderRadius: Float? = nil
     
-    public init(backgroundColor: String? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, assistantImageBorderRadius: Float? = nil, assistantImage: String? = nil, assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantImageBackgroundColor: String? = nil, messageSentTextColor: String? = nil, messageSentBackgroundColor: String? = nil, messageReceivedFontSize: Float? = nil, messageReceivedTextColor: String? = nil, messageReceivedBackgroundColor: String? = nil, messageSentFontSize: Float? = nil, messageSentBorderWidth: Int? = nil, messageSentBorderColor: String? = nil, messageReceivedBorderWidth: Int? = nil, messageReceivedBorderColor: String? = nil, messageSentBorderTopLeftRadius: Float? = nil, messageSentBorderTopRightRadius: Float? = nil, messageSentBorderBottomLeftRadius: Float? = nil, messageSentBorderBottomRightRadius: Float? = nil, messageReceivedBorderTopLeftRadius: Float? = nil, messageReceivedBorderTopRightRadius: Float? = nil, messageReceivedBorderBottomLeftRadius: Float? = nil, messageReceivedBorderBottomRightRadius: Float? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, borderColor: String? = nil, hintsTextColor: String? = nil, hintsFontSize: Float? = nil, hintsPaddingTop: Int? = nil, hintsPaddingBottom: Int? = nil, hintsPaddingRight: Int? = nil, hintsPaddingLeft: Int? = nil, hintsBackgroundColor: String? = nil, hintsBorderWidth: Float? = nil, hintsBorderColor: String? = nil, hintsBorderRadius: Float? = nil) {
+    public init(backgroundColor: String? = nil, assistantImageBorderColor: String? = nil, borderWidth: Float? = nil, assistantImageBorderWidth: Int? = nil, assistantImageBorderRadius: Float? = nil, assistantImage: String? = nil, assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantImageBackgroundColor: String? = nil, messageSentTextColor: String? = nil, messageSentBackgroundColor: String? = nil, messageReceivedFontSize: Float? = nil, messageReceivedTextColor: String? = nil, messageReceivedBackgroundColor: String? = nil, messageSentFontSize: Float? = nil, messageSentBorderWidth: Int? = nil, messageSentBorderColor: String? = nil, messageReceivedBorderWidth: Int? = nil, messageReceivedBorderColor: String? = nil, messageSentBorderTopLeftRadius: Float? = nil, messageSentBorderTopRightRadius: Float? = nil, messageSentBorderBottomLeftRadius: Float? = nil, messageSentBorderBottomRightRadius: Float? = nil, messageReceivedBorderTopLeftRadius: Float? = nil, messageReceivedBorderTopRightRadius: Float? = nil, messageReceivedBorderBottomLeftRadius: Float? = nil, messageReceivedBorderBottomRightRadius: Float? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, borderColor: String? = nil, hintsTextColor: String? = nil, hintsFontSize: Float? = nil, hintsPaddingTop: Int? = nil, hintsPaddingBottom: Int? = nil, hintsPaddingRight: Int? = nil, hintsPaddingLeft: Int? = nil, hintsBackgroundColor: String? = nil, hintsBorderWidth: Float? = nil, hintsBorderColor: String? = nil, hintsBorderRadius: Float? = nil) {
         self.backgroundColor = backgroundColor
         self.assistantImageBorderColor = assistantImageBorderColor
         self.assistantImageBorderWidth = assistantImageBorderWidth
@@ -89,6 +90,7 @@ public class BodyProps {
         self.paddingTop = paddingTop
         self.paddingBottom = paddingBottom
         self.borderColor = borderColor
+        self.borderWidth = borderWidth
         self.hintsTextColor = hintsTextColor
         self.hintsFontSize = hintsFontSize
         self.hintsPaddingTop = hintsPaddingTop

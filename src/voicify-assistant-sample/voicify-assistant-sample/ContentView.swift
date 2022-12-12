@@ -48,7 +48,7 @@ struct ContentView: View {
                         device: "My Device",
                         voice: "",
                         autoRunConversation: true,
-                        initializeWithWelcomeMessage: true,
+                        initializeWithWelcomeMessage: false,
                         textToSpeechProvider: "Google",
                         useVoiceInput: true,
                         useOutputSpeech: true,
@@ -89,6 +89,7 @@ struct ContentView: View {
 //                    BodyProps(
 //                        backgroundColor: "#345671",
 //                        assistantImageBorderColor: "#000000",
+//                        borderWidth: 1,
 //                        assistantImageBorderWidth: 2,
 //                        assistantImageBorderRadius: 0,
 //                        assistantImage: "https://media.istockphoto.com/id/1141495869/photo/3d-render-blue-pink-neon-round-frame-circle-ring-shape-empty-space-ultraviolet-light-80s.jpg?s=612x612&w=0&k=20&c=s_k3XrnKy9qRzTR2vdLg_BC6smrY1WymKpBsBfAvLNU=",
