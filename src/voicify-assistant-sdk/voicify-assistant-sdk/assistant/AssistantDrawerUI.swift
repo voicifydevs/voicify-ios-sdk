@@ -106,8 +106,8 @@ public struct AssistantDrawerUI: View {
                                                     .foregroundColor(Color.init(hex: bodyProps?.messageReceivedTextColor ?? "#000000"))
                                                     .font(.system(size: CGFloat(bodyProps?.messageReceivedFontSize ?? 14)))
                                                     .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                                    .background(Color.init(hex: bodyProps?.messageReceivedBackgroundColor ?? "#0000000d"))
-                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: bodyProps?.messageReceivedBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 1)))
+                                                    .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).stroke(Color.init(hex: bodyProps?.messageReceivedBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 1)))
+                                                    .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).fill(Color.init(hex: bodyProps?.messageReceivedBackgroundColor ?? "#0000000d")!))
                                             }
                                             .padding(.top, 20)
                                             Spacer()
@@ -122,8 +122,8 @@ public struct AssistantDrawerUI: View {
                                                 .font(.system(size: CGFloat(bodyProps?.messageSentFontSize ?? 14)))
                                                 .foregroundColor(Color.init(hex:bodyProps?.messageSentTextColor ?? "#ffffff"))
                                                 .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                                .background(Color.init(hex: bodyProps?.messageSentBackgroundColor ?? "#00000080"))
-                                                .overlay(RoundedRectangle(cornerRadius: CGFloat(0)).stroke(Color.init(hex: bodyProps?.messageSentBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.messageSentBorderWidth ?? 0)))
+                                                .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).stroke(Color.init(hex: bodyProps?.messageSentBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 0)))
+                                                .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).fill(Color.init(hex: bodyProps?.messageSentBackgroundColor ?? "#00000080")!))
                                         }
                                         .padding(.leading, 50)
                                         .padding(.top, 30)
@@ -160,7 +160,7 @@ public struct AssistantDrawerUI: View {
                                                     .padding(.bottom, CGFloat(bodyProps?.hintsPaddingBottom ?? 8))
                                                     .background(Color.init(hex: bodyProps?.hintsBackgroundColor ?? "#ffffff"))
                                                     .cornerRadius(CGFloat(bodyProps?.hintsBorderRadius ?? 20))
-                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.hintsBorderRadius ?? 20)).inset(by: CGFloat(1)).stroke(Color.init(hex: bodyProps?.hintsBorderColor ?? "#CCCCCC")!, lineWidth: CGFloat(bodyProps?.hintsBorderWidth ?? 1.5)))
+                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.hintsBorderRadius ?? 20)).strokeBorder(Color.init(hex: bodyProps?.hintsBorderColor ?? "#CCCCCC")!, lineWidth: CGFloat(bodyProps?.hintsBorderWidth ?? 1.5)))
                                             }
                                         }
                                     }
@@ -476,6 +476,67 @@ struct Line: Shape {
         path.move(to: CGPoint(x: 0, y: 0))
         path.addLine(to: CGPoint(x: rect.width, y: 0))
         return path
+    }
+}
+
+struct RoundedCorners: Shape {
+    var tl: CGFloat = 0.0
+    var tr: CGFloat = 0.0
+    var bl: CGFloat = 0.0
+    var br: CGFloat = 0.0
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        let w = rect.size.width
+        let h = rect.size.height
+        
+        // Make sure we do not exceed the size of the rectangle
+        let tr = min(min(self.tr, h/2), w/2)
+        let tl = min(min(self.tl, h/2), w/2)
+        let bl = min(min(self.bl, h/2), w/2)
+        let br = min(min(self.br, h/2), w/2)
+        
+        path.move(to: CGPoint(x: w / 2.0, y: 0))
+        path.addLine(to: CGPoint(x: w - tr, y: 0))
+        path.addArc(center: CGPoint(x: w - tr, y: tr), radius: tr,
+                    startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 0), clockwise: false)
+        
+        path.addLine(to: CGPoint(x: w, y: h - br))
+        path.addArc(center: CGPoint(x: w - br, y: h - br), radius: br,
+                    startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)
+        
+        path.addLine(to: CGPoint(x: bl, y: h))
+        path.addArc(center: CGPoint(x: bl, y: h - bl), radius: bl,
+                    startAngle: Angle(degrees: 90), endAngle: Angle(degrees: 180), clockwise: false)
+        
+        path.addLine(to: CGPoint(x: 0, y: tl))
+        path.addArc(center: CGPoint(x: tl, y: tl), radius: tl,
+                    startAngle: Angle(degrees: 180), endAngle: Angle(degrees: 270), clockwise: false)
+        
+        path.addLine(to: CGPoint(x: w/2.0, y: 0))
+        path.closeSubpath()
+
+        return path
+    }
+}
+
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        path.addLine(to: CGPoint(x: 2.0, y:0))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        let rect = RoundedCorner(radius: radius, corners: corners)
+        return clipShape( rect)
     }
 }
 
