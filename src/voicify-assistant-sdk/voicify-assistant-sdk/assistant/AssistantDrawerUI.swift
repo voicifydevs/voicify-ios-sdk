@@ -83,7 +83,7 @@ public struct AssistantDrawerUI: View {
                     }
                     .padding(.leading, CGFloat(headerProps?.paddingLeft ?? 20))
                     .padding(.trailing, CGFloat(headerProps?.paddingRight ?? 20))
-                    .padding(.top, CGFloat(headerProps?.paddingTop ?? 40))
+                    .padding(.top, CGFloat(headerProps?.paddingTop ?? 50))
                     .padding(.bottom, CGFloat(headerProps?.paddingBottom ?? 20))
                     .background(Color(hex: headerProps?.backgroundColor ?? "#ffffff"))
                     VStack{
