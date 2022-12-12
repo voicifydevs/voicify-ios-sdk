@@ -35,6 +35,7 @@ struct ContentView: View {
                         self.assistantIsOpen.toggle()
                     }
                 }
+                .padding(.top, 50)
                 Spacer()
             }
             AssistantDrawerUI(
@@ -165,7 +166,7 @@ struct ContentView: View {
 //                    paddingLeft: 20,
 //                    paddingRight: 20,
 //                    paddingTop: 10,
-//                    paddingBottom: 20,
+//                    paddingBottom: 80,
 //                    placeholder: "just enter it...",
 //                    helpText: "What do you want?",
 //                    helpTextFontSize: 18,
@@ -176,6 +177,7 @@ struct ContentView: View {
 //                )
             )
         }
+        .ignoresSafeArea(.container)
     }
 }
 

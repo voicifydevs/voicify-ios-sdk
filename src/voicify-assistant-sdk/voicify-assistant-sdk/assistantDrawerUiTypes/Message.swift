@@ -9,10 +9,12 @@ import UIKit
 
 public class Message : Identifiable
 {
+    public var id: String
     public var text: String
     public var origin: String
     
-    public init(text: String, origin: String) {
+    public init(id: String, text: String, origin: String) {
+        self.id = id
         self.text = text
         self.origin = origin
     }

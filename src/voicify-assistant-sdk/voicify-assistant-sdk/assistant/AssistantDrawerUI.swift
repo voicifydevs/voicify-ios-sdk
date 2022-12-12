@@ -33,6 +33,7 @@ public struct AssistantDrawerUI: View {
     @State var animationValues: Array<CGFloat> = [CGFloat](repeating: 0.0001, count: 8)
     @State var assistantStateText = " "
     @State var isFinalSpeech = false
+    @State var keyboardToggled = false
 
     public init(assistantSettings: AssistantSettingsProps, headerProps: HeaderProps?, bodyProps: BodyProps?, toolBarProps: ToolBarProps?) {
         self.assistantSettingsProps = assistantSettings
@@ -46,7 +47,7 @@ public struct AssistantDrawerUI: View {
     }
     
     public var body: some View {
-        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? UIScreen.main.bounds.height/3.5 : UIScreen.main.bounds.height/2.2, topBarHeight: 0 , showTopIndicator: false){
+        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? UIScreen.main.bounds.height/3.5 : 330, topBarHeight: 0 , showTopIndicator: false){
             VStack(spacing: 0){
                 if isFullScreen {
                     HStack{
@@ -86,54 +87,84 @@ public struct AssistantDrawerUI: View {
                     .padding(.bottom, CGFloat(headerProps?.paddingBottom ?? 20))
                     .background(Color(hex: headerProps?.backgroundColor ?? "#ffffff"))
                     VStack{
-                        ScrollView{
-                            VStack{
-                                ForEach(messages){ message in
-                                    if message.origin == "Received"{
-                                        HStack{
-                                            VStack{
-                                                KFImage(URL(string: bodyProps?.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
-                                                    .resizable()
-                                                    .padding(.all, 4)
-                                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: bodyProps?.assistantImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.assistantImageBorderWidth ?? 2)))
-                                                    .frame(width: CGFloat(bodyProps?.assistantImageWidth ?? 35), height: CGFloat(bodyProps?.assistantImageHeight ?? 35))
-                                                    .background(Color.init(hex: bodyProps?.assistantImageBackgroundColor ?? "#ffffff"))
-                                                    .cornerRadius(CGFloat(bodyProps?.assistantImageBorderRadius ?? 20))
+                        ScrollViewReader{ value in
+                            ScrollView{
+                                VStack{
+                                    ForEach(messages){ message in
+                                        if message.origin == "Received"{
+                                            HStack{
+                                                VStack{
+                                                    KFImage(URL(string: bodyProps?.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                                                        .resizable()
+                                                        .padding(.all, 4)
+                                                        .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: bodyProps?.assistantImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.assistantImageBorderWidth ?? 2)))
+                                                        .frame(width: CGFloat(bodyProps?.assistantImageWidth ?? 35), height: CGFloat(bodyProps?.assistantImageHeight ?? 35))
+                                                        .background(Color.init(hex: bodyProps?.assistantImageBackgroundColor ?? "#ffffff"))
+                                                        .cornerRadius(CGFloat(bodyProps?.assistantImageBorderRadius ?? 20))
+                                                    Spacer()
+                                                }
+                                                VStack{
+                                                    Text(.init(message.text) )
+                                                        .foregroundColor(Color.init(hex: bodyProps?.messageReceivedTextColor ?? "#000000"))
+                                                        .font(.system(size: CGFloat(bodyProps?.messageReceivedFontSize ?? 14)))
+                                                        .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
+                                                        .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).stroke(Color.init(hex: bodyProps?.messageReceivedBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 1)))
+                                                        .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).fill(Color.init(hex: bodyProps?.messageReceivedBackgroundColor ?? "#0000000d")!))
+                                                }
+                                                .padding(.top, 20)
                                                 Spacer()
                                             }
-                                            VStack{
-                                                Text(.init(message.text) )
-                                                    .foregroundColor(Color.init(hex: bodyProps?.messageReceivedTextColor ?? "#000000"))
-                                                    .font(.system(size: CGFloat(bodyProps?.messageReceivedFontSize ?? 14)))
+                                            .padding(.trailing, 40)
+                                            .padding(.top, 10)
+                                            .id(message.id)
+                                        }
+                                        else{
+                                            HStack{
+                                                Spacer()
+                                                Text(message.text)
+                                                    .font(.system(size: CGFloat(bodyProps?.messageSentFontSize ?? 14)))
+                                                    .foregroundColor(Color.init(hex:bodyProps?.messageSentTextColor ?? "#ffffff"))
                                                     .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                                    .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).stroke(Color.init(hex: bodyProps?.messageReceivedBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 1)))
-                                                    .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).fill(Color.init(hex: bodyProps?.messageReceivedBackgroundColor ?? "#0000000d")!))
+                                                    .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).stroke(Color.init(hex: bodyProps?.messageSentBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 0)))
+                                                    .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).fill(Color.init(hex: bodyProps?.messageSentBackgroundColor ?? "#00000080")!))
                                             }
-                                            .padding(.top, 20)
-                                            Spacer()
+                                            .padding(.leading, 50)
+                                            .padding(.top, 30)
                                         }
-                                        .padding(.trailing, 40)
-                                        .padding(.top, 10)
-                                    }
-                                    else{
-                                        HStack{
-                                            Spacer()
-                                            Text(message.text)
-                                                .font(.system(size: CGFloat(bodyProps?.messageSentFontSize ?? 14)))
-                                                .foregroundColor(Color.init(hex:bodyProps?.messageSentTextColor ?? "#ffffff"))
-                                                .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                                .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).stroke(Color.init(hex: bodyProps?.messageSentBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 0)))
-                                                .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).fill(Color.init(hex: bodyProps?.messageSentBackgroundColor ?? "#00000080")!))
-                                        }
-                                        .padding(.leading, 50)
-                                        .padding(.top, 30)
                                     }
                                 }
+                                .padding(.top, CGFloat(bodyProps?.paddingTop ?? 20))
+                                .padding(.bottom, CGFloat(bodyProps?.paddingBottom ?? 10))
+                                .padding(.leading, CGFloat(bodyProps?.paddingLeft ?? 20))
+                                .padding(.trailing, CGFloat(bodyProps?.paddingRight ?? 20))
                             }
-                            .padding(.top, CGFloat(bodyProps?.paddingTop ?? 20))
-                            .padding(.bottom, CGFloat(bodyProps?.paddingBottom ?? 10))
-                            .padding(.leading, CGFloat(bodyProps?.paddingLeft ?? 20))
-                            .padding(.trailing, CGFloat(bodyProps?.paddingRight ?? 20))
+                            .onChange(of: messages.count, perform: { _ in
+                                    if(messages[messages.count - 1].origin == "Received")
+                                    {
+                                        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
+                                            value.scrollTo(messages[messages.count - 1].id)
+                                        }
+                                    }
+                                }
+                            )
+                            .onChange(of: isUsingSpeech, perform: { _ in
+                                    if(messages[messages.count - 1].origin == "Received")
+                                    {
+                                        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
+                                            value.scrollTo(messages[messages.count - 1].id, anchor: .bottom)
+                                        }
+                                    }
+                                }
+                            )
+                            .onChange(of: keyboardToggled, perform: { _ in
+                                    if(messages[messages.count - 1].origin == "Received")
+                                    {
+                                        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
+                                            value.scrollTo(messages[messages.count - 1].id, anchor: .bottom)
+                                        }
+                                    }
+                                }
+                            )
                         }
                         if !hints.isEmpty {
                             ScrollView(.horizontal, showsIndicators: false){
@@ -146,7 +177,7 @@ public struct AssistantDrawerUI: View {
                                                 inputSpeech = ""
                                                 voicifySTT.stopListening()
                                                 voicifyTTS.stop()
-                                                messages.append(Message(text: hint.text, origin: "Sent"))
+                                                messages.append(Message(id: UUID().uuidString,text: hint.text, origin: "Sent"))
                                                 voicifyAsssitant.makeTextRequest(text: hint.text, inputType: "Text")
                                                 hints = []
                                             }){
@@ -304,6 +335,7 @@ public struct AssistantDrawerUI: View {
                             }
                             else{
                                 voicifySTT.startListening()
+                                voicifyTTS.stop()
                             }
                                }) {
                                    VStack{
@@ -322,6 +354,7 @@ public struct AssistantDrawerUI: View {
                             TextField(toolBarProps?.placeholder ?? "Enter a message...", text: $inputText){focused in
                                 if(focused){
                                     isUsingSpeech = false
+                                    keyboardToggled.toggle()
                                 }
                                 voicifySTT.stopListening()
                             }
@@ -333,7 +366,7 @@ public struct AssistantDrawerUI: View {
                             Button(action:{
                                 if !inputText.isEmpty {
                                     UIApplication.shared.endEditing()
-                                    messages.append(Message(text: inputText, origin: "Sent"))
+                                    messages.append(Message(id: UUID().uuidString, text: inputText, origin: "Sent"))
                                     voicifyAsssitant.makeTextRequest(text: inputText, inputType: "text")
                                     inputText = ""
                                     hints = []
@@ -419,7 +452,7 @@ public struct AssistantDrawerUI: View {
                 voicifyAsssitant.onResponseReceived{response in
                     if(!inputSpeech.isEmpty)
                     {
-                        messages.append(Message(text: inputSpeech, origin: "Sent"))
+                        messages.append(Message(id: UUID().uuidString,text: inputSpeech, origin: "Sent"))
                         inputSpeech = ""
                     }
                     isFullScreen = true
@@ -427,7 +460,7 @@ public struct AssistantDrawerUI: View {
                     response.hints.forEach{ hint in
                         hints.append(Hint(text: hint))
                     }
-                    messages.append(Message(text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
+                    messages.append(Message(id: UUID().uuidString,text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
                     print("RESPONSE RECEIVED!!!")
                 }
                 if(assistantSettingsProps.initializeWithWelcomeMessage)
@@ -468,7 +501,7 @@ public struct AssistantDrawerUI: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
-        .padding(.bottom, 0.1) // if keyboard is active - causes view to lift
+        .padding(.bottom, assistantIsOpen ? 0.1 : 0) // if keyboard is active - causes view to lift
     }
 }
 
