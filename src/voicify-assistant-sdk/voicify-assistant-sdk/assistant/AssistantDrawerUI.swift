@@ -398,17 +398,19 @@ public struct AssistantDrawerUI: View {
                     assistantStateText = "Listening..."
                 }
                 voicifySTT.addEndListener {
-                    isListening = false
-                    isSpeaking = false
-                    if(inputSpeech.isEmpty)
-                    {
-                        assistantStateText = "I didn't catch that..."
-                    }
-                    else {
-                        assistantStateText = " "
-                    }
-                    for i in 0...7 {
-                        animationValues[i] = CGFloat(1)
+                    if(isListening){
+                        isListening = false
+                        isSpeaking = false
+                        if(inputSpeech.isEmpty)
+                        {
+                            assistantStateText = "I didn't catch that..."
+                        }
+                        else {
+                            assistantStateText = " "
+                        }
+                        for i in 0...7 {
+                            animationValues[i] = CGFloat(1)
+                        }
                     }
                 }
                 voicifyAsssitant.onRequestStarted{request in
@@ -418,10 +420,10 @@ public struct AssistantDrawerUI: View {
                     if(!inputSpeech.isEmpty)
                     {
                         messages.append(Message(text: inputSpeech, origin: "Sent"))
-                        hints = []
                         inputSpeech = ""
                     }
                     isFullScreen = true
+                    hints = []
                     response.hints.forEach{ hint in
                         hints.append(Hint(text: hint))
                     }
