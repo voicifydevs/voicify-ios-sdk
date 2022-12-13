@@ -416,10 +416,8 @@ public struct AssistantDrawerUI: View {
                 responseText = ""
                 voicifySTT.addPartialListener{(partialResult:String) -> Void in
                     inputSpeech = partialResult
-                    print("got partial result")
                 }
                 voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
-                    print("got full result")
                     isFinalSpeech = true
                     assistantStateText = " "
                     inputSpeech = fullResult
@@ -433,8 +431,6 @@ public struct AssistantDrawerUI: View {
                     if isSpeaking == false{
                         isSpeaking = true
                     }
-
-                    print("heres the volume \(volume)")
                 }
                 voicifySTT.addStartListener {
                     isListening = true
@@ -472,7 +468,6 @@ public struct AssistantDrawerUI: View {
                         hints.append(Hint(text: hint))
                     }
                     messages.append(Message(id: UUID().uuidString,text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
-                    print("RESPONSE RECEIVED!!!")
                 }
                 if(assistantSettingsProps.initializeWithWelcomeMessage)
                 {

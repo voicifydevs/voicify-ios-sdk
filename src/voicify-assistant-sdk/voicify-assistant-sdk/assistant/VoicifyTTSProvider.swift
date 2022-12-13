@@ -12,6 +12,7 @@ import SwiftUI
 public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject {
     private var settings: VoicifyTextToSpeechSettings
     private var speechEndHandlers: Array<() -> Void> = []
+    private var speechErrorHandlers: Array<(String) -> Void> = []
     private var ttsResponse: Array<TTSData>? = nil
     private var currentPlayingIndex: Int = 0
     private var locale = ""
@@ -45,8 +46,7 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpBody = encodedBody
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                if let error = error {
-                    print("Request error: ", error)
+                if error != nil {
                     return
                 }
                 guard let response = response as? HTTPURLResponse else { return }
@@ -79,15 +79,18 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
                                 }
                             }
                         } catch let error {
-                            print("Error decoding: ", error)
-                        
+                            self.speechErrorHandlers.forEach{ speechErrorHandler in
+                                speechErrorHandler(error.localizedDescription)
+                            }
                         }
                     }
                 }
             }.resume()
         }
-        catch let ttsError{
-            print(ttsError)
+        catch let error{
+            speechErrorHandlers.forEach{ speechErrorHandler in
+                speechErrorHandler(error.localizedDescription)
+            }
         }
     }
     
@@ -99,8 +102,6 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
     @objc public func onSpeechEnd() -> Void{
         if let count = self.ttsResponse?.count{
             currentPlayingIndex+=1
-            print(count)
-            print(currentPlayingIndex)
             if (currentPlayingIndex < count)
             {
                 playNext()
@@ -124,6 +125,10 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
         self.speechEndHandlers.append(callback)
     }
     
+    public func addSpeechErrorListener(callback: @escaping (String) -> Void){
+        self.speechErrorHandlers.append(callback)
+    }
+    
     private func playNext(){
         do{
             let audioUrl = self.ttsResponse?[currentPlayingIndex].url
@@ -134,8 +139,9 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
             self.player?.play()
         }
         catch let error {
-           print("Error decoding: ", error)
-       
+            speechErrorHandlers.forEach{ speechErrorHandler in
+                speechErrorHandler(error.localizedDescription)
+            }
        }
     }
     
@@ -153,5 +159,6 @@ public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject 
     
     public func clearHandlers() {
         self.speechEndHandlers = []
+        self.speechErrorHandlers = []
     }
 }

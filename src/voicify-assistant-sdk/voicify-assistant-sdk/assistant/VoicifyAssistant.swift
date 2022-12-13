@@ -305,11 +305,9 @@ public class VoicifyAssistant : ObservableObject
         let request = generateWelcomeRequest(requestAttributes: requestAttributes)
         if(settings.autoRunConversation && settings.initializeWithText == false)
         {
-            print("howdy")
             makeRequest(request: request, inputType: "Speech")
         }
         else{
-            print("partner")
             makeRequest(request: request,inputType: "Text")
         }
     }
