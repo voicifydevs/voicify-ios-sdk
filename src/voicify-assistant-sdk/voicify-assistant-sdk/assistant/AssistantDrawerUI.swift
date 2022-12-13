@@ -203,7 +203,8 @@ public struct AssistantDrawerUI: View {
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .border(width: CGFloat(bodyProps?.borderWidth ?? 1), edges: [.top, .bottom], color: Color.init(hex: bodyProps?.borderColor ?? "#8F97A1")!)
+                    .border(width: CGFloat(bodyProps?.borderTopWidth ?? 1), edges: [.top], color: Color.init(hex: bodyProps?.borderTopColor ?? "#8F97A1")!)
+                    .border(width: CGFloat(bodyProps?.borderBottomWidth ?? 1), edges: [.bottom], color: Color.init(hex: bodyProps?.borderBottomColor ?? "#8F97A1")!)
                     .background(Color.init(hex: bodyProps?.backgroundColor ?? "#F4F4F6"))
                 }
                 VStack(){

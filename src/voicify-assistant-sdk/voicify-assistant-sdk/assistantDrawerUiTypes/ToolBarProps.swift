@@ -15,7 +15,6 @@ public class ToolBarProps {
     public var micBorderRadius: Float? = nil
     public var micImagePadding: Float? = nil
     public var micImageBorderWidth: Int? = nil
-    //val micImageBorderStyle: String? = null,
     public var micImageBorderColor: String? = nil
     public var micImageHeight: Int? = nil
     public var micImageWidth: Int? = nil
@@ -50,7 +49,6 @@ public class ToolBarProps {
     public var helpText: String? = nil
     public var helpTextFontSize: Float? = nil
     public var helpTextFontColor: String? = nil
-//    val assistantStateText: String? = null,
     public var assistantStateTextColor: String? = nil
     public var assistantStateFontSize: Float? = nil
     public var equalizerColor: String? = nil
