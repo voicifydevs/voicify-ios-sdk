@@ -133,6 +133,7 @@ public struct AssistantDrawerUI: View {
                                             .padding(.top, 30)
                                         }
                                     }
+                                    Text("").opacity(0).id(1)
                                 }
                                 .padding(.top, CGFloat(bodyProps?.paddingTop ?? 20))
                                 .padding(.bottom, CGFloat(bodyProps?.paddingBottom ?? 10))
@@ -143,7 +144,7 @@ public struct AssistantDrawerUI: View {
                                     if(messages[messages.count - 1].origin == "Received")
                                     {
                                         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { timer in
-                                            value.scrollTo(messages[messages.count - 1].id)
+                                            value.scrollTo(1)
                                         }
                                     }
                                 }
@@ -152,7 +153,7 @@ public struct AssistantDrawerUI: View {
                                     if(messages[messages.count - 1].origin == "Received")
                                     {
                                         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
-                                            value.scrollTo(messages[messages.count - 1].id, anchor: .bottom)
+                                            value.scrollTo(1)
                                         }
                                     }
                                 }
@@ -161,7 +162,7 @@ public struct AssistantDrawerUI: View {
                                     if(messages[messages.count - 1].origin == "Received")
                                     {
                                         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
-                                            value.scrollTo(messages[messages.count - 1].id, anchor: .bottom)
+                                            value.scrollTo(1)
                                         }
                                     }
                                 }
