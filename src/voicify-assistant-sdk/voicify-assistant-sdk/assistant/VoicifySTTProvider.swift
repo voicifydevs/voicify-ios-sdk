@@ -28,6 +28,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     private var averagePowerForChannel0: Float = 0.0
     private var averagePowerForChannel1: Float = 0.0
     private var gotFullResult = false
+    public var hasPermission = true
         
     public init() {
 
@@ -50,7 +51,9 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                 guard await AVAudioSession.sharedInstance().hasPermissionToRecord() else {
                     throw RecognizerError.notPermittedToRecord
                 }
+                hasPermission = true
             } catch {
+                hasPermission = false
                 speechErrorHandlers.forEach{ speechErrorHandler in
                     speechErrorHandler(error.localizedDescription)
                 }

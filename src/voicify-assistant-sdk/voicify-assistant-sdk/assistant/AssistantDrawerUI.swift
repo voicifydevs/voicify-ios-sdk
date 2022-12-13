@@ -34,6 +34,7 @@ public struct AssistantDrawerUI: View {
     @State var assistantStateText = " "
     @State var isFinalSpeech = false
     @State var keyboardToggled = false
+    @State var showPermissionAlert = false
 
     public init(assistantSettings: AssistantSettingsProps, headerProps: HeaderProps?, bodyProps: BodyProps?, toolBarProps: ToolBarProps?) {
         self.assistantSettingsProps = assistantSettings
@@ -334,10 +335,17 @@ public struct AssistantDrawerUI: View {
                                 inputSpeech = ""
                             }
                             else{
-                                voicifySTT.startListening()
-                                voicifyTTS.stop()
+                                if(voicifySTT.hasPermission)
+                                {
+                                    voicifySTT.startListening()
+                                    voicifyTTS.stop()
+                                }
+                                else{
+                                    showPermissionAlert = true
+                                }
                             }
-                               }) {
+                               
+                        }) {
                                    VStack{
                                        KFImage(URL(string: isUsingSpeech ? toolBarProps?.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : toolBarProps?.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
                                            .resizable()
@@ -348,7 +356,10 @@ public struct AssistantDrawerUI: View {
                                    .background(Color.init(hex: isListening && isUsingSpeech ? toolBarProps?.micActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.micInactiveHighlightColor ?? "00000000"))
                                    .cornerRadius(CGFloat(toolBarProps?.micBorderRadius ?? 40))
                             }
-                               .frame(minWidth: 44, minHeight: 44)
+                            .frame(minWidth: 44, minHeight: 44)
+                            .alert("You do not have permission to use speech recognition. Go to your app settings to grant permission and then try again.", isPresented: $showPermissionAlert) {
+                                Button("OK", role: .cancel) { }
+                            }
                         Spacer()
                         HStack{
                             TextField(toolBarProps?.placeholder ?? "Enter a message...", text: $inputText){focused in
@@ -474,8 +485,11 @@ public struct AssistantDrawerUI: View {
                     }
                 }
                 else if (assistantSettingsProps.initializeWithText == false){
-                    voicifySTT.startListening()
-                    isUsingSpeech = true
+                    if(voicifySTT.hasPermission)
+                    {
+                        voicifySTT.startListening()
+                        isUsingSpeech = true
+                    }
                 }
                 else{
                     isUsingSpeech = false
