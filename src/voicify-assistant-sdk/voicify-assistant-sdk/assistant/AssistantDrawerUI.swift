@@ -332,6 +332,7 @@ public struct AssistantDrawerUI: View {
                             if(isListening)
                             {
                                 voicifySTT.stopListening()
+                                isListening = false
                                 inputSpeech = ""
                             }
                             else{
@@ -344,17 +345,16 @@ public struct AssistantDrawerUI: View {
                                     showPermissionAlert = true
                                 }
                             }
-                               
                         }) {
-                                   VStack{
-                                       KFImage(URL(string: isUsingSpeech ? toolBarProps?.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : toolBarProps?.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
-                                           .resizable()
-                                           .frame(width: CGFloat(toolBarProps?.micImageWidth ?? 40), height: CGFloat(toolBarProps?.micImageHeight ?? 40))
-                                   }
-                                   .padding(.all, CGFloat(toolBarProps?.micImagePadding ?? 4))
-                                   .overlay(RoundedRectangle(cornerRadius: CGFloat(toolBarProps?.micBorderRadius ?? 40)).stroke(Color.init(hex: toolBarProps?.micImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(toolBarProps?.micImageBorderWidth ?? 0)))
-                                   .background(Color.init(hex: isListening && isUsingSpeech ? toolBarProps?.micActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.micInactiveHighlightColor ?? "00000000"))
-                                   .cornerRadius(CGFloat(toolBarProps?.micBorderRadius ?? 40))
+                               VStack{
+                                   KFImage(URL(string: isUsingSpeech ? toolBarProps?.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : toolBarProps?.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
+                                       .resizable()
+                                       .frame(width: CGFloat(toolBarProps?.micImageWidth ?? 40), height: CGFloat(toolBarProps?.micImageHeight ?? 40))
+                               }
+                               .padding(.all, CGFloat(toolBarProps?.micImagePadding ?? 4))
+                               .overlay(RoundedRectangle(cornerRadius: CGFloat(toolBarProps?.micBorderRadius ?? 40)).stroke(Color.init(hex: toolBarProps?.micImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(toolBarProps?.micImageBorderWidth ?? 0)))
+                               .background(Color.init(hex: isListening && isUsingSpeech ? toolBarProps?.micActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.micInactiveHighlightColor ?? "00000000"))
+                               .cornerRadius(CGFloat(toolBarProps?.micBorderRadius ?? 40))
                             }
                             .frame(minWidth: 44, minHeight: 44)
                             .alert("You do not have permission to use speech recognition. Go to your app settings to grant permission and then try again.", isPresented: $showPermissionAlert) {
@@ -368,6 +368,7 @@ public struct AssistantDrawerUI: View {
                                     keyboardToggled.toggle()
                                 }
                                 voicifySTT.stopListening()
+                                isListening = false
                             }
                             .font(.system(size: CGFloat(toolBarProps?.textBoxFontSize ?? 16)))
                             .padding(.leading, 10)
