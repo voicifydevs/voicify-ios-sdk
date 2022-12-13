@@ -142,7 +142,7 @@ public struct AssistantDrawerUI: View {
                             .onChange(of: messages.count, perform: { _ in
                                     if(messages[messages.count - 1].origin == "Received")
                                     {
-                                        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
+                                        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { timer in
                                             value.scrollTo(messages[messages.count - 1].id)
                                         }
                                     }
@@ -368,8 +368,12 @@ public struct AssistantDrawerUI: View {
                                     isUsingSpeech = false
                                     keyboardToggled.toggle()
                                 }
-                                voicifySTT.stopListening()
-                                isListening = false
+                                if(isListening)
+                                {
+                                    voicifySTT.stopListening()
+                                    isListening = false
+                                    inputSpeech = ""
+                                }
                             }
                             .font(.system(size: CGFloat(toolBarProps?.textBoxFontSize ?? 16)))
                             .padding(.leading, 10)
@@ -455,9 +459,6 @@ public struct AssistantDrawerUI: View {
                         }
                     }
                 }
-                voicifyAsssitant.onRequestStarted{request in
-                    
-                }
                 voicifyAsssitant.onResponseReceived{response in
                     if(!inputSpeech.isEmpty)
                     {
@@ -504,7 +505,10 @@ public struct AssistantDrawerUI: View {
                 voicifyTTS.cancelSpeech = true
                 voicifySTT.cancel = true
                 isFullScreen = false
-                voicifySTT.stopListening()
+                if(isListening)
+                {
+                    voicifySTT.stopListening()
+                }
                 voicifyTTS.stop()
                 voicifyTTS.clearHandlers()
                 voicifySTT.clearHandlers()

@@ -147,8 +147,10 @@ public class VoicifyAssistant : ObservableObject
                     }
                 }.resume()
         }
-        catch{
-            
+        catch let error{
+            self.errorHandlers.forEach{errorHandler in
+                errorHandler(error.localizedDescription)
+            }
         }
     }
     
