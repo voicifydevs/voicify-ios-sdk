@@ -134,6 +134,8 @@ struct ContentView: View {
                 ,
                 toolBarProps: nil
 //                    ToolBarProps(
+//                    drawerSpeechHeight: 500,
+//                    drawerTextHeight: 400,
 //                    backgroundColor: "#00ffff",
 //                    micBorderRadius: 40,
 //                    micImagePadding: 4,

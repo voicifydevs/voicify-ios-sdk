@@ -48,7 +48,7 @@ public struct AssistantDrawerUI: View {
     }
     
     public var body: some View {
-        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? UIScreen.main.bounds.height/3.5 : 330, topBarHeight: 0 , showTopIndicator: false){
+        BottomSheet(isPresented: $assistantIsOpen, height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolBarProps?.drawerTextHeight ?? 220) : CGFloat(toolBarProps?.drawerSpeechHeight ?? 330), topBarHeight: 0 , showTopIndicator: false){
             VStack(spacing: 0){
                 if isFullScreen {
                     HStack{
