@@ -8,7 +8,6 @@
 import Foundation
 import AVFoundation
 import SwiftUI
-//https://stackoverflow.com/questions/29386531/how-to-detect-when-avplayer-video-ends-playing
 public class VoicifyTTSProivder : VoicifyTextToSpeechProvider, ObservableObject {
     private var settings: VoicifyTextToSpeechSettings
     private var speechEndHandlers: Array<() -> Void> = []
