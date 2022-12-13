@@ -419,6 +419,7 @@ public struct AssistantDrawerUI: View {
                 voicifySTT.clearHandlers()
                 voicifyAsssitant.initializeAndStart()
                 inputSpeech = ""
+                inputText = ""
                 responseText = ""
                 voicifySTT.addPartialListener{(partialResult:String) -> Void in
                     inputSpeech = partialResult
@@ -501,6 +502,7 @@ public struct AssistantDrawerUI: View {
             }
             else{
                 UIApplication.shared.endEditing()
+                inputSpeech = ""
                 messages = []
                 voicifyTTS.cancelSpeech = true
                 voicifySTT.cancel = true
