@@ -21,8 +21,19 @@ class voicify_assistant_sdkTests: XCTestCase {
         super.tearDown()
     }
 
-    func clearHandlers() throws {
+    func testHandlers() throws{
+        let assistant = try XCTUnwrap(voiceAssistant)
         
+        // RequestStartedHandlers
+        assistant.onRequestStarted{request in
+            self.count[0] = 1
+        }
+        //ResponseRecievedHandlers
+        assistant.onResponseReceived{response in
+            self.count[1] = 1
+        }
+        assistant.makeTextRequest(text: "hello", inputType: "text")
+        //Assert Handlers Fired
     }
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

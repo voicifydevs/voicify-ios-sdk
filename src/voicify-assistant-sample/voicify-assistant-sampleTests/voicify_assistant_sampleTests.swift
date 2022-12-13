@@ -43,7 +43,6 @@ class voicify_assistant_sampleTests: XCTestCase {
         }
         assistant.makeTextRequest(text: "hello", inputType: "text")
         //Assert Handlers Fired
-        
     }
 
     func testPerformanceExample() throws {
