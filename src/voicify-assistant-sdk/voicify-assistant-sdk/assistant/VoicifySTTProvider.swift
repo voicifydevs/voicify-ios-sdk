@@ -28,7 +28,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
     private var averagePowerForChannel0: Float = 0.0
     private var averagePowerForChannel1: Float = 0.0
     private var gotFullResult = false
-    public var hasPermission = true
+    public var hasPermission = false
         
     public init() {
 

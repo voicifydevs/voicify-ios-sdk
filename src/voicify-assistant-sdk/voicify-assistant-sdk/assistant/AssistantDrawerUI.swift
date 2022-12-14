@@ -36,8 +36,7 @@ public struct AssistantDrawerUI: View {
 
     public init(
         assistantSettings: AssistantSettingsProps,
-        headerProps: HeaderProps?,
-        bodyProps: BodyProps?,
+        headerProps: HeaderProps?, bodyProps: BodyProps?,
         toolBarProps: ToolBarProps?
     ) {
         self.assistantSettingsProps = assistantSettings
@@ -74,6 +73,7 @@ public struct AssistantDrawerUI: View {
                 noTracking: assistantSettings.noTracking
             )
         )
+        voicifyAssistant.initializeAndStart()
     }
     
     public var body: some View {
@@ -131,7 +131,6 @@ public struct AssistantDrawerUI: View {
                 voicifySTT.cancel = false
                 voicifyAssistant.ClearHandlers()
                 voicifySTT.clearHandlers()
-                voicifyAssistant.initializeAndStart()
                 inputSpeech = ""
                 inputText = ""
                 responseText = ""
