@@ -36,7 +36,8 @@ public struct AssistantDrawerUI: View {
 
     public init(
         assistantSettings: AssistantSettingsProps,
-        headerProps: HeaderProps?, bodyProps: BodyProps?,
+        headerProps: HeaderProps?,
+        gbodyProps: BodyProps?,
         toolBarProps: ToolBarProps?
     ) {
         self.assistantSettingsProps = assistantSettings
