@@ -97,7 +97,8 @@ public struct AssistantDrawerUI: View {
                         inputSpeech: $inputSpeech,
                         voicifySTT: voicifySTT,
                         voicifyTTS: voicifyTTS,
-                        voicifyAssistant: voicifyAssistant
+                        voicifyAssistant: voicifyAssistant,
+                        bodyProps: bodyProps
                     )
                 }
                 AssistantDrawerUIToolbar(
