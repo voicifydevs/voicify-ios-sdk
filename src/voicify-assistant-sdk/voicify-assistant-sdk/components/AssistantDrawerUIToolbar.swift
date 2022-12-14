@@ -176,7 +176,6 @@ struct AssistantDrawerUIToolbar: View {
                         }
                         if(isListening)
                         {
-                            voicifySTT.stopListening()
                             isListening = false
                             inputSpeech = ""
                         }
@@ -215,5 +214,11 @@ struct AssistantDrawerUIToolbar: View {
         .padding(.bottom, CGFloat(toolBarProps?.paddingBottom ?? 20))
         .padding(.top, CGFloat(toolBarProps?.paddingTop ?? 10))
         .background(Color(hex: toolBarProps?.backgroundColor ?? "#ffffff"))
+        .onChange(of: isListening){ _ in
+            if(isListening == false)
+            {
+                voicifySTT.stopListening()
+            }
+        }
     }
 }
