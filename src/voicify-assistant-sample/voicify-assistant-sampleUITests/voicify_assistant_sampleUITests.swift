@@ -26,16 +26,34 @@ class voicify_assistant_sampleUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let timeout = 10.0
+        
+        let openAssistantButton = app.buttons["openAssistantButton"]
+        XCTAssertTrue(openAssistantButton.waitForExistence(timeout: timeout))
+        openAssistantButton.tap()
+        
+        let messageInputField = app.textFields["messageInputField"]
+        XCTAssertTrue(messageInputField.waitForExistence(timeout: timeout))
+        messageInputField.tap()
+        messageInputField.typeText("play how we got here")
+        
+        let sendButton = app.buttons["sendButton"]
+        XCTAssertTrue(messageInputField.waitForExistence(timeout: timeout))
+        sendButton.tap()
+        
+        let songTitleText = app.textViews["songTitleText"]
+        XCTAssertTrue(songTitleText.waitForExistence(timeout: timeout))
+        
+        XCTAssert(songTitleText.value as! String == "Now Playing How We Got Here")
+        
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+//    func testLaunchPerformance() throws {
+//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+//            // This measures how long it takes to launch your application.
+//            measure(metrics: [XCTApplicationLaunchMetric()]) {
+//                XCUIApplication().launch()
+//            }
+//        }
+//    }
 }

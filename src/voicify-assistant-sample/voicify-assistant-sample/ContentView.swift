@@ -29,11 +29,12 @@ struct ContentView: View {
         ZStack{
             VStack{
                 HStack{
-                    if !currentSongTitle.isEmpty {Text("Now Playing \(currentSongTitle)")}
+                    if !currentSongTitle.isEmpty {Text("Now Playing \(currentSongTitle)").accessibilityIdentifier("songTitleText")}
                     Spacer()
                     Button("Click me to open \nthe assistant"){
                         self.assistantIsOpen.toggle()
                     }
+                    .accessibilityIdentifier("openAssistantButton")
                 }
                 .padding(.top, 50)
                 Spacer()
@@ -49,7 +50,7 @@ struct ContentView: View {
                         device: "My Device",
                         voice: "",
                         autoRunConversation: true,
-                        initializeWithWelcomeMessage: true,
+                        initializeWithWelcomeMessage: false,
                         textToSpeechProvider: "Google",
                         useVoiceInput: true,
                         useOutputSpeech: true,

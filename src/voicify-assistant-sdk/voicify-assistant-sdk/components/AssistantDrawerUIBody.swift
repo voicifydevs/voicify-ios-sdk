@@ -51,6 +51,7 @@ struct AssistantDrawerUIBody: View {
                                     }
                                     VStack{
                                         Text(.init(message.text) )
+                                            .accessibilityIdentifier("messageReceivedText")
                                             .foregroundColor(Color.init(hex: bodyProps?.messageReceivedTextColor ?? "#000000"))
                                             .font(.system(size: CGFloat(bodyProps?.messageReceivedFontSize ?? 14)))
                                             .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
@@ -68,6 +69,7 @@ struct AssistantDrawerUIBody: View {
                                 HStack{
                                     Spacer()
                                     Text(message.text)
+                                        .accessibilityIdentifier("messageSentText")
                                         .font(.system(size: CGFloat(bodyProps?.messageSentFontSize ?? 14)))
                                         .foregroundColor(Color.init(hex:bodyProps?.messageSentTextColor ?? "#ffffff"))
                                         .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))

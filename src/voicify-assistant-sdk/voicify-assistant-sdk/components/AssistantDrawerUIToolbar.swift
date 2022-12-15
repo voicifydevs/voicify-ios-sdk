@@ -153,7 +153,8 @@ struct AssistantDrawerUIToolbar: View {
                             showPermissionAlert = true
                         }
                     }
-                }) {
+                })
+                {
                        VStack{
                            KFImage(URL(string: isUsingSpeech ? toolBarProps?.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : toolBarProps?.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
                                .resizable()
@@ -168,6 +169,7 @@ struct AssistantDrawerUIToolbar: View {
                     .alert("You do not have permission to use speech recognition. Go to your app settings to grant permission and then try again.", isPresented: $showPermissionAlert) {
                         Button("OK", role: .cancel) { }
                     }
+                    .accessibilityIdentifier("micButton")
                 Spacer()
                 HStack{
                     TextField(toolBarProps?.placeholder ?? "Enter a message...", text: $inputText){focused in
@@ -187,6 +189,7 @@ struct AssistantDrawerUIToolbar: View {
                     .accentColor(Color.init(hex: toolBarProps?.textInputCursorColor ?? "#000000"))
                     .foregroundColor(Color.init(hex: toolBarProps?.textInputTextColor ?? "#000000"))
                     .focused($isFocused)
+                    .accessibilityIdentifier("messageInputField")
                     Button(action:{
                         if !inputText.isEmpty {
                             UIApplication.shared.endEditing()
@@ -202,6 +205,7 @@ struct AssistantDrawerUIToolbar: View {
                         .frame(width: CGFloat(toolBarProps?.sendImageWidth ?? 28), height: CGFloat(toolBarProps?.sendImageHeight ?? 28))
                         
                     }
+                    .accessibilityIdentifier("sendButton")
                 }
                 .padding(.top, 22)
                 .padding(.bottom, 10)

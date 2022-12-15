@@ -212,7 +212,6 @@ public struct AssistantDrawerUI: View {
                         assistantSettingsProps.onEffect(effect, data)
                     }
                 }
-
                 voicifyAssistant.startNewSession(sessionId: nil, userId: nil, sessionAttributes: assistantSettingsProps.sessionAttributes, userAttributes: assistantSettingsProps.userAttributes)
             }
             else{
