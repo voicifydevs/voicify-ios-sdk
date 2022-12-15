@@ -226,7 +226,6 @@
 		FE9AC31F29097C3E0030C67E /* assistant */ = {
 			isa = PBXGroup;
 			children = (
-				FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */,
 				FE9AC32029097C550030C67E /* VoicifyTextToSpeechProvider.swift */,
 				FE9AC32229097DB90030C67E /* VoicifySpeechToTextProvider.swift */,
 				FE9AC32429097E2F0030C67E /* VoicifyTextToSpeechSettings.swift */,
@@ -256,6 +255,7 @@
 		FEBB244629140AF9001BF773 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */,
 				FE2333BE2949262500E605CF /* SpeakingAnimation.swift */,
 				FE2333C02949295500E605CF /* AssistantDrawerUIBody.swift */,
 				FE4F1A7F29493A9600F8653A /* AssistantDrawerUIHeader.swift */,
@@ -604,7 +604,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -634,7 +634,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -658,7 +658,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9K6MJ9U2TA;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.voicify.voicify-assistant-sdkTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -676,7 +676,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9K6MJ9U2TA;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.voicify.voicify-assistant-sdkTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
