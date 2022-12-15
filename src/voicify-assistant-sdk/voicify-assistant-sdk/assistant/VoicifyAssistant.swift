@@ -179,7 +179,48 @@ public class VoicifyAssistant : ObservableObject
         }
         
         self.textToSpeechProvider?.clearHandlers()
-        self.textToSpeechProvider?.addFinishListener {
+        if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech == true)
+        {
+            self.textToSpeechProvider?.addFinishListener {
+                if let effectsToFire = self.effects {
+                    if(!effectsToFire.isEmpty)
+                    {
+                        if(!effectsToFire[0].name.isEmpty)
+                        {
+                            effectsToFire.forEach{ effect in
+                                self.effectHandlers.filter{effectHandler in
+                                    return effectHandler.effect == effect.name
+                                }.forEach{ effectHandler in
+                                    effectHandler.callback(effect.data)
+                                }
+                            }
+                        }
+                        else if(!effectsToFire[0].effectName.isEmpty)
+                        {
+                            effectsToFire.filter{effect in
+                                return effect.requestId == request.requestId
+                            }.forEach{effect in
+                                self.effectHandlers.filter{ effectHandler in
+                                    return effectHandler.effect == effect.effectName
+                                }.forEach{effectHandler in
+                                    effectHandler.callback(effect.data)
+                                }
+                            }
+                        }
+                        else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
+                            self.speechToTextProvider?.startListening()
+                        }
+                    }
+                    else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
+                        self.speechToTextProvider?.startListening()
+                    }
+                }
+                else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
+                    self.speechToTextProvider?.startListening()
+                }
+            }
+        }
+        else{
             if let effectsToFire = self.effects {
                 if(!effectsToFire.isEmpty)
                 {
@@ -205,18 +246,10 @@ public class VoicifyAssistant : ObservableObject
                             }
                         }
                     }
-                    else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
-                        self.speechToTextProvider?.startListening()
-                    }
                 }
-                else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
-                    self.speechToTextProvider?.startListening()
-                }
-            }
-            else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
-                self.speechToTextProvider?.startListening()
             }
         }
+        
         guard let userDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/\( self.userId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
         let userDataRequest = self.generateGetRequest(url: userDataRequestUrl)
         URLSession.shared.dataTask(with: userDataRequest) { (data, response, error) in

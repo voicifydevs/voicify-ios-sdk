@@ -9,40 +9,97 @@ import XCTest
 import voicify_assistant_sdk
 @testable import voicify_assistant_sample
 
-class voicify_assistant_sampleTests: XCTestCase {
+class voicify_assistant_tests: XCTestCase {
     public var voiceAssistant: VoicifyAssistant? = nil
-    public var count: Array<Int> = [Int](repeating: 0, count: 2)
     override func setUpWithError() throws {
         super.setUp()
-        voiceAssistant = VoicifyAssistant(speechToTextProvider: nil, textToSpeechProvider: nil, settings: VoicifyAssistantSettings(serverRootUrl: "https://assistant.voicify.com", appId: "99a803b7-5b37-426c-a02e-63c8215c71eb", appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3", locale: "en-US", channel: "test", device: "test", autoRunConversation: true, initializeWithWelcomeMessage: false, initializeWithText: false, useVoiceInput: true, useDraftContent: false, useOutputSpeech: true, noTracking: false))
+        voiceAssistant = VoicifyAssistant(speechToTextProvider: nil, textToSpeechProvider: nil, settings: VoicifyAssistantSettings(serverRootUrl: "https://assistant.voicify.com", appId: "665730ca-6687-442c-863d-7db30f22c0e6", appKey: "MGRmOTU4MzQtYzhkMi00Y2UxLTg1MTQtODMzNWIyNGU1YmFj", locale: "en-US", channel: "channel", device: "device", autoRunConversation: true, initializeWithWelcomeMessage: false, initializeWithText: false, useVoiceInput: true, useDraftContent: false, useOutputSpeech: true, noTracking: false))
+        voiceAssistant?.startNewSession()
     }
 
     override func tearDownWithError() throws {
         voiceAssistant = nil
         super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
     
     func testHandlers() throws{
+        //variable declaration
         let assistant = try XCTUnwrap(voiceAssistant)
+        let requestExpectation = self.expectation(description: "the request handler")
+        let responseExpectation = self.expectation(description: "the response handler")
+        let endSessionResponseExpectation = self.expectation(description: "the end session handler")
+        let effectExpectation = self.expectation(description: "the effect handler")
+        var tempRequest: CustomAssistantRequest? = nil
+        var tempResponse: CustomAssistantResponse? = nil
+        var tempEndSessionResponse: CustomAssistantResponse? = nil
+        var tempAudioResponse: MediaItemModel? = nil
+        var playEffectFired = false
         
         // RequestStartedHandlers
         assistant.onRequestStarted{request in
-            self.count[0] = 1
+            tempRequest = request
+            requestExpectation.fulfill()
         }
         //ResponseRecievedHandlers
         assistant.onResponseReceived{response in
-            self.count[1] = 1
+            tempResponse = response
+            responseExpectation.fulfill()
         }
-        assistant.makeTextRequest(text: "hello", inputType: "text")
+        //EndSessionHandlers
+        assistant.onSessionEnded{response in
+            tempEndSessionResponse = response
+            endSessionResponseExpectation.fulfill()
+        }
+        //EffectHandlers
+        assistant.onEffect(effectName: "play"){data in
+            playEffectFired = true
+            effectExpectation.fulfill()
+        }
+        //
+        assistant.makeTextRequest(text: "Test Response", inputType: "text")
+       
+        // wait for handlers to fire
+        let result = XCTWaiter.wait(for: [requestExpectation, responseExpectation, endSessionResponseExpectation, effectExpectation], timeout: 5.0)
+       
         //Assert Handlers Fired
+        switch result {
+            case .completed:
+            //Assert Request Started Handlers
+            if let theRequest = tempRequest{
+                XCTAssert(theRequest.device.name == "device")
+                XCTAssert(theRequest.context.channel == "channel")
+                XCTAssert(theRequest.context.locale == "en-US")
+            }
+            else
+            {
+                XCTFail("request is null")
+            }
+            //Assert Response Received Handlers
+            if let theResponse = tempResponse{
+                XCTAssert(theResponse.outputSpeech == "here is the response")
+                XCTAssert(theResponse.effects[0].name == "play")
+                XCTAssert(theResponse.endSession == true)
+            }
+            else
+            {
+                XCTFail("response is null")
+            }
+            //Assert End Session Handlers
+            if let theEndSessionResponse = tempEndSessionResponse {
+                XCTAssert(theEndSessionResponse.displayText.trimmingCharacters(in: .whitespacesAndNewlines) == "here is the response")
+            }
+            else{
+                XCTFail("end session response is null")
+            }
+            //Assert Effect Handlers
+            XCTAssert(playEffectFired == true)
+            case .incorrectOrder:  XCTFail("incorrect order")
+            case .timedOut:  XCTFail("handlers timed out")
+            default: print("There was an issue")
+        }
+        
+        
+        
     }
 
     func testPerformanceExample() throws {

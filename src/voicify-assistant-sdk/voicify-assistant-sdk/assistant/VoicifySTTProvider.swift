@@ -76,7 +76,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
                     speechEndHandler()
                 }
             }
-            DispatchQueue(label: "Speech Recognizer Queue", qos: .background).async { [weak self] in
+            DispatchQueue(label: "Speech Recognizer Queue", qos: .default).async { [weak self] in
                 guard let self = self, let recognizer = self.recognizer, recognizer.isAvailable else {
                     self?.speechErrorHandlers.forEach{ errorHandler in
                         errorHandler(RecognizerError.recognizerIsUnavailable.message)
