@@ -58,8 +58,8 @@ struct ContentView: View {
                         noTracking: false,
                         effects: ["Play", "closeAssistant"],
                         onEffect: onEffect,
-                        assistantIsOpen: $assistantIsOpen
-//                        sessionAttributes: ["sessionData": "sessionData"]
+                        assistantIsOpen: $assistantIsOpen,
+                        sessionAttributes: ["sessionData": "sessionData"]
                     ),
                 headerProps: nil
 //                    HeaderProps(

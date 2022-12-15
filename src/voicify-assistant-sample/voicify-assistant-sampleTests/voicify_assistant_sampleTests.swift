@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import voicify_assistant_sdk
+@testable import voicify_assistant_sdk
 @testable import voicify_assistant_sample
 
 class voicify_assistant_tests: XCTestCase {
@@ -14,7 +14,6 @@ class voicify_assistant_tests: XCTestCase {
     override func setUpWithError() throws {
         super.setUp()
         voiceAssistant = VoicifyAssistant(speechToTextProvider: nil, textToSpeechProvider: nil, settings: VoicifyAssistantSettings(serverRootUrl: "https://assistant.voicify.com", appId: "665730ca-6687-442c-863d-7db30f22c0e6", appKey: "MGRmOTU4MzQtYzhkMi00Y2UxLTg1MTQtODMzNWIyNGU1YmFj", locale: "en-US", channel: "channel", device: "device", autoRunConversation: true, initializeWithWelcomeMessage: false, initializeWithText: false, useVoiceInput: true, useDraftContent: false, useOutputSpeech: true, noTracking: false))
-        voiceAssistant?.startNewSession()
     }
 
     override func tearDownWithError() throws {
@@ -25,6 +24,7 @@ class voicify_assistant_tests: XCTestCase {
     func testHandlers() throws{
         //variable declaration
         let assistant = try XCTUnwrap(voiceAssistant)
+        assistant.startNewSession()
         let requestExpectation = self.expectation(description: "the request handler")
         let responseExpectation = self.expectation(description: "the response handler")
         let endSessionResponseExpectation = self.expectation(description: "the end session handler")
@@ -92,6 +92,14 @@ class voicify_assistant_tests: XCTestCase {
                 XCTAssert(theResponse.outputSpeech == "here is the response")
                 XCTAssert(theResponse.effects[0].name == "play")
                 XCTAssert(theResponse.endSession == true)
+                if let effectsArray = theResponse.sessionAttributes["effects"] as? Array<Dictionary<String, Any>>{
+                    let decodeEffectsArray = assistant.decodeEffectsArray(effects: effectsArray)
+                    XCTAssert(decodeEffectsArray[0].effectName == "play")
+                }
+                else{
+                    XCTFail("Session is empty")
+                }
+                
             }
             else
             {
@@ -124,15 +132,39 @@ class voicify_assistant_tests: XCTestCase {
             case .timedOut:  XCTFail("handlers timed out")
             default: print("There was an issue")
         }
-        
-        
-        
     }
     
-    func testResponseSessionAttributes () throws {
-        //assistant.makeTextRequest(text: "Test Response", inputType: "text")
+    func testDefaultSessionAttributes() throws {
+        let assistant = try XCTUnwrap(voiceAssistant)
+        let responseExpectation = self.expectation(description: "the response handler")
+        assistant.startNewSession(sessionId: nil, userId: nil, sessionAttributes: ["sessionData" : "the data"], userAttributes: nil)
+        var tempResponse: CustomAssistantResponse? = nil
+        
+        //ResponseRecievedHandlers
+        assistant.onResponseReceived{response in
+            tempResponse = response
+            responseExpectation.fulfill()
+        }
+        assistant.makeTextRequest(text: "Test Response", inputType: "text")
+        
+        // wait for handlers to fire
+        let result = XCTWaiter.wait(for: [responseExpectation], timeout: 5.0)
+        
+        switch result {
+            case .completed:
+            if let theResponse = tempResponse{
+                XCTAssert(theResponse.outputSpeech == "we have session")
+            }
+            else
+            {
+                XCTFail("response is null")
+            }
+            case .incorrectOrder:  XCTFail("incorrect order")
+            case .timedOut:  XCTFail("handlers timed out")
+            default: print("There was an issue")
+        }
     }
-
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
