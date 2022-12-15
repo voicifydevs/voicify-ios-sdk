@@ -49,7 +49,7 @@ struct ContentView: View {
                         device: "My Device",
                         voice: "",
                         autoRunConversation: true,
-                        initializeWithWelcomeMessage: false,
+                        initializeWithWelcomeMessage: true,
                         textToSpeechProvider: "Google",
                         useVoiceInput: true,
                         useOutputSpeech: true,
@@ -59,6 +59,7 @@ struct ContentView: View {
                         effects: ["Play", "closeAssistant"],
                         onEffect: onEffect,
                         assistantIsOpen: $assistantIsOpen
+//                        sessionAttributes: ["sessionData": "sessionData"]
                     ),
                 headerProps: nil
 //                    HeaderProps(

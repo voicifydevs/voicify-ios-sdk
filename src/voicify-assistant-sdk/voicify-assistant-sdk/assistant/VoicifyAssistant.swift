@@ -590,7 +590,9 @@ public class VoicifyAssistant : ObservableObject
                 "originalInput": "\(request.context.originialInput)",
                 "noTracking": "\(request.context.noTracking)",
                 "locale": "\(request.context.locale)",
-                "channel": "\(request.context.channel)"
+                "channel": "\(request.context.channel)",
+                "additionalSessionAttributes": request.context.additionalSessionAttributes,
+                "additionalRequestAttributes": request.context.additionalRequestAttributes
               ]
             ]
         return json

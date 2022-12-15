@@ -29,10 +29,13 @@ class voicify_assistant_tests: XCTestCase {
         let responseExpectation = self.expectation(description: "the response handler")
         let endSessionResponseExpectation = self.expectation(description: "the end session handler")
         let effectExpectation = self.expectation(description: "the effect handler")
+        let audioExpectation = self.expectation(description: "the audio handler")
+        let videoExpectation = self.expectation(description: "the video handler")
         var tempRequest: CustomAssistantRequest? = nil
         var tempResponse: CustomAssistantResponse? = nil
         var tempEndSessionResponse: CustomAssistantResponse? = nil
         var tempAudioResponse: MediaItemModel? = nil
+        var tempVideoResponse: MediaItemModel? = nil
         var playEffectFired = false
         
         // RequestStartedHandlers
@@ -55,11 +58,21 @@ class voicify_assistant_tests: XCTestCase {
             playEffectFired = true
             effectExpectation.fulfill()
         }
-        //
+        //AudioHandlers
+        assistant.onPlayAudio{mediaItem in
+            tempAudioResponse = mediaItem
+            audioExpectation.fulfill()
+        }
+        //VideoHandlers
+        assistant.onPlayVideo{videoItem in
+            tempVideoResponse = videoItem
+            videoExpectation.fulfill()
+        }
+        
         assistant.makeTextRequest(text: "Test Response", inputType: "text")
        
         // wait for handlers to fire
-        let result = XCTWaiter.wait(for: [requestExpectation, responseExpectation, endSessionResponseExpectation, effectExpectation], timeout: 5.0)
+        let result = XCTWaiter.wait(for: [requestExpectation, responseExpectation, endSessionResponseExpectation, effectExpectation, audioExpectation, videoExpectation], timeout: 5.0)
        
         //Assert Handlers Fired
         switch result {
@@ -93,6 +106,20 @@ class voicify_assistant_tests: XCTestCase {
             }
             //Assert Effect Handlers
             XCTAssert(playEffectFired == true)
+            //Assert Audio Handlers
+            if let theAudioResponse = tempAudioResponse {
+                XCTAssert(theAudioResponse.url == "https://voicify-prod-files.s3.amazonaws.com/665730ca-6687-442c-863d-7db30f22c0e6/ba125dbd-b0d5-4d99-a3c1-40560f9b1b85/173-Portland-St.mp3")
+            }
+            else {
+                XCTFail("audio response is null")
+            }
+            //Assert Video Handlers
+            if let theVideoResponse = tempVideoResponse {
+                XCTAssert(theVideoResponse.url == "https://voicify-prod-files.s3.amazonaws.com/665730ca-6687-442c-863d-7db30f22c0e6/ef85725b-a01b-4a45-86da-2ac652a6409f/Screen-Recording-20221114-123949-P-QARC.mp4")
+            }
+            else {
+                XCTFail("video response is null")
+            }
             case .incorrectOrder:  XCTFail("incorrect order")
             case .timedOut:  XCTFail("handlers timed out")
             default: print("There was an issue")
@@ -100,6 +127,10 @@ class voicify_assistant_tests: XCTestCase {
         
         
         
+    }
+    
+    func testResponseSessionAttributes () throws {
+        //assistant.makeTextRequest(text: "Test Response", inputType: "text")
     }
 
     func testPerformanceExample() throws {

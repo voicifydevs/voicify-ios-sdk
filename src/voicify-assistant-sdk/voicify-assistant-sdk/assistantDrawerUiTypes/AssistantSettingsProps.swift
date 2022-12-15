@@ -28,8 +28,10 @@ public class AssistantSettingsProps
     public var effects: Array<String>
     public var onEffect: (String, Dictionary<String, Any>) -> Void
     public var assistantIsOpen: Binding<Bool>
+    public var sessionAttributes: Dictionary<String, Any>? = nil
+    public var userAttributes: Dictionary<String, Any>? = nil
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, voice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, effects: Array<String>, onEffect: @escaping (String, Dictionary<String, Any>) -> Void, assistantIsOpen: Binding<Bool>) {
+    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, voice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, effects: Array<String>, onEffect: @escaping (String, Dictionary<String, Any>) -> Void, assistantIsOpen: Binding<Bool>, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey
@@ -48,5 +50,7 @@ public class AssistantSettingsProps
         self.effects = effects
         self.onEffect = onEffect
         self.assistantIsOpen = assistantIsOpen
+        self.sessionAttributes = sessionAttributes
+        self.userAttributes = userAttributes
     }
 }
