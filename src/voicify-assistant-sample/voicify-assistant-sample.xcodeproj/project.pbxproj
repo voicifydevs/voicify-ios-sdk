@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C962F313282AB14D00990915 /* voicify_assistant_sampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F312282AB14D00990915 /* voicify_assistant_sampleApp.swift */; };
-		C962F315282AB14D00990915 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F314282AB14D00990915 /* ContentView.swift */; };
+		C962F315282AB14D00990915 /* SwiftUiContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F314282AB14D00990915 /* SwiftUiContentView.swift */; };
 		C962F317282AB14F00990915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C962F316282AB14F00990915 /* Assets.xcassets */; };
 		C962F31A282AB14F00990915 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C962F319282AB14F00990915 /* Preview Assets.xcassets */; };
 		C962F324282AB14F00990915 /* voicify_assistant_sampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F323282AB14F00990915 /* voicify_assistant_sampleTests.swift */; };
 		C962F32E282AB14F00990915 /* voicify_assistant_sampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F32D282AB14F00990915 /* voicify_assistant_sampleUITests.swift */; };
 		C962F330282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F32F282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift */; };
+		FE4F1A88294CBB9E00F8653A /* UIKitContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4F1A87294CBB9E00F8653A /* UIKitContentView.swift */; };
 		FE82DFCB29072C03000275C2 /* voicify_assistant_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE82DFC729072BD6000275C2 /* voicify_assistant_sdk.framework */; };
 		FE82DFCC29072C03000275C2 /* voicify_assistant_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE82DFC729072BD6000275C2 /* voicify_assistant_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -66,7 +67,7 @@
 /* Begin PBXFileReference section */
 		C962F30F282AB14D00990915 /* voicify-assistant-sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "voicify-assistant-sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962F312282AB14D00990915 /* voicify_assistant_sampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleApp.swift; sourceTree = "<group>"; };
-		C962F314282AB14D00990915 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C962F314282AB14D00990915 /* SwiftUiContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUiContentView.swift; sourceTree = "<group>"; };
 		C962F316282AB14F00990915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C962F319282AB14F00990915 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C962F31F282AB14F00990915 /* voicify-assistant-sampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +76,7 @@
 		C962F32D282AB14F00990915 /* voicify_assistant_sampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleUITests.swift; sourceTree = "<group>"; };
 		C962F32F282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FE1F4E27290CE8C900D1B447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FE4F1A87294CBB9E00F8653A /* UIKitContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitContentView.swift; sourceTree = "<group>"; };
 		FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "voicify-assistant-sdk.xcodeproj"; path = "../../voicify-assistant-sdk/voicify-assistant-sdk.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +133,8 @@
 				FE1F4E27290CE8C900D1B447 /* Info.plist */,
 				C962F312282AB14D00990915 /* voicify_assistant_sampleApp.swift */,
 				FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */,
-				C962F314282AB14D00990915 /* ContentView.swift */,
+				C962F314282AB14D00990915 /* SwiftUiContentView.swift */,
+				FE4F1A87294CBB9E00F8653A /* UIKitContentView.swift */,
 				C962F316282AB14F00990915 /* Assets.xcassets */,
 				C962F318282AB14F00990915 /* Preview Content */,
 			);
@@ -333,7 +336,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C962F315282AB14D00990915 /* ContentView.swift in Sources */,
+				C962F315282AB14D00990915 /* SwiftUiContentView.swift in Sources */,
+				FE4F1A88294CBB9E00F8653A /* UIKitContentView.swift in Sources */,
 				C962F313282AB14D00990915 /* voicify_assistant_sampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

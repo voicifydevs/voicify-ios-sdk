@@ -7,7 +7,7 @@
 
 import SwiftUI
 import voicify_assistant_sdk
-struct ContentView: View {
+struct SwiftUiContentView: View {
     @State var assistantIsOpen = false
     @State var currentSongTitle = ""
     func onEffect (effectName: String, data: Dictionary<String, Any>) -> Void{
@@ -187,8 +187,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SwiftUiContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SwiftUiContentView()
     }
 }

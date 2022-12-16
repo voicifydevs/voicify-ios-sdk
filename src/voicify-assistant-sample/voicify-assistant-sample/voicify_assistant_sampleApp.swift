@@ -11,7 +11,7 @@ import SwiftUI
 struct voicify_assistant_sampleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SwiftUiContentView()
         }
     }
 }

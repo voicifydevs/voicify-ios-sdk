@@ -210,6 +210,7 @@ public class VoicifyAssistant : ObservableObject
                         else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
                             self.speechToTextProvider?.startListening()
                         }
+                        self.effects = []
                     }
                     else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
                         self.speechToTextProvider?.startListening()
@@ -247,9 +248,9 @@ public class VoicifyAssistant : ObservableObject
                         }
                     }
                 }
+                self.effects = []
             }
         }
-        
         guard let userDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/\( self.userId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
         let userDataRequest = self.generateGetRequest(url: userDataRequestUrl)
         URLSession.shared.dataTask(with: userDataRequest) { (data, response, error) in
