@@ -59,6 +59,34 @@ class voicify_assistant_sampleUITests: XCTestCase {
         XCTAssert(songTitleText.label == "Now Playing How We Got Here")
         
     }
+    
+    func testSpeakAndTypeUI() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let timeout = 15.0
+        
+        let openAssistantButton = app.buttons["openAssistantButton"]
+        XCTAssertTrue(openAssistantButton.waitForExistence(timeout: timeout))
+        openAssistantButton.tap()
+        
+        let messageInputField = app.textFields["messageInputField"]
+        XCTAssertTrue(messageInputField.waitForExistence(timeout: timeout))
+        messageInputField.tap()
+        
+        let inputSpeechText = app.staticTexts["inputSpeechText"]
+        XCTAssert(inputSpeechText.exists == false)
+        
+        let assistantStateText = app.staticTexts["assistantStateText"]
+        XCTAssert(assistantStateText.exists == false)
+        
+        let micButton = app.buttons["micButton"]
+        XCTAssertTrue(micButton.waitForExistence(timeout: timeout))
+        micButton.tap()
+        
+        XCTAssertTrue(inputSpeechText.waitForExistence(timeout: timeout))
+        XCTAssertTrue(assistantStateText.waitForExistence(timeout: timeout))
+        XCTAssert(assistantStateText.label == "Listening...")
+    }
 
 //    func testLaunchPerformance() throws {
 //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {

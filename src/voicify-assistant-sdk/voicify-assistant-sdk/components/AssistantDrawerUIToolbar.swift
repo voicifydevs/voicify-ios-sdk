@@ -101,6 +101,7 @@ struct AssistantDrawerUIToolbar: View {
                         .italic()
                         .foregroundColor(Color.init(hex: toolBarProps?.assistantStateTextColor ?? "#8F97A1"))
                         .font(.system(size: CGFloat(toolBarProps?.assistantStateFontSize ?? 16)))
+                        .accessibilityIdentifier("assistantStateText")
                     Spacer()
                 }
                 .padding(.bottom, -4)
@@ -108,6 +109,7 @@ struct AssistantDrawerUIToolbar: View {
                 HStack{
                     Text(inputSpeech)
                         .foregroundColor(Color.init(hex: !isFinalSpeech ? toolBarProps?.partialSpeechResultTextColor ?? "#ffffff33" : toolBarProps?.fullSpeechResultTextColor ?? "#ffffff"))
+                        .accessibilityIdentifier("inputSpeechText")
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, minHeight: 40)
