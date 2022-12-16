@@ -22,11 +22,11 @@ class voicify_assistant_sampleUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testPlayEffect() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-        let timeout = 10.0
+        let timeout = 15.0
         
         let openAssistantButton = app.buttons["openAssistantButton"]
         XCTAssertTrue(openAssistantButton.waitForExistence(timeout: timeout))
@@ -41,10 +41,22 @@ class voicify_assistant_sampleUITests: XCTestCase {
         XCTAssertTrue(messageInputField.waitForExistence(timeout: timeout))
         sendButton.tap()
         
-        let songTitleText = app.textViews["songTitleText"]
+        let messageSentText = app.staticTexts["messageSentText"]
+        XCTAssertTrue(messageSentText.waitForExistence(timeout: timeout))
+        
+        XCTAssert(messageSentText.label == "play how we got here")
+        
+        let messageReceivedText = app.staticTexts["messageReceivedText"]
+        XCTAssertTrue(messageReceivedText.waitForExistence(timeout: timeout))
+        let receivedLabel = messageReceivedText.label.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        print(receivedLabel)
+        XCTAssert(String(receivedLabel) == "Here's how we got here by explosive ear candy")
+        
+        let songTitleText = app.staticTexts["songTitleText"]
         XCTAssertTrue(songTitleText.waitForExistence(timeout: timeout))
         
-        XCTAssert(songTitleText.value as! String == "Now Playing How We Got Here")
+        XCTAssert(songTitleText.label == "Now Playing How We Got Here")
         
     }
 

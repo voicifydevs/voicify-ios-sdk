@@ -127,6 +127,7 @@ struct AssistantDrawerUIToolbar: View {
                 Text("SPEAK")
                     .font(.system(size: CGFloat(toolBarProps?.speakFontSize ?? 14)))
                     .foregroundColor(Color.init(hex: isUsingSpeech ? toolBarProps?.speakActiveTitleColor ?? "#3E77A5" : toolBarProps?.speakInactiveTitleColor ?? "#8F97A1"))
+                    .accessibilityIdentifier("speakText")
                 Text("TYPE")
                     .font(.system(size: CGFloat(toolBarProps?.typeFontSize ?? 14)))
                     .foregroundColor(Color.init(hex: isUsingSpeech ? toolBarProps?.typeInactiveTitleColor  ?? "#8F97A1" : toolBarProps?.typeActiveTitleColor ?? "#3E77A5"))
