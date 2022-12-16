@@ -15,6 +15,7 @@
 		FE1F4E292910110900D1B447 /* VoicifyAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */; };
 		FE2333BF2949262500E605CF /* SpeakingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2333BE2949262500E605CF /* SpeakingAnimation.swift */; };
 		FE2333C12949295500E605CF /* AssistantDrawerUIBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2333C02949295500E605CF /* AssistantDrawerUIBody.swift */; };
+		FE3F68AA294D02B000021785 /* AssistantIsOpenObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3F68A9294D02B000021785 /* AssistantIsOpenObject.swift */; };
 		FE4F1A8029493A9600F8653A /* AssistantDrawerUIHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4F1A7F29493A9600F8653A /* AssistantDrawerUIHeader.swift */; };
 		FE4F1A8229493C7100F8653A /* AssistantDrawerUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4F1A8129493C7100F8653A /* AssistantDrawerUIToolbar.swift */; };
 		FE4F1A842949433E00F8653A /* ExtensionMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE4F1A832949433E00F8653A /* ExtensionMethods.swift */; };
@@ -113,6 +114,7 @@
 		FE2333BE2949262500E605CF /* SpeakingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingAnimation.swift; sourceTree = "<group>"; };
 		FE2333C02949295500E605CF /* AssistantDrawerUIBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUIBody.swift; sourceTree = "<group>"; };
 		FE3B164B294CE92B00EB0CE7 /* voicify-assistant-sample-uikit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "voicify-assistant-sample-uikit.xcodeproj"; path = "../voicify-assistant-sample-uikit/voicify-assistant-sample-uikit.xcodeproj"; sourceTree = "<group>"; };
+		FE3F68A9294D02B000021785 /* AssistantIsOpenObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantIsOpenObject.swift; sourceTree = "<group>"; };
 		FE4F1A7F29493A9600F8653A /* AssistantDrawerUIHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUIHeader.swift; sourceTree = "<group>"; };
 		FE4F1A8129493C7100F8653A /* AssistantDrawerUIToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUIToolbar.swift; sourceTree = "<group>"; };
 		FE4F1A832949433E00F8653A /* ExtensionMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMethods.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				FEAD780C293F9BBB00483B70 /* AnimationValue.swift */,
 				FED1FDC62925823B006783C8 /* Hint.swift */,
 				FE581DD72923E0EF00E1D77F /* Message.swift */,
+				FE3F68A9294D02B000021785 /* AssistantIsOpenObject.swift */,
 			);
 			path = assistantDrawerUiTypes;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				C962F2F1282AB12800990915 /* voicify_assistant_sdk.docc in Sources */,
 				FE581DD82923E0EF00E1D77F /* Message.swift in Sources */,
 				FE9AC305290868E10030C67E /* CustomAssistantRequestContext.swift in Sources */,
+				FE3F68AA294D02B000021785 /* AssistantIsOpenObject.swift in Sources */,
 				FEAD780D293F9BBB00483B70 /* AnimationValue.swift in Sources */,
 				FE1F4E292910110900D1B447 /* VoicifyAssistant.swift in Sources */,
 				FE9AC31C29097B390030C67E /* VoicifySessionEffect.swift in Sources */,
