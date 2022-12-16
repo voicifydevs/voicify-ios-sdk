@@ -65,14 +65,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C962F30F282AB14D00990915 /* voicify-assistant-sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "voicify-assistant-sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C962F30F282AB14D00990915 /* voicify-assistant-sample-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "voicify-assistant-sample-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962F312282AB14D00990915 /* voicify_assistant_sampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleApp.swift; sourceTree = "<group>"; };
 		C962F314282AB14D00990915 /* SwiftUiContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUiContentView.swift; sourceTree = "<group>"; };
 		C962F316282AB14F00990915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C962F319282AB14F00990915 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C962F31F282AB14F00990915 /* voicify-assistant-sampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C962F31F282AB14F00990915 /* voicify-assistant-sample-swiftuiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sample-swiftuiTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962F323282AB14F00990915 /* voicify_assistant_sampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleTests.swift; sourceTree = "<group>"; };
-		C962F329282AB14F00990915 /* voicify-assistant-sampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C962F329282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sample-swiftuiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962F32D282AB14F00990915 /* voicify_assistant_sampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleUITests.swift; sourceTree = "<group>"; };
 		C962F32F282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FE1F4E27290CE8C900D1B447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -120,9 +120,9 @@
 		C962F310282AB14D00990915 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C962F30F282AB14D00990915 /* voicify-assistant-sample.app */,
-				C962F31F282AB14F00990915 /* voicify-assistant-sampleTests.xctest */,
-				C962F329282AB14F00990915 /* voicify-assistant-sampleUITests.xctest */,
+				C962F30F282AB14D00990915 /* voicify-assistant-sample-swiftui.app */,
+				C962F31F282AB14F00990915 /* voicify-assistant-sample-swiftuiTests.xctest */,
+				C962F329282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C962F30E282AB14D00990915 /* voicify-assistant-sample */ = {
+		C962F30E282AB14D00990915 /* voicify-assistant-sample-swiftui */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C962F333282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample" */;
+			buildConfigurationList = C962F333282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftui" */;
 			buildPhases = (
 				C962F30B282AB14D00990915 /* Sources */,
 				C962F30C282AB14D00990915 /* Frameworks */,
@@ -198,14 +198,14 @@
 			);
 			dependencies = (
 			);
-			name = "voicify-assistant-sample";
+			name = "voicify-assistant-sample-swiftui";
 			productName = "voicify-assistant-sample";
-			productReference = C962F30F282AB14D00990915 /* voicify-assistant-sample.app */;
+			productReference = C962F30F282AB14D00990915 /* voicify-assistant-sample-swiftui.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C962F31E282AB14F00990915 /* voicify-assistant-sampleTests */ = {
+		C962F31E282AB14F00990915 /* voicify-assistant-sample-swiftuiTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C962F336282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sampleTests" */;
+			buildConfigurationList = C962F336282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftuiTests" */;
 			buildPhases = (
 				C962F31B282AB14F00990915 /* Sources */,
 				C962F31C282AB14F00990915 /* Frameworks */,
@@ -216,14 +216,14 @@
 			dependencies = (
 				C962F321282AB14F00990915 /* PBXTargetDependency */,
 			);
-			name = "voicify-assistant-sampleTests";
+			name = "voicify-assistant-sample-swiftuiTests";
 			productName = "voicify-assistant-sampleTests";
-			productReference = C962F31F282AB14F00990915 /* voicify-assistant-sampleTests.xctest */;
+			productReference = C962F31F282AB14F00990915 /* voicify-assistant-sample-swiftuiTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C962F328282AB14F00990915 /* voicify-assistant-sampleUITests */ = {
+		C962F328282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C962F339282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sampleUITests" */;
+			buildConfigurationList = C962F339282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftuiUITests" */;
 			buildPhases = (
 				C962F325282AB14F00990915 /* Sources */,
 				C962F326282AB14F00990915 /* Frameworks */,
@@ -234,9 +234,9 @@
 			dependencies = (
 				C962F32B282AB14F00990915 /* PBXTargetDependency */,
 			);
-			name = "voicify-assistant-sampleUITests";
+			name = "voicify-assistant-sample-swiftuiUITests";
 			productName = "voicify-assistant-sampleUITests";
-			productReference = C962F329282AB14F00990915 /* voicify-assistant-sampleUITests.xctest */;
+			productReference = C962F329282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -262,7 +262,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C962F30A282AB14D00990915 /* Build configuration list for PBXProject "voicify-assistant-sample" */;
+			buildConfigurationList = C962F30A282AB14D00990915 /* Build configuration list for PBXProject "voicify-assistant-sample-swiftui" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -281,9 +281,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				C962F30E282AB14D00990915 /* voicify-assistant-sample */,
-				C962F31E282AB14F00990915 /* voicify-assistant-sampleTests */,
-				C962F328282AB14F00990915 /* voicify-assistant-sampleUITests */,
+				C962F30E282AB14D00990915 /* voicify-assistant-sample-swiftui */,
+				C962F31E282AB14F00990915 /* voicify-assistant-sample-swiftuiTests */,
+				C962F328282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -364,12 +364,12 @@
 /* Begin PBXTargetDependency section */
 		C962F321282AB14F00990915 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C962F30E282AB14D00990915 /* voicify-assistant-sample */;
+			target = C962F30E282AB14D00990915 /* voicify-assistant-sample-swiftui */;
 			targetProxy = C962F320282AB14F00990915 /* PBXContainerItemProxy */;
 		};
 		C962F32B282AB14F00990915 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C962F30E282AB14D00990915 /* voicify-assistant-sample */;
+			target = C962F30E282AB14D00990915 /* voicify-assistant-sample-swiftui */;
 			targetProxy = C962F32A282AB14F00990915 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -571,7 +571,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/voicify-assistant-sample.app/voicify-assistant-sample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/voicify-assistant-sample-swiftui.app/voicify-assistant-sample-swiftui";
 			};
 			name = Debug;
 		};
@@ -591,7 +591,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/voicify-assistant-sample.app/voicify-assistant-sample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/voicify-assistant-sample-swiftui.app/voicify-assistant-sample-swiftui";
 			};
 			name = Release;
 		};
@@ -634,7 +634,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C962F30A282AB14D00990915 /* Build configuration list for PBXProject "voicify-assistant-sample" */ = {
+		C962F30A282AB14D00990915 /* Build configuration list for PBXProject "voicify-assistant-sample-swiftui" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C962F331282AB14F00990915 /* Debug */,
@@ -643,7 +643,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C962F333282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample" */ = {
+		C962F333282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftui" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C962F334282AB14F00990915 /* Debug */,
@@ -652,7 +652,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C962F336282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sampleTests" */ = {
+		C962F336282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftuiTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C962F337282AB14F00990915 /* Debug */,
@@ -661,7 +661,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C962F339282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sampleUITests" */ = {
+		C962F339282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftuiUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C962F33A282AB14F00990915 /* Debug */,
