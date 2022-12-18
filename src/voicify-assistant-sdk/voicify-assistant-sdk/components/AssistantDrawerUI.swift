@@ -16,7 +16,8 @@ public struct AssistantDrawerUI: View {
     var voicifySTT: VoicifySTTProvider
     var voicifyTTS: VoicifyTTSProivder
     var voicifyAssistant: VoicifyAssistant
-    @Binding var assistantIsOpen: Bool
+    var notificationChanged = NotificationCenter.default.publisher(for: Notification.Name("openAssistant"))
+    @State var assistantIsOpen = false
     @State var messages: Array<Message> = []
     @State var hints: Array<Hint> = []
     @State var isFullScreen: Bool = false
@@ -44,7 +45,6 @@ public struct AssistantDrawerUI: View {
         self.headerProps = headerProps
         self.bodyProps = bodyProps
         self.toolBarProps = toolBarProps
-        self._assistantIsOpen = assistantSettingsProps.assistantIsOpen
         voicifySTT = VoicifySTTProvider()
         voicifyTTS = VoicifyTTSProivder(
             settings: VoicifyTextToSpeechSettings(
@@ -233,5 +233,8 @@ public struct AssistantDrawerUI: View {
         }
         .edgesIgnoringSafeArea(.all)
         .padding(.bottom, assistantIsOpen ? 0.1 : 0) // if keyboard is active - causes view to lift
+        .onReceive(notificationChanged){data in
+            self.assistantIsOpen = true
+        }
     }
 }

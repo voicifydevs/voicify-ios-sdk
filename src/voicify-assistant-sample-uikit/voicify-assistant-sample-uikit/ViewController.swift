@@ -10,18 +10,18 @@ import SwiftUI
 import voicify_assistant_sdk
 
 class ViewController: UIViewController {
-    @State var assistantIsOpen = false
+//    @State var assistantIsOpen = false
     func onEffect (effectName: String, data: Dictionary<String, Any>) -> Void{
         if(effectName == "Play")
         {
             if let songTitle = data["title"] as? String{
                 print(songTitle)
             }
-            assistantIsOpen = false
+//            assistantIsOpen = false
         }
         if(effectName == "closeAssistant")
         {
-            assistantIsOpen = false
+//            assistantIsOpen = false
         }
     }
     lazy var contentView = UIHostingController(
@@ -45,7 +45,6 @@ class ViewController: UIViewController {
                     noTracking: false,
                     effects: ["Play", "closeAssistant"],
                     onEffect: onEffect,
-                    assistantIsOpen: $assistantIsOpen,
                     sessionAttributes: ["sessionData": "sessionData"]
                 ),
             headerProps: nil,
@@ -60,13 +59,16 @@ class ViewController: UIViewController {
         button.backgroundColor = UIColor.blue
         button.setTitle("Open Assistant", for: .normal)
         button.addTarget(self, action: #selector(openAssistantClicked), for: .touchUpInside)
-        view.addSubview(button)
+        contentView.view.frame = view.bounds
+        contentView.view.tag = 100
+        contentView.didMove(toParent: self)
         addChild(contentView)
         view.addSubview(contentView.view)
+        view.addSubview(button)
     }
     
     @objc func openAssistantClicked(sender: UIButton!){
-        assistantIsOpen = true
+        NotificationCenter.default.post(Notification(name: Notification.Name("openAssistant")))
         
     }
 }

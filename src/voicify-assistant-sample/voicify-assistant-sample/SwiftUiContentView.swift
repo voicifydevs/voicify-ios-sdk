@@ -32,7 +32,7 @@ struct SwiftUiContentView: View {
                     if !currentSongTitle.isEmpty {Text("Now Playing \(currentSongTitle)").accessibilityIdentifier("songTitleText")}
                     Spacer()
                     Button("Click me to open \nthe assistant"){
-                        self.assistantIsOpen.toggle()
+                        NotificationCenter.default.post(Notification(name: Notification.Name("openAssistant")))
                     }
                     .accessibilityIdentifier("openAssistantButton")
                 }
@@ -59,7 +59,6 @@ struct SwiftUiContentView: View {
                         noTracking: false,
                         effects: ["Play", "closeAssistant"],
                         onEffect: onEffect,
-                        assistantIsOpen: $assistantIsOpen,
                         sessionAttributes: ["sessionData": "sessionData"]
                     ),
                 headerProps: nil
