@@ -79,6 +79,27 @@
 			remoteGlobalIDString = FE3B1638294CE92B00EB0CE7;
 			remoteInfo = "voicify-assistant-sample-uikitUITests";
 		};
+		FEE1B2CC294FCF850039C68C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C962F33C282AB14F00990915 /* voicify-assistant-sample-swiftui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C962F30F282AB14D00990915;
+			remoteInfo = "voicify-assistant-sample-swiftui";
+		};
+		FEE1B2CE294FCF850039C68C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C962F33C282AB14F00990915 /* voicify-assistant-sample-swiftui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C962F31F282AB14F00990915;
+			remoteInfo = "voicify-assistant-sample-swiftuiTests";
+		};
+		FEE1B2D0294FCF850039C68C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C962F33C282AB14F00990915 /* voicify-assistant-sample-swiftui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C962F329282AB14F00990915;
+			remoteInfo = "voicify-assistant-sample-swiftuiUITests";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -269,6 +290,16 @@
 			path = components;
 			sourceTree = "<group>";
 		};
+		FEE1B2C7294FCF850039C68C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FEE1B2CD294FCF850039C68C /* voicify-assistant-sample-swiftui.app */,
+				FEE1B2CF294FCF850039C68C /* voicify-assistant-sample-swiftuiTests.xctest */,
+				FEE1B2D1294FCF850039C68C /* voicify-assistant-sample-swiftuiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -358,6 +389,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = FEE1B2C7294FCF850039C68C /* Products */;
+					ProjectRef = C962F33C282AB14F00990915 /* voicify-assistant-sample-swiftui.xcodeproj */;
+				},
+				{
 					ProductGroup = FE3B164C294CE92B00EB0CE7 /* Products */;
 					ProjectRef = FE3B164B294CE92B00EB0CE7 /* voicify-assistant-sample-uikit.xcodeproj */;
 				},
@@ -390,6 +425,27 @@
 			fileType = wrapper.cfbundle;
 			path = "voicify-assistant-sample-uikitUITests.xctest";
 			remoteRef = FE3B1655294CE92C00EB0CE7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FEE1B2CD294FCF850039C68C /* voicify-assistant-sample-swiftui.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "voicify-assistant-sample-swiftui.app";
+			remoteRef = FEE1B2CC294FCF850039C68C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FEE1B2CF294FCF850039C68C /* voicify-assistant-sample-swiftuiTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "voicify-assistant-sample-swiftuiTests.xctest";
+			remoteRef = FEE1B2CE294FCF850039C68C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FEE1B2D1294FCF850039C68C /* voicify-assistant-sample-swiftuiUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "voicify-assistant-sample-swiftuiUITests.xctest";
+			remoteRef = FEE1B2D0294FCF850039C68C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
