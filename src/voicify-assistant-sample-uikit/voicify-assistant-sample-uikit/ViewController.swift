@@ -17,11 +17,11 @@ class ViewController: UIViewController {
             if let songTitle = data["title"] as? String{
                 print(songTitle)
             }
-//            assistantIsOpen = false
+            NotificationCenter.default.post(Notification(name: Notification.Name("closeAssistant")))
         }
         if(effectName == "closeAssistant")
         {
-//            assistantIsOpen = false
+            NotificationCenter.default.post(Notification(name: Notification.Name("closeAssistant")))
         }
     }
     lazy var contentView = UIHostingController(

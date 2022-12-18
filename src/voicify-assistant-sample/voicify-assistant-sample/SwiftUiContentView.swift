@@ -17,11 +17,11 @@ struct SwiftUiContentView: View {
                 print(songTitle)
                 currentSongTitle = songTitle
             }
-            assistantIsOpen = false
+            NotificationCenter.default.post(Notification(name: Notification.Name("closeAssistant")))
         }
         if(effectName == "closeAssistant")
         {
-            assistantIsOpen = false
+            NotificationCenter.default.post(Notification(name: Notification.Name("closeAssistant")))
         }
     }
     
