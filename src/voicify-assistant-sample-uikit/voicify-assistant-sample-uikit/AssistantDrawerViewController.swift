@@ -43,15 +43,14 @@ class AssistantDrawerViewController: UIViewController {
         button.addTarget(self, action: #selector(openAssistantClicked), for: .touchUpInside)
         return button
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setUpLayout()
         view.backgroundColor = UIColor.white
         contentStack.addArrangedSubview(nowPlayingLabel)
         contentStack.addArrangedSubview(openAssistantButton)
         view.addSubview(contentStack)
     }
-    
     
     @objc func openAssistantClicked(sender: UIButton!){
         NotificationCenter.default.post(Notification(name: Notification.Name("openAssistant")))
