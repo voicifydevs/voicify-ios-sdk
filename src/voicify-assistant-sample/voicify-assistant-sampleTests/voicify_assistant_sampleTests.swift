@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import voicify_assistant_sdk
-@testable import voicify_assistant_sample
+@testable import voicify_assistant_sample_swiftui
 
 class voicify_assistant_tests: XCTestCase {
     public var voiceAssistant: VoicifyAssistant? = nil

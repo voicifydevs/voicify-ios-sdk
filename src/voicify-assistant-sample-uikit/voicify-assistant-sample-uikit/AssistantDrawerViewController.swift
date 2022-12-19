@@ -25,6 +25,12 @@ class AssistantDrawerViewController: UIViewController {
         label.text = "Now Playing"
         label.textColor = .black
         label.tag = 100
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onPlayEffect),
+            name: Notification.Name("nowPlaying"),
+            object: nil
+        )
         return label
     }()
     
@@ -49,6 +55,14 @@ class AssistantDrawerViewController: UIViewController {
     
     @objc func openAssistantClicked(sender: UIButton!){
         NotificationCenter.default.post(Notification(name: Notification.Name("openAssistant")))
+    }
+    
+    @objc func onPlayEffect(_ notification: NSNotification){
+        let playEffectData = PlayEffectData(title: "")
+        if let title = notification.userInfo?["title"] as? String{
+            playEffectData.title = title
+        }
+        nowPlayingLabel.text = "Now Playing \(playEffectData.title)"
     }
 }
 

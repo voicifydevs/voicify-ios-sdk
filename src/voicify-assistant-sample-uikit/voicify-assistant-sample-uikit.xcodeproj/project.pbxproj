@@ -20,6 +20,7 @@
 		FE3B1663294CEAB400EB0CE7 /* voicify_assistant_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE3B1661294CEAB400EB0CE7 /* voicify_assistant_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FE794FE5295022E800DDEA8C /* AssistantViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE794FE4295022E800DDEA8C /* AssistantViewRepresentable.swift */; };
 		FE794FE72950243E00DDEA8C /* AssistantDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE794FE62950243E00DDEA8C /* AssistantDrawerViewController.swift */; };
+		FE794FE92950AD0C00DDEA8C /* PlayEffectData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE794FE82950AD0C00DDEA8C /* PlayEffectData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		FE3B1661294CEAB400EB0CE7 /* voicify_assistant_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE794FE4295022E800DDEA8C /* AssistantViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantViewRepresentable.swift; sourceTree = "<group>"; };
 		FE794FE62950243E00DDEA8C /* AssistantDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerViewController.swift; sourceTree = "<group>"; };
+		FE794FE82950AD0C00DDEA8C /* PlayEffectData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayEffectData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				FE3B1624294CE92B00EB0CE7 /* Assets.xcassets */,
 				FE3B1626294CE92B00EB0CE7 /* LaunchScreen.storyboard */,
 				FE3B1629294CE92B00EB0CE7 /* Info.plist */,
+				FE794FE82950AD0C00DDEA8C /* PlayEffectData.swift */,
 			);
 			path = "voicify-assistant-sample-uikit";
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE794FE92950AD0C00DDEA8C /* PlayEffectData.swift in Sources */,
 				FE794FE72950243E00DDEA8C /* AssistantDrawerViewController.swift in Sources */,
 				FE3B1620294CE92900EB0CE7 /* ViewController.swift in Sources */,
 				FE794FE5295022E800DDEA8C /* AssistantViewRepresentable.swift in Sources */,
