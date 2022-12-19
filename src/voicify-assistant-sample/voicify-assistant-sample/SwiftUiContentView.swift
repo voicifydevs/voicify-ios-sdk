@@ -67,8 +67,8 @@ struct SwiftUiContentView: View {
                 ,
                 toolBarProps: nil
             )
+            .ignoresSafeArea(.container)
         }
-        .ignoresSafeArea(.container)
     }
 }
 

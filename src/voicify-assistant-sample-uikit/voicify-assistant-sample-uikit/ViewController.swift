@@ -10,7 +10,6 @@ import SwiftUI
 import voicify_assistant_sdk
 
 class ViewController: UIViewController {
-//    @State var assistantIsOpen = false
     func onEffect (effectName: String, data: Dictionary<String, Any>) -> Void{
         if(effectName == "Play")
         {
