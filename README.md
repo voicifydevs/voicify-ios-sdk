@@ -74,7 +74,7 @@ var voicifyTTS = VoicifyTTSProivder(
 
 var voicifySTT = VoicifySTTProvider()
 
-var assistant = VoicifyAssistant(speechToTextProvider: voicifySTT, voicifyTTS, VoicifyAssistantSettings(
+var assistant = VoicifyAssistant(speechToTextProvider: voicifySTT,textToSpeechProvider: voicifyTTS, VoicifyAssistantSettings(
     appId = "your-app-id",
     appKey = "your-app-secret",
     serverRootUrl = "https://assistant.voicify.com",
