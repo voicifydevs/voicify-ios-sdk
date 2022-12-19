@@ -18,6 +18,8 @@
 		FE3B163F294CE92B00EB0CE7 /* voicify_assistant_sample_uikitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3B163E294CE92B00EB0CE7 /* voicify_assistant_sample_uikitUITestsLaunchTests.swift */; };
 		FE3B1662294CEAB400EB0CE7 /* voicify_assistant_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE3B1661294CEAB400EB0CE7 /* voicify_assistant_sdk.framework */; };
 		FE3B1663294CEAB400EB0CE7 /* voicify_assistant_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE3B1661294CEAB400EB0CE7 /* voicify_assistant_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FE794FE5295022E800DDEA8C /* AssistantViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE794FE4295022E800DDEA8C /* AssistantViewRepresentable.swift */; };
+		FE794FE72950243E00DDEA8C /* AssistantDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE794FE62950243E00DDEA8C /* AssistantDrawerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		FE3B163C294CE92B00EB0CE7 /* voicify_assistant_sample_uikitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sample_uikitUITests.swift; sourceTree = "<group>"; };
 		FE3B163E294CE92B00EB0CE7 /* voicify_assistant_sample_uikitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sample_uikitUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FE3B1661294CEAB400EB0CE7 /* voicify_assistant_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE794FE4295022E800DDEA8C /* AssistantViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantViewRepresentable.swift; sourceTree = "<group>"; };
+		FE794FE62950243E00DDEA8C /* AssistantDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 				FE3B161B294CE92900EB0CE7 /* AppDelegate.swift */,
 				FE3B161D294CE92900EB0CE7 /* SceneDelegate.swift */,
 				FE3B161F294CE92900EB0CE7 /* ViewController.swift */,
+				FE794FE4295022E800DDEA8C /* AssistantViewRepresentable.swift */,
+				FE794FE62950243E00DDEA8C /* AssistantDrawerViewController.swift */,
 				FE3B1621294CE92900EB0CE7 /* Main.storyboard */,
 				FE3B1624294CE92B00EB0CE7 /* Assets.xcassets */,
 				FE3B1626294CE92B00EB0CE7 /* LaunchScreen.storyboard */,
@@ -286,7 +292,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE794FE72950243E00DDEA8C /* AssistantDrawerViewController.swift in Sources */,
 				FE3B1620294CE92900EB0CE7 /* ViewController.swift in Sources */,
+				FE794FE5295022E800DDEA8C /* AssistantViewRepresentable.swift in Sources */,
 				FE3B161C294CE92900EB0CE7 /* AppDelegate.swift in Sources */,
 				FE3B161E294CE92900EB0CE7 /* SceneDelegate.swift in Sources */,
 			);
