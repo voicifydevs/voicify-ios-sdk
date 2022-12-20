@@ -17,11 +17,11 @@ class ViewController: UIViewController {
                 print(songTitle)
             }
             NotificationCenter.default.post(Notification(name: Notification.Name("nowPlaying"), userInfo: data))
-            NotificationCenter.default.post(Notification(name: Notification.Name("closeAssistant")))
+            NotificationCenter.default.post(Notification(name: Notification.Name.closeAssistant))
         }
         if(effectName == "closeAssistant")
         {
-            NotificationCenter.default.post(Notification(name: Notification.Name("closeAssistant")))
+            NotificationCenter.default.post(Notification(name: Notification.Name.closeAssistant))
         }
     }
     
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                                 locale: "en-US",
                                 channel: "My App",
                                 device: "My Device",
-                                voice: "",
+                                textToSpeechVoice: "",
                                 autoRunConversation: true,
                                 initializeWithWelcomeMessage: false,
                                 textToSpeechProvider: "Google",

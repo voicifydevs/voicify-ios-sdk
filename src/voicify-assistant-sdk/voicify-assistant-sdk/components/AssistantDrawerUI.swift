@@ -16,8 +16,8 @@ public struct AssistantDrawerUI: View {
     var voicifySTT: VoicifySTTProvider
     var voicifyTTS: VoicifyTTSProivder
     var voicifyAssistant: VoicifyAssistant
-    var openAssistantNotifcation = NotificationCenter.default.publisher(for: Notification.Name("openAssistant"))
-    var closeAssistantNotification = NotificationCenter.default.publisher(for: Notification.Name("closeAssistant"))
+    var openAssistantNotifcation = NotificationCenter.default.publisher(for: Notification.Name.openAssistant)
+    var closeAssistantNotification = NotificationCenter.default.publisher(for: Notification.Name.closeAssistant)
     @State var assistantIsOpen = false
     @State var messages: Array<Message> = []
     @State var hints: Array<Hint> = []
@@ -51,7 +51,7 @@ public struct AssistantDrawerUI: View {
             settings: VoicifyTextToSpeechSettings(
                 appId: assistantSettings.appId,
                 appKey: assistantSettings.appKey,
-                voice: assistantSettings.voice,
+                voice: assistantSettings.textToSpeechVoice,
                 serverRootUrl: assistantSettings.serverRootUrl,
                 provider: assistantSettings.textToSpeechProvider
             )

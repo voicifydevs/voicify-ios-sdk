@@ -53,7 +53,7 @@ class AssistantDrawerViewController: UIViewController {
     }
     
     @objc func openAssistantClicked(sender: UIButton!){
-        NotificationCenter.default.post(Notification(name: Notification.Name("openAssistant")))
+        NotificationCenter.default.post(Notification(name: Notification.Name.openAssistant))
     }
     
     @objc func onPlayEffect(_ notification: NSNotification){
