@@ -23,7 +23,6 @@ struct AssistantDrawerUIToolbar: View {
     @Binding var keyboardToggled: Bool
     @Binding var messages: Array<Message>
     @Binding var hints: Array<Hint>
-    @FocusState private var isFocused: Bool
     public var voicifySTT: VoicifySTTProvider
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant
@@ -169,8 +168,10 @@ struct AssistantDrawerUIToolbar: View {
                        .cornerRadius(CGFloat(toolBarProps?.micBorderRadius ?? 40))
                     }
                     .frame(minWidth: 44, minHeight: 44)
-                    .alert("You do not have permission to use speech recognition. Go to your app settings to grant permission and then try again.", isPresented: $showPermissionAlert) {
-                        Button("OK", role: .cancel) { }
+                    .alert(isPresented: $showPermissionAlert) {
+                        Alert(title: Text("Permission Denied"),
+                              message: Text("You do not have permission to use speech recognition. Go to your app settings to grant permission and then try again.")
+                        )
                     }
                     .accessibilityIdentifier("micButton")
                 Spacer()
@@ -191,7 +192,6 @@ struct AssistantDrawerUIToolbar: View {
                     .overlay(VStack{Divider().background(Color(hex: toolBarProps?.textInputLineColor ?? "#000000")).offset(x: 0, y: 15)}.padding(.leading, 10))
                     .accentColor(Color.init(hex: toolBarProps?.textInputCursorColor ?? "#000000"))
                     .foregroundColor(Color.init(hex: toolBarProps?.textInputTextColor ?? "#000000"))
-                    .focused($isFocused)
                     .accessibilityIdentifier("messageInputField")
                     Button(action:{
                         if !inputText.isEmpty {
@@ -215,9 +215,6 @@ struct AssistantDrawerUIToolbar: View {
                 .padding(.trailing, 10)
                 .background(Color.init(hex: !isUsingSpeech ? toolBarProps?.textBoxActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.textBoxInactiveHighlightColor ?? "00000000"))
                 .cornerRadius(CGFloat(10))
-                .onTapGesture {
-                                isFocused = true
-                            }
             }
                     
         }
