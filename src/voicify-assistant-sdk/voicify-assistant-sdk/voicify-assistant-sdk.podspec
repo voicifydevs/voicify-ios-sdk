@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
     s.author           = { 'username' => 'voicifydevs' } 
     s.source           = { :git => 'https://github.com/voicifydevs/voicify-ios-sdk.git', :tag => s.version.to_s } 
     s.ios.deployment_target = '14.0'
-    s.source_files = 'voicify-assistant-repo/**/*'
+    s.source_files = 'voicify-assistant-repo/*'
     end
