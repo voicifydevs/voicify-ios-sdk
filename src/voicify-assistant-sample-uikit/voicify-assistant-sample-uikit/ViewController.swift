@@ -16,12 +16,12 @@ class ViewController: UIViewController {
             if let songTitle = data["title"] as? String{
                 print(songTitle)
             }
-            NotificationCenter.default.post(Notification(name: Notification.Name("nowPlaying"), userInfo: data))
-            NotificationCenter.default.post(Notification(name: Notification.Name.closeAssistant))
+            NotificationCenter.default.post(Notification(name: NSNotification.Name("nowPlaying"), userInfo: data))
+            NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
         }
         if(effectName == "closeAssistant")
         {
-            NotificationCenter.default.post(Notification(name: Notification.Name.closeAssistant))
+            NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
         }
     }
     

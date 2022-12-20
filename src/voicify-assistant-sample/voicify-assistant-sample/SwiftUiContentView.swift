@@ -17,11 +17,11 @@ struct SwiftUiContentView: View {
                 print(songTitle)
                 currentSongTitle = songTitle
             }
-            NotificationCenter.default.post(Notification(name: Notification.Name.closeAssistant))
+            NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
         }
         if(effectName == "closeAssistant")
         {
-            NotificationCenter.default.post(Notification(name: Notification.Name.closeAssistant))
+            NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
         }
     }
     
@@ -32,7 +32,7 @@ struct SwiftUiContentView: View {
                     if !currentSongTitle.isEmpty {Text("Now Playing \(currentSongTitle)").accessibilityIdentifier("songTitleText")}
                     Spacer()
                     Button("Click me to open \nthe assistant"){
-                        NotificationCenter.default.post(Notification(name: Notification.Name.openAssistant))
+                        NotificationCenter.default.post(Notification(name: NSNotification.Name.openAssistant))
                     }
                     .accessibilityIdentifier("openAssistantButton")
                 }
