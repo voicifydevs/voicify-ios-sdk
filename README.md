@@ -47,7 +47,6 @@ For example, the component can be initialized with the required settings and a n
                     noTracking: false,
                     effects: ["Play", "closeAssistant"],
                     onEffect: onEffect,
-                    assistantIsOpen: $assistantIsOpen
                 ),
             headerProps: nil
             ,
@@ -56,6 +55,15 @@ For example, the component can be initialized with the required settings and a n
             toolBarProps: nil
         )
 )
+```
+
+The drawer can be opened by posting to the Notification Center:
+```swift
+NotificationCenter.default.post(Notification(name: NSNotification.Name.openAssistant))
+```
+Similarly, the drawer can be closed by using: 
+```swift
+NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
 ```
 ## Create Your Own Assistant
 While the Assistant Drawer UI offers a quick and easy way to integrate a Voicify Assistant, some cases may require more customization. For those cases, this SDK also provides a Voicify Assistant class that can be initialized with your `serverRootUrl`, `applicationId`, and `applicationSecret` from Voicify. Once it's configured, it becomes easy to make requests to your Voicify Custom Assistant. Additionally, the Assistant class can be configured with a TTS provider and a STT provider. In the case that you would like to use your own, you can utilize the `VoicifyTextToSpeechProvider` and `VoicifySpeechToTextProvider` classes. If you would like to utilize the providers that come with the SDK, then you can pass in the `VoicifyTTSProvider` and `VoicifySTTProvider` into the assistant
