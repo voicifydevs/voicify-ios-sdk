@@ -2,20 +2,21 @@ project '/Users/jamesmccarthy/Documents/voicify-ios-sdk/src/voicify-assistant-sd
 
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
-
+source 'https://github.com/weitieda/bottom-sheet.git'
+source 'https://github.com/onevcat/Kingfisher.git'
+source 'https://github.com/CocoaPods/Specs.git'
 target 'voicify-assistant-sdk' do
   # Comment the next line if you don't want to use dynamic frameworks
   #use_frameworks!
   use_frameworks! :linkage => :static
-
-  # Pods for voicify-assistant-sdk
-	pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
-	pod 'Kingfisher', '~> 7.4.1'
+  # Pods for voicify-åassistant-sdk
+  pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
+	pod 'Kingfisher'
   target 'voicify-assistant-sdkTests' do
     use_frameworks! :linkage => :static
     # Pods for testing
-	pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
-	pod 'Kingfisher', '~> 7.4.1'
+#	pod 'BottomSheet'
+#	pod 'Kingfisher'
   end
 
 end

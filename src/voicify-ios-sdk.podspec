@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "voicify-ios-sdk"
-  spec.version      = "0.0.7"
+  spec.version      = "0.0.8"
   spec.summary      = "Voicify Assistant SDK"
   spec.description  = <<-DESC
                     "Deploy your voicify app to your IOS mobile app."
@@ -22,7 +22,7 @@ Pod::Spec.new do |spec|
   spec.source_files  = "src/voicify-assistant-sdk/voicify-assistant-sdk/**/*.{swift}"
   spec.swift_versions = "5.0"
   spec.dependency "BottomSheet"
-  spec.dependency "KingFisher", "~> 7.4.1"
+  spec.dependency "KingFisher"
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
