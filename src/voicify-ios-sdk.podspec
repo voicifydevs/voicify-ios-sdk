@@ -22,7 +22,7 @@ Pod::Spec.new do |spec|
   spec.source_files  = "src/voicify-assistant-sdk/voicify-assistant-sdk/**/*.{swift}"
   spec.swift_versions = "5.0"
   spec.dependency 'Kingfisher'
-  spec.dependency 'BottomSheet'
+  spec.dependency 'BottomSheet/1.0.6'
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Link your library with frameworks, or libraries. Libraries do not include

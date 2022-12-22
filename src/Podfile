@@ -1,5 +1,6 @@
 project '/Users/jamesmccarthy/Documents/voicify-ios-sdk/src/voicify-assistant-sdk/voicify-assistant-sdk.xcodeproj'
-source 'https://github.com/weitieda/bottom-sheet.git'
+#source 'https://github.com/weitieda/bottom-sheet.git'
+source 'https://github.com/voicifydevs/voicify-ios-sdk-pod-specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks! :linkage => :static
 # Uncomment the next line to define a global platform for your project
@@ -9,5 +10,5 @@ target 'voicify-assistant-sdk' do
   #use_frameworks!
   # Pods for voicify-åassistant-sdk
   pod 'Kingfisher', '~> 7.4.1'
-  pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
+  pod 'BottomSheet'
 end
