@@ -10,5 +10,5 @@ target 'voicify-assistant-sdk' do
   #use_frameworks!
   # Pods for voicify-åassistant-sdk
   pod 'Kingfisher', '~> 7.4.1'
-  pod 'BottomSheet'
+  pod 'BottomSheet', '~> 1.0.6'
 end
