@@ -1,0 +1,21 @@
+project '/Users/jamesmccarthy/Documents/voicify-ios-sdk/src/voicify-assistant-sdk/voicify-assistant-sdk.xcodeproj'
+
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'voicify-assistant-sdk' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  #use_frameworks!
+  use_frameworks! :linkage => :static
+
+  # Pods for voicify-assistant-sdk
+	pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
+	pod 'Kingfisher', '~> 7.4.1'
+  target 'voicify-assistant-sdkTests' do
+    use_frameworks! :linkage => :static
+    # Pods for testing
+	pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
+	pod 'Kingfisher', '~> 7.4.1'
+  end
+
+end

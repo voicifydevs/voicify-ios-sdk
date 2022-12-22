@@ -1,0 +1,1235 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04315B590DCF63FCA94D2435F9E43332 /* CallbackQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA68A7F4B2C1355F1370470C2E3A01F9 /* CallbackQueue.swift */; };
+		0C628E854D8305853C2FF3BEC560F5DC /* ExtensionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C82E2D5E2EB2D8BFD74C1717A9CC01 /* ExtensionHelpers.swift */; };
+		0D164A3B3412C33FAA3DE9DFEECA635E /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32EECE4B53498AD8D2553518A79D91 /* RedirectHandler.swift */; };
+		138B6C9501B808BD2CC7084E6F427E07 /* KFOptionsSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C9E0CD40E1AD7303358224E259938 /* KFOptionsSetter.swift */; };
+		1857B76869B0F06E52927742DB8DA990 /* ImageDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEA3605F80EFDA103BDECFFC864D63C /* ImageDrawing.swift */; };
+		24C85D185E4B27A3309EC8B537D38741 /* Pods-voicify-assistant-sdk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A39B89821E13323D99A977E66B454 /* Pods-voicify-assistant-sdk-dummy.m */; };
+		29040B71785F0E24B07F0609B71B3615 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65499ADECFD8AFB436C3D86DD61CEE69 /* ImageModifier.swift */; };
+		29D4820139320F6FC9A53A0B9FB89C18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		2C5C508FE8C64A36ACC1CE28D8AAD6A8 /* GraphicsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A947B59A7B981D3539DEE3CCA30B01B /* GraphicsContext.swift */; };
+		30DC2A95FD84D961D54C880D46AA89D5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD08A4A1384A4821AEFDA8AE35BC61 /* Storage.swift */; };
+		30E136738000FCC2A046F14B8E46D8B3 /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17E79F69992A7D0513DF4B7122AEF93 /* RequestModifier.swift */; };
+		31818AC58A7946269BBD1258E183B144 /* CPListItem+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EE55481A958177FB51BD2802B80E5 /* CPListItem+Kingfisher.swift */; };
+		32742A4104A339D3619945F2BDCA6696 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F4172C17BF68F9765F166CEF474FE /* String+MD5.swift */; };
+		357B0535FBC8DDCEE79805C6C8220590 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		35C81CE4ADF766663A2F441621E36E3E /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA522CC740D5DE6B0014132883AACCC /* MemoryStorage.swift */; };
+		3AEE512181D92EF93D3E6CFDF6700B8B /* RetryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A48938B41B44274F7F12FE81D86E87F /* RetryStrategy.swift */; };
+		3BCDDE8EEE0FD22EF2B1F90C8106B53E /* TVMonogramView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A028D570624610C2B5772164F6DECA0 /* TVMonogramView+Kingfisher.swift */; };
+		41413EF8B75CF628AF5C914D73A64E53 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC018D236348F80A65092278AFB09EC /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m */; };
+		4BEDD18A2A75AAC34A1305B124750DE7 /* WKInterfaceImage+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C7D9B31C403E3BBC0AC8E1C90A412 /* WKInterfaceImage+Kingfisher.swift */; };
+		521159C34B01DBB1E798DB238F77E614 /* FormatIndicatedCacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90DEA904E791CE1D7BBD9B194AF526E /* FormatIndicatedCacheSerializer.swift */; };
+		53941D7757762C9E5B11615B85ED57EC /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C489D9259FB9A795E0D09376F91B38C /* Runtime.swift */; };
+		5979D25B09162DBA18A32D344388CEDB /* ImagePrefetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC4A4F79DBBCCED126933B70D058D7 /* ImagePrefetcher.swift */; };
+		60A5AA293ED49016F46ED3947BD560F1 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124CF8FC3F064F1BFD81CD27EDAF931E /* SessionDelegate.swift */; };
+		624E6ED5480C0E52F91382BBDE83147F /* CacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC1BDA3EAC9F320D1627D1C2CCA9CA8 /* CacheSerializer.swift */; };
+		63FB1BC7E113A9E59C862F189A0921E8 /* KF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2030BD17CA246F3FA15393EDEF7558FC /* KF.swift */; };
+		648F5EBEC35827D50F3077D190F167EB /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B580DD6E398FA3D0DE1C4561BBED6BD5 /* DiskStorage.swift */; };
+		64C298B3333104FD7DF384A96D6ECE2F /* KingfisherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2E019CFA5AD27B0AC68E9A86298420 /* KingfisherError.swift */; };
+		64FBC11066C50B3FCF0EA5303BEB1A1D /* ImageDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A77FC5D38FCEFDB7A5785A1198F802 /* ImageDataProcessor.swift */; };
+		65E8DAE7A1BBC0036ECC3FD4A25A5902 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DFE16F47D25938BE41099FE3F122E /* Delegate.swift */; };
+		69A357ACBDF20BD68E50149D719B364B /* KFImageOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5359F0F5C61A9677E032181DAC0AF /* KFImageOptions.swift */; };
+		6C2A555D45581CF151F17055A9F60C76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6D32246714C6EA52873C5685C9BF1DB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6DEA7459CAA3AE3AC99F9A0157F5A697 /* GIFAnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3CF4105E094936F30F030F074F9801 /* GIFAnimatedImage.swift */; };
+		6E838357F2EC0627D94D805A4D4098DD /* Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC6FA5CA5B52EC7814768DFC381A52 /* Kingfisher.swift */; };
+		7259131D26A746A2AE9E46A29ABE3F65 /* KFImageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22562A191EE1E6AA460851D926E31C6F /* KFImageRenderer.swift */; };
+		76A43A37DF9C6BD2E524EED9F79D608E /* ImageFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E848AE6AE856D5F2017F38F1A338AB1 /* ImageFormat.swift */; };
+		86572A270FF92597CE3608021B323589 /* KingfisherOptionsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673B75C178CA15764D29530918B75F55 /* KingfisherOptionsInfo.swift */; };
+		867479B762F3B937FAE94322A7AD3883 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB96618DD2FF3FFCA64F55FDA9FB0680 /* Indicator.swift */; };
+		872EC2D67F61CF287F4B0036BFD008A8 /* NSTextAttachment+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4612412B2217177FA04E4E7A3889256 /* NSTextAttachment+Kingfisher.swift */; };
+		8B08B823451D4FB7BBCE5AE25CA584AD /* Kingfisher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCE149B6895EDAC442CDA93DEA7F592 /* Kingfisher-dummy.m */; };
+		8D5B330E09BD3CE0CD76C2126659D2BF /* BottomSheet-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F61E45C8D8B1C039A90B70797426FB77 /* BottomSheet-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E396211E4853EDE77B0E3F1D7026E64 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4291FB30BE685660E71A3F1B65566E4A /* Placeholder.swift */; };
+		92FD564872378F1D4AA68596F0AECE4E /* AVAssetImageDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE2136569D179E20E6ADE17E5DB70B7 /* AVAssetImageDataProvider.swift */; };
+		9CF3C4A97745B1221B065E8A50D69C8A /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F62BADCB3A09EE6457B303AA1D8E94 /* ImageProcessor.swift */; };
+		9ECC8F507D6880CD7996C291B809A226 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68916DBF9C02A391E1BE2DB4DDCA0315 /* Source.swift */; };
+		A42246D42D7BD088C2A0214E839F3267 /* AuthenticationChallengeResponsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055C5480720F79E150E8CB8688321B3 /* AuthenticationChallengeResponsable.swift */; };
+		A7C1A47A4567EFA043CE6C57E0E3AAEB /* Pods-voicify-assistant-sdk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3254A3EA2B995DC30149A7ACBBDAF9A2 /* Pods-voicify-assistant-sdk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ACA8ECA031B4CC99139E6B4E35E222A0 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1121617B660BF286E31A5FCF3995DC1C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B13F71DC81045B8B6B446F9AE7D45A2A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65F692361191CDB8690F3D76DFEC2C /* Result.swift */; };
+		B1CB6DAFB863950F2802C83AA28E9E9A /* ImageBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDAAF95B50121CC8811A9F14D7FF313 /* ImageBinder.swift */; };
+		B459FE2A86BCB1EF12C99078A27090C3 /* NSButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8C411B81D14550EC76BDB4E4B97212 /* NSButton+Kingfisher.swift */; };
+		B71B74134895B2BCC4351DF68CA5EEA1 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83AFA9F2E8090952B121C759931008F /* ImageCache.swift */; };
+		B85FD66791807D184F5528CA774A29AC /* UIButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DD3DB92D1B2B4942AD2BF4C31BD61 /* UIButton+Kingfisher.swift */; };
+		C531D49D0F6F254C62376E50C07E4C84 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C78B8C148479A5BF9158E405980676C /* Filter.swift */; };
+		C69B493642649D979B75EF4CC08ECBCB /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722F7D7519D96789D4DD856083F26954 /* ImageDownloader.swift */; };
+		CBDC0AD324B60D1387B905C98CCD84DC /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FDF91128860135C351969994D53C1 /* ViewExtension.swift */; };
+		CC98837557B4FA82A768A1F8FD5EC9C3 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0FA897F376E91EE21D30E6DBCE537 /* Image.swift */; };
+		CD3C54EFEF04AF19F7BC29195DC79B70 /* ImageContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D3B9A8E9D40CC98E714B03056F3C5 /* ImageContext.swift */; };
+		CE77948E72B297EE696839791688FF35 /* KFImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBB175AE41A05572C4702D1FB1EBB10 /* KFImageProtocol.swift */; };
+		CE7C5F8BFF428F0C147BDE88DF5CDAF5 /* BottomSheet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC860D22060C1F8C521CB61608BC992 /* BottomSheet-dummy.m */; };
+		D05B3D789CE9215F030A91696DBC451F /* Kingfisher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 73299E7A989215CF982A3A4DB0A07A3B /* Kingfisher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4F590D15AE65D82B0107F7A70DE8063 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750332EA3945163BAB1DAFFD1AF9A3D7 /* BottomSheet.swift */; };
+		D537AC9451F92514EE2D4BBE5707CBD1 /* SizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760D68F9201D9DAF8EDD7768E05F1460 /* SizeExtensions.swift */; };
+		D8DFE7B0516C6DA268D8BD1D8933F8D9 /* ImageProgressive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09F620AD1CDFCF1A3BAE508B3066353 /* ImageProgressive.swift */; };
+		D8F8F413271A28DD0B67FC8DC4E97588 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721453D8FF0C1793E563106CABF3F790 /* KingfisherManager.swift */; };
+		DA3DE86B3E08ECE235E60BB0C1DB8F50 /* KFAnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6DE2822DA26E771353229EB562E9A /* KFAnimatedImage.swift */; };
+		DB8C2C950C13B0156D4FF48A3729739A /* ImageTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4616D8C3442A59CCBDEB3CBCF4E8B2A4 /* ImageTransition.swift */; };
+		DF9D8E0AF9F53918E9F5FAFD25BA537C /* KFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5551E55945BDB2F9D0C2EE319C770A98 /* KFImage.swift */; };
+		E4952D70E8D00E5FA3AF017858AB353D /* ImageDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C9B51A286715C0A0874671A91D145C /* ImageDataProvider.swift */; };
+		F31C4467DB5C32ACB42A7999D5EAFD0F /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7806338DA1A4D11C5459F732248DD2 /* RoundedCorner.swift */; };
+		F3EBDDD6FCE26008CB1BAB5787302541 /* SessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BE74496AF3C3F259DA328A0FDF4E89 /* SessionDataTask.swift */; };
+		F74FD4A23B2184A755649F7000BB237A /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328D81854B27B6B5BAB8192003493F84 /* Box.swift */; };
+		F907C25A246611431D511119035F3C2C /* ImageDownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360B4432A7ECB9CA95EA1EB45184C143 /* ImageDownloaderDelegate.swift */; };
+		F91ECC7297719C55584FF31D854D52DE /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45566FB253D007F9F0FF10F7A4D1D191 /* Resource.swift */; };
+		FB8BCB873BC02C13547767BCCA33F12D /* ImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABAE7EA9D88F27BFD62150AA5785FD /* ImageView+Kingfisher.swift */; };
+		FEA02FDE9AC36897D5C087F9619089B9 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC3D6495FC41DE8061D1BDCCB9D244 /* AnimatedImageView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		57FDD4AA39DEA343AECF6F49A26D1681 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8022D22FAA6690B5E1C379C1BCE1491;
+			remoteInfo = Kingfisher;
+		};
+		70DB082B380012B41A1844F1F29F6ED2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 531B7580D9DC2CC60C9EA9E9291AA390;
+			remoteInfo = BottomSheet;
+		};
+		A7D2EF585372D6CE3964F78D6A5EA7E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8022D22FAA6690B5E1C379C1BCE1491;
+			remoteInfo = Kingfisher;
+		};
+		D7BF86D201D74022D45FDC43BF441D9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 531B7580D9DC2CC60C9EA9E9291AA390;
+			remoteInfo = BottomSheet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		029141017BFA6C7F4EBD5FDAF45E761C /* Pods-voicify-assistant-sdk-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-voicify-assistant-sdk-acknowledgements.markdown"; sourceTree = "<group>"; };
+		03C68EC972E1717DB4032BF97B3B98E5 /* BottomSheet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BottomSheet-prefix.pch"; sourceTree = "<group>"; };
+		080CF7E4699B4C84CBA10EA0B327B049 /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
+		086339B5979A1492658951D1D319F8DC /* BottomSheet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BottomSheet.release.xcconfig; sourceTree = "<group>"; };
+		0F8CC9DFCDBA4DD20D61288EB5F68E37 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1121617B660BF286E31A5FCF3995DC1C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h"; sourceTree = "<group>"; };
+		124CF8FC3F064F1BFD81CD27EDAF931E /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Sources/Networking/SessionDelegate.swift; sourceTree = "<group>"; };
+		1A028D570624610C2B5772164F6DECA0 /* TVMonogramView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TVMonogramView+Kingfisher.swift"; path = "Sources/Extensions/TVMonogramView+Kingfisher.swift"; sourceTree = "<group>"; };
+		1AA522CC740D5DE6B0014132883AACCC /* MemoryStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MemoryStorage.swift; path = Sources/Cache/MemoryStorage.swift; sourceTree = "<group>"; };
+		1AD5EB8267FBBE3424737B570042EE7D /* Pods-voicify-assistant-sdk-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-Info.plist"; sourceTree = "<group>"; };
+		2030BD17CA246F3FA15393EDEF7558FC /* KF.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KF.swift; path = Sources/General/KF.swift; sourceTree = "<group>"; };
+		22562A191EE1E6AA460851D926E31C6F /* KFImageRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFImageRenderer.swift; path = Sources/SwiftUI/KFImageRenderer.swift; sourceTree = "<group>"; };
+		2CDAAF95B50121CC8811A9F14D7FF313 /* ImageBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageBinder.swift; path = Sources/SwiftUI/ImageBinder.swift; sourceTree = "<group>"; };
+		2D3C7D9B31C403E3BBC0AC8E1C90A412 /* WKInterfaceImage+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WKInterfaceImage+Kingfisher.swift"; path = "Sources/Extensions/WKInterfaceImage+Kingfisher.swift"; sourceTree = "<group>"; };
+		2E848AE6AE856D5F2017F38F1A338AB1 /* ImageFormat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFormat.swift; path = Sources/Image/ImageFormat.swift; sourceTree = "<group>"; };
+		3129776EA37B1F2DF747DAC1E1CFD7DF /* Pods-voicify-assistant-sdk */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-voicify-assistant-sdk"; path = Pods_voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3254A3EA2B995DC30149A7ACBBDAF9A2 /* Pods-voicify-assistant-sdk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-voicify-assistant-sdk-umbrella.h"; sourceTree = "<group>"; };
+		328D81854B27B6B5BAB8192003493F84 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Utility/Box.swift; sourceTree = "<group>"; };
+		360B4432A7ECB9CA95EA1EB45184C143 /* ImageDownloaderDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloaderDelegate.swift; path = Sources/Networking/ImageDownloaderDelegate.swift; sourceTree = "<group>"; };
+		3AC0FA897F376E91EE21D30E6DBCE537 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image/Image.swift; sourceTree = "<group>"; };
+		3E3CF4105E094936F30F030F074F9801 /* GIFAnimatedImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GIFAnimatedImage.swift; path = Sources/Image/GIFAnimatedImage.swift; sourceTree = "<group>"; };
+		3EDC3D6495FC41DE8061D1BDCCB9D244 /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/Views/AnimatedImageView.swift; sourceTree = "<group>"; };
+		40CC4A4F79DBBCCED126933B70D058D7 /* ImagePrefetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePrefetcher.swift; path = Sources/Networking/ImagePrefetcher.swift; sourceTree = "<group>"; };
+		4291FB30BE685660E71A3F1B65566E4A /* Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Placeholder.swift; path = Sources/Image/Placeholder.swift; sourceTree = "<group>"; };
+		43DF193AEF218568C93C3A1E6CEED6C9 /* Pods-voicify-assistant-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk.debug.xcconfig"; sourceTree = "<group>"; };
+		45566FB253D007F9F0FF10F7A4D1D191 /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/General/ImageSource/Resource.swift; sourceTree = "<group>"; };
+		45BE74496AF3C3F259DA328A0FDF4E89 /* SessionDataTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDataTask.swift; path = Sources/Networking/SessionDataTask.swift; sourceTree = "<group>"; };
+		4616D8C3442A59CCBDEB3CBCF4E8B2A4 /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/Image/ImageTransition.swift; sourceTree = "<group>"; };
+		488D4024BADCC5BAB99D2AFDF8B9A2BB /* BottomSheet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BottomSheet.debug.xcconfig; sourceTree = "<group>"; };
+		48B2D9FF754E3DDCEE0D10ECBF54C18D /* BottomSheet.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BottomSheet.modulemap; sourceTree = "<group>"; };
+		4B2E019CFA5AD27B0AC68E9A86298420 /* KingfisherError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherError.swift; path = Sources/General/KingfisherError.swift; sourceTree = "<group>"; };
+		4B4EE55481A958177FB51BD2802B80E5 /* CPListItem+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CPListItem+Kingfisher.swift"; path = "Sources/Extensions/CPListItem+Kingfisher.swift"; sourceTree = "<group>"; };
+		4C489D9259FB9A795E0D09376F91B38C /* Runtime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Runtime.swift; path = Sources/Utility/Runtime.swift; sourceTree = "<group>"; };
+		503DD3DB92D1B2B4942AD2BF4C31BD61 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/Extensions/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
+		5551E55945BDB2F9D0C2EE319C770A98 /* KFImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFImage.swift; path = Sources/SwiftUI/KFImage.swift; sourceTree = "<group>"; };
+		564EA007AC473EFD328AFA3560107791 /* Pods-voicify-assistant-sdk-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-acknowledgements.plist"; sourceTree = "<group>"; };
+		5C78B8C148479A5BF9158E405980676C /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Image/Filter.swift; sourceTree = "<group>"; };
+		601A5B82DD12314B0FD684E3C68DB28D /* Pods-voicify-assistant-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk.release.xcconfig"; sourceTree = "<group>"; };
+		60E6DE2822DA26E771353229EB562E9A /* KFAnimatedImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFAnimatedImage.swift; path = Sources/SwiftUI/KFAnimatedImage.swift; sourceTree = "<group>"; };
+		63C82E2D5E2EB2D8BFD74C1717A9CC01 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
+		63D702E08B29A02141471BF9FF2D98A5 /* Kingfisher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.release.xcconfig; sourceTree = "<group>"; };
+		65499ADECFD8AFB436C3D86DD61CEE69 /* ImageModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageModifier.swift; path = Sources/Networking/ImageModifier.swift; sourceTree = "<group>"; };
+		66B511B2684E9654D817929422761012 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		673B75C178CA15764D29530918B75F55 /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/General/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
+		68916DBF9C02A391E1BE2DB4DDCA0315 /* Source.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Source.swift; path = Sources/General/ImageSource/Source.swift; sourceTree = "<group>"; };
+		6A947B59A7B981D3539DEE3CCA30B01B /* GraphicsContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GraphicsContext.swift; path = Sources/Image/GraphicsContext.swift; sourceTree = "<group>"; };
+		721453D8FF0C1793E563106CABF3F790 /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/General/KingfisherManager.swift; sourceTree = "<group>"; };
+		722F7D7519D96789D4DD856083F26954 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/Networking/ImageDownloader.swift; sourceTree = "<group>"; };
+		725F4172C17BF68F9765F166CEF474FE /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/Utility/String+MD5.swift"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		73299E7A989215CF982A3A4DB0A07A3B /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
+		73C9B51A286715C0A0874671A91D145C /* ImageDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDataProvider.swift; path = Sources/General/ImageSource/ImageDataProvider.swift; sourceTree = "<group>"; };
+		750332EA3945163BAB1DAFFD1AF9A3D7 /* BottomSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BottomSheet.swift; path = Sources/BottomSheet/BottomSheet.swift; sourceTree = "<group>"; };
+		760D68F9201D9DAF8EDD7768E05F1460 /* SizeExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SizeExtensions.swift; path = Sources/Utility/SizeExtensions.swift; sourceTree = "<group>"; };
+		76F62BADCB3A09EE6457B303AA1D8E94 /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProcessor.swift; path = Sources/Image/ImageProcessor.swift; sourceTree = "<group>"; };
+		792D3B9A8E9D40CC98E714B03056F3C5 /* ImageContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageContext.swift; path = Sources/SwiftUI/ImageContext.swift; sourceTree = "<group>"; };
+		7A48938B41B44274F7F12FE81D86E87F /* RetryStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryStrategy.swift; path = Sources/Networking/RetryStrategy.swift; sourceTree = "<group>"; };
+		7C8C411B81D14550EC76BDB4E4B97212 /* NSButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSButton+Kingfisher.swift"; path = "Sources/Extensions/NSButton+Kingfisher.swift"; sourceTree = "<group>"; };
+		7CABAE7EA9D88F27BFD62150AA5785FD /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/Extensions/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
+		89B0C855AB8B8BDADA062B40C52A5D87 /* BottomSheet-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BottomSheet-Info.plist"; sourceTree = "<group>"; };
+		8ABC6FA5CA5B52EC7814768DFC381A52 /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/General/Kingfisher.swift; sourceTree = "<group>"; };
+		8FC018D236348F80A65092278AFB09EC /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m"; sourceTree = "<group>"; };
+		97CE00D295E803169C27C656475D10A8 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FA5359F0F5C61A9677E032181DAC0AF /* KFImageOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFImageOptions.swift; path = Sources/SwiftUI/KFImageOptions.swift; sourceTree = "<group>"; };
+		A23A39B89821E13323D99A977E66B454 /* Pods-voicify-assistant-sdk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-voicify-assistant-sdk-dummy.m"; sourceTree = "<group>"; };
+		A85A04CC5B0C8B09A92215F30A4843B2 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests"; path = Pods_voicify_assistant_sdk_voicify_assistant_sdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB7A67E445829D7F5037081AF61C945D /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Kingfisher.modulemap; sourceTree = "<group>"; };
+		ACC5023C8F76B06E13CE67A91C054264 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist"; sourceTree = "<group>"; };
+		AEC1BDA3EAC9F320D1627D1C2CCA9CA8 /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/Cache/CacheSerializer.swift; sourceTree = "<group>"; };
+		AFEA3605F80EFDA103BDECFFC864D63C /* ImageDrawing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDrawing.swift; path = Sources/Image/ImageDrawing.swift; sourceTree = "<group>"; };
+		B2A77FC5D38FCEFDB7A5785A1198F802 /* ImageDataProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDataProcessor.swift; path = Sources/Networking/ImageDataProcessor.swift; sourceTree = "<group>"; };
+		B580DD6E398FA3D0DE1C4561BBED6BD5 /* DiskStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskStorage.swift; path = Sources/Cache/DiskStorage.swift; sourceTree = "<group>"; };
+		B6503E908A088C77ECA226F8BCC2E499 /* Kingfisher-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Kingfisher-Info.plist"; sourceTree = "<group>"; };
+		BB96618DD2FF3FFCA64F55FDA9FB0680 /* Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indicator.swift; path = Sources/Views/Indicator.swift; sourceTree = "<group>"; };
+		BBF4BC6AD37D12A63774B7A51C6E298C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		BFE2136569D179E20E6ADE17E5DB70B7 /* AVAssetImageDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AVAssetImageDataProvider.swift; path = Sources/General/ImageSource/AVAssetImageDataProvider.swift; sourceTree = "<group>"; };
+		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF32EECE4B53498AD8D2553518A79D91 /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Sources/Networking/RedirectHandler.swift; sourceTree = "<group>"; };
+		D055C5480720F79E150E8CB8688321B3 /* AuthenticationChallengeResponsable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationChallengeResponsable.swift; path = Sources/Networking/AuthenticationChallengeResponsable.swift; sourceTree = "<group>"; };
+		D09F620AD1CDFCF1A3BAE508B3066353 /* ImageProgressive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProgressive.swift; path = Sources/Image/ImageProgressive.swift; sourceTree = "<group>"; };
+		D0C005B3E3BBF64147467F7F886BEA76 /* Pods-voicify-assistant-sdk.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-voicify-assistant-sdk.modulemap"; sourceTree = "<group>"; };
+		D50DC903C275E0DFAF93706EA7747959 /* Kingfisher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.debug.xcconfig; sourceTree = "<group>"; };
+		DA68A7F4B2C1355F1370470C2E3A01F9 /* CallbackQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CallbackQueue.swift; path = Sources/Utility/CallbackQueue.swift; sourceTree = "<group>"; };
+		DFAD08A4A1384A4821AEFDA8AE35BC61 /* Storage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = Sources/Cache/Storage.swift; sourceTree = "<group>"; };
+		DFCE149B6895EDAC442CDA93DEA7F592 /* Kingfisher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kingfisher-dummy.m"; sourceTree = "<group>"; };
+		E4612412B2217177FA04E4E7A3889256 /* NSTextAttachment+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSTextAttachment+Kingfisher.swift"; path = "Sources/Extensions/NSTextAttachment+Kingfisher.swift"; sourceTree = "<group>"; };
+		E90DEA904E791CE1D7BBD9B194AF526E /* FormatIndicatedCacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormatIndicatedCacheSerializer.swift; path = Sources/Cache/FormatIndicatedCacheSerializer.swift; sourceTree = "<group>"; };
+		E9463747D9648F1F4861C97FD1962291 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap"; sourceTree = "<group>"; };
+		EA4C9E0CD40E1AD7303358224E259938 /* KFOptionsSetter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFOptionsSetter.swift; path = Sources/General/KFOptionsSetter.swift; sourceTree = "<group>"; };
+		EA5FDF91128860135C351969994D53C1 /* ViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = Sources/BottomSheet/ViewExtension.swift; sourceTree = "<group>"; };
+		EB65F692361191CDB8690F3D76DFEC2C /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Utility/Result.swift; sourceTree = "<group>"; };
+		EB7806338DA1A4D11C5459F732248DD2 /* RoundedCorner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RoundedCorner.swift; path = Sources/BottomSheet/RoundedCorner.swift; sourceTree = "<group>"; };
+		EEBB175AE41A05572C4702D1FB1EBB10 /* KFImageProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFImageProtocol.swift; path = Sources/SwiftUI/KFImageProtocol.swift; sourceTree = "<group>"; };
+		EEC860D22060C1F8C521CB61608BC992 /* BottomSheet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BottomSheet-dummy.m"; sourceTree = "<group>"; };
+		F17E79F69992A7D0513DF4B7122AEF93 /* RequestModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestModifier.swift; path = Sources/Networking/RequestModifier.swift; sourceTree = "<group>"; };
+		F29E87F122D040EDBC20D7345A19B707 /* BottomSheet */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BottomSheet; path = BottomSheet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F61E45C8D8B1C039A90B70797426FB77 /* BottomSheet-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BottomSheet-umbrella.h"; sourceTree = "<group>"; };
+		F64DFE16F47D25938BE41099FE3F122E /* Delegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Delegate.swift; path = Sources/Utility/Delegate.swift; sourceTree = "<group>"; };
+		F83AFA9F2E8090952B121C759931008F /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/Cache/ImageCache.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		271DF8C6D2577F8981E6F4FDD570C5A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C2A555D45581CF151F17055A9F60C76 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41A54115BE97A206C3B4AD7CE821D959 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				357B0535FBC8DDCEE79805C6C8220590 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79E94F408770900D1442A431C66A0882 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D32246714C6EA52873C5685C9BF1DB5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A84B59882E405360F62A669A8D125F7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29D4820139320F6FC9A53A0B9FB89C18 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16F46CC458BB3F1767AB93665A610ACB /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */ = {
+			isa = PBXGroup;
+			children = (
+				E9463747D9648F1F4861C97FD1962291 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap */,
+				0F8CC9DFCDBA4DD20D61288EB5F68E37 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.markdown */,
+				BBF4BC6AD37D12A63774B7A51C6E298C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.plist */,
+				8FC018D236348F80A65092278AFB09EC /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m */,
+				ACC5023C8F76B06E13CE67A91C054264 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist */,
+				1121617B660BF286E31A5FCF3995DC1C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h */,
+				66B511B2684E9654D817929422761012 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */,
+				97CE00D295E803169C27C656475D10A8 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */,
+			);
+			name = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests";
+			path = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests";
+			sourceTree = "<group>";
+		};
+		327DBDBC2F65ED32F89A653B1E94A73D /* Pods-voicify-assistant-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				D0C005B3E3BBF64147467F7F886BEA76 /* Pods-voicify-assistant-sdk.modulemap */,
+				029141017BFA6C7F4EBD5FDAF45E761C /* Pods-voicify-assistant-sdk-acknowledgements.markdown */,
+				564EA007AC473EFD328AFA3560107791 /* Pods-voicify-assistant-sdk-acknowledgements.plist */,
+				A23A39B89821E13323D99A977E66B454 /* Pods-voicify-assistant-sdk-dummy.m */,
+				1AD5EB8267FBBE3424737B570042EE7D /* Pods-voicify-assistant-sdk-Info.plist */,
+				3254A3EA2B995DC30149A7ACBBDAF9A2 /* Pods-voicify-assistant-sdk-umbrella.h */,
+				43DF193AEF218568C93C3A1E6CEED6C9 /* Pods-voicify-assistant-sdk.debug.xcconfig */,
+				601A5B82DD12314B0FD684E3C68DB28D /* Pods-voicify-assistant-sdk.release.xcconfig */,
+			);
+			name = "Pods-voicify-assistant-sdk";
+			path = "Target Support Files/Pods-voicify-assistant-sdk";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5D9B53C38E18ABA55F02EC2941AF9BDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F29E87F122D040EDBC20D7345A19B707 /* BottomSheet */,
+				C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */,
+				3129776EA37B1F2DF747DAC1E1CFD7DF /* Pods-voicify-assistant-sdk */,
+				A85A04CC5B0C8B09A92215F30A4843B2 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66565196CE44156ECD5EEA796EBE2440 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB7A67E445829D7F5037081AF61C945D /* Kingfisher.modulemap */,
+				DFCE149B6895EDAC442CDA93DEA7F592 /* Kingfisher-dummy.m */,
+				B6503E908A088C77ECA226F8BCC2E499 /* Kingfisher-Info.plist */,
+				080CF7E4699B4C84CBA10EA0B327B049 /* Kingfisher-prefix.pch */,
+				73299E7A989215CF982A3A4DB0A07A3B /* Kingfisher-umbrella.h */,
+				D50DC903C275E0DFAF93706EA7747959 /* Kingfisher.debug.xcconfig */,
+				63D702E08B29A02141471BF9FF2D98A5 /* Kingfisher.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Kingfisher";
+			sourceTree = "<group>";
+		};
+		7112D5EFA98C79BF97EE2D15419B6B3B /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				750332EA3945163BAB1DAFFD1AF9A3D7 /* BottomSheet.swift */,
+				EB7806338DA1A4D11C5459F732248DD2 /* RoundedCorner.swift */,
+				EA5FDF91128860135C351969994D53C1 /* ViewExtension.swift */,
+				AC335CAC37208BF2C177AE8220685C40 /* Support Files */,
+			);
+			name = BottomSheet;
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		AC335CAC37208BF2C177AE8220685C40 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				48B2D9FF754E3DDCEE0D10ECBF54C18D /* BottomSheet.modulemap */,
+				EEC860D22060C1F8C521CB61608BC992 /* BottomSheet-dummy.m */,
+				89B0C855AB8B8BDADA062B40C52A5D87 /* BottomSheet-Info.plist */,
+				03C68EC972E1717DB4032BF97B3B98E5 /* BottomSheet-prefix.pch */,
+				F61E45C8D8B1C039A90B70797426FB77 /* BottomSheet-umbrella.h */,
+				488D4024BADCC5BAB99D2AFDF8B9A2BB /* BottomSheet.debug.xcconfig */,
+				086339B5979A1492658951D1D319F8DC /* BottomSheet.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BottomSheet";
+			sourceTree = "<group>";
+		};
+		B164ABD9DBE8485848D9E5D9A4BD2B5C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7112D5EFA98C79BF97EE2D15419B6B3B /* BottomSheet */,
+				F06DDB980BD792629E8392F21F1EC84E /* Kingfisher */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				B164ABD9DBE8485848D9E5D9A4BD2B5C /* Pods */,
+				5D9B53C38E18ABA55F02EC2941AF9BDD /* Products */,
+				E1A7D20B8CA3544F6D6BA22404F2077E /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1A7D20B8CA3544F6D6BA22404F2077E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				327DBDBC2F65ED32F89A653B1E94A73D /* Pods-voicify-assistant-sdk */,
+				16F46CC458BB3F1767AB93665A610ACB /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		F06DDB980BD792629E8392F21F1EC84E /* Kingfisher */ = {
+			isa = PBXGroup;
+			children = (
+				3EDC3D6495FC41DE8061D1BDCCB9D244 /* AnimatedImageView.swift */,
+				D055C5480720F79E150E8CB8688321B3 /* AuthenticationChallengeResponsable.swift */,
+				BFE2136569D179E20E6ADE17E5DB70B7 /* AVAssetImageDataProvider.swift */,
+				328D81854B27B6B5BAB8192003493F84 /* Box.swift */,
+				AEC1BDA3EAC9F320D1627D1C2CCA9CA8 /* CacheSerializer.swift */,
+				DA68A7F4B2C1355F1370470C2E3A01F9 /* CallbackQueue.swift */,
+				4B4EE55481A958177FB51BD2802B80E5 /* CPListItem+Kingfisher.swift */,
+				F64DFE16F47D25938BE41099FE3F122E /* Delegate.swift */,
+				B580DD6E398FA3D0DE1C4561BBED6BD5 /* DiskStorage.swift */,
+				63C82E2D5E2EB2D8BFD74C1717A9CC01 /* ExtensionHelpers.swift */,
+				5C78B8C148479A5BF9158E405980676C /* Filter.swift */,
+				E90DEA904E791CE1D7BBD9B194AF526E /* FormatIndicatedCacheSerializer.swift */,
+				3E3CF4105E094936F30F030F074F9801 /* GIFAnimatedImage.swift */,
+				6A947B59A7B981D3539DEE3CCA30B01B /* GraphicsContext.swift */,
+				3AC0FA897F376E91EE21D30E6DBCE537 /* Image.swift */,
+				2CDAAF95B50121CC8811A9F14D7FF313 /* ImageBinder.swift */,
+				F83AFA9F2E8090952B121C759931008F /* ImageCache.swift */,
+				792D3B9A8E9D40CC98E714B03056F3C5 /* ImageContext.swift */,
+				B2A77FC5D38FCEFDB7A5785A1198F802 /* ImageDataProcessor.swift */,
+				73C9B51A286715C0A0874671A91D145C /* ImageDataProvider.swift */,
+				722F7D7519D96789D4DD856083F26954 /* ImageDownloader.swift */,
+				360B4432A7ECB9CA95EA1EB45184C143 /* ImageDownloaderDelegate.swift */,
+				AFEA3605F80EFDA103BDECFFC864D63C /* ImageDrawing.swift */,
+				2E848AE6AE856D5F2017F38F1A338AB1 /* ImageFormat.swift */,
+				65499ADECFD8AFB436C3D86DD61CEE69 /* ImageModifier.swift */,
+				40CC4A4F79DBBCCED126933B70D058D7 /* ImagePrefetcher.swift */,
+				76F62BADCB3A09EE6457B303AA1D8E94 /* ImageProcessor.swift */,
+				D09F620AD1CDFCF1A3BAE508B3066353 /* ImageProgressive.swift */,
+				4616D8C3442A59CCBDEB3CBCF4E8B2A4 /* ImageTransition.swift */,
+				7CABAE7EA9D88F27BFD62150AA5785FD /* ImageView+Kingfisher.swift */,
+				BB96618DD2FF3FFCA64F55FDA9FB0680 /* Indicator.swift */,
+				2030BD17CA246F3FA15393EDEF7558FC /* KF.swift */,
+				60E6DE2822DA26E771353229EB562E9A /* KFAnimatedImage.swift */,
+				5551E55945BDB2F9D0C2EE319C770A98 /* KFImage.swift */,
+				9FA5359F0F5C61A9677E032181DAC0AF /* KFImageOptions.swift */,
+				EEBB175AE41A05572C4702D1FB1EBB10 /* KFImageProtocol.swift */,
+				22562A191EE1E6AA460851D926E31C6F /* KFImageRenderer.swift */,
+				EA4C9E0CD40E1AD7303358224E259938 /* KFOptionsSetter.swift */,
+				8ABC6FA5CA5B52EC7814768DFC381A52 /* Kingfisher.swift */,
+				4B2E019CFA5AD27B0AC68E9A86298420 /* KingfisherError.swift */,
+				721453D8FF0C1793E563106CABF3F790 /* KingfisherManager.swift */,
+				673B75C178CA15764D29530918B75F55 /* KingfisherOptionsInfo.swift */,
+				1AA522CC740D5DE6B0014132883AACCC /* MemoryStorage.swift */,
+				7C8C411B81D14550EC76BDB4E4B97212 /* NSButton+Kingfisher.swift */,
+				E4612412B2217177FA04E4E7A3889256 /* NSTextAttachment+Kingfisher.swift */,
+				4291FB30BE685660E71A3F1B65566E4A /* Placeholder.swift */,
+				CF32EECE4B53498AD8D2553518A79D91 /* RedirectHandler.swift */,
+				F17E79F69992A7D0513DF4B7122AEF93 /* RequestModifier.swift */,
+				45566FB253D007F9F0FF10F7A4D1D191 /* Resource.swift */,
+				EB65F692361191CDB8690F3D76DFEC2C /* Result.swift */,
+				7A48938B41B44274F7F12FE81D86E87F /* RetryStrategy.swift */,
+				4C489D9259FB9A795E0D09376F91B38C /* Runtime.swift */,
+				45BE74496AF3C3F259DA328A0FDF4E89 /* SessionDataTask.swift */,
+				124CF8FC3F064F1BFD81CD27EDAF931E /* SessionDelegate.swift */,
+				760D68F9201D9DAF8EDD7768E05F1460 /* SizeExtensions.swift */,
+				68916DBF9C02A391E1BE2DB4DDCA0315 /* Source.swift */,
+				DFAD08A4A1384A4821AEFDA8AE35BC61 /* Storage.swift */,
+				725F4172C17BF68F9765F166CEF474FE /* String+MD5.swift */,
+				1A028D570624610C2B5772164F6DECA0 /* TVMonogramView+Kingfisher.swift */,
+				503DD3DB92D1B2B4942AD2BF4C31BD61 /* UIButton+Kingfisher.swift */,
+				2D3C7D9B31C403E3BBC0AC8E1C90A412 /* WKInterfaceImage+Kingfisher.swift */,
+				66565196CE44156ECD5EEA796EBE2440 /* Support Files */,
+			);
+			name = Kingfisher;
+			path = Kingfisher;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0740E6BB429D76E9334ECAA511EF2EA7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D05B3D789CE9215F030A91696DBC451F /* Kingfisher-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EBC355151DA7B7025ED26841B7FD4FA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7C1A47A4567EFA043CE6C57E0E3AAEB /* Pods-voicify-assistant-sdk-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFB1B698A4BDF10B012D9B11C3BDA01C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACA8ECA031B4CC99139E6B4E35E222A0 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E234EDF8CBB5EA72884F351D18816906 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5B330E09BD3CE0CD76C2126659D2BF /* BottomSheet-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		531B7580D9DC2CC60C9EA9E9291AA390 /* BottomSheet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6742EB161884819B8BA8361C997C55DA /* Build configuration list for PBXNativeTarget "BottomSheet" */;
+			buildPhases = (
+				E234EDF8CBB5EA72884F351D18816906 /* Headers */,
+				6E8AFF591E5E3AB4D5D24180F74C0709 /* Sources */,
+				79E94F408770900D1442A431C66A0882 /* Frameworks */,
+				6EFECE50ECF268FF881F9B3BE5D1B68A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BottomSheet;
+			productName = BottomSheet;
+			productReference = F29E87F122D040EDBC20D7345A19B707 /* BottomSheet */;
+			productType = "com.apple.product-type.framework";
+		};
+		62135F87B928DCDC7BFA4E1E1677AAD2 /* Pods-voicify-assistant-sdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE339F74D8496A0430EBE9A385FB61CD /* Build configuration list for PBXNativeTarget "Pods-voicify-assistant-sdk" */;
+			buildPhases = (
+				4EBC355151DA7B7025ED26841B7FD4FA /* Headers */,
+				DC592D22B5855A170F818A57CD0E0857 /* Sources */,
+				A84B59882E405360F62A669A8D125F7D /* Frameworks */,
+				283C72F81F0E88EA3CA9DECA828E5829 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2208B48A3D39F08125E9007D87CC248 /* PBXTargetDependency */,
+				F08AA5877CC71660B08632A58CF29BD9 /* PBXTargetDependency */,
+			);
+			name = "Pods-voicify-assistant-sdk";
+			productName = Pods_voicify_assistant_sdk;
+			productReference = 3129776EA37B1F2DF747DAC1E1CFD7DF /* Pods-voicify-assistant-sdk */;
+			productType = "com.apple.product-type.framework";
+		};
+		E8022D22FAA6690B5E1C379C1BCE1491 /* Kingfisher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1E9F1A54C907D46A5A252951BBC5013 /* Build configuration list for PBXNativeTarget "Kingfisher" */;
+			buildPhases = (
+				0740E6BB429D76E9334ECAA511EF2EA7 /* Headers */,
+				9AF39BECD8BEE150B2AEA6EA7B0A8338 /* Sources */,
+				271DF8C6D2577F8981E6F4FDD570C5A3 /* Frameworks */,
+				CDE615D7790094CD5D9751E123098607 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kingfisher;
+			productName = Kingfisher;
+			productReference = C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */;
+			productType = "com.apple.product-type.framework";
+		};
+		EE9599317A43AA0BBC38D4DF106FE0A3 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 346BA880E636CB249C9F0ADEFDE66EAB /* Build configuration list for PBXNativeTarget "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests" */;
+			buildPhases = (
+				BFB1B698A4BDF10B012D9B11C3BDA01C /* Headers */,
+				77D957019F61A22187FF2DC2731AC322 /* Sources */,
+				41A54115BE97A206C3B4AD7CE821D959 /* Frameworks */,
+				01FD1500AE47351C1CF9E56F662D910C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				272C61206A8489C0FB4BC9E65620ED78 /* PBXTargetDependency */,
+				DC67F1A84AA82966AB000DA8636AE35E /* PBXTargetDependency */,
+			);
+			name = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests";
+			productName = Pods_voicify_assistant_sdk_voicify_assistant_sdkTests;
+			productReference = A85A04CC5B0C8B09A92215F30A4843B2 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 5D9B53C38E18ABA55F02EC2941AF9BDD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				531B7580D9DC2CC60C9EA9E9291AA390 /* BottomSheet */,
+				E8022D22FAA6690B5E1C379C1BCE1491 /* Kingfisher */,
+				62135F87B928DCDC7BFA4E1E1677AAD2 /* Pods-voicify-assistant-sdk */,
+				EE9599317A43AA0BBC38D4DF106FE0A3 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01FD1500AE47351C1CF9E56F662D910C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		283C72F81F0E88EA3CA9DECA828E5829 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6EFECE50ECF268FF881F9B3BE5D1B68A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE615D7790094CD5D9751E123098607 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E8AFF591E5E3AB4D5D24180F74C0709 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4F590D15AE65D82B0107F7A70DE8063 /* BottomSheet.swift in Sources */,
+				CE7C5F8BFF428F0C147BDE88DF5CDAF5 /* BottomSheet-dummy.m in Sources */,
+				F31C4467DB5C32ACB42A7999D5EAFD0F /* RoundedCorner.swift in Sources */,
+				CBDC0AD324B60D1387B905C98CCD84DC /* ViewExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77D957019F61A22187FF2DC2731AC322 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41413EF8B75CF628AF5C914D73A64E53 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AF39BECD8BEE150B2AEA6EA7B0A8338 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEA02FDE9AC36897D5C087F9619089B9 /* AnimatedImageView.swift in Sources */,
+				A42246D42D7BD088C2A0214E839F3267 /* AuthenticationChallengeResponsable.swift in Sources */,
+				92FD564872378F1D4AA68596F0AECE4E /* AVAssetImageDataProvider.swift in Sources */,
+				F74FD4A23B2184A755649F7000BB237A /* Box.swift in Sources */,
+				624E6ED5480C0E52F91382BBDE83147F /* CacheSerializer.swift in Sources */,
+				04315B590DCF63FCA94D2435F9E43332 /* CallbackQueue.swift in Sources */,
+				31818AC58A7946269BBD1258E183B144 /* CPListItem+Kingfisher.swift in Sources */,
+				65E8DAE7A1BBC0036ECC3FD4A25A5902 /* Delegate.swift in Sources */,
+				648F5EBEC35827D50F3077D190F167EB /* DiskStorage.swift in Sources */,
+				0C628E854D8305853C2FF3BEC560F5DC /* ExtensionHelpers.swift in Sources */,
+				C531D49D0F6F254C62376E50C07E4C84 /* Filter.swift in Sources */,
+				521159C34B01DBB1E798DB238F77E614 /* FormatIndicatedCacheSerializer.swift in Sources */,
+				6DEA7459CAA3AE3AC99F9A0157F5A697 /* GIFAnimatedImage.swift in Sources */,
+				2C5C508FE8C64A36ACC1CE28D8AAD6A8 /* GraphicsContext.swift in Sources */,
+				CC98837557B4FA82A768A1F8FD5EC9C3 /* Image.swift in Sources */,
+				B1CB6DAFB863950F2802C83AA28E9E9A /* ImageBinder.swift in Sources */,
+				B71B74134895B2BCC4351DF68CA5EEA1 /* ImageCache.swift in Sources */,
+				CD3C54EFEF04AF19F7BC29195DC79B70 /* ImageContext.swift in Sources */,
+				64FBC11066C50B3FCF0EA5303BEB1A1D /* ImageDataProcessor.swift in Sources */,
+				E4952D70E8D00E5FA3AF017858AB353D /* ImageDataProvider.swift in Sources */,
+				C69B493642649D979B75EF4CC08ECBCB /* ImageDownloader.swift in Sources */,
+				F907C25A246611431D511119035F3C2C /* ImageDownloaderDelegate.swift in Sources */,
+				1857B76869B0F06E52927742DB8DA990 /* ImageDrawing.swift in Sources */,
+				76A43A37DF9C6BD2E524EED9F79D608E /* ImageFormat.swift in Sources */,
+				29040B71785F0E24B07F0609B71B3615 /* ImageModifier.swift in Sources */,
+				5979D25B09162DBA18A32D344388CEDB /* ImagePrefetcher.swift in Sources */,
+				9CF3C4A97745B1221B065E8A50D69C8A /* ImageProcessor.swift in Sources */,
+				D8DFE7B0516C6DA268D8BD1D8933F8D9 /* ImageProgressive.swift in Sources */,
+				DB8C2C950C13B0156D4FF48A3729739A /* ImageTransition.swift in Sources */,
+				FB8BCB873BC02C13547767BCCA33F12D /* ImageView+Kingfisher.swift in Sources */,
+				867479B762F3B937FAE94322A7AD3883 /* Indicator.swift in Sources */,
+				63FB1BC7E113A9E59C862F189A0921E8 /* KF.swift in Sources */,
+				DA3DE86B3E08ECE235E60BB0C1DB8F50 /* KFAnimatedImage.swift in Sources */,
+				DF9D8E0AF9F53918E9F5FAFD25BA537C /* KFImage.swift in Sources */,
+				69A357ACBDF20BD68E50149D719B364B /* KFImageOptions.swift in Sources */,
+				CE77948E72B297EE696839791688FF35 /* KFImageProtocol.swift in Sources */,
+				7259131D26A746A2AE9E46A29ABE3F65 /* KFImageRenderer.swift in Sources */,
+				138B6C9501B808BD2CC7084E6F427E07 /* KFOptionsSetter.swift in Sources */,
+				6E838357F2EC0627D94D805A4D4098DD /* Kingfisher.swift in Sources */,
+				8B08B823451D4FB7BBCE5AE25CA584AD /* Kingfisher-dummy.m in Sources */,
+				64C298B3333104FD7DF384A96D6ECE2F /* KingfisherError.swift in Sources */,
+				D8F8F413271A28DD0B67FC8DC4E97588 /* KingfisherManager.swift in Sources */,
+				86572A270FF92597CE3608021B323589 /* KingfisherOptionsInfo.swift in Sources */,
+				35C81CE4ADF766663A2F441621E36E3E /* MemoryStorage.swift in Sources */,
+				B459FE2A86BCB1EF12C99078A27090C3 /* NSButton+Kingfisher.swift in Sources */,
+				872EC2D67F61CF287F4B0036BFD008A8 /* NSTextAttachment+Kingfisher.swift in Sources */,
+				8E396211E4853EDE77B0E3F1D7026E64 /* Placeholder.swift in Sources */,
+				0D164A3B3412C33FAA3DE9DFEECA635E /* RedirectHandler.swift in Sources */,
+				30E136738000FCC2A046F14B8E46D8B3 /* RequestModifier.swift in Sources */,
+				F91ECC7297719C55584FF31D854D52DE /* Resource.swift in Sources */,
+				B13F71DC81045B8B6B446F9AE7D45A2A /* Result.swift in Sources */,
+				3AEE512181D92EF93D3E6CFDF6700B8B /* RetryStrategy.swift in Sources */,
+				53941D7757762C9E5B11615B85ED57EC /* Runtime.swift in Sources */,
+				F3EBDDD6FCE26008CB1BAB5787302541 /* SessionDataTask.swift in Sources */,
+				60A5AA293ED49016F46ED3947BD560F1 /* SessionDelegate.swift in Sources */,
+				D537AC9451F92514EE2D4BBE5707CBD1 /* SizeExtensions.swift in Sources */,
+				9ECC8F507D6880CD7996C291B809A226 /* Source.swift in Sources */,
+				30DC2A95FD84D961D54C880D46AA89D5 /* Storage.swift in Sources */,
+				32742A4104A339D3619945F2BDCA6696 /* String+MD5.swift in Sources */,
+				3BCDDE8EEE0FD22EF2B1F90C8106B53E /* TVMonogramView+Kingfisher.swift in Sources */,
+				B85FD66791807D184F5528CA774A29AC /* UIButton+Kingfisher.swift in Sources */,
+				4BEDD18A2A75AAC34A1305B124750DE7 /* WKInterfaceImage+Kingfisher.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC592D22B5855A170F818A57CD0E0857 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24C85D185E4B27A3309EC8B537D38741 /* Pods-voicify-assistant-sdk-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		272C61206A8489C0FB4BC9E65620ED78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BottomSheet;
+			target = 531B7580D9DC2CC60C9EA9E9291AA390 /* BottomSheet */;
+			targetProxy = 70DB082B380012B41A1844F1F29F6ED2 /* PBXContainerItemProxy */;
+		};
+		D2208B48A3D39F08125E9007D87CC248 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BottomSheet;
+			target = 531B7580D9DC2CC60C9EA9E9291AA390 /* BottomSheet */;
+			targetProxy = D7BF86D201D74022D45FDC43BF441D9F /* PBXContainerItemProxy */;
+		};
+		DC67F1A84AA82966AB000DA8636AE35E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Kingfisher;
+			target = E8022D22FAA6690B5E1C379C1BCE1491 /* Kingfisher */;
+			targetProxy = 57FDD4AA39DEA343AECF6F49A26D1681 /* PBXContainerItemProxy */;
+		};
+		F08AA5877CC71660B08632A58CF29BD9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Kingfisher;
+			target = E8022D22FAA6690B5E1C379C1BCE1491 /* Kingfisher */;
+			targetProxy = A7D2EF585372D6CE3964F78D6A5EA7E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E71B1CBADF64FFC25F49AEDC493C637 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63D702E08B29A02141471BF9FF2D98A5 /* Kingfisher.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Kingfisher/Kingfisher-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Kingfisher/Kingfisher-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Kingfisher/Kingfisher.modulemap";
+				PRODUCT_MODULE_NAME = Kingfisher;
+				PRODUCT_NAME = Kingfisher;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1E7D645BA1538D53B366A42A62784287 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43DF193AEF218568C93C3A1E6CEED6C9 /* Pods-voicify-assistant-sdk.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-voicify-assistant-sdk/Pods-voicify-assistant-sdk-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-voicify-assistant-sdk/Pods-voicify-assistant-sdk.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3228D7ADCD4FB3E327EDCB825F96D767 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 601A5B82DD12314B0FD684E3C68DB28D /* Pods-voicify-assistant-sdk.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-voicify-assistant-sdk/Pods-voicify-assistant-sdk-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-voicify-assistant-sdk/Pods-voicify-assistant-sdk.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4BC7450F9457737EE3E637BA155B56F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		58376B0FEEFF122028D5610C0A8D94CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 086339B5979A1492658951D1D319F8DC /* BottomSheet.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BottomSheet/BottomSheet-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BottomSheet/BottomSheet-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/BottomSheet/BottomSheet.modulemap";
+				PRODUCT_MODULE_NAME = BottomSheet;
+				PRODUCT_NAME = BottomSheet;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6DE791EC71C18104148248D8E8234A0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 488D4024BADCC5BAB99D2AFDF8B9A2BB /* BottomSheet.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BottomSheet/BottomSheet-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BottomSheet/BottomSheet-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/BottomSheet/BottomSheet.modulemap";
+				PRODUCT_MODULE_NAME = BottomSheet;
+				PRODUCT_NAME = BottomSheet;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		87BE25272F7BED9A793393219FCCCF27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97CE00D295E803169C27C656475D10A8 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8B5A46FF8D3C1289CDEE3BAFACABCD2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		9445B747BE5C93E70202F8DC53D2DC3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66B511B2684E9654D817929422761012 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F8F8429ED68D55301D4F97A79402EAB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D50DC903C275E0DFAF93706EA7747959 /* Kingfisher.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Kingfisher/Kingfisher-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Kingfisher/Kingfisher-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Kingfisher/Kingfisher.modulemap";
+				PRODUCT_MODULE_NAME = Kingfisher;
+				PRODUCT_NAME = Kingfisher;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		346BA880E636CB249C9F0ADEFDE66EAB /* Build configuration list for PBXNativeTarget "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9445B747BE5C93E70202F8DC53D2DC3A /* Debug */,
+				87BE25272F7BED9A793393219FCCCF27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BC7450F9457737EE3E637BA155B56F7 /* Debug */,
+				8B5A46FF8D3C1289CDEE3BAFACABCD2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6742EB161884819B8BA8361C997C55DA /* Build configuration list for PBXNativeTarget "BottomSheet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DE791EC71C18104148248D8E8234A0F /* Debug */,
+				58376B0FEEFF122028D5610C0A8D94CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE339F74D8496A0430EBE9A385FB61CD /* Build configuration list for PBXNativeTarget "Pods-voicify-assistant-sdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E7D645BA1538D53B366A42A62784287 /* Debug */,
+				3228D7ADCD4FB3E327EDCB825F96D767 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1E9F1A54C907D46A5A252951BBC5013 /* Build configuration list for PBXNativeTarget "Kingfisher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8F8429ED68D55301D4F97A79402EAB0 /* Debug */,
+				1E71B1CBADF64FFC25F49AEDC493C637 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

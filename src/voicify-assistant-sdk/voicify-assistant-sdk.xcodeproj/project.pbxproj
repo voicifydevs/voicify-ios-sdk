@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0781D1FBCFAF6D065B92BB5E /* Pods_voicify_assistant_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE88531AB03A229B098287F /* Pods_voicify_assistant_sdk.framework */; };
+		7FA99DBE358EC7D7E86734E6 /* Pods_voicify_assistant_sdk_voicify_assistant_sdkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058F6258EBC0F609D2BF93B /* Pods_voicify_assistant_sdk_voicify_assistant_sdkTests.framework */; };
 		C962F2F1282AB12800990915 /* voicify_assistant_sdk.docc in Sources */ = {isa = PBXBuildFile; fileRef = C962F2F0282AB12800990915 /* voicify_assistant_sdk.docc */; };
 		C962F2F7282AB12800990915 /* voicify_assistant_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C962F2EC282AB12800990915 /* voicify_assistant_sdk.framework */; };
 		C962F2FC282AB12800990915 /* voicify_assistant_sdkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F2FB282AB12800990915 /* voicify_assistant_sdkTests.swift */; };
@@ -47,8 +49,6 @@
 		FEBB244829140B4F001BF773 /* AssistantDrawerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */; };
 		FEBB244A2914133B001BF773 /* AssistantSettingsProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */; };
 		FED1FDC72925823B006783C8 /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1FDC62925823B006783C8 /* Hint.swift */; };
-		FEDE15C1291BF42A00D03181 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FEDE15C0291BF42A00D03181 /* Kingfisher */; };
-		FEDE15C7291C6EB400D03181 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = FEDE15C6291C6EB400D03181 /* BottomSheet */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,12 +104,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F47E207E1417AC2C789600A /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig"; path = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig"; sourceTree = "<group>"; };
+		1058F6258EBC0F609D2BF93B /* Pods_voicify_assistant_sdk_voicify_assistant_sdkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_voicify_assistant_sdk_voicify_assistant_sdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F2AC27C543294A1E4DAEEAE /* Pods-voicify-assistant-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicify-assistant-sdk.release.xcconfig"; path = "Target Support Files/Pods-voicify-assistant-sdk/Pods-voicify-assistant-sdk.release.xcconfig"; sourceTree = "<group>"; };
+		6415A090F04D514AB53EFE40 /* Pods-voicify-assistant-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicify-assistant-sdk.debug.xcconfig"; path = "Target Support Files/Pods-voicify-assistant-sdk/Pods-voicify-assistant-sdk.debug.xcconfig"; sourceTree = "<group>"; };
+		AAE88531AB03A229B098287F /* Pods_voicify_assistant_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962F2EC282AB12800990915 /* voicify_assistant_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962F2EF282AB12800990915 /* voicify_assistant_sdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = voicify_assistant_sdk.h; sourceTree = "<group>"; };
 		C962F2F0282AB12800990915 /* voicify_assistant_sdk.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = voicify_assistant_sdk.docc; sourceTree = "<group>"; };
 		C962F2F6282AB12800990915 /* voicify-assistant-sdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sdkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C962F2FB282AB12800990915 /* voicify_assistant_sdkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sdkTests.swift; sourceTree = "<group>"; };
 		C962F33C282AB14F00990915 /* voicify-assistant-sample-swiftui.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "voicify-assistant-sample-swiftui.xcodeproj"; path = "../voicify-assistant-sample/voicify-assistant-sample-swiftui.xcodeproj"; sourceTree = "<group>"; };
+		DE4ABC317D3B171A97DE66EB /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig"; path = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FE1F4E20290C5CCD00D1B447 /* VoicifyTTSProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyTTSProvider.swift; sourceTree = "<group>"; };
 		FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyAssistant.swift; sourceTree = "<group>"; };
 		FE2333BE2949262500E605CF /* SpeakingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingAnimation.swift; sourceTree = "<group>"; };
@@ -154,8 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEDE15C1291BF42A00D03181 /* Kingfisher in Frameworks */,
-				FEDE15C7291C6EB400D03181 /* BottomSheet in Frameworks */,
+				0781D1FBCFAF6D065B92BB5E /* Pods_voicify_assistant_sdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C962F2F7282AB12800990915 /* voicify_assistant_sdk.framework in Frameworks */,
+				7FA99DBE358EC7D7E86734E6 /* Pods_voicify_assistant_sdk_voicify_assistant_sdkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +185,7 @@
 				C962F2FA282AB12800990915 /* voicify-assistant-sdkTests */,
 				C962F2ED282AB12800990915 /* Products */,
 				FE1F4E2C29104D8700D1B447 /* Frameworks */,
+				D5A582BC22780142FD9FA37E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,9 +219,23 @@
 			path = "voicify-assistant-sdkTests";
 			sourceTree = "<group>";
 		};
+		D5A582BC22780142FD9FA37E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6415A090F04D514AB53EFE40 /* Pods-voicify-assistant-sdk.debug.xcconfig */,
+				1F2AC27C543294A1E4DAEEAE /* Pods-voicify-assistant-sdk.release.xcconfig */,
+				DE4ABC317D3B171A97DE66EB /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */,
+				0F47E207E1417AC2C789600A /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		FE1F4E2C29104D8700D1B447 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAE88531AB03A229B098287F /* Pods_voicify_assistant_sdk.framework */,
+				1058F6258EBC0F609D2BF93B /* Pods_voicify_assistant_sdk_voicify_assistant_sdkTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -321,6 +342,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C962F300282AB12800990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sdk" */;
 			buildPhases = (
+				3E7FA420DF43B649622BD503 /* [CP] Check Pods Manifest.lock */,
 				C962F2E7282AB12800990915 /* Headers */,
 				C962F2E8282AB12800990915 /* Sources */,
 				C962F2E9282AB12800990915 /* Frameworks */,
@@ -331,10 +353,6 @@
 			dependencies = (
 			);
 			name = "voicify-assistant-sdk";
-			packageProductDependencies = (
-				FEDE15C0291BF42A00D03181 /* Kingfisher */,
-				FEDE15C6291C6EB400D03181 /* BottomSheet */,
-			);
 			productName = "voicify-assistant-sdk";
 			productReference = C962F2EC282AB12800990915 /* voicify_assistant_sdk.framework */;
 			productType = "com.apple.product-type.framework";
@@ -343,6 +361,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C962F303282AB12800990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sdkTests" */;
 			buildPhases = (
+				D10A6D0AC41C5DBAB5216083 /* [CP] Check Pods Manifest.lock */,
 				C962F2F2282AB12800990915 /* Sources */,
 				C962F2F3282AB12800990915 /* Frameworks */,
 				C962F2F4282AB12800990915 /* Resources */,
@@ -384,10 +403,6 @@
 				Base,
 			);
 			mainGroup = C962F2E2282AB12800990915;
-			packageReferences = (
-				FEDE15BF291BF42A00D03181 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				FEDE15C5291C6EB400D03181 /* XCRemoteSwiftPackageReference "bottom-sheet" */,
-			);
 			productRefGroup = C962F2ED282AB12800990915 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -470,6 +485,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E7FA420DF43B649622BD503 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-voicify-assistant-sdk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D10A6D0AC41C5DBAB5216083 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C962F2E8282AB12800990915 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -537,7 +599,7 @@
 		C962F2FE282AB12800990915 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -586,7 +648,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -601,7 +663,7 @@
 		C962F2FF282AB12800990915 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -644,7 +706,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -658,6 +720,7 @@
 		};
 		C962F301282AB12800990915 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6415A090F04D514AB53EFE40 /* Pods-voicify-assistant-sdk.debug.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -690,6 +753,7 @@
 		};
 		C962F302282AB12800990915 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F2AC27C543294A1E4DAEEAE /* Pods-voicify-assistant-sdk.release.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -722,8 +786,9 @@
 		};
 		C962F304282AB12800990915 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE4ABC317D3B171A97DE66EB /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9K6MJ9U2TA;
@@ -742,8 +807,9 @@
 		};
 		C962F305282AB12800990915 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F47E207E1417AC2C789600A /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9K6MJ9U2TA;
@@ -791,38 +857,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FEDE15BF291BF42A00D03181 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-		FEDE15C5291C6EB400D03181 /* XCRemoteSwiftPackageReference "bottom-sheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weitieda/bottom-sheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FEDE15C0291BF42A00D03181 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FEDE15BF291BF42A00D03181 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		FEDE15C6291C6EB400D03181 /* BottomSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FEDE15C5291C6EB400D03181 /* XCRemoteSwiftPackageReference "bottom-sheet" */;
-			productName = BottomSheet;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C962F2E3282AB12800990915 /* Project object */;
 }
