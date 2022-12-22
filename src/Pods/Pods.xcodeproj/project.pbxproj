@@ -12,7 +12,7 @@
 		0D164A3B3412C33FAA3DE9DFEECA635E /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF32EECE4B53498AD8D2553518A79D91 /* RedirectHandler.swift */; };
 		138B6C9501B808BD2CC7084E6F427E07 /* KFOptionsSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4C9E0CD40E1AD7303358224E259938 /* KFOptionsSetter.swift */; };
 		1857B76869B0F06E52927742DB8DA990 /* ImageDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEA3605F80EFDA103BDECFFC864D63C /* ImageDrawing.swift */; };
-		24C85D185E4B27A3309EC8B537D38741 /* Pods-voicify-assistant-sdk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A39B89821E13323D99A977E66B454 /* Pods-voicify-assistant-sdk-dummy.m */; };
+		24C85D185E4B27A3309EC8B537D38741 /* Pods-voicify-assistant-sdk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A46A6004E20D8561DE73DFBB3E8E5EF8 /* Pods-voicify-assistant-sdk-dummy.m */; };
 		29040B71785F0E24B07F0609B71B3615 /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65499ADECFD8AFB436C3D86DD61CEE69 /* ImageModifier.swift */; };
 		29D4820139320F6FC9A53A0B9FB89C18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		2C5C508FE8C64A36ACC1CE28D8AAD6A8 /* GraphicsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A947B59A7B981D3539DEE3CCA30B01B /* GraphicsContext.swift */; };
@@ -20,11 +20,9 @@
 		30E136738000FCC2A046F14B8E46D8B3 /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17E79F69992A7D0513DF4B7122AEF93 /* RequestModifier.swift */; };
 		31818AC58A7946269BBD1258E183B144 /* CPListItem+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4EE55481A958177FB51BD2802B80E5 /* CPListItem+Kingfisher.swift */; };
 		32742A4104A339D3619945F2BDCA6696 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F4172C17BF68F9765F166CEF474FE /* String+MD5.swift */; };
-		357B0535FBC8DDCEE79805C6C8220590 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		35C81CE4ADF766663A2F441621E36E3E /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA522CC740D5DE6B0014132883AACCC /* MemoryStorage.swift */; };
 		3AEE512181D92EF93D3E6CFDF6700B8B /* RetryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A48938B41B44274F7F12FE81D86E87F /* RetryStrategy.swift */; };
 		3BCDDE8EEE0FD22EF2B1F90C8106B53E /* TVMonogramView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A028D570624610C2B5772164F6DECA0 /* TVMonogramView+Kingfisher.swift */; };
-		41413EF8B75CF628AF5C914D73A64E53 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC018D236348F80A65092278AFB09EC /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m */; };
 		4BEDD18A2A75AAC34A1305B124750DE7 /* WKInterfaceImage+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C7D9B31C403E3BBC0AC8E1C90A412 /* WKInterfaceImage+Kingfisher.swift */; };
 		521159C34B01DBB1E798DB238F77E614 /* FormatIndicatedCacheSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90DEA904E791CE1D7BBD9B194AF526E /* FormatIndicatedCacheSerializer.swift */; };
 		53941D7757762C9E5B11615B85ED57EC /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C489D9259FB9A795E0D09376F91B38C /* Runtime.swift */; };
@@ -53,8 +51,7 @@
 		9CF3C4A97745B1221B065E8A50D69C8A /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F62BADCB3A09EE6457B303AA1D8E94 /* ImageProcessor.swift */; };
 		9ECC8F507D6880CD7996C291B809A226 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68916DBF9C02A391E1BE2DB4DDCA0315 /* Source.swift */; };
 		A42246D42D7BD088C2A0214E839F3267 /* AuthenticationChallengeResponsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055C5480720F79E150E8CB8688321B3 /* AuthenticationChallengeResponsable.swift */; };
-		A7C1A47A4567EFA043CE6C57E0E3AAEB /* Pods-voicify-assistant-sdk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3254A3EA2B995DC30149A7ACBBDAF9A2 /* Pods-voicify-assistant-sdk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ACA8ECA031B4CC99139E6B4E35E222A0 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1121617B660BF286E31A5FCF3995DC1C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7C1A47A4567EFA043CE6C57E0E3AAEB /* Pods-voicify-assistant-sdk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CE89B5A96D55532581B07362FC22BC2 /* Pods-voicify-assistant-sdk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B13F71DC81045B8B6B446F9AE7D45A2A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB65F692361191CDB8690F3D76DFEC2C /* Result.swift */; };
 		B1CB6DAFB863950F2802C83AA28E9E9A /* ImageBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDAAF95B50121CC8811A9F14D7FF313 /* ImageBinder.swift */; };
 		B459FE2A86BCB1EF12C99078A27090C3 /* NSButton+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8C411B81D14550EC76BDB4E4B97212 /* NSButton+Kingfisher.swift */; };
@@ -86,20 +83,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		57FDD4AA39DEA343AECF6F49A26D1681 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E8022D22FAA6690B5E1C379C1BCE1491;
-			remoteInfo = Kingfisher;
-		};
-		70DB082B380012B41A1844F1F29F6ED2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 531B7580D9DC2CC60C9EA9E9291AA390;
-			remoteInfo = BottomSheet;
-		};
 		A7D2EF585372D6CE3964F78D6A5EA7E5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -117,31 +100,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		029141017BFA6C7F4EBD5FDAF45E761C /* Pods-voicify-assistant-sdk-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-voicify-assistant-sdk-acknowledgements.markdown"; sourceTree = "<group>"; };
 		03C68EC972E1717DB4032BF97B3B98E5 /* BottomSheet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BottomSheet-prefix.pch"; sourceTree = "<group>"; };
 		080CF7E4699B4C84CBA10EA0B327B049 /* Kingfisher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-prefix.pch"; sourceTree = "<group>"; };
 		086339B5979A1492658951D1D319F8DC /* BottomSheet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BottomSheet.release.xcconfig; sourceTree = "<group>"; };
-		0F8CC9DFCDBA4DD20D61288EB5F68E37 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1121617B660BF286E31A5FCF3995DC1C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h"; sourceTree = "<group>"; };
 		124CF8FC3F064F1BFD81CD27EDAF931E /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Sources/Networking/SessionDelegate.swift; sourceTree = "<group>"; };
 		1A028D570624610C2B5772164F6DECA0 /* TVMonogramView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "TVMonogramView+Kingfisher.swift"; path = "Sources/Extensions/TVMonogramView+Kingfisher.swift"; sourceTree = "<group>"; };
 		1AA522CC740D5DE6B0014132883AACCC /* MemoryStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MemoryStorage.swift; path = Sources/Cache/MemoryStorage.swift; sourceTree = "<group>"; };
-		1AD5EB8267FBBE3424737B570042EE7D /* Pods-voicify-assistant-sdk-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-Info.plist"; sourceTree = "<group>"; };
 		2030BD17CA246F3FA15393EDEF7558FC /* KF.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KF.swift; path = Sources/General/KF.swift; sourceTree = "<group>"; };
 		22562A191EE1E6AA460851D926E31C6F /* KFImageRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFImageRenderer.swift; path = Sources/SwiftUI/KFImageRenderer.swift; sourceTree = "<group>"; };
 		2CDAAF95B50121CC8811A9F14D7FF313 /* ImageBinder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageBinder.swift; path = Sources/SwiftUI/ImageBinder.swift; sourceTree = "<group>"; };
 		2D3C7D9B31C403E3BBC0AC8E1C90A412 /* WKInterfaceImage+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WKInterfaceImage+Kingfisher.swift"; path = "Sources/Extensions/WKInterfaceImage+Kingfisher.swift"; sourceTree = "<group>"; };
 		2E848AE6AE856D5F2017F38F1A338AB1 /* ImageFormat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageFormat.swift; path = Sources/Image/ImageFormat.swift; sourceTree = "<group>"; };
 		3129776EA37B1F2DF747DAC1E1CFD7DF /* Pods-voicify-assistant-sdk */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-voicify-assistant-sdk"; path = Pods_voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3254A3EA2B995DC30149A7ACBBDAF9A2 /* Pods-voicify-assistant-sdk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-voicify-assistant-sdk-umbrella.h"; sourceTree = "<group>"; };
 		328D81854B27B6B5BAB8192003493F84 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Utility/Box.swift; sourceTree = "<group>"; };
 		360B4432A7ECB9CA95EA1EB45184C143 /* ImageDownloaderDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloaderDelegate.swift; path = Sources/Networking/ImageDownloaderDelegate.swift; sourceTree = "<group>"; };
 		3AC0FA897F376E91EE21D30E6DBCE537 /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Image/Image.swift; sourceTree = "<group>"; };
 		3E3CF4105E094936F30F030F074F9801 /* GIFAnimatedImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GIFAnimatedImage.swift; path = Sources/Image/GIFAnimatedImage.swift; sourceTree = "<group>"; };
 		3EDC3D6495FC41DE8061D1BDCCB9D244 /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/Views/AnimatedImageView.swift; sourceTree = "<group>"; };
 		40CC4A4F79DBBCCED126933B70D058D7 /* ImagePrefetcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePrefetcher.swift; path = Sources/Networking/ImagePrefetcher.swift; sourceTree = "<group>"; };
+		42397220A924B6A16DF5A350D79C4B6B /* Pods-voicify-assistant-sdk-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-Info.plist"; sourceTree = "<group>"; };
 		4291FB30BE685660E71A3F1B65566E4A /* Placeholder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Placeholder.swift; path = Sources/Image/Placeholder.swift; sourceTree = "<group>"; };
-		43DF193AEF218568C93C3A1E6CEED6C9 /* Pods-voicify-assistant-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk.debug.xcconfig"; sourceTree = "<group>"; };
 		45566FB253D007F9F0FF10F7A4D1D191 /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/General/ImageSource/Resource.swift; sourceTree = "<group>"; };
 		45BE74496AF3C3F259DA328A0FDF4E89 /* SessionDataTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDataTask.swift; path = Sources/Networking/SessionDataTask.swift; sourceTree = "<group>"; };
 		4616D8C3442A59CCBDEB3CBCF4E8B2A4 /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/Image/ImageTransition.swift; sourceTree = "<group>"; };
@@ -152,21 +130,20 @@
 		4C489D9259FB9A795E0D09376F91B38C /* Runtime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Runtime.swift; path = Sources/Utility/Runtime.swift; sourceTree = "<group>"; };
 		503DD3DB92D1B2B4942AD2BF4C31BD61 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/Extensions/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
 		5551E55945BDB2F9D0C2EE319C770A98 /* KFImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFImage.swift; path = Sources/SwiftUI/KFImage.swift; sourceTree = "<group>"; };
-		564EA007AC473EFD328AFA3560107791 /* Pods-voicify-assistant-sdk-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-acknowledgements.plist"; sourceTree = "<group>"; };
 		5C78B8C148479A5BF9158E405980676C /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Image/Filter.swift; sourceTree = "<group>"; };
-		601A5B82DD12314B0FD684E3C68DB28D /* Pods-voicify-assistant-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk.release.xcconfig"; sourceTree = "<group>"; };
 		60E6DE2822DA26E771353229EB562E9A /* KFAnimatedImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFAnimatedImage.swift; path = Sources/SwiftUI/KFAnimatedImage.swift; sourceTree = "<group>"; };
 		63C82E2D5E2EB2D8BFD74C1717A9CC01 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtensionHelpers.swift; path = Sources/Utility/ExtensionHelpers.swift; sourceTree = "<group>"; };
 		63D702E08B29A02141471BF9FF2D98A5 /* Kingfisher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.release.xcconfig; sourceTree = "<group>"; };
 		65499ADECFD8AFB436C3D86DD61CEE69 /* ImageModifier.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageModifier.swift; path = Sources/Networking/ImageModifier.swift; sourceTree = "<group>"; };
-		66B511B2684E9654D817929422761012 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		673B75C178CA15764D29530918B75F55 /* KingfisherOptionsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherOptionsInfo.swift; path = Sources/General/KingfisherOptionsInfo.swift; sourceTree = "<group>"; };
 		68916DBF9C02A391E1BE2DB4DDCA0315 /* Source.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Source.swift; path = Sources/General/ImageSource/Source.swift; sourceTree = "<group>"; };
 		6A947B59A7B981D3539DEE3CCA30B01B /* GraphicsContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GraphicsContext.swift; path = Sources/Image/GraphicsContext.swift; sourceTree = "<group>"; };
+		6CE89B5A96D55532581B07362FC22BC2 /* Pods-voicify-assistant-sdk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-voicify-assistant-sdk-umbrella.h"; sourceTree = "<group>"; };
 		721453D8FF0C1793E563106CABF3F790 /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/General/KingfisherManager.swift; sourceTree = "<group>"; };
 		722F7D7519D96789D4DD856083F26954 /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/Networking/ImageDownloader.swift; sourceTree = "<group>"; };
 		725F4172C17BF68F9765F166CEF474FE /* String+MD5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+MD5.swift"; path = "Sources/Utility/String+MD5.swift"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		73067BC53A743859EEC67E79CC178608 /* Pods-voicify-assistant-sdk.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-voicify-assistant-sdk.modulemap"; sourceTree = "<group>"; };
 		73299E7A989215CF982A3A4DB0A07A3B /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
 		73C9B51A286715C0A0874671A91D145C /* ImageDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDataProvider.swift; path = Sources/General/ImageSource/ImageDataProvider.swift; sourceTree = "<group>"; };
 		750332EA3945163BAB1DAFFD1AF9A3D7 /* BottomSheet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BottomSheet.swift; path = Sources/BottomSheet/BottomSheet.swift; sourceTree = "<group>"; };
@@ -176,36 +153,33 @@
 		7A48938B41B44274F7F12FE81D86E87F /* RetryStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryStrategy.swift; path = Sources/Networking/RetryStrategy.swift; sourceTree = "<group>"; };
 		7C8C411B81D14550EC76BDB4E4B97212 /* NSButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSButton+Kingfisher.swift"; path = "Sources/Extensions/NSButton+Kingfisher.swift"; sourceTree = "<group>"; };
 		7CABAE7EA9D88F27BFD62150AA5785FD /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/Extensions/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
+		88E3359185D7A05CD1DC496E09E7CF2F /* Pods-voicify-assistant-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk.release.xcconfig"; sourceTree = "<group>"; };
 		89B0C855AB8B8BDADA062B40C52A5D87 /* BottomSheet-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BottomSheet-Info.plist"; sourceTree = "<group>"; };
 		8ABC6FA5CA5B52EC7814768DFC381A52 /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/General/Kingfisher.swift; sourceTree = "<group>"; };
-		8FC018D236348F80A65092278AFB09EC /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m"; sourceTree = "<group>"; };
-		97CE00D295E803169C27C656475D10A8 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig"; sourceTree = "<group>"; };
+		8CF07FC2C34FACDF559D3617A241CB08 /* Pods-voicify-assistant-sdk-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-acknowledgements.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9FA5359F0F5C61A9677E032181DAC0AF /* KFImageOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFImageOptions.swift; path = Sources/SwiftUI/KFImageOptions.swift; sourceTree = "<group>"; };
-		A23A39B89821E13323D99A977E66B454 /* Pods-voicify-assistant-sdk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-voicify-assistant-sdk-dummy.m"; sourceTree = "<group>"; };
-		A85A04CC5B0C8B09A92215F30A4843B2 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests"; path = Pods_voicify_assistant_sdk_voicify_assistant_sdkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FDBBB3A9F3261E27FF6A6AC9C5B72D2 /* Pods-voicify-assistant-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-voicify-assistant-sdk.debug.xcconfig"; sourceTree = "<group>"; };
+		A46A6004E20D8561DE73DFBB3E8E5EF8 /* Pods-voicify-assistant-sdk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-voicify-assistant-sdk-dummy.m"; sourceTree = "<group>"; };
 		AB7A67E445829D7F5037081AF61C945D /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Kingfisher.modulemap; sourceTree = "<group>"; };
-		ACC5023C8F76B06E13CE67A91C054264 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist"; sourceTree = "<group>"; };
 		AEC1BDA3EAC9F320D1627D1C2CCA9CA8 /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/Cache/CacheSerializer.swift; sourceTree = "<group>"; };
 		AFEA3605F80EFDA103BDECFFC864D63C /* ImageDrawing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDrawing.swift; path = Sources/Image/ImageDrawing.swift; sourceTree = "<group>"; };
 		B2A77FC5D38FCEFDB7A5785A1198F802 /* ImageDataProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDataProcessor.swift; path = Sources/Networking/ImageDataProcessor.swift; sourceTree = "<group>"; };
 		B580DD6E398FA3D0DE1C4561BBED6BD5 /* DiskStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiskStorage.swift; path = Sources/Cache/DiskStorage.swift; sourceTree = "<group>"; };
 		B6503E908A088C77ECA226F8BCC2E499 /* Kingfisher-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Kingfisher-Info.plist"; sourceTree = "<group>"; };
 		BB96618DD2FF3FFCA64F55FDA9FB0680 /* Indicator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indicator.swift; path = Sources/Views/Indicator.swift; sourceTree = "<group>"; };
-		BBF4BC6AD37D12A63774B7A51C6E298C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		BFE2136569D179E20E6ADE17E5DB70B7 /* AVAssetImageDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AVAssetImageDataProvider.swift; path = Sources/General/ImageSource/AVAssetImageDataProvider.swift; sourceTree = "<group>"; };
 		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF32EECE4B53498AD8D2553518A79D91 /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Sources/Networking/RedirectHandler.swift; sourceTree = "<group>"; };
 		D055C5480720F79E150E8CB8688321B3 /* AuthenticationChallengeResponsable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationChallengeResponsable.swift; path = Sources/Networking/AuthenticationChallengeResponsable.swift; sourceTree = "<group>"; };
 		D09F620AD1CDFCF1A3BAE508B3066353 /* ImageProgressive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageProgressive.swift; path = Sources/Image/ImageProgressive.swift; sourceTree = "<group>"; };
-		D0C005B3E3BBF64147467F7F886BEA76 /* Pods-voicify-assistant-sdk.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-voicify-assistant-sdk.modulemap"; sourceTree = "<group>"; };
 		D50DC903C275E0DFAF93706EA7747959 /* Kingfisher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kingfisher.debug.xcconfig; sourceTree = "<group>"; };
 		DA68A7F4B2C1355F1370470C2E3A01F9 /* CallbackQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CallbackQueue.swift; path = Sources/Utility/CallbackQueue.swift; sourceTree = "<group>"; };
 		DFAD08A4A1384A4821AEFDA8AE35BC61 /* Storage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Storage.swift; path = Sources/Cache/Storage.swift; sourceTree = "<group>"; };
 		DFCE149B6895EDAC442CDA93DEA7F592 /* Kingfisher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kingfisher-dummy.m"; sourceTree = "<group>"; };
 		E4612412B2217177FA04E4E7A3889256 /* NSTextAttachment+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSTextAttachment+Kingfisher.swift"; path = "Sources/Extensions/NSTextAttachment+Kingfisher.swift"; sourceTree = "<group>"; };
 		E90DEA904E791CE1D7BBD9B194AF526E /* FormatIndicatedCacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FormatIndicatedCacheSerializer.swift; path = Sources/Cache/FormatIndicatedCacheSerializer.swift; sourceTree = "<group>"; };
-		E9463747D9648F1F4861C97FD1962291 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap"; sourceTree = "<group>"; };
+		E9783C0DF6F24C1FFC1F815A9A837018 /* Pods-voicify-assistant-sdk-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-voicify-assistant-sdk-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EA4C9E0CD40E1AD7303358224E259938 /* KFOptionsSetter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KFOptionsSetter.swift; path = Sources/General/KFOptionsSetter.swift; sourceTree = "<group>"; };
 		EA5FDF91128860135C351969994D53C1 /* ViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewExtension.swift; path = Sources/BottomSheet/ViewExtension.swift; sourceTree = "<group>"; };
 		EB65F692361191CDB8690F3D76DFEC2C /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Utility/Result.swift; sourceTree = "<group>"; };
@@ -228,14 +202,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		41A54115BE97A206C3B4AD7CE821D959 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				357B0535FBC8DDCEE79805C6C8220590 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		79E94F408770900D1442A431C66A0882 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,36 +221,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		16F46CC458BB3F1767AB93665A610ACB /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */ = {
+		06B2B3182540C7171130C63C906226B9 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E9463747D9648F1F4861C97FD1962291 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap */,
-				0F8CC9DFCDBA4DD20D61288EB5F68E37 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.markdown */,
-				BBF4BC6AD37D12A63774B7A51C6E298C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-acknowledgements.plist */,
-				8FC018D236348F80A65092278AFB09EC /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m */,
-				ACC5023C8F76B06E13CE67A91C054264 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist */,
-				1121617B660BF286E31A5FCF3995DC1C /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h */,
-				66B511B2684E9654D817929422761012 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */,
-				97CE00D295E803169C27C656475D10A8 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */,
+				AD2F7D5CB4C33695832E554F35ADEC03 /* Pods-voicify-assistant-sdk */,
 			);
-			name = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests";
-			path = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests";
-			sourceTree = "<group>";
-		};
-		327DBDBC2F65ED32F89A653B1E94A73D /* Pods-voicify-assistant-sdk */ = {
-			isa = PBXGroup;
-			children = (
-				D0C005B3E3BBF64147467F7F886BEA76 /* Pods-voicify-assistant-sdk.modulemap */,
-				029141017BFA6C7F4EBD5FDAF45E761C /* Pods-voicify-assistant-sdk-acknowledgements.markdown */,
-				564EA007AC473EFD328AFA3560107791 /* Pods-voicify-assistant-sdk-acknowledgements.plist */,
-				A23A39B89821E13323D99A977E66B454 /* Pods-voicify-assistant-sdk-dummy.m */,
-				1AD5EB8267FBBE3424737B570042EE7D /* Pods-voicify-assistant-sdk-Info.plist */,
-				3254A3EA2B995DC30149A7ACBBDAF9A2 /* Pods-voicify-assistant-sdk-umbrella.h */,
-				43DF193AEF218568C93C3A1E6CEED6C9 /* Pods-voicify-assistant-sdk.debug.xcconfig */,
-				601A5B82DD12314B0FD684E3C68DB28D /* Pods-voicify-assistant-sdk.release.xcconfig */,
-			);
-			name = "Pods-voicify-assistant-sdk";
-			path = "Target Support Files/Pods-voicify-assistant-sdk";
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -293,17 +235,6 @@
 				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		5D9B53C38E18ABA55F02EC2941AF9BDD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F29E87F122D040EDBC20D7345A19B707 /* BottomSheet */,
-				C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */,
-				3129776EA37B1F2DF747DAC1E1CFD7DF /* Pods-voicify-assistant-sdk */,
-				A85A04CC5B0C8B09A92215F30A4843B2 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		66565196CE44156ECD5EEA796EBE2440 /* Support Files */ = {
@@ -348,6 +279,22 @@
 			path = "../Target Support Files/BottomSheet";
 			sourceTree = "<group>";
 		};
+		AD2F7D5CB4C33695832E554F35ADEC03 /* Pods-voicify-assistant-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				73067BC53A743859EEC67E79CC178608 /* Pods-voicify-assistant-sdk.modulemap */,
+				E9783C0DF6F24C1FFC1F815A9A837018 /* Pods-voicify-assistant-sdk-acknowledgements.markdown */,
+				8CF07FC2C34FACDF559D3617A241CB08 /* Pods-voicify-assistant-sdk-acknowledgements.plist */,
+				A46A6004E20D8561DE73DFBB3E8E5EF8 /* Pods-voicify-assistant-sdk-dummy.m */,
+				42397220A924B6A16DF5A350D79C4B6B /* Pods-voicify-assistant-sdk-Info.plist */,
+				6CE89B5A96D55532581B07362FC22BC2 /* Pods-voicify-assistant-sdk-umbrella.h */,
+				9FDBBB3A9F3261E27FF6A6AC9C5B72D2 /* Pods-voicify-assistant-sdk.debug.xcconfig */,
+				88E3359185D7A05CD1DC496E09E7CF2F /* Pods-voicify-assistant-sdk.release.xcconfig */,
+			);
+			name = "Pods-voicify-assistant-sdk";
+			path = "Target Support Files/Pods-voicify-assistant-sdk";
+			sourceTree = "<group>";
+		};
 		B164ABD9DBE8485848D9E5D9A4BD2B5C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,8 +310,8 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				B164ABD9DBE8485848D9E5D9A4BD2B5C /* Pods */,
-				5D9B53C38E18ABA55F02EC2941AF9BDD /* Products */,
-				E1A7D20B8CA3544F6D6BA22404F2077E /* Targets Support Files */,
+				E9C6B2A383287ACD6D34D115F6E45FF0 /* Products */,
+				06B2B3182540C7171130C63C906226B9 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -376,13 +323,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E1A7D20B8CA3544F6D6BA22404F2077E /* Targets Support Files */ = {
+		E9C6B2A383287ACD6D34D115F6E45FF0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				327DBDBC2F65ED32F89A653B1E94A73D /* Pods-voicify-assistant-sdk */,
-				16F46CC458BB3F1767AB93665A610ACB /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */,
+				F29E87F122D040EDBC20D7345A19B707 /* BottomSheet */,
+				C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */,
+				3129776EA37B1F2DF747DAC1E1CFD7DF /* Pods-voicify-assistant-sdk */,
 			);
-			name = "Targets Support Files";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F06DDB980BD792629E8392F21F1EC84E /* Kingfisher */ = {
@@ -474,14 +422,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFB1B698A4BDF10B012D9B11C3BDA01C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ACA8ECA031B4CC99139E6B4E35E222A0 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E234EDF8CBB5EA72884F351D18816906 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,26 +489,6 @@
 			productReference = C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher */;
 			productType = "com.apple.product-type.framework";
 		};
-		EE9599317A43AA0BBC38D4DF106FE0A3 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 346BA880E636CB249C9F0ADEFDE66EAB /* Build configuration list for PBXNativeTarget "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests" */;
-			buildPhases = (
-				BFB1B698A4BDF10B012D9B11C3BDA01C /* Headers */,
-				77D957019F61A22187FF2DC2731AC322 /* Sources */,
-				41A54115BE97A206C3B4AD7CE821D959 /* Frameworks */,
-				01FD1500AE47351C1CF9E56F662D910C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				272C61206A8489C0FB4BC9E65620ED78 /* PBXTargetDependency */,
-				DC67F1A84AA82966AB000DA8636AE35E /* PBXTargetDependency */,
-			);
-			name = "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests";
-			productName = Pods_voicify_assistant_sdk_voicify_assistant_sdkTests;
-			productReference = A85A04CC5B0C8B09A92215F30A4843B2 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -587,26 +507,18 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 5D9B53C38E18ABA55F02EC2941AF9BDD /* Products */;
+			productRefGroup = E9C6B2A383287ACD6D34D115F6E45FF0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				531B7580D9DC2CC60C9EA9E9291AA390 /* BottomSheet */,
 				E8022D22FAA6690B5E1C379C1BCE1491 /* Kingfisher */,
 				62135F87B928DCDC7BFA4E1E1677AAD2 /* Pods-voicify-assistant-sdk */,
-				EE9599317A43AA0BBC38D4DF106FE0A3 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		01FD1500AE47351C1CF9E56F662D910C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		283C72F81F0E88EA3CA9DECA828E5829 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -639,14 +551,6 @@
 				CE7C5F8BFF428F0C147BDE88DF5CDAF5 /* BottomSheet-dummy.m in Sources */,
 				F31C4467DB5C32ACB42A7999D5EAFD0F /* RoundedCorner.swift in Sources */,
 				CBDC0AD324B60D1387B905C98CCD84DC /* ViewExtension.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		77D957019F61A22187FF2DC2731AC322 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				41413EF8B75CF628AF5C914D73A64E53 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,23 +634,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		272C61206A8489C0FB4BC9E65620ED78 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BottomSheet;
-			target = 531B7580D9DC2CC60C9EA9E9291AA390 /* BottomSheet */;
-			targetProxy = 70DB082B380012B41A1844F1F29F6ED2 /* PBXContainerItemProxy */;
-		};
 		D2208B48A3D39F08125E9007D87CC248 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BottomSheet;
 			target = 531B7580D9DC2CC60C9EA9E9291AA390 /* BottomSheet */;
 			targetProxy = D7BF86D201D74022D45FDC43BF441D9F /* PBXContainerItemProxy */;
-		};
-		DC67F1A84AA82966AB000DA8636AE35E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Kingfisher;
-			target = E8022D22FAA6690B5E1C379C1BCE1491 /* Kingfisher */;
-			targetProxy = 57FDD4AA39DEA343AECF6F49A26D1681 /* PBXContainerItemProxy */;
 		};
 		F08AA5877CC71660B08632A58CF29BD9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -796,7 +688,7 @@
 		};
 		1E7D645BA1538D53B366A42A62784287 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43DF193AEF218568C93C3A1E6CEED6C9 /* Pods-voicify-assistant-sdk.debug.xcconfig */;
+			baseConfigurationReference = 9FDBBB3A9F3261E27FF6A6AC9C5B72D2 /* Pods-voicify-assistant-sdk.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -833,7 +725,7 @@
 		};
 		3228D7ADCD4FB3E327EDCB825F96D767 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 601A5B82DD12314B0FD684E3C68DB28D /* Pods-voicify-assistant-sdk.release.xcconfig */;
+			baseConfigurationReference = 88E3359185D7A05CD1DC496E09E7CF2F /* Pods-voicify-assistant-sdk.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1008,44 +900,6 @@
 			};
 			name = Debug;
 		};
-		87BE25272F7BED9A793393219FCCCF27 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97CE00D295E803169C27C656475D10A8 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		8B5A46FF8D3C1289CDEE3BAFACABCD2A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1108,43 +962,6 @@
 			};
 			name = Release;
 		};
-		9445B747BE5C93E70202F8DC53D2DC3A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66B511B2684E9654D817929422761012 /* Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests/Pods-voicify-assistant-sdk-voicify-assistant-sdkTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		F8F8429ED68D55301D4F97A79402EAB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D50DC903C275E0DFAF93706EA7747959 /* Kingfisher.debug.xcconfig */;
@@ -1184,15 +1001,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		346BA880E636CB249C9F0ADEFDE66EAB /* Build configuration list for PBXNativeTarget "Pods-voicify-assistant-sdk-voicify-assistant-sdkTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9445B747BE5C93E70202F8DC53D2DC3A /* Debug */,
-				87BE25272F7BED9A793393219FCCCF27 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "voicify-ios-sdk"
-  spec.version      = "0.1.1"
+  spec.version      = "0.1.0"
   spec.summary      = "Voicify Assistant SDK"
   spec.description  = <<-DESC
                     "Deploy your voicify app to your IOS mobile app."
@@ -21,9 +21,8 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/voicifydevs/voicify-ios-sdk.git", :tag => spec.version.to_s }
   spec.source_files  = "src/voicify-assistant-sdk/voicify-assistant-sdk/**/*.{swift}"
   spec.swift_versions = "5.0"
-  spec.dependency "KingFisher"
-  spec.dependency "BottomSheet"
-
+  spec.dependency 'Kingfisher', '~> 7.4.1'
+  spec.dependency 'BottomSheet'
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  Link your library with frameworks, or libraries. Libraries do not include

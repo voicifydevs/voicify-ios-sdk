@@ -4,10 +4,10 @@ PODS:
 
 DEPENDENCIES:
   - BottomSheet (from `https://github.com/weitieda/bottom-sheet.git`)
-  - Kingfisher
+  - Kingfisher (~> 7.4.1)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Kingfisher
 
 EXTERNAL SOURCES:
@@ -23,6 +23,6 @@ SPEC CHECKSUMS:
   BottomSheet: 0a164143e34470cc332db0ce4e55d6da202d7ac6
   Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
 
-PODFILE CHECKSUM: f101601487bef9e0d197e9b01698b7ecfe0c1b44
+PODFILE CHECKSUM: 30743305cfdd9f513d3d0ab6cab8c045b9983405
 
 COCOAPODS: 1.11.3
