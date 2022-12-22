@@ -1,0 +1,28 @@
+PODS:
+  - BottomSheet (1.0.6)
+  - Kingfisher (7.4.1)
+
+DEPENDENCIES:
+  - BottomSheet (from `https://github.com/weitieda/bottom-sheet.git`)
+  - Kingfisher
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Kingfisher
+
+EXTERNAL SOURCES:
+  BottomSheet:
+    :git: https://github.com/weitieda/bottom-sheet.git
+
+CHECKOUT OPTIONS:
+  BottomSheet:
+    :commit: 6b21007153365235418f3943a960a1f9546592e0
+    :git: https://github.com/weitieda/bottom-sheet.git
+
+SPEC CHECKSUMS:
+  BottomSheet: 0a164143e34470cc332db0ce4e55d6da202d7ac6
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+
+PODFILE CHECKSUM: f101601487bef9e0d197e9b01698b7ecfe0c1b44
+
+COCOAPODS: 1.11.3

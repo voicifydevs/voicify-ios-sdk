@@ -1,0 +1,6 @@
+framework module Pods_voicify_assistant_sdk {
+  umbrella header "Pods-voicify-assistant-sdk-umbrella.h"
+
+  export *
+  module * { export * }
+}
