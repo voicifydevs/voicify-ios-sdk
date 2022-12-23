@@ -8,14 +8,14 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "voicify-ios-sdk"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "Voicify Assistant SDK"
   spec.description  = <<-DESC
                     "Deploy your voicify app to your IOS mobile app."
                    DESC
 
   spec.homepage     = "https://github.com/voicifydevs/voicify-ios-sdk"
-  spec.license      = "MIT"
+  spec.license      = ""
   spec.author       = { "voicifydevs" => "jmccarthy@voicify.com"}
   spec.platform     = :ios, "14.0"
   spec.source       = { :git => "https://github.com/voicifydevs/voicify-ios-sdk.git", :tag => spec.version.to_s }
