@@ -1,5 +1,4 @@
 project '/Users/jamesmccarthy/Documents/voicify-ios-sdk/src/voicify-assistant-sdk/voicify-assistant-sdk.xcodeproj'
-#source 'https://github.com/weitieda/bottom-sheet.git'
 source 'https://github.com/voicifydevs/voicify-ios-sdk-pod-specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks! :linkage => :static
@@ -11,4 +10,5 @@ target 'voicify-assistant-sdk' do
   # Pods for voicify-åassistant-sdk
   pod 'Kingfisher', '~> 7.4.1'
   pod 'BottomSheet', '~> 1.0.6'
+#  pod 'voicify-ios-sdk', '~> 0.2.3'
 end

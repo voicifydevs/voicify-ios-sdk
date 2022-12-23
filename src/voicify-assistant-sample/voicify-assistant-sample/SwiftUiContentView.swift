@@ -7,6 +7,7 @@
 
 import SwiftUI
 import voicify_assistant_sdk
+
 struct SwiftUiContentView: View {
     @State var assistantIsOpen = false
     @State var currentSongTitle = ""
