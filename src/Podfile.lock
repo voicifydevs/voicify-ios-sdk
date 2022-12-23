@@ -1,28 +1,27 @@
 PODS:
   - BottomSheet (1.0.6)
   - Kingfisher (7.4.1)
+  - voicify-ios-sdk (0.2.3):
+    - BottomSheet
+    - Kingfisher
 
 DEPENDENCIES:
-  - BottomSheet (from `https://github.com/weitieda/bottom-sheet.git`)
-  - Kingfisher
+  - BottomSheet (~> 1.0.6)
+  - Kingfisher (~> 7.4.1)
+  - voicify-ios-sdk (~> 0.2.3)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Kingfisher
-
-EXTERNAL SOURCES:
-  BottomSheet:
-    :git: https://github.com/weitieda/bottom-sheet.git
-
-CHECKOUT OPTIONS:
-  BottomSheet:
-    :commit: 6b21007153365235418f3943a960a1f9546592e0
-    :git: https://github.com/weitieda/bottom-sheet.git
+  https://github.com/voicifydevs/voicify-ios-sdk-pod-specs.git:
+    - BottomSheet
+    - voicify-ios-sdk
 
 SPEC CHECKSUMS:
-  BottomSheet: 0a164143e34470cc332db0ce4e55d6da202d7ac6
+  BottomSheet: 0825555fbd373bd6e649aaa5db3ef24133444777
   Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  voicify-ios-sdk: bd87a5c89a72682cd8a2ab5cd5e2601ddad82bd9
 
-PODFILE CHECKSUM: f101601487bef9e0d197e9b01698b7ecfe0c1b44
+PODFILE CHECKSUM: 26690570ea2790c3e2c98191a4597db4f2c95d87
 
 COCOAPODS: 1.11.3

@@ -4,6 +4,7 @@
 //
 //  Created by James McCarthy on 11/3/22.
 //
+
 import SwiftUI
 import BottomSheet
 import Kingfisher
@@ -34,8 +35,6 @@ public struct AssistantDrawerUI: View {
     @State var isFinalSpeech = false
     @State var keyboardToggled = false
     @State var showPermissionAlert = false
-    @State var isKeyboardActive = false
-    @ObservedObject var keyboardHeightHelper = KeyboardHeightHelper()
 
     public init(
         assistantSettings: AssistantSettingsProps,
@@ -126,7 +125,6 @@ public struct AssistantDrawerUI: View {
                     headerProps: headerProps,
                     toolBarProps: toolBarProps
                 )
-                .padding(.bottom, isFullScreen ? self.keyboardHeightHelper.keyboardHeight : 0)
             }
         }
         .onChange(of: assistantIsOpen){ _ in
@@ -235,7 +233,7 @@ public struct AssistantDrawerUI: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
-        .padding(.bottom, assistantIsOpen && !isFullScreen ? 0.1 : 0) // if keyboard is active - causes view to lift
+        .padding(.bottom, assistantIsOpen ? 0.1 : 0) // if keyboard is active - causes view to lift
         .onReceive(openAssistantNotifcation){data in
             self.assistantIsOpen = true
         }

@@ -6,36 +6,7 @@
 //
 
 import Foundation
-import Combine
 import SwiftUI
-
-import UIKit
-import Foundation
-
-public class KeyboardHeightHelper: ObservableObject {
-    @Published public var keyboardHeight: CGFloat = 0
-    
-    public init() {
-        self.listenForKeyboardNotifications()
-    }
-    
-    private func listenForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification,
-                                               object: nil,
-                                               queue: .main) { (notification) in
-                                                guard let userInfo = notification.userInfo,
-                                                    let keyboardRect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-                                                
-                                                self.keyboardHeight = keyboardRect.height
-        }
-        
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification,
-                                               object: nil,
-                                               queue: .main) { (notification) in
-                                                self.keyboardHeight = 0
-        }
-    }
-}
 
 struct Line: Shape {
     func path(in rect: CGRect) -> Path {
