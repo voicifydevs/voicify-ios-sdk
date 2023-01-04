@@ -53,7 +53,7 @@ struct AssistantDrawerUIBody: View {
                                         Text(.init(message.text) )
                                             .accessibilityIdentifier("messageReceivedText")
                                             .foregroundColor(Color.init(hex: bodyProps?.messageReceivedTextColor ?? "#000000"))
-                                            .font(.system(size: CGFloat(bodyProps?.messageReceivedFontSize ?? 14)))
+                                            .font(.custom(bodyProps?.messageReceivedFontFamily ?? "SF Pro" , size: CGFloat(bodyProps?.messageReceivedFontSize ?? 14)))
                                             .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
                                             .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).stroke(Color.init(hex: bodyProps?.messageReceivedBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 1)))
                                             .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).fill(Color.init(hex: bodyProps?.messageReceivedBackgroundColor ?? "#0000000d")!))
@@ -70,7 +70,7 @@ struct AssistantDrawerUIBody: View {
                                     Spacer()
                                     Text(message.text)
                                         .accessibilityIdentifier("messageSentText")
-                                        .font(.system(size: CGFloat(bodyProps?.messageSentFontSize ?? 14)))
+                                        .font(.custom(bodyProps?.messageSentFontFamily ?? "SF Pro" , size: CGFloat(bodyProps?.messageSentFontSize ?? 14)))
                                         .foregroundColor(Color.init(hex:bodyProps?.messageSentTextColor ?? "#ffffff"))
                                         .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
                                         .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).stroke(Color.init(hex: bodyProps?.messageSentBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 0)))
@@ -91,7 +91,7 @@ struct AssistantDrawerUIBody: View {
                         {
                             if(messages[messages.count - 1].origin == "Received")
                             {
-                                Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { timer in
+                                Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { timer in
                                     value.scrollTo(messages[messages.count - 1].id)
                                 }
                             }
@@ -103,7 +103,7 @@ struct AssistantDrawerUIBody: View {
                         {
                             if(messages[messages.count - 1].origin == "Received")
                             {
-                                Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { timer in
+                                Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { timer in
                                     value.scrollTo(messages[messages.count - 1].id)
                                 }
                             }
@@ -115,7 +115,7 @@ struct AssistantDrawerUIBody: View {
                         {
                             if(messages[messages.count - 1].origin == "Received")
                             {
-                                Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { timer in
+                                Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) { timer in
                                     value.scrollTo(messages[messages.count - 1].id)
                                 }
                             }
@@ -140,7 +140,7 @@ struct AssistantDrawerUIBody: View {
                                 }){
                                     Text(hint.text)
                                         .lineLimit(1)
-                                        .font(.system(size: CGFloat(bodyProps?.hintsFontSize ?? 14)))
+                                        .font(.custom(bodyProps?.hintsFontFamily ?? "SF Pro" , size: CGFloat(bodyProps?.hintsFontSize ?? 14)))
                                         .foregroundColor(Color.init(hex: bodyProps?.hintsTextColor ?? "#000000"))
                                         .padding(EdgeInsets(top: CGFloat(bodyProps?.hintsPaddingTop ?? 8), leading: CGFloat(bodyProps?.hintsPaddingLeft ?? 8), bottom: CGFloat(bodyProps?.hintsPaddingBottom ?? 8), trailing: CGFloat(bodyProps?.hintsPaddingRight ??  8)))
                                         .background(Color.init(hex: bodyProps?.hintsBackgroundColor ?? "#ffffff"))
