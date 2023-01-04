@@ -62,19 +62,20 @@ struct SwiftUiContentView: View {
                         onEffect: onEffect,
                         sessionAttributes: ["sessionData": "sessionData"]
                     ),
-                headerProps: nil
+                headerProps: HeaderProps(fontFamily: "Times New Roman")
                 ,
-                bodyProps: nil
+                bodyProps: BodyProps(messageSentFontFamily: "Times New Roman",
+                                     messageReceivedFontFamily: "Times New Roman",
+                                     hintsFontFamily: "Times New Roman")
                 ,
-                toolBarProps: nil
+                toolBarProps: ToolBarProps(partialSpeechResultFontFamily: "Times New Roman",
+                                           assistantStateFontFamily: "Times New Roman",
+                                          helpTextFontFamily: "Times New Roman",
+                                          speakFontFamily: "Times New Roman",
+                                          typeFontFamily: "Times New Roman",
+                                          textboxFontFamily: "Times New Roman")
             )
             .ignoresSafeArea(.container)
         }
-    }
-}
-
-struct SwiftUiContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUiContentView()
     }
 }

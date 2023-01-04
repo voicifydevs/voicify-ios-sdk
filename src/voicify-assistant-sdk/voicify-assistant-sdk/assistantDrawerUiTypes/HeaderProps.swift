@@ -9,30 +9,31 @@ import Foundation
 
 public class HeaderProps
 {
-    public var fontSize: Float?
-    public var backgroundColor: String?
-    public var assistantImage: String?
-    public var assistantImageHeight: Int?
-    public var assistantImageWidth: Int?
-    public var assistantImageBackgroundColor: String?
-    public var assistantName: String?
-    public var assistantNameTextColor: String?
-    public var assistantImageBorderRadius: Float?
-    public var assistantImageBorderColor: String?
-    public var assistantImageBorderWidth: Int?
-    public var closeAssistantButtonImage: String?
-    public var closeAssistantButtonImageHeight: Int?
-    public var closeAssistantButtonImageWidth: Int?
-    public var closeAssistantButtonBorderRadius: Float?
-    public var closeAssistantButtonBackgroundColor: String?
-    public var closeAssistantButtonBorderWidth: Int?
-    public var closeAssistantButtonBorderColor: String?
-    public var paddingLeft: Int?
-    public var paddingRight: Int?
-    public var paddingTop: Int?
-    public var paddingBottom: Int?
+    public var fontSize: Float? = nil
+    public var backgroundColor: String? = nil
+    public var assistantImage: String? = nil
+    public var assistantImageHeight: Int? = nil
+    public var assistantImageWidth: Int? = nil
+    public var assistantImageBackgroundColor: String? = nil
+    public var assistantName: String? = nil
+    public var assistantNameTextColor: String? = nil
+    public var assistantImageBorderRadius: Float? = nil
+    public var assistantImageBorderColor: String? = nil
+    public var assistantImageBorderWidth: Int? = nil
+    public var closeAssistantButtonImage: String? = nil
+    public var closeAssistantButtonImageHeight: Int? = nil
+    public var closeAssistantButtonImageWidth: Int? = nil
+    public var closeAssistantButtonBorderRadius: Float? = nil
+    public var closeAssistantButtonBackgroundColor: String? = nil
+    public var closeAssistantButtonBorderWidth: Int? = nil
+    public var closeAssistantButtonBorderColor: String? = nil
+    public var paddingLeft: Int? = nil
+    public var paddingRight: Int? = nil
+    public var paddingTop: Int? = nil
+    public var paddingBottom: Int? = nil
+    public var fontFamily: String? = nil
     
-    public init(fontSize: Float? = nil, backgroundColor: String? = nil, assistantImage: String? = nil, assistantImageBackgroundColor: String? = nil,  assistantImageHeight: Int?, assistantImageWidth: Int? = nil, assistantName: String? = nil, assistantNameTextColor: String, assistantImageBorderRadius: Float? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, closeAssistantButtonImage: String? = nil, closeAssistantButtonImageHeight: Int? = nil, closeAssistantButtonImageWidth: Int? = nil, closeAssistantButtonBorderRadius: Float? = nil, closeAssistantButtonBackgroundColor: String? = nil, closeAssistantButtonBorderWidth: Int? = nil, closeAssistantButtonBorderColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil) {
+    public init(fontSize: Float? = nil, backgroundColor: String? = nil, assistantImage: String? = nil, assistantImageBackgroundColor: String? = nil,  assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantName: String? = nil, assistantNameTextColor: String? = nil, assistantImageBorderRadius: Float? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, closeAssistantButtonImage: String? = nil, closeAssistantButtonImageHeight: Int? = nil, closeAssistantButtonImageWidth: Int? = nil, closeAssistantButtonBorderRadius: Float? = nil, closeAssistantButtonBackgroundColor: String? = nil, closeAssistantButtonBorderWidth: Int? = nil, closeAssistantButtonBorderColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, fontFamily: String? = nil) {
         self.fontSize = fontSize
         self.backgroundColor = backgroundColor
         self.assistantImage = assistantImage
@@ -55,5 +56,6 @@ public class HeaderProps
         self.paddingRight = paddingRight
         self.paddingTop = paddingTop
         self.paddingBottom = paddingBottom
+        self.fontFamily = fontFamily
     }
 }

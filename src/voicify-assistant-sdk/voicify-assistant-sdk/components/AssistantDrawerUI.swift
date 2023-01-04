@@ -124,7 +124,8 @@ public struct AssistantDrawerUI: View {
                     voicifyTTS: voicifyTTS,
                     voicifyAssistant: voicifyAssistant,
                     headerProps: headerProps,
-                    toolBarProps: toolBarProps
+                    toolBarProps: toolBarProps,
+                    assistantSettingsProps: assistantSettingsProps
                 )
                 .padding(.bottom, isFullScreen ? self.keyboardHeightHelper.keyboardHeight : 0)
             }
@@ -192,7 +193,7 @@ public struct AssistantDrawerUI: View {
                 }
                 if(assistantSettingsProps.initializeWithWelcomeMessage)
                 {
-                    if(assistantSettingsProps.initializeWithText == false)
+                    if(assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true)
                     {
                         isUsingSpeech = true
                     }
@@ -200,7 +201,7 @@ public struct AssistantDrawerUI: View {
                         isUsingSpeech = false
                     }
                 }
-                else if (assistantSettingsProps.initializeWithText == false){
+                else if (assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true){
                     if(voicifySTT.hasPermission)
                     {
                         voicifySTT.startListening()

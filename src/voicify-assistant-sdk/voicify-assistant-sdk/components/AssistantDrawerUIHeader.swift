@@ -31,7 +31,7 @@ struct AssistantDrawerUIHeader: View {
             .cornerRadius(CGFloat(headerProps?.assistantImageBorderRadius ?? 20))
             
             Text(headerProps?.assistantName ?? "Voicify Assistant")
-                .font(.system(size: CGFloat(headerProps?.fontSize ?? 18)))
+                .font(.custom(headerProps?.fontFamily ?? "SF Pro" , size: CGFloat(headerProps?.fontSize ?? 18)))
                 .foregroundColor(Color.init(hex: headerProps?.assistantNameTextColor ?? "#000000"))
                 .padding(.leading, 4)
             

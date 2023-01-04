@@ -28,6 +28,7 @@ struct AssistantDrawerUIToolbar: View {
     public var voicifyAssistant: VoicifyAssistant
     public var headerProps: HeaderProps? = nil
     public var toolBarProps: ToolBarProps? = nil
+    public var assistantSettingsProps: AssistantSettingsProps
     
     public init(assistantIsOpen: Binding<Bool>,
                 isFullScreen: Binding<Bool>,
@@ -47,7 +48,8 @@ struct AssistantDrawerUIToolbar: View {
                 voicifyTTS: VoicifyTTSProivder,
                 voicifyAssistant: VoicifyAssistant,
                 headerProps: HeaderProps? = nil,
-                toolBarProps: ToolBarProps? = nil
+                toolBarProps: ToolBarProps? = nil,
+                assistantSettingsProps: AssistantSettingsProps
     ){
         self._assistantIsOpen = assistantIsOpen
         self._isFullScreen = isFullScreen
@@ -68,6 +70,7 @@ struct AssistantDrawerUIToolbar: View {
         self.voicifyAssistant = voicifyAssistant
         self.headerProps = headerProps
         self.toolBarProps = toolBarProps
+        self.assistantSettingsProps = assistantSettingsProps
     }
     
     var body: some View {
@@ -76,7 +79,7 @@ struct AssistantDrawerUIToolbar: View {
                 HStack{
                     Text(toolBarProps?.helpText ?? "How can i help?")
                         .italic()
-                        .font(.system(size: CGFloat(toolBarProps?.helpTextFontSize ?? 18)))
+                        .font(.custom(toolBarProps?.helpTextFontFamily ?? "SF Pro" , size: CGFloat(toolBarProps?.helpTextFontSize ?? 18)))
                         .foregroundColor(Color.init(hex: toolBarProps?.helpTextFontColor ?? "#8F97A1"))
                     Spacer()
                     Button(action: {
@@ -99,7 +102,7 @@ struct AssistantDrawerUIToolbar: View {
                     Text(assistantStateText)
                         .italic()
                         .foregroundColor(Color.init(hex: toolBarProps?.assistantStateTextColor ?? "#8F97A1"))
-                        .font(.system(size: CGFloat(toolBarProps?.assistantStateFontSize ?? 16)))
+                        .font(.custom(toolBarProps?.assistantStateFontFamily ?? "SF Pro" , size: CGFloat(toolBarProps?.assistantStateFontSize ?? 16)))
                         .accessibilityIdentifier("assistantStateText")
                     Spacer()
                 }
@@ -107,6 +110,7 @@ struct AssistantDrawerUIToolbar: View {
                 
                 HStack{
                     Text(inputSpeech)
+                        .font(.custom(toolBarProps?.partialSpeechResultFontFamily ?? "SF Pro", size: CGFloat( toolBarProps?.partialSpeechResultFontSize ?? 18)))
                         .foregroundColor(Color.init(hex: !isFinalSpeech ? toolBarProps?.partialSpeechResultTextColor ?? "#ffffff33" : toolBarProps?.fullSpeechResultTextColor ?? "#ffffff"))
                         .accessibilityIdentifier("inputSpeechText")
                     Spacer()
@@ -125,47 +129,51 @@ struct AssistantDrawerUIToolbar: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             HStack{
-                Text("SPEAK")
-                    .font(.system(size: CGFloat(toolBarProps?.speakFontSize ?? 14)))
-                    .foregroundColor(Color.init(hex: isUsingSpeech ? toolBarProps?.speakActiveTitleColor ?? "#3E77A5" : toolBarProps?.speakInactiveTitleColor ?? "#8F97A1"))
-                    .accessibilityIdentifier("speakText")
+                if assistantSettingsProps.useVoiceInput {
+                    Text("SPEAK")
+                        .font(.custom(toolBarProps?.speakFontFamily ?? "SF Pro" , size: CGFloat(toolBarProps?.speakFontSize ?? 14)))
+                        .foregroundColor(Color.init(hex: isUsingSpeech ? toolBarProps?.speakActiveTitleColor ?? "#3E77A5" : toolBarProps?.speakInactiveTitleColor ?? "#8F97A1"))
+                        .accessibilityIdentifier("speakText")
+                }
                 Text("TYPE")
-                    .font(.system(size: CGFloat(toolBarProps?.typeFontSize ?? 14)))
+                    .font(.custom(toolBarProps?.typeFontFamily ?? "SF Pro" , size: CGFloat(toolBarProps?.typeFontSize ?? 14)))
                     .foregroundColor(Color.init(hex: isUsingSpeech ? toolBarProps?.typeInactiveTitleColor  ?? "#8F97A1" : toolBarProps?.typeActiveTitleColor ?? "#3E77A5"))
                     .padding(.leading, 8)
                 Spacer()
             }
             HStack{
-                Button(action: {
-                    UIApplication.shared.endEditing()
-                    isUsingSpeech = true
-                    if(isListening)
-                    {
-                        voicifySTT.stopListening()
-                        isListening = false
-                        inputSpeech = ""
-                    }
-                    else{
-                        if(voicifySTT.hasPermission)
+                if assistantSettingsProps.useVoiceInput {
+                    Button(action: {
+                        UIApplication.shared.endEditing()
+                        isUsingSpeech = true
+                        if(isListening)
                         {
-                            voicifySTT.startListening()
-                            voicifyTTS.stop()
+                            voicifySTT.stopListening()
+                            isListening = false
+                            inputSpeech = ""
+                            assistantStateText = "I didn't catch that..."
                         }
                         else{
-                            showPermissionAlert = true
+                            if(voicifySTT.hasPermission)
+                            {
+                                voicifySTT.startListening()
+                                voicifyTTS.stop()
+                            }
+                            else{
+                                showPermissionAlert = true
+                            }
                         }
-                    }
-                })
-                {
-                       VStack{
-                           KFImage(URL(string: isUsingSpeech ? toolBarProps?.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : toolBarProps?.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
-                               .resizable()
-                               .frame(width: CGFloat(toolBarProps?.micImageWidth ?? 40), height: CGFloat(toolBarProps?.micImageHeight ?? 40))
-                       }
-                       .padding(.all, CGFloat(toolBarProps?.micImagePadding ?? 4))
-                       .overlay(RoundedRectangle(cornerRadius: CGFloat(toolBarProps?.micBorderRadius ?? 40)).stroke(Color.init(hex: toolBarProps?.micImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(toolBarProps?.micImageBorderWidth ?? 0)))
-                       .background(Color.init(hex: isListening && isUsingSpeech ? toolBarProps?.micActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.micInactiveHighlightColor ?? "00000000"))
-                       .cornerRadius(CGFloat(toolBarProps?.micBorderRadius ?? 40))
+                    })
+                    {
+                        VStack{
+                            KFImage(URL(string: isUsingSpeech ? toolBarProps?.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : toolBarProps?.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
+                                .resizable()
+                                .frame(width: CGFloat(toolBarProps?.micImageWidth ?? 40), height: CGFloat(toolBarProps?.micImageHeight ?? 40))
+                        }
+                        .padding(.all, CGFloat(toolBarProps?.micImagePadding ?? 4))
+                        .overlay(RoundedRectangle(cornerRadius: CGFloat(toolBarProps?.micBorderRadius ?? 40)).stroke(Color.init(hex: toolBarProps?.micImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(toolBarProps?.micImageBorderWidth ?? 0)))
+                        .background(Color.init(hex: isListening && isUsingSpeech ? toolBarProps?.micActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.micInactiveHighlightColor ?? "00000000"))
+                        .cornerRadius(CGFloat(toolBarProps?.micBorderRadius ?? 40))
                     }
                     .frame(minWidth: 44, minHeight: 44)
                     .alert(isPresented: $showPermissionAlert) {
@@ -174,7 +182,8 @@ struct AssistantDrawerUIToolbar: View {
                         )
                     }
                     .accessibilityIdentifier("micButton")
-                Spacer()
+                    Spacer()
+                }
                 HStack{
                     TextField(toolBarProps?.placeholder ?? "Enter a message...", text: $inputText){focused in
                         if(focused){
@@ -187,7 +196,7 @@ struct AssistantDrawerUIToolbar: View {
                             inputSpeech = ""
                         }
                     }
-                    .font(.system(size: CGFloat(toolBarProps?.textBoxFontSize ?? 16)))
+                    .font(.custom(toolBarProps?.textboxFontFamily ?? "SF Pro" , size: CGFloat(toolBarProps?.textBoxFontSize ?? 16)))
                     .padding(.leading, 10)
                     .overlay(VStack{Divider().background(Color(hex: toolBarProps?.textInputLineColor ?? "#000000")).offset(x: 0, y: 15)}.padding(.leading, 10))
                     .accentColor(Color.init(hex: toolBarProps?.textInputCursorColor ?? "#000000"))
