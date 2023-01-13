@@ -240,11 +240,16 @@ public struct AssistantDrawerUI: View {
                 else{
                     isUsingSpeech = false
                 }
-                assistantSettingsProps.effects.forEach{effect in
-                    voicifyAssistant.onEffect(effectName: effect){data in
-                        assistantSettingsProps.onEffect(effect, data)
+                if let assistantEffect = assistantSettingsProps.effects {
+                    assistantEffect.forEach{effect in
+                        voicifyAssistant.onEffect(effectName: effect){data in
+                            if let onEffectCallback = assistantSettingsProps.onEffect {
+                                onEffectCallback(effect, data)
+                            }
+                        }
                     }
                 }
+                
                 voicifyAssistant.startNewSession(sessionId: nil, userId: nil, sessionAttributes: assistantSettingsProps.sessionAttributes, userAttributes: assistantSettingsProps.userAttributes)
             }
             else{
@@ -262,6 +267,9 @@ public struct AssistantDrawerUI: View {
                 voicifyTTS.clearHandlers()
                 voicifySTT.clearHandlers()
                 voicifyAssistant.ClearHandlers()
+                if let onCloseCallback = assistantSettingsProps.onAssistantClose{
+                    onCloseCallback()
+                }
             }
         }
         .edgesIgnoringSafeArea(.all)

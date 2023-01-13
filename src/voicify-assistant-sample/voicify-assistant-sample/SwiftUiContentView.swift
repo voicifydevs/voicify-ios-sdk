@@ -26,6 +26,10 @@ struct SwiftUiContentView: View {
         }
     }
     
+    func onClose () -> Void {
+        print("We Closed")
+    }
+    
     var body: some View {
         ZStack{
             VStack{
@@ -60,30 +64,35 @@ struct SwiftUiContentView: View {
                         noTracking: false,
                         effects: ["Play", "closeAssistant"],
                         onEffect: onEffect,
+                        onAssistantClose: onClose,
                         sessionAttributes: ["sessionData": "sessionData"]
                     ),
                 headerProps: HeaderProps(
-                                         assistantImageColor: "#00ffff",
-                                         closeAssistantColor: "#00ffff",
-                                         fontFamily: "Times New Roman")
+//                                         assistantImageColor: "#00ffff",
+//                                         closeAssistantColor: "#00ffff",
+//                                         fontFamily: "Times New Roman"
+                )
                 ,
                 bodyProps: BodyProps(
-                                     assistantImageColor: "#00ffff",
-                                     messageSentFontFamily: "Times New Roman",
-                                     messageReceivedFontFamily: "Times New Roman",
-                                     hintsFontFamily: "Times New Roman")
+//                                     assistantImageColor: "#00ffff",
+//                                     messageSentFontFamily: "Times New Roman",
+//                                     messageReceivedFontFamily: "Times New Roman",
+//                                     hintsFontFamily: "Times New Roman"
+                )
                 ,
-                toolBarProps: ToolBarProps(micActiveColor: "#00ffff",
-                                           micInactiveColor: "#012345",
-                                           sendActiveColor: "#00ffff",
-                                           sendInactiveColor: "#012345",
-                                           equalizerColor: "#83ACE4,#80c7af00,#8AD1B8",
-                                           partialSpeechResultFontFamily: "Times New Roman",
-                                           assistantStateFontFamily: "Times New Roman",
-                                           helpTextFontFamily: "Times New Roman",
-                                           speakFontFamily: "Times New Roman",
-                                           typeFontFamily: "Times New Roman",
-                                           textboxFontFamily: "Times New Roman")
+                toolBarProps: ToolBarProps(
+//                    micActiveColor: "#00ffff",
+//                                           micInactiveColor: "#012345",
+//                                           sendActiveColor: "#00ffff",
+//                                           sendInactiveColor: "#012345",
+//                                           equalizerColor: "#83ACE4,#80c7af00,#8AD1B8",
+//                                           partialSpeechResultFontFamily: "Times New Roman",
+//                                           assistantStateFontFamily: "Times New Roman",
+//                                           helpTextFontFamily: "Times New Roman",
+//                                           speakFontFamily: "Times New Roman",
+//                                           typeFontFamily: "Times New Roman",
+//                                           textboxFontFamily: "Times New Roman"
+                )
             )
             .ignoresSafeArea(.container)
         }
