@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "voicify-ios-sdk"
-  spec.version      = "1.0.2"
+  spec.version      = "1.0.3"
   spec.summary      = "Voicify Assistant SDK"
   spec.description  = <<-DESC
                     "Deploy your voicify app to your IOS mobile app."
