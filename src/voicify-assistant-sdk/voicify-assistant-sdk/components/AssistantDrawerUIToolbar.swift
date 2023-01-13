@@ -237,7 +237,7 @@ struct AssistantDrawerUIToolbar: View {
         .padding(.trailing, CGFloat(toolBarProps?.paddingRight ?? 20))
         .padding(.bottom, CGFloat(toolBarProps?.paddingBottom ?? 20))
         .padding(.top, CGFloat(toolBarProps?.paddingTop ?? 10))
-        .background(Color(hex: toolBarProps?.backgroundColor ?? "#ffffff"))
+        .background(Color(hex: !(toolBarProps?.backgroundColor ?? "").isEmpty ? toolBarProps?.backgroundColor ?? "" : !(assistantSettingsProps.backgroundColor ?? "").isEmpty ? assistantSettingsProps.backgroundColor ?? "" : "#ffffff"))
         .onChange(of: isListening){ _ in
             if(isListening == false)
             {

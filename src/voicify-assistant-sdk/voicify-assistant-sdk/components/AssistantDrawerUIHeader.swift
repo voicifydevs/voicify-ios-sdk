@@ -11,10 +11,12 @@ import Kingfisher
 struct AssistantDrawerUIHeader: View {
     @Binding var assistantIsOpen: Bool
     public var headerProps: HeaderProps? = nil
+    public var assistantSettings: AssistantSettingsProps? = nil
     
-    public init(assistantIsOpen: Binding<Bool>, headerProps: HeaderProps? = nil ) {
+    public init(assistantIsOpen: Binding<Bool>, headerProps: HeaderProps? = nil, assistantSettings: AssistantSettingsProps? = nil ) {
         self._assistantIsOpen = assistantIsOpen
         self.headerProps = headerProps
+        self.assistantSettings = assistantSettings
     }
 
     var body: some View {
@@ -57,6 +59,6 @@ struct AssistantDrawerUIHeader: View {
         .padding(.trailing, CGFloat(headerProps?.paddingRight ?? 20))
         .padding(.top, CGFloat(headerProps?.paddingTop ?? 50))
         .padding(.bottom, CGFloat(headerProps?.paddingBottom ?? 20))
-        .background(Color(hex: headerProps?.backgroundColor ?? "#ffffff"))
+        .background(Color(hex: !(headerProps?.backgroundColor ?? "").isEmpty ? headerProps?.backgroundColor ?? "" : !(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? "" : "#ffffff"))
     }
 }

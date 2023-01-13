@@ -15,6 +15,7 @@ public struct AssistantDrawerUI: View {
     var voicifySTT: VoicifySTTProvider
     var voicifyTTS: VoicifyTTSProivder
     var voicifyAssistant: VoicifyAssistant
+    @State var assistantBackgroundGradientColors: Array<Color> = []
     var openAssistantNotifcation = NotificationCenter.default.publisher(for: NSNotification.Name.openAssistant)
     var closeAssistantNotification = NotificationCenter.default.publisher(for: NSNotification.Name.closeAssistant)
     @State var assistantIsOpen = false
@@ -90,7 +91,8 @@ public struct AssistantDrawerUI: View {
                 if isFullScreen {
                     AssistantDrawerUIHeader(
                         assistantIsOpen: $assistantIsOpen,
-                        headerProps: headerProps
+                        headerProps: headerProps,
+                        assistantSettings: assistantSettingsProps
                     )
                     AssistantDrawerUIBody(
                         messages: $messages,
@@ -102,7 +104,8 @@ public struct AssistantDrawerUI: View {
                         voicifySTT: voicifySTT,
                         voicifyTTS: voicifyTTS,
                         voicifyAssistant: voicifyAssistant,
-                        bodyProps: bodyProps
+                        bodyProps: bodyProps,
+                        assistantSettings: assistantSettingsProps
                     )
                 }
                 AssistantDrawerUIToolbar(
@@ -129,9 +132,24 @@ public struct AssistantDrawerUI: View {
                 )
                 .padding(.bottom, isFullScreen ? self.keyboardHeightHelper.keyboardHeight : 0)
             }
+            .background(
+                !assistantBackgroundGradientColors.isEmpty ?
+                 LinearGradient(gradient: Gradient(colors: assistantBackgroundGradientColors), startPoint: .top, endPoint: .bottom)
+                :
+                    LinearGradient(gradient: Gradient(colors: [Color.init(hex: "#00000000")!]), startPoint: .top, endPoint: .bottom)
+            )
         }
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){
+                if let backgroundGradientColors = assistantSettingsProps.backgroundColor{
+                    var splitColors = backgroundGradientColors.components(separatedBy: ",")
+                    if (splitColors.count > 1)
+                    {
+                        splitColors.forEach{ color in
+                            self.assistantBackgroundGradientColors.append(Color.init(hex: color)!)
+                        }
+                    }
+                }
                 voicifyTTS.cancelSpeech = false
                 voicifySTT.cancel = false
                 voicifyAssistant.ClearHandlers()

@@ -19,7 +19,8 @@ struct AssistantDrawerUIBody: View {
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant
     public var bodyProps: BodyProps? = nil
-    public init(messages: Binding<Array<Message>>, isUsingSpeech: Binding<Bool>, keyboardToggled: Binding<Bool>, hints: Binding<Array<Hint>>, inputText: Binding<String>, inputSpeech: Binding<String>, voicifySTT: VoicifySTTProvider, voicifyTTS: VoicifyTTSProivder, voicifyAssistant: VoicifyAssistant, bodyProps: BodyProps? = nil) {
+    public var assistantSettings: AssistantSettingsProps? = nil
+    public init(messages: Binding<Array<Message>>, isUsingSpeech: Binding<Bool>, keyboardToggled: Binding<Bool>, hints: Binding<Array<Hint>>, inputText: Binding<String>, inputSpeech: Binding<String>, voicifySTT: VoicifySTTProvider, voicifyTTS: VoicifyTTSProivder, voicifyAssistant: VoicifyAssistant, bodyProps: BodyProps? = nil, assistantSettings: AssistantSettingsProps? = nil) {
         self._messages = messages
         self._isUsingSpeech = isUsingSpeech
         self._keyboardToggled = keyboardToggled
@@ -30,6 +31,7 @@ struct AssistantDrawerUIBody: View {
         self.voicifyTTS = voicifyTTS
         self.voicifyAssistant = voicifyAssistant
         self.bodyProps = bodyProps
+        self.assistantSettings = assistantSettings
     }
     var body: some View {
         VStack{
@@ -160,6 +162,6 @@ struct AssistantDrawerUIBody: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .border(width: CGFloat(bodyProps?.borderTopWidth ?? 1), edges: [.top], color: Color.init(hex: bodyProps?.borderTopColor ?? "#8F97A1")!)
         .border(width: CGFloat(bodyProps?.borderBottomWidth ?? 1), edges: [.bottom], color: Color.init(hex: bodyProps?.borderBottomColor ?? "#8F97A1")!)
-        .background(Color.init(hex: bodyProps?.backgroundColor ?? "#F4F4F6"))
+        .background(Color(hex: !(bodyProps?.backgroundColor ?? "").isEmpty ? bodyProps?.backgroundColor ?? "" : !(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? "" : "#F4F4F6"))
     }
 }
