@@ -22,6 +22,8 @@ struct AssistantDrawerUIHeader: View {
             VStack{
                 KFImage(URL(string: headerProps?.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
                     .resizable()
+                    .renderingMode(!(headerProps?.assistantImageColor ?? "").isEmpty ? .template : .none)
+                    .foregroundColor(Color.init(hex: headerProps?.assistantImageColor ?? ""))
                     .frame(width: CGFloat(headerProps?.assistantImageWidth ?? 32), height: CGFloat(headerProps?.assistantImageHeight ?? 32))
                     .fixedSize()
             }
@@ -42,6 +44,8 @@ struct AssistantDrawerUIHeader: View {
             }){
                 KFImage(URL(string: headerProps?.closeAssistantButtonImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
                     .resizable()
+                    .renderingMode(!(headerProps?.closeAssistantColor ?? "").isEmpty ? .template : .none)
+                    .foregroundColor(Color.init(hex: headerProps?.closeAssistantColor ?? ""))
                     .padding(.all, 4)
                     .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? 0)).stroke(Color.init(hex: headerProps?.closeAssistantButtonBorderColor ?? "#00000000")!, lineWidth: CGFloat(headerProps?.closeAssistantButtonBorderWidth ?? 0)))
                     .frame(width: CGFloat(headerProps?.closeAssistantButtonImageWidth ?? 35), height: CGFloat(headerProps?.closeAssistantButtonImageHeight ?? 35))

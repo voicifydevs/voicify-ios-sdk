@@ -1,4 +1,4 @@
-project '/Users/jamesmccarthy/Documents/voicify-ios-sdk/src/voicify-assistant-sdk/voicify-assistant-sdk.xcodeproj'
+project '/Users/jamesmccarthy/Documents/IOS/voicify-ios-sdk/src/voicify-assistant-sdk/voicify-assistant-sdk.xcodeproj'
 source 'https://github.com/voicifydevs/voicify-ios-sdk-pod-specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks! :linkage => :static

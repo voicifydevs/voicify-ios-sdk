@@ -12,6 +12,7 @@ public class HeaderProps
     public var fontSize: Float? = nil
     public var backgroundColor: String? = nil
     public var assistantImage: String? = nil
+    public var assistantImageColor: String? = nil
     public var assistantImageHeight: Int? = nil
     public var assistantImageWidth: Int? = nil
     public var assistantImageBackgroundColor: String? = nil
@@ -21,6 +22,7 @@ public class HeaderProps
     public var assistantImageBorderColor: String? = nil
     public var assistantImageBorderWidth: Int? = nil
     public var closeAssistantButtonImage: String? = nil
+    public var closeAssistantColor: String? = nil
     public var closeAssistantButtonImageHeight: Int? = nil
     public var closeAssistantButtonImageWidth: Int? = nil
     public var closeAssistantButtonBorderRadius: Float? = nil
@@ -33,10 +35,11 @@ public class HeaderProps
     public var paddingBottom: Int? = nil
     public var fontFamily: String? = nil
     
-    public init(fontSize: Float? = nil, backgroundColor: String? = nil, assistantImage: String? = nil, assistantImageBackgroundColor: String? = nil,  assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantName: String? = nil, assistantNameTextColor: String? = nil, assistantImageBorderRadius: Float? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, closeAssistantButtonImage: String? = nil, closeAssistantButtonImageHeight: Int? = nil, closeAssistantButtonImageWidth: Int? = nil, closeAssistantButtonBorderRadius: Float? = nil, closeAssistantButtonBackgroundColor: String? = nil, closeAssistantButtonBorderWidth: Int? = nil, closeAssistantButtonBorderColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, fontFamily: String? = nil) {
+    public init(fontSize: Float? = nil, backgroundColor: String? = nil, assistantImage: String? = nil, assistantImageColor: String? = nil, assistantImageBackgroundColor: String? = nil,  assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantName: String? = nil, assistantNameTextColor: String? = nil, assistantImageBorderRadius: Float? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, closeAssistantButtonImage: String? = nil, closeAssistantColor: String? = nil, closeAssistantButtonImageHeight: Int? = nil, closeAssistantButtonImageWidth: Int? = nil, closeAssistantButtonBorderRadius: Float? = nil, closeAssistantButtonBackgroundColor: String? = nil, closeAssistantButtonBorderWidth: Int? = nil, closeAssistantButtonBorderColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, fontFamily: String? = nil) {
         self.fontSize = fontSize
         self.backgroundColor = backgroundColor
         self.assistantImage = assistantImage
+        self.assistantImageColor = assistantImageColor
         self.assistantImageBackgroundColor = assistantImageBackgroundColor
         self.assistantImageHeight = assistantImageHeight
         self.assistantImageWidth = assistantImageWidth
@@ -46,6 +49,7 @@ public class HeaderProps
         self.assistantImageBorderColor = assistantImageBorderColor
         self.assistantImageBorderWidth = assistantImageBorderWidth
         self.closeAssistantButtonImage = closeAssistantButtonImage
+        self.closeAssistantColor = closeAssistantColor
         self.closeAssistantButtonImageHeight = closeAssistantButtonImageHeight
         self.closeAssistantButtonImageWidth = closeAssistantButtonImageWidth
         self.closeAssistantButtonBorderRadius = closeAssistantButtonBorderRadius

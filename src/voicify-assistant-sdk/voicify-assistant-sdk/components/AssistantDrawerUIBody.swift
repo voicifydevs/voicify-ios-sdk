@@ -42,6 +42,8 @@ struct AssistantDrawerUIBody: View {
                                     VStack{
                                         KFImage(URL(string: bodyProps?.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
                                             .resizable()
+                                            .renderingMode(!(bodyProps?.assistantImageColor ?? "").isEmpty ? .template : .none)
+                                            .foregroundColor(Color.init(hex: bodyProps?.assistantImageColor ?? ""))
                                             .padding(.all, 4)
                                             .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: bodyProps?.assistantImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.assistantImageBorderWidth ?? 2)))
                                             .frame(width: CGFloat(bodyProps?.assistantImageWidth ?? 35), height: CGFloat(bodyProps?.assistantImageHeight ?? 35))

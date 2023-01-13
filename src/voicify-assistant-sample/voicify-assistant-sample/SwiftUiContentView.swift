@@ -62,18 +62,25 @@ struct SwiftUiContentView: View {
                         onEffect: onEffect,
                         sessionAttributes: ["sessionData": "sessionData"]
                     ),
-                headerProps: HeaderProps(fontFamily: "Times New Roman")
+                headerProps: HeaderProps(assistantImageColor: "#00ffff",
+                                         closeAssistantColor: "#00ffff",
+                                         fontFamily: "Times New Roman")
                 ,
-                bodyProps: BodyProps(messageSentFontFamily: "Times New Roman",
+                bodyProps: BodyProps(assistantImageColor: "#00ffff",
+                                     messageSentFontFamily: "Times New Roman",
                                      messageReceivedFontFamily: "Times New Roman",
                                      hintsFontFamily: "Times New Roman")
                 ,
-                toolBarProps: ToolBarProps(partialSpeechResultFontFamily: "Times New Roman",
+                toolBarProps: ToolBarProps(micActiveColor: "#00ffff",
+                                           micInactiveColor: "#012345",
+                                           sendActiveColor: "#00ffff",
+                                           sendInactiveColor: "#012345",
+                                           partialSpeechResultFontFamily: "Times New Roman",
                                            assistantStateFontFamily: "Times New Roman",
-                                          helpTextFontFamily: "Times New Roman",
-                                          speakFontFamily: "Times New Roman",
-                                          typeFontFamily: "Times New Roman",
-                                          textboxFontFamily: "Times New Roman")
+                                           helpTextFontFamily: "Times New Roman",
+                                           speakFontFamily: "Times New Roman",
+                                           typeFontFamily: "Times New Roman",
+                                           textboxFontFamily: "Times New Roman")
             )
             .ignoresSafeArea(.container)
         }

@@ -87,6 +87,8 @@ struct AssistantDrawerUIToolbar: View {
                     }){
                         KFImage(URL(string: headerProps?.closeAssistantButtonImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
                             .resizable()
+                            .renderingMode(!(headerProps?.closeAssistantColor ?? "").isEmpty ? .template : .none)
+                            .foregroundColor(Color.init(hex: headerProps?.closeAssistantColor ?? ""))
                             .padding(.all, 4)
                             .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? 0)).stroke(Color.init(hex: headerProps?.closeAssistantButtonBorderColor ?? "#00000000")!, lineWidth: CGFloat(headerProps?.closeAssistantButtonBorderWidth ?? 0)))
                             .frame(width: CGFloat(headerProps?.closeAssistantButtonImageWidth ?? 35), height: CGFloat(headerProps?.closeAssistantButtonImageHeight ?? 35))
@@ -168,6 +170,8 @@ struct AssistantDrawerUIToolbar: View {
                         VStack{
                             KFImage(URL(string: isUsingSpeech ? toolBarProps?.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : toolBarProps?.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
                                 .resizable()
+                                .renderingMode((isUsingSpeech && !(toolBarProps?.micActiveColor ?? "").isEmpty) ? .template : (!isUsingSpeech && !(toolBarProps?.micInactiveColor ?? "").isEmpty) ? .template : .none)
+                                .foregroundColor(isUsingSpeech ? Color.init(hex: toolBarProps?.micActiveColor ?? "") : Color.init(hex: toolBarProps?.micInactiveColor ?? ""))
                                 .frame(width: CGFloat(toolBarProps?.micImageWidth ?? 40), height: CGFloat(toolBarProps?.micImageHeight ?? 40))
                         }
                         .padding(.all, CGFloat(toolBarProps?.micImagePadding ?? 4))
@@ -196,7 +200,7 @@ struct AssistantDrawerUIToolbar: View {
                             inputSpeech = ""
                         }
                     }
-                    .font(.custom(toolBarProps?.textboxFontFamily ?? "SF Pro" , size: CGFloat(toolBarProps?.textBoxFontSize ?? 16)))
+                    .font(.custom(toolBarProps?.textboxFontFamily ?? "SF Pro" , size: CGFloat(toolBarProps?.textboxFontSize ?? 16)))
                     .padding(.leading, 10)
                     .overlay(VStack{Divider().background(Color(hex: toolBarProps?.textInputLineColor ?? "#000000")).offset(x: 0, y: 15)}.padding(.leading, 10))
                     .accentColor(Color.init(hex: toolBarProps?.textInputCursorColor ?? "#000000"))
@@ -214,6 +218,8 @@ struct AssistantDrawerUIToolbar: View {
                         KFImage(URL(string: isUsingSpeech ? toolBarProps?.sendInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/0c5aa61c-7d6c-4272-abd2-75d9f5771214/Send-2-.png":
                                         toolBarProps?.sendActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/7a39bc6f-eef5-4185-bcf8-2a645aff53b2/Send-3-.png"))
                         .resizable()
+                        .renderingMode((isUsingSpeech && !(toolBarProps?.sendInactiveColor ?? "").isEmpty) ? .template : (!isUsingSpeech && !(toolBarProps?.sendActiveColor ?? "").isEmpty) ? .template : .none)
+                        .foregroundColor(isUsingSpeech ? Color.init(hex: toolBarProps?.sendInactiveColor ?? "") : Color.init(hex: toolBarProps?.sendActiveColor ?? ""))
                         .frame(width: CGFloat(toolBarProps?.sendImageWidth ?? 28), height: CGFloat(toolBarProps?.sendImageHeight ?? 28))
                         
                     }
@@ -222,7 +228,7 @@ struct AssistantDrawerUIToolbar: View {
                 .padding(.top, 22)
                 .padding(.bottom, 10)
                 .padding(.trailing, 10)
-                .background(Color.init(hex: !isUsingSpeech ? toolBarProps?.textBoxActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.textBoxInactiveHighlightColor ?? "00000000"))
+                .background(Color.init(hex: !isUsingSpeech ? toolBarProps?.textboxActiveHighlightColor ?? "#1e7eb91f" : toolBarProps?.textboxInactiveHighlightColor ?? "00000000"))
                 .cornerRadius(CGFloat(10))
             }
                     
