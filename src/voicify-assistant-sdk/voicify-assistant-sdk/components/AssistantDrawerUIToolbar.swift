@@ -23,6 +23,7 @@ struct AssistantDrawerUIToolbar: View {
     @Binding var keyboardToggled: Bool
     @Binding var messages: Array<Message>
     @Binding var hints: Array<Hint>
+    @Binding var equalizerGradientColors: Array<Color>
     public var voicifySTT: VoicifySTTProvider
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant
@@ -44,6 +45,7 @@ struct AssistantDrawerUIToolbar: View {
                 keyboardToggled: Binding<Bool>,
                 messages: Binding<Array<Message>>,
                 hints: Binding<Array<Hint>>,
+                equalizerGradientColors: Binding<Array<Color>>,
                 voicifySTT: VoicifySTTProvider,
                 voicifyTTS: VoicifyTTSProivder,
                 voicifyAssistant: VoicifyAssistant,
@@ -65,6 +67,7 @@ struct AssistantDrawerUIToolbar: View {
         self._keyboardToggled = keyboardToggled
         self._messages = messages
         self._hints = hints
+        self._equalizerGradientColors = equalizerGradientColors
         self.voicifySTT = voicifySTT
         self.voicifyTTS = voicifyTTS
         self.voicifyAssistant = voicifyAssistant
@@ -99,7 +102,7 @@ struct AssistantDrawerUIToolbar: View {
                 Spacer()
             }
             if isUsingSpeech{
-                SpeakingAnimation(isSpeaking: $isSpeaking, isFullScreen: $isFullScreen, animationValues: $animationValues, equalizerColor: toolBarProps?.equalizerColor)
+                SpeakingAnimation(isSpeaking: $isSpeaking, isFullScreen: $isFullScreen, animationValues: $animationValues, equalizerColor: toolBarProps?.equalizerColor, equalizerGradientColors: $equalizerGradientColors)
                 HStack(){
                     Text(assistantStateText)
                         .italic()

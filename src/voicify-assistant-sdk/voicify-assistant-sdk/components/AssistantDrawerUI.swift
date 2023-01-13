@@ -16,6 +16,7 @@ public struct AssistantDrawerUI: View {
     var voicifyTTS: VoicifyTTSProivder
     var voicifyAssistant: VoicifyAssistant
     @State var assistantBackgroundGradientColors: Array<Color> = []
+    @State var equalizerGradientColors: Array<Color> = []
     var openAssistantNotifcation = NotificationCenter.default.publisher(for: NSNotification.Name.openAssistant)
     var closeAssistantNotification = NotificationCenter.default.publisher(for: NSNotification.Name.closeAssistant)
     @State var assistantIsOpen = false
@@ -123,6 +124,7 @@ public struct AssistantDrawerUI: View {
                     keyboardToggled:$keyboardToggled,
                     messages: $messages,
                     hints: $hints,
+                    equalizerGradientColors: $equalizerGradientColors,
                     voicifySTT: voicifySTT,
                     voicifyTTS: voicifyTTS,
                     voicifyAssistant: voicifyAssistant,
@@ -142,11 +144,20 @@ public struct AssistantDrawerUI: View {
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){
                 if let backgroundGradientColors = assistantSettingsProps.backgroundColor{
-                    var splitColors = backgroundGradientColors.components(separatedBy: ",")
+                    let splitColors = backgroundGradientColors.components(separatedBy: ",")
                     if (splitColors.count > 1)
                     {
                         splitColors.forEach{ color in
                             self.assistantBackgroundGradientColors.append(Color.init(hex: color)!)
+                        }
+                    }
+                }
+                if let equalizerGradColors = toolBarProps?.equalizerColor{
+                    let splitColors = equalizerGradColors.components(separatedBy: ",")
+                    if (splitColors.count > 1)
+                    {
+                        splitColors.forEach{ color in
+                            self.equalizerGradientColors.append(Color.init(hex: color)!)
                         }
                     }
                 }
