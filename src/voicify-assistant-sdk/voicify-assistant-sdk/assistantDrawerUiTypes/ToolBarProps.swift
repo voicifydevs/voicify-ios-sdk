@@ -21,15 +21,12 @@ public class ToolBarProps {
     public var sendImageWidth: Int? = nil
     public var sendImageHeight: Int? = nil
     public var micActiveImage: String? = nil
-    public var micActiveColor: String? = nil
     public var micInactiveImage: String? = nil
     public var micInactiveColor: String? = nil
     public var micActiveHighlightColor: String? = nil
     public var micInactiveHighlightColor: String? = nil
     public var sendActiveImage: String? = nil
-    public var sendActiveColor: String? = nil
     public var sendInactiveImage: String? = nil
-    public var sendInactiveColor: String? = nil
     public var speakFontSize: Float? = nil
     public var speakActiveTitleColor: String? = nil
     public var speakInactiveTitleColor: String? = nil
@@ -37,11 +34,11 @@ public class ToolBarProps {
     public var typeActiveTitleColor: String? = nil
     public var typeInactiveTitleColor: String? = nil
     public var textboxFontSize: Float? = nil
-    public var textboxActiveHighlightColor: String? = nil
     public var textboxInactiveHighlightColor: String? = nil
     public var partialSpeechResultTextColor: String? = nil
     public var fullSpeechResultTextColor: String? = nil
     public var speechResultBoxBackgroundColor: String? = nil
+    public var textInputActiveLineColor: String? = nil
     public var textInputLineColor: String? = nil
     public var textInputCursorColor: String? = nil
     public var textInputTextColor: String? = nil
@@ -53,17 +50,21 @@ public class ToolBarProps {
     public var helpText: String? = nil
     public var helpTextFontSize: Float? = nil
     public var helpTextFontColor: String? = nil
-    public var assistantStateTextColor: String? = nil
     public var assistantStateFontSize: Float? = nil
-    public var equalizerColor: String? = nil
     public var partialSpeechResultFontFamily: String? = nil
     public var assistantStateFontFamily: String? = nil
     public var helpTextFontFamily: String? = nil
     public var speakFontFamily: String? = nil
     public var typeFontFamily: String? = nil
     public var textboxFontFamily: String? = nil
-    public var partialSpeechResultFontSize: Float? = nil;
-    public init(drawerSpeechHeight: Float? = nil, drawerTextHeight: Float? = nil, backgroundColor: String? = nil, micBorderRadius: Float? = nil, micImagePadding: Float? = nil, micImageBorderWidth: Int? = nil, micImageBorderColor: String? = nil, micImageHeight: Int? = nil, micImageWidth: Int? = nil, micActiveImage: String? = nil, micActiveColor: String? = nil, sendImageWidth: Int? = nil, sendImageHeight: Int? = nil, micInactiveImage: String? = nil, micInactiveColor: String? = nil, micActiveHighlightColor: String? = nil, micInactiveHighlightColor: String? = nil, sendActiveImage: String? = nil, sendActiveColor: String? = nil, sendInactiveImage: String? = nil, sendInactiveColor: String? = nil, speakFontSize: Float? = nil, speakActiveTitleColor: String? = nil, speakInactiveTitleColor: String? = nil, typeFontSize: Float? = nil, typeActiveTitleColor: String? = nil, typeInactiveTitleColor: String? = nil, textBoxFontSize: Float? = nil, textBoxActiveHighlightColor: String? = nil, textBoxInactiveHighlightColor: String? = nil, partialSpeechResultTextColor: String? = nil, fullSpeechResultTextColor: String? = nil, speechResultBoxBackgroundColor: String? = nil, textInputLineColor: String? = nil, textInputCursorColor: String? = nil, textInputTextColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, placeholder: String? = nil, helpText: String? = nil, helpTextFontSize: Float? = nil, helpTextFontColor: String? = nil, assistantStateTextColor: String? = nil, assistantStateFontSize: Float? = nil, equalizerColor: String? = nil, partialSpeechResultFontFamily: String? = nil, assistantStateFontFamily: String? = nil, helpTextFontFamily: String? = nil, speakFontFamily: String? = nil, typeFontFamily: String? = nil, textboxFontFamily: String? = nil, partialSpeechResultFonySize: Float? = nil) {
+    public var partialSpeechResultFontSize: Float? = nil
+    public var textboxActiveHighlightColor: String? = nil
+    public var equalizerColor: String? = nil
+    public var micActiveColor: String? = nil
+    public var sendActiveColor: String? = nil
+    public var sendInactiveColor: String? = nil
+    public var assistantStateTextColor: String? = nil
+    public init(drawerSpeechHeight: Float? = nil, drawerTextHeight: Float? = nil, backgroundColor: String? = nil, micBorderRadius: Float? = nil, micImagePadding: Float? = nil, micImageBorderWidth: Int? = nil, micImageBorderColor: String? = nil, micImageHeight: Int? = nil, micImageWidth: Int? = nil, micActiveImage: String? = nil, sendImageWidth: Int? = nil, sendImageHeight: Int? = nil, micInactiveImage: String? = nil, micInactiveColor: String? = nil, micActiveHighlightColor: String? = nil, micInactiveHighlightColor: String? = nil, sendActiveImage: String? = nil, sendInactiveImage: String? = nil, speakFontSize: Float? = nil, speakActiveTitleColor: String? = nil, speakInactiveTitleColor: String? = nil, typeFontSize: Float? = nil, typeActiveTitleColor: String? = nil, typeInactiveTitleColor: String? = nil, textboxFontSize: Float? = nil, textboxInactiveHighlightColor: String? = nil, partialSpeechResultTextColor: String? = nil, fullSpeechResultTextColor: String? = nil, speechResultBoxBackgroundColor: String? = nil, textInputActiveLineColor: String? = nil, textInputLineColor: String? = nil, textInputCursorColor: String? = nil, textInputTextColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, placeholder: String? = nil, helpText: String? = nil, helpTextFontSize: Float? = nil, helpTextFontColor: String? = nil, assistantStateFontSize: Float? = nil, partialSpeechResultFontFamily: String? = nil, assistantStateFontFamily: String? = nil, helpTextFontFamily: String? = nil, speakFontFamily: String? = nil, typeFontFamily: String? = nil, textboxFontFamily: String? = nil, partialSpeechResultFonySize: Float? = nil, textboxActiveHighlightColor: String? = nil, equalizerColor: String? = nil, micActiveColor: String? = nil, sendActiveColor: String? = nil, sendInactiveColor: String? = nil, assistantStateTextColor: String? = nil) {
         self.drawerSpeechHeight = drawerSpeechHeight
         self.drawerTextHeight = drawerTextHeight
         self.backgroundColor = backgroundColor
@@ -76,27 +77,24 @@ public class ToolBarProps {
         self.sendImageWidth = sendImageWidth
         self.sendImageHeight = sendImageHeight
         self.micActiveImage = micActiveImage
-        self.micActiveColor = micActiveColor
         self.micInactiveImage = micInactiveImage
         self.micInactiveColor = micInactiveColor
         self.micActiveHighlightColor = micActiveHighlightColor
         self.micInactiveHighlightColor = micInactiveHighlightColor
         self.sendActiveImage = sendActiveImage
-        self.sendActiveColor = sendActiveColor
         self.sendInactiveImage = sendInactiveImage
-        self.sendInactiveColor = sendInactiveColor
         self.speakFontSize = speakFontSize
         self.speakActiveTitleColor = speakActiveTitleColor
         self.speakInactiveTitleColor = speakInactiveTitleColor
         self.typeFontSize = typeFontSize
         self.typeActiveTitleColor = typeActiveTitleColor
         self.typeInactiveTitleColor = typeInactiveTitleColor
-        self.textboxFontSize = textBoxFontSize
-        self.textboxActiveHighlightColor = textBoxActiveHighlightColor
-        self.textboxInactiveHighlightColor = textBoxInactiveHighlightColor
+        self.textboxFontSize = textboxFontSize
+        self.textboxInactiveHighlightColor = textboxInactiveHighlightColor
         self.partialSpeechResultTextColor = partialSpeechResultTextColor
         self.fullSpeechResultTextColor = fullSpeechResultTextColor
         self.speechResultBoxBackgroundColor = speechResultBoxBackgroundColor
+        self.textInputActiveLineColor = textInputActiveLineColor
         self.textInputLineColor = textInputLineColor
         self.textInputCursorColor = textInputCursorColor
         self.textInputTextColor = textInputTextColor
@@ -108,9 +106,7 @@ public class ToolBarProps {
         self.helpText = helpText
         self.helpTextFontSize = helpTextFontSize
         self.helpTextFontColor = helpTextFontColor
-        self.assistantStateTextColor = assistantStateTextColor
         self.assistantStateFontSize = assistantStateFontSize
-        self.equalizerColor = equalizerColor
         self.partialSpeechResultFontFamily = partialSpeechResultFontFamily
         self.assistantStateFontFamily = assistantStateFontFamily
         self.helpTextFontFamily = helpTextFontFamily
@@ -118,5 +114,11 @@ public class ToolBarProps {
         self.typeFontFamily = typeFontFamily
         self.textboxFontFamily = textboxFontFamily
         self.partialSpeechResultFontSize = partialSpeechResultFonySize
+        self.textboxActiveHighlightColor = textboxActiveHighlightColor
+        self.equalizerColor = equalizerColor
+        self.micActiveColor = micActiveColor
+        self.sendActiveColor = sendActiveColor
+        self.sendInactiveColor = sendInactiveColor
+        self.assistantStateTextColor = assistantStateTextColor
     }
 }

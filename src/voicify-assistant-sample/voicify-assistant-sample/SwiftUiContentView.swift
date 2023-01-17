@@ -45,54 +45,71 @@ struct SwiftUiContentView: View {
                 Spacer()
             }
             AssistantDrawerUI(
-                assistantSettings:
-                    AssistantSettingsProps(
-                        serverRootUrl: "https://assistant.voicify.com",
-                        appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
-                        appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
-                        locale: "en-US",
-                        channel: "My App",
-                        device: "My Device",
-                        textToSpeechVoice: "male|ar-XA-Standard-C",
-                        autoRunConversation: true,
-                        initializeWithWelcomeMessage: false,
-                        textToSpeechProvider: "Google",
-                        useVoiceInput: true,
-                        useOutputSpeech: true,
-                        initializeWithText: false,
-                        useDraftContent: false,
-                        noTracking: false,
-                        effects: ["Play", "closeAssistant"],
-                        onEffect: onEffect,
-                        onAssistantClose: onClose,
-                        sessionAttributes: ["sessionData": "sessionData"]
-                    ),
-                headerProps: HeaderProps(
-//                                         assistantImageColor: "#00ffff",
-//                                         closeAssistantColor: "#00ffff",
-//                                         fontFamily: "Times New Roman"
-                )
-                ,
-                bodyProps: BodyProps(
-//                                     assistantImageColor: "#00ffff",
-//                                     messageSentFontFamily: "Times New Roman",
-//                                     messageReceivedFontFamily: "Times New Roman",
-//                                     hintsFontFamily: "Times New Roman"
-                )
-                ,
-                toolBarProps: ToolBarProps(
-//                    micActiveColor: "#00ffff",
-//                                           micInactiveColor: "#012345",
-//                                           sendActiveColor: "#00ffff",
-//                                           sendInactiveColor: "#012345",
-//                                           equalizerColor: "#83ACE4,#80c7af00,#8AD1B8",
-//                                           partialSpeechResultFontFamily: "Times New Roman",
-//                                           assistantStateFontFamily: "Times New Roman",
-//                                           helpTextFontFamily: "Times New Roman",
-//                                           speakFontFamily: "Times New Roman",
-//                                           typeFontFamily: "Times New Roman",
-//                                           textboxFontFamily: "Times New Roman"
-                )
+            assistantSettings: AssistantSettingsProps(
+              serverRootUrl: "https://dev-assistant.voicify.com",
+              appId: "bc9fa6bf-6cea-4fad-af12-d388b64dbdb9",
+              appKey: "ZjcyNmNkNjEtNmY5My00NTg3LWI5ZmQtMjJkNzE3NGMwYTI4",
+              locale: "en-US",
+              channel: "My App",
+              device: "My device",
+              textToSpeechVoice: "",
+              autoRunConversation: false,
+              initializeWithWelcomeMessage: false,
+              textToSpeechProvider: "Google",
+              useVoiceInput: true,
+              useOutputSpeech: true,
+              useDraftContent: false,
+              noTracking: true,
+              initializeWithText: false
+//              backgroundColor: "#202C36,#3E77A5"
+            ),
+            headerProps: nil
+//                HeaderProps(
+//              backgroundColor: "#00000000",
+//              assistantName: "Age App",
+//              assistantNameTextColor: "#FFFFFF",
+//              fontFamily: "Muli",
+//              closeAssistantColor: "#FFFFFF"
+//            )
+            ,
+            bodyProps: nil
+//            BodyProps(
+//              backgroundColor: "#00000000",
+//              messageSentTextColor: "#FFFFFF",
+//              messageSentBackgroundColor: "#3E77A5",
+//              messageReceivedTextColor: "#FFFFFF",
+//              messageReceivedBackgroundColor: nil,
+//              messageSentFontFamily: "Muli",
+//              messageReceivedFontFamily: "Muli",
+//              hintsTextColor: "#FFFFFF",
+//              hintsBackgroundColor: "#00000000",
+//              hintsFontFamily: "Muli"
+//            )
+            ,
+            toolBarProps: nil
+//            ToolBarProps(
+//              backgroundColor: "#00000000",
+//              speakActiveTitleColor: "#FFFFFF",
+//              speakInactiveTitleColor: "#FFFFFF",
+//              typeActiveTitleColor: "#FFFFFF",
+//              typeInactiveTitleColor: "#FFFFFF",
+//              partialSpeechResultTextColor: "#FFFFFF",
+//              fullSpeechResultTextColor: "#FFFFFF",
+//              speechResultBoxBackgroundColor: "#3E77A5",
+//              textInputTextColor: "#FFFFFF",
+//              helpTextFontColor: "#FFFFFF",
+//              partialSpeechResultFontFamily: "Muli",
+//              assistantStateFontFamily: "Muli",
+//              helpTextFontFamily: "Muli",
+//              speakFontFamily: "Muli",
+//              typeFontFamily: "Muli",
+//              textboxFontFamily: "Muli",
+//              equalizerColor: "#ffffffb3,#ffffffb3",
+//              micActiveColor: "#FFFFFF",
+//              sendActiveColor: "#FFFFFF",
+//              sendInactiveColor: "#FFFFFF",
+//              assistantStateTextColor: "#FFFFFF"
+//            )
             )
             .ignoresSafeArea(.container)
         }

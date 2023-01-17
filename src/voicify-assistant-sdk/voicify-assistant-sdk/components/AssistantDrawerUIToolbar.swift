@@ -205,7 +205,7 @@ struct AssistantDrawerUIToolbar: View {
                     }
                     .font(.custom(toolBarProps?.textboxFontFamily ?? "SF Pro" , size: CGFloat(toolBarProps?.textboxFontSize ?? 16)))
                     .padding(.leading, 10)
-                    .overlay(VStack{Divider().background(Color(hex: toolBarProps?.textInputLineColor ?? "#000000")).offset(x: 0, y: 15)}.padding(.leading, 10))
+                    .overlay(VStack{Divider().background(Color(hex: isUsingSpeech ? toolBarProps?.textInputLineColor ?? "#000000" : toolBarProps?.textInputActiveLineColor ?? "#000000")).offset(x: 0, y: 15)}.padding(.leading, 10))
                     .accentColor(Color.init(hex: toolBarProps?.textInputCursorColor ?? "#000000"))
                     .foregroundColor(Color.init(hex: toolBarProps?.textInputTextColor ?? "#000000"))
                     .accessibilityIdentifier("messageInputField")

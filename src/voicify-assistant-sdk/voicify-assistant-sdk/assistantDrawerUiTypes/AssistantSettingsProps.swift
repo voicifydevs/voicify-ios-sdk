@@ -22,9 +22,9 @@ public class AssistantSettingsProps
     public var textToSpeechProvider: String
     public var useVoiceInput: Bool
     public var useOutputSpeech: Bool
-    public var initializeWithText: Bool
     public var useDraftContent: Bool
     public var noTracking: Bool
+    public var initializeWithText: Bool
     public var backgroundColor: String? = nil
     public var effects: Array<String>? = nil
     public var onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil
@@ -32,7 +32,7 @@ public class AssistantSettingsProps
     public var sessionAttributes: Dictionary<String, Any>? = nil
     public var userAttributes: Dictionary<String, Any>? = nil
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, textToSpeechVoice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, initializeWithText: Bool, useDraftContent: Bool, noTracking: Bool, backgroundColor: String? = nil, effects: Array<String>? = nil, onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil, onAssistantClose: (() -> Void)? = nil, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
+    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, textToSpeechVoice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, useDraftContent: Bool, noTracking: Bool, initializeWithText: Bool, backgroundColor: String? = nil, effects: Array<String>? = nil, onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil, onAssistantClose: (() -> Void)? = nil, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey
@@ -45,9 +45,9 @@ public class AssistantSettingsProps
         self.textToSpeechProvider = textToSpeechProvider
         self.useVoiceInput = useVoiceInput
         self.useOutputSpeech = useOutputSpeech
-        self.initializeWithText = initializeWithText
         self.useDraftContent = useDraftContent
         self.noTracking = noTracking
+        self.initializeWithText = initializeWithText
         self.backgroundColor = backgroundColor
         self.effects = effects
         self.onEffect = onEffect

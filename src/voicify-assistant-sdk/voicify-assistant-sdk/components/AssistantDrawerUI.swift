@@ -143,24 +143,32 @@ public struct AssistantDrawerUI: View {
         }
         .onChange(of: assistantIsOpen){ _ in
             if(assistantIsOpen == true){
-                if let backgroundGradientColors = assistantSettingsProps.backgroundColor{
-                    let splitColors = backgroundGradientColors.components(separatedBy: ",")
-                    if (splitColors.count > 1)
-                    {
-                        splitColors.forEach{ color in
-                            self.assistantBackgroundGradientColors.append(Color.init(hex: color)!)
+                if(assistantBackgroundGradientColors.isEmpty)
+                {
+                    if let backgroundGradientColors = assistantSettingsProps.backgroundColor{
+                        let splitColors = backgroundGradientColors.components(separatedBy: ",")
+                        if (splitColors.count > 1)
+                        {
+                            splitColors.forEach{ color in
+                                self.assistantBackgroundGradientColors.append(Color.init(hex: color)!)
+                            }
                         }
                     }
                 }
-                if let equalizerGradColors = toolBarProps?.equalizerColor{
-                    let splitColors = equalizerGradColors.components(separatedBy: ",")
-                    if (splitColors.count > 1)
-                    {
-                        splitColors.forEach{ color in
-                            self.equalizerGradientColors.append(Color.init(hex: color)!)
+                
+                if (equalizerGradientColors.isEmpty)
+                {
+                    if let equalizerGradColors = toolBarProps?.equalizerColor{
+                        let splitColors = equalizerGradColors.components(separatedBy: ",")
+                        if (splitColors.count > 1)
+                        {
+                            splitColors.forEach{ color in
+                                self.equalizerGradientColors.append(Color.init(hex: color)!)
+                            }
                         }
                     }
                 }
+                
                 voicifyTTS.cancelSpeech = false
                 voicifySTT.cancel = false
                 voicifyAssistant.ClearHandlers()
