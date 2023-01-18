@@ -16,3 +16,8 @@ public func scrollToCallback (data: Dictionary<String, Any>) -> Void{
         print("scrolling")
 //    NotificationCenter.default.post(Notification(name: NSNotification.Name.openAssistant))
 }
+
+public func clickTapCallback (data: Dictionary<String, Any>) -> Void{
+        print("clickTapping")
+//    NotificationCenter.default.post(Notification(name: NSNotification.Name.openAssistant))
+}

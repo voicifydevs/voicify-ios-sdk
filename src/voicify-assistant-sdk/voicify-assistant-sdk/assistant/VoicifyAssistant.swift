@@ -85,7 +85,6 @@ public class VoicifyAssistant : ObservableObject
     public func onPlayAudio(callback: @escaping (MediaItemModel?) -> Void){
         self.audioHandlers.append(callback)
     }
-    
     public func ClearHandlers() {
         self.audioHandlers = []
         self.videoHandlers = []
@@ -100,6 +99,7 @@ public class VoicifyAssistant : ObservableObject
     private func addDefaultEffects() -> Void {
         self.effectHandlers.append(EffectModel(effect: "closeAssistant", callback: closeAssistantCallback))
         self.effectHandlers.append(EffectModel(effect: "scrollTo", callback: scrollToCallback))
+        self.effectHandlers.append(EffectModel(effect: "clickTap", callback: clickTapCallback))
     }
     
     public func makeRequest(request: CustomAssistantRequest, inputType: String){
@@ -590,7 +590,6 @@ public class VoicifyAssistant : ObservableObject
                             DispatchQueue.global(qos: .background).async {
                                 DispatchQueue.main.async {
                                     if let seconds = Int(fireAfterMilliseconds) {
-                                        print(Double(seconds/1000))
                                         Timer.scheduledTimer(withTimeInterval: Double(seconds/1000), repeats: false) { timer in
                                             effectHandler.callback(effect.data)
                                         }
@@ -613,7 +612,20 @@ public class VoicifyAssistant : ObservableObject
                     self.effectHandlers.filter{ effectHandler in
                         return effectHandler.effect == effect.effectName
                     }.forEach{effectHandler in
-                        effectHandler.callback(effect.data)
+                        if let fireAfterMilliseconds = effect.data["fireAfterMilliseconds"] as? String {
+                            DispatchQueue.global(qos: .background).async {
+                                DispatchQueue.main.async {
+                                    if let seconds = Int(fireAfterMilliseconds) {
+                                        Timer.scheduledTimer(withTimeInterval: Double(seconds/1000), repeats: false) { timer in
+                                            effectHandler.callback(effect.data)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else{
+                            effectHandler.callback(effect.data)
+                        }
                     }
                 }
             }
