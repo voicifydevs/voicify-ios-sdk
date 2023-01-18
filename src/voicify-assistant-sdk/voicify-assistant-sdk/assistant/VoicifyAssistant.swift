@@ -184,42 +184,19 @@ public class VoicifyAssistant : ObservableObject
             if let effectsToFire = self.effects {
                 if(!effectsToFire.isEmpty)
                 {
-                    if(!effectsToFire[0].name.isEmpty)
-                    {
-                        effectsToFire.forEach{ effect in
-                            if let fireBeforeTextToSpeech = effect.data["fireBeforeTextToSpeech"] as? Bool{
-                                if (fireBeforeTextToSpeech == true)
-                                {
-                                    fireBeforeSpeechEffects.append(effect)
-                                }
-                                else
-                                {
-                                    fireAfterSpeechEffects.append(effect)
-                                }
+                    effectsToFire.forEach{ effect in
+                        if let fireBeforeTextToSpeech = effect.data["fireBeforeTextToSpeech"] as? Bool{
+                            if (fireBeforeTextToSpeech == true)
+                            {
+                                fireBeforeSpeechEffects.append(effect)
                             }
-                            else{
+                            else
+                            {
                                 fireAfterSpeechEffects.append(effect)
                             }
                         }
-                    }
-                    else if(!effectsToFire[0].effectName.isEmpty)
-                    {
-                        effectsToFire.filter{effect in
-                            return effect.requestId == request.requestId
-                        }.forEach{effect in
-                            if let fireBeforeTextToSpeech = effect.data["fireBeforeTextToSpeech"] as? Bool{
-                                if (fireBeforeTextToSpeech == true)
-                                {
-                                    fireBeforeSpeechEffects.append(effect)
-                                }
-                                else
-                                {
-                                    fireAfterSpeechEffects.append(effect)
-                                }
-                            }
-                            else {
-                                fireAfterSpeechEffects.append(effect)
-                            }
+                        else{
+                            fireAfterSpeechEffects.append(effect)
                         }
                     }
                 }
@@ -244,7 +221,6 @@ public class VoicifyAssistant : ObservableObject
             self.textToSpeechProvider?.clearHandlers()
             if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech == true)
             {
-                
                 self.textToSpeechProvider?.addFinishListener {
                     Task{
                         if (!self.fireAfterSpeechEffects.isEmpty)
@@ -585,7 +561,6 @@ public class VoicifyAssistant : ObservableObject
                     self.effectHandlers.filter{effectHandler in
                         return effectHandler.effect == effect.name
                     }.forEach{ effectHandler in
-                        
                         if let fireAfterMilliseconds = effect.data["fireAfterMilliseconds"] as? String {
                             DispatchQueue.global(qos: .background).async {
                                 DispatchQueue.main.async {

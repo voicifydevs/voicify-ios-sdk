@@ -24,6 +24,11 @@ struct SwiftUiContentView: View {
         {
             NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
         }
+        
+        if (effectName == "Navigate"){
+            print(data["page"])
+            print("navigated")
+        }
     }
     
     func onClose () -> Void {
@@ -47,8 +52,8 @@ struct SwiftUiContentView: View {
             AssistantDrawerUI(
             assistantSettings: AssistantSettingsProps(
               serverRootUrl: "https://assistant.voicify.com",
-              appId: "20ad27ab-7436-476c-951d-fdd821ba3be2",
-              appKey: "MDc3YTk3NWQtOTk0NC00NTJmLWI4MDEtOWJjNzA5YjcyOWEx",
+              appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
+              appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
               locale: "en-US",
               channel: "My App",
               device: "My device",
@@ -60,7 +65,9 @@ struct SwiftUiContentView: View {
               useOutputSpeech: true,
               useDraftContent: false,
               noTracking: true,
-              initializeWithText: false
+              initializeWithText: false,
+              effects: ["Play", "Navigate"],
+              onEffect: onEffect
 //              backgroundColor: "#202C36,#3E77A5"
             ),
             headerProps: nil
