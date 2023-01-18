@@ -26,6 +26,8 @@ public class VoicifyAssistant : ObservableObject
     private var endSessionHandlers: Array<(CustomAssistantResponse) -> Void> = []
     private var audioHandlers: Array<(MediaItemModel? ) -> Void> = []
     private var videoHandlers: Array<(MediaItemModel? ) -> Void> = []
+    private var fireBeforeSpeechEffects: Array<VoicifySessionEffect> = []
+    private var fireAfterSpeechEffects: Array<VoicifySessionEffect> = []
     public var currentSessionInfo = VoicifySessionData(id: "", sessionFlags: [], sessionAttributes: [:])
     public var currentUserInfo = VoicifyUserData(id: "", userFlags: [], userAttributes: [:])
     
@@ -35,6 +37,7 @@ public class VoicifyAssistant : ObservableObject
         self.speechToTextProvider = speechToTextProvider
         self.textToSpeechProvider = textToSpeechProvider
         self.settings = settings
+        addDefaultEffects()
     }
     
     public func initializeAndStart(){
@@ -91,6 +94,12 @@ public class VoicifyAssistant : ObservableObject
         self.requestStartedHandlers = []
         self.effectHandlers = []
         self.errorHandlers = []
+        addDefaultEffects()
+    }
+    
+    private func addDefaultEffects() -> Void {
+        self.effectHandlers.append(EffectModel(effect: "closeAssistant", callback: closeAssistantCallback))
+        self.effectHandlers.append(EffectModel(effect: "scrollTo", callback: scrollToCallback))
     }
     
     public func makeRequest(request: CustomAssistantRequest, inputType: String){
@@ -155,83 +164,41 @@ public class VoicifyAssistant : ObservableObject
     }
     
     private func userDataRequest(inputType: String, assistantResponse: CustomAssistantResponse, request: CustomAssistantRequest){
-        if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech)
-        {
-            if(!assistantResponse.ssml.isEmpty){
-                self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.ssml)
-            }
-            else if (!assistantResponse.outputSpeech.isEmpty)
+        Task{
+            self.fireAfterSpeechEffects = []
+            self.fireBeforeSpeechEffects = []
+            self.effects = []
+            
+            if(!assistantResponse.effects.isEmpty)
             {
-                self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.outputSpeech)
+                effects = assistantResponse.effects
             }
-        }
-        self.currentSessionInfo = VoicifySessionData(id: "", sessionFlags: assistantResponse.sessionFlags, sessionAttributes: assistantResponse.sessionAttributes)
-        if(!assistantResponse.effects.isEmpty)
-        {
-            effects = assistantResponse.effects
-        }
-        else if let effectDictionary = assistantResponse.sessionAttributes["effects"] as? Array<[String: Any]>
-        {
-            if(!effectDictionary.isEmpty)
+            else if let effectDictionary = assistantResponse.sessionAttributes["effects"] as? Array<[String: Any]>
             {
-                effects = self.decodeEffectsArray(effects: effectDictionary)
-            }            
-        }
-        
-        self.textToSpeechProvider?.clearHandlers()
-        if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech == true)
-        {
-            self.textToSpeechProvider?.addFinishListener {
-                if let effectsToFire = self.effects {
-                    if(!effectsToFire.isEmpty)
-                    {
-                        if(!effectsToFire[0].name.isEmpty)
-                        {
-                            effectsToFire.forEach{ effect in
-                                self.effectHandlers.filter{effectHandler in
-                                    return effectHandler.effect == effect.name
-                                }.forEach{ effectHandler in
-                                    effectHandler.callback(effect.data)
-                                }
-                            }
-                        }
-                        else if(!effectsToFire[0].effectName.isEmpty)
-                        {
-                            effectsToFire.filter{effect in
-                                return effect.requestId == request.requestId
-                            }.forEach{effect in
-                                self.effectHandlers.filter{ effectHandler in
-                                    return effectHandler.effect == effect.effectName
-                                }.forEach{effectHandler in
-                                    effectHandler.callback(effect.data)
-                                }
-                            }
-                        }
-                        else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
-                            self.speechToTextProvider?.startListening()
-                        }
-                        self.effects = []
-                    }
-                    else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
-                        self.speechToTextProvider?.startListening()
-                    }
-                }
-                else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
-                    self.speechToTextProvider?.startListening()
+                if(!effectDictionary.isEmpty)
+                {
+                    effects = self.decodeEffectsArray(effects: effectDictionary)
                 }
             }
-        }
-        else{
+            
             if let effectsToFire = self.effects {
                 if(!effectsToFire.isEmpty)
                 {
                     if(!effectsToFire[0].name.isEmpty)
                     {
                         effectsToFire.forEach{ effect in
-                            self.effectHandlers.filter{effectHandler in
-                                return effectHandler.effect == effect.name
-                            }.forEach{ effectHandler in
-                                effectHandler.callback(effect.data)
+                            if let fireBeforeTextToSpeech = effect.data["fireBeforeTextToSpeech"] as? Bool{
+                                if (fireBeforeTextToSpeech == true)
+                                {
+                                    fireBeforeSpeechEffects.append(effect)
+                                }
+                                else
+                                {
+                                    fireAfterSpeechEffects.append(effect)
+                                }
+                            }
+                            else{
+                                fireAfterSpeechEffects.append(effect)
                             }
                         }
                     }
@@ -240,29 +207,75 @@ public class VoicifyAssistant : ObservableObject
                         effectsToFire.filter{effect in
                             return effect.requestId == request.requestId
                         }.forEach{effect in
-                            self.effectHandlers.filter{ effectHandler in
-                                return effectHandler.effect == effect.effectName
-                            }.forEach{effectHandler in
-                                effectHandler.callback(effect.data)
+                            if let fireBeforeTextToSpeech = effect.data["fireBeforeTextToSpeech"] as? Bool{
+                                if (fireBeforeTextToSpeech == true)
+                                {
+                                    fireBeforeSpeechEffects.append(effect)
+                                }
+                                else
+                                {
+                                    fireAfterSpeechEffects.append(effect)
+                                }
+                            }
+                            else {
+                                fireAfterSpeechEffects.append(effect)
                             }
                         }
                     }
                 }
-                self.effects = []
             }
-        }
-        guard let userDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/\( self.userId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
-        let userDataRequest = self.generateGetRequest(url: userDataRequestUrl)
-        URLSession.shared.dataTask(with: userDataRequest) { (data, response, error) in
-            if let error = error {
-                self.errorHandlers.forEach{errorHandler in
-                    errorHandler(error.localizedDescription)
+            if(!fireBeforeSpeechEffects.isEmpty)
+            {
+                await self.fireEffects(effectsToFire: fireBeforeSpeechEffects, request: request)
+            }
+            if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech)
+            {
+                if(!assistantResponse.ssml.isEmpty){
+                    self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.ssml)
                 }
-                return
+                else if (!assistantResponse.outputSpeech.isEmpty)
+                {
+                    self.textToSpeechProvider?.speakSsml(ssml: assistantResponse.outputSpeech)
+                }
             }
-            guard let response = response as? HTTPURLResponse else {return}
-            if response.statusCode == 200 || response.statusCode == 204 {
-                guard let data = data else { return }
+            self.currentSessionInfo = VoicifySessionData(id: "", sessionFlags: assistantResponse.sessionFlags, sessionAttributes: assistantResponse.sessionAttributes)
+            
+            
+            self.textToSpeechProvider?.clearHandlers()
+            if(self.textToSpeechProvider != nil && self.settings.useOutputSpeech == true)
+            {
+                
+                self.textToSpeechProvider?.addFinishListener {
+                    Task{
+                        if (!self.fireAfterSpeechEffects.isEmpty)
+                        {
+                            await self.fireEffects(effectsToFire: self.fireAfterSpeechEffects, request: request)
+                            
+                        }
+                        else if(self.settings.autoRunConversation == true && self.settings.useVoiceInput == true && inputType == "Speech" && self.settings.useOutputSpeech && self.speechToTextProvider != nil && assistantResponse.endSession != true){
+                            self.speechToTextProvider?.startListening()
+                        }
+                    }
+                }
+            }
+            else{
+                if (!fireAfterSpeechEffects.isEmpty)
+                {
+                    await self.fireEffects(effectsToFire: self.fireAfterSpeechEffects, request: request)
+                }
+            }
+            guard let userDataRequestUrl = URL(string: "\(self.settings.serverRootUrl)/api/UserProfile/\( self.userId!)?applicationId=\(self.settings.appId)&applicationSecret=\(self.settings.appKey)") else { fatalError("Missing URL") }
+            let userDataRequest = self.generateGetRequest(url: userDataRequestUrl)
+            URLSession.shared.dataTask(with: userDataRequest) { (data, response, error) in
+                if let error = error {
+                    self.errorHandlers.forEach{errorHandler in
+                        errorHandler(error.localizedDescription)
+                    }
+                    return
+                }
+                guard let response = response as? HTTPURLResponse else {return}
+                if response.statusCode == 200 || response.statusCode == 204 {
+                    guard let data = data else { return }
                     do{
                         if(!data.isEmpty)
                         {
@@ -298,16 +311,16 @@ public class VoicifyAssistant : ObservableObject
                             errorHandler(error.localizedDescription)
                         }
                     }
-            }
-            else{
-                self.errorHandlers.forEach{errorHandler in
-                    if let description = error?.localizedDescription{
-                        errorHandler(description)
+                }
+                else{
+                    self.errorHandlers.forEach{errorHandler in
+                        if let description = error?.localizedDescription{
+                            errorHandler(description)
+                        }
                     }
                 }
-            }
-        }.resume()
-        
+            }.resume()
+        }
     }
     
     public func makeTextRequest(text: String, requestAttributes: Dictionary<String, Any>? = nil, inputType: String){
@@ -448,7 +461,7 @@ public class VoicifyAssistant : ObservableObject
     
     func convertDictionaryToUserData(response: Dictionary<String, Any>) -> VoicifyUserData{
         let userData = VoicifyUserData(id: "", userFlags: [], userAttributes: [:])
-        if let id = response["id"] as? String {
+            if let id = response["id"] as? String {
             userData.id = id
         }
         if let userFlags = response["userFlags"] as? [String]{
@@ -561,6 +574,50 @@ public class VoicifyAssistant : ObservableObject
             decodedResponse.endSession = endSession
         }
         return decodedResponse
+    }
+    
+    private func fireEffects(effectsToFire: Array<VoicifySessionEffect>, request: CustomAssistantRequest) async -> Void {
+        if(!effectsToFire.isEmpty)
+        {
+            if(!effectsToFire[0].name.isEmpty)
+            {
+                effectsToFire.forEach{ effect in
+                    self.effectHandlers.filter{effectHandler in
+                        return effectHandler.effect == effect.name
+                    }.forEach{ effectHandler in
+                        
+                        if let fireAfterMilliseconds = effect.data["fireAfterMilliseconds"] as? String {
+                            DispatchQueue.global(qos: .background).async {
+                                DispatchQueue.main.async {
+                                    if let seconds = Int(fireAfterMilliseconds) {
+                                        print(Double(seconds/1000))
+                                        Timer.scheduledTimer(withTimeInterval: Double(seconds/1000), repeats: false) { timer in
+                                            effectHandler.callback(effect.data)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else{
+                            effectHandler.callback(effect.data)
+                        }
+                            
+                    }
+                }
+            }
+            else if(!effectsToFire[0].effectName.isEmpty)
+            {
+                effectsToFire.filter{effect in
+                    return effect.requestId == request.requestId
+                }.forEach{effect in
+                    self.effectHandlers.filter{ effectHandler in
+                        return effectHandler.effect == effect.effectName
+                    }.forEach{effectHandler in
+                        effectHandler.callback(effect.data)
+                    }
+                }
+            }
+        }
     }
     
     func convertRequestToDictionary(request: CustomAssistantRequest) -> Dictionary<String, Any>{

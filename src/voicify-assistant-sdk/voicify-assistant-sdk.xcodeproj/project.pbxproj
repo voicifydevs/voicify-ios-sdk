@@ -48,6 +48,7 @@
 		FEBB244829140B4F001BF773 /* AssistantDrawerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */; };
 		FEBB244A2914133B001BF773 /* AssistantSettingsProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */; };
 		FED1FDC72925823B006783C8 /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1FDC62925823B006783C8 /* Hint.swift */; };
+		FED2173329772B6F00519EC3 /* VoicifyEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED2173229772B6F00519EC3 /* VoicifyEffects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		FEBB244729140B4F001BF773 /* AssistantDrawerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUI.swift; sourceTree = "<group>"; };
 		FEBB24492914133B001BF773 /* AssistantSettingsProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantSettingsProps.swift; sourceTree = "<group>"; };
 		FED1FDC62925823B006783C8 /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
+		FED2173229772B6F00519EC3 /* VoicifyEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyEffects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 				FE9AC32829097FCB0030C67E /* VoicifySTTProvider.swift */,
 				FE1F4E20290C5CCD00D1B447 /* VoicifyTTSProvider.swift */,
 				FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */,
+				FED2173229772B6F00519EC3 /* VoicifyEffects.swift */,
 			);
 			path = assistant;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				FE7BE5412951359700C34798 /* VoicifyNotificationNames.swift in Sources */,
 				FE581DD82923E0EF00E1D77F /* Message.swift in Sources */,
 				FE9AC305290868E10030C67E /* CustomAssistantRequestContext.swift in Sources */,
+				FED2173329772B6F00519EC3 /* VoicifyEffects.swift in Sources */,
 				FE3F68AA294D02B000021785 /* AssistantIsOpenObject.swift in Sources */,
 				FEAD780D293F9BBB00483B70 /* AnimationValue.swift in Sources */,
 				FE1F4E292910110900D1B447 /* VoicifyAssistant.swift in Sources */,

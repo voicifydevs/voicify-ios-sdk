@@ -46,15 +46,15 @@ struct SwiftUiContentView: View {
             }
             AssistantDrawerUI(
             assistantSettings: AssistantSettingsProps(
-              serverRootUrl: "https://dev-assistant.voicify.com",
-              appId: "bc9fa6bf-6cea-4fad-af12-d388b64dbdb9",
-              appKey: "ZjcyNmNkNjEtNmY5My00NTg3LWI5ZmQtMjJkNzE3NGMwYTI4",
+              serverRootUrl: "https://assistant.voicify.com",
+              appId: "20ad27ab-7436-476c-951d-fdd821ba3be2",
+              appKey: "MDc3YTk3NWQtOTk0NC00NTJmLWI4MDEtOWJjNzA5YjcyOWEx",
               locale: "en-US",
               channel: "My App",
               device: "My device",
               textToSpeechVoice: "",
               autoRunConversation: false,
-              initializeWithWelcomeMessage: false,
+              initializeWithWelcomeMessage: true,
               textToSpeechProvider: "Google",
               useVoiceInput: true,
               useOutputSpeech: true,
