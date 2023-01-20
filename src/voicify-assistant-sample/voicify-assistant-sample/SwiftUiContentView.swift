@@ -20,11 +20,11 @@ struct SwiftUiContentView: View {
             }
             NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
         }
-        if(effectName == "closeAssistant")
-        {
-            NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
-        }
-        
+//        if(effectName == "closeAssistant")
+//        {
+//            NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
+//        }
+//        
         if (effectName == "Navigate"){
             print(data["page"])
             print("navigated")
@@ -63,7 +63,7 @@ struct SwiftUiContentView: View {
               textToSpeechProvider: "Google",
               useVoiceInput: true,
               useOutputSpeech: true,
-              useDraftContent: false,
+              useDraftContent: true,
               noTracking: true,
               initializeWithText: false,
               backgroundColor: "#202C36,#3E77A5"

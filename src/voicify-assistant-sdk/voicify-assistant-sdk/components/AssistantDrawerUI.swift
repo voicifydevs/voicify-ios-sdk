@@ -173,6 +173,8 @@ public struct AssistantDrawerUI: View {
                 voicifySTT.cancel = false
                 voicifyAssistant.ClearHandlers()
                 voicifySTT.clearHandlers()
+                //add out of the box effect
+                voicifyAssistant.onEffect(effectName: "closeAssistant", callback: closeAssistantCallback)
                 inputSpeech = ""
                 inputText = ""
                 responseText = ""

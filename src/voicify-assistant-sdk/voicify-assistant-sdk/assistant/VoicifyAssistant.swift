@@ -37,7 +37,6 @@ public class VoicifyAssistant : ObservableObject
         self.speechToTextProvider = speechToTextProvider
         self.textToSpeechProvider = textToSpeechProvider
         self.settings = settings
-        addDefaultEffects()
     }
     
     public func initializeAndStart(){
@@ -93,13 +92,6 @@ public class VoicifyAssistant : ObservableObject
         self.requestStartedHandlers = []
         self.effectHandlers = []
         self.errorHandlers = []
-        addDefaultEffects()
-    }
-    
-    private func addDefaultEffects() -> Void {
-        self.effectHandlers.append(EffectModel(effect: "closeAssistant", callback: closeAssistantCallback))
-        self.effectHandlers.append(EffectModel(effect: "scrollTo", callback: scrollToCallback))
-        self.effectHandlers.append(EffectModel(effect: "clickTap", callback: clickTapCallback))
     }
     
     public func makeRequest(request: CustomAssistantRequest, inputType: String){
