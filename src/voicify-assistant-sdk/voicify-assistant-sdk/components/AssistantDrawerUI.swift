@@ -11,7 +11,7 @@ public struct AssistantDrawerUI: View {
     var assistantSettingsProps: AssistantSettingsProps
     var headerProps: HeaderProps? = nil
     var bodyProps: BodyProps? = nil
-    var toolBarProps: ToolbarProps? = nil
+    var toolbarProps: ToolbarProps? = nil
     var voicifySTT: VoicifySTTProvider
     var voicifyTTS: VoicifyTTSProivder
     var voicifyAssistant: VoicifyAssistant
@@ -43,12 +43,12 @@ public struct AssistantDrawerUI: View {
         assistantSettings: AssistantSettingsProps,
         headerProps: HeaderProps?,
         bodyProps: BodyProps?,
-        toolBarProps: ToolbarProps?
+        toolbarProps: ToolbarProps?
     ) {
         self.assistantSettingsProps = assistantSettings
         self.headerProps = headerProps
         self.bodyProps = bodyProps
-        self.toolBarProps = toolBarProps
+        self.toolbarProps = toolbarProps
         voicifySTT = VoicifySTTProvider()
         voicifyTTS = VoicifyTTSProivder(
             settings: VoicifyTextToSpeechSettings(
@@ -84,7 +84,7 @@ public struct AssistantDrawerUI: View {
     public var body: some View {
         BottomSheet(
             isPresented: $assistantIsOpen,
-            height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolBarProps?.drawerTextHeight ?? 220) : CGFloat(toolBarProps?.drawerSpeechHeight ?? 330),
+            height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolbarProps?.drawerTextHeight ?? 220) : CGFloat(toolbarProps?.drawerSpeechHeight ?? 330),
             topBarHeight: 0 ,
             showTopIndicator: false)
         {
@@ -129,7 +129,7 @@ public struct AssistantDrawerUI: View {
                     voicifyTTS: voicifyTTS,
                     voicifyAssistant: voicifyAssistant,
                     headerProps: headerProps,
-                    toolBarProps: toolBarProps,
+                    toolbarProps: toolbarProps,
                     assistantSettingsProps: assistantSettingsProps
                 )
                 .padding(.bottom, isFullScreen ? self.keyboardHeightHelper.keyboardHeight : 0)
@@ -158,7 +158,7 @@ public struct AssistantDrawerUI: View {
                 
                 if (equalizerGradientColors.isEmpty)
                 {
-                    if let equalizerGradColors = toolBarProps?.equalizerColor{
+                    if let equalizerGradColors = toolbarProps?.equalizerColor{
                         let splitColors = equalizerGradColors.components(separatedBy: ",")
                         if (splitColors.count > 1)
                         {

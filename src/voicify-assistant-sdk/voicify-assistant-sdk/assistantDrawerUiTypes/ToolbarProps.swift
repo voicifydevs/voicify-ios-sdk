@@ -1,5 +1,5 @@
 //
-//  ToolBarProps.swift
+//  ToolbarProps.swift
 //  voicify-assistant-sdk
 //
 //  Created by James McCarthy on 12/6/22.
