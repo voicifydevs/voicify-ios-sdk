@@ -11,7 +11,7 @@ public struct AssistantDrawerUI: View {
     var assistantSettingsProps: AssistantSettingsProps
     var headerProps: HeaderProps? = nil
     var bodyProps: BodyProps? = nil
-    var toolBarProps: ToolBarProps? = nil
+    var toolBarProps: ToolbarProps? = nil
     var voicifySTT: VoicifySTTProvider
     var voicifyTTS: VoicifyTTSProivder
     var voicifyAssistant: VoicifyAssistant
@@ -43,7 +43,7 @@ public struct AssistantDrawerUI: View {
         assistantSettings: AssistantSettingsProps,
         headerProps: HeaderProps?,
         bodyProps: BodyProps?,
-        toolBarProps: ToolBarProps?
+        toolBarProps: ToolbarProps?
     ) {
         self.assistantSettingsProps = assistantSettings
         self.headerProps = headerProps

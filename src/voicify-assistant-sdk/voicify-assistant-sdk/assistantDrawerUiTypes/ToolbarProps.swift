@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public class ToolBarProps {
+public class ToolbarProps {
     public var drawerSpeechHeight: Float? = nil
     public var drawerTextHeight: Float? = nil
     public var backgroundColor: String? = nil

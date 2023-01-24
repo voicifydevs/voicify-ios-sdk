@@ -87,7 +87,7 @@ struct SwiftUiContentView: View {
               hintsBackgroundColor: "#00000000",
               hintsFontFamily: "Muli"
             ),
-            toolBarProps: ToolBarProps(
+            toolBarProps: ToolbarProps(
               backgroundColor: "#00000000",
               speakActiveTitleColor: "#FFFFFF",
               speakInactiveTitleColor: "#FFFFFF",

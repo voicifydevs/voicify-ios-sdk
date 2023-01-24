@@ -28,7 +28,7 @@ struct AssistantDrawerUIToolbar: View {
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant
     public var headerProps: HeaderProps? = nil
-    public var toolBarProps: ToolBarProps? = nil
+    public var toolBarProps: ToolbarProps? = nil
     public var assistantSettingsProps: AssistantSettingsProps
     
     public init(assistantIsOpen: Binding<Bool>,
@@ -50,7 +50,7 @@ struct AssistantDrawerUIToolbar: View {
                 voicifyTTS: VoicifyTTSProivder,
                 voicifyAssistant: VoicifyAssistant,
                 headerProps: HeaderProps? = nil,
-                toolBarProps: ToolBarProps? = nil,
+                toolBarProps: ToolbarProps? = nil,
                 assistantSettingsProps: AssistantSettingsProps
     ){
         self._assistantIsOpen = assistantIsOpen
