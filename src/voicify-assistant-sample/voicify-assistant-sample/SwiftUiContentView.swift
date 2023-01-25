@@ -11,6 +11,7 @@ import voicify_assistant_sdk
 struct SwiftUiContentView: View {
     @State var assistantIsOpen = false
     @State var currentSongTitle = ""
+    @State var showAssistantUnavailableAlert = false
     func onEffect (effectName: String, data: Dictionary<String, Any>) -> Void{
         if(effectName == "Play")
         {
@@ -35,6 +36,11 @@ struct SwiftUiContentView: View {
         print("We Closed")
     }
     
+    func onError (errorMessage: String, request: CustomAssistantRequest) {
+        NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
+        showAssistantUnavailableAlert = true
+    }
+    
     var body: some View {
         ZStack{
             VStack{
@@ -48,6 +54,11 @@ struct SwiftUiContentView: View {
                 }
                 .padding(.top, 50)
                 Spacer()
+                    .alert(isPresented: $showAssistantUnavailableAlert) {
+                    Alert(title: Text("Error"),
+                          message: Text("Assistant Unavailable.")
+                    )
+                }
             }
             AssistantDrawerUI(
              assistantSettings: AssistantSettingsProps(
@@ -66,7 +77,8 @@ struct SwiftUiContentView: View {
               useDraftContent: true,
               noTracking: true,
               initializeWithText: false,
-              backgroundColor: "#202C36,#3E77A5"
+              backgroundColor: "#202C36,#3E77A5",
+              onAssistantError: onError
             ),
             headerProps: HeaderProps(
               backgroundColor: "#00000000",

@@ -84,7 +84,7 @@ public struct AssistantDrawerUI: View {
     public var body: some View {
         BottomSheet(
             isPresented: $assistantIsOpen,
-            height: assistantSettingsProps.initializeWithWelcomeMessage && !isFullScreen ? 0 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolbarProps?.drawerTextHeight ?? 220) : CGFloat(toolbarProps?.drawerSpeechHeight ?? 330),
+            height: isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolbarProps?.drawerTextHeight ?? 220) : CGFloat(toolbarProps?.drawerSpeechHeight ?? 330),
             topBarHeight: 0 ,
             showTopIndicator: false)
         {
@@ -175,6 +175,9 @@ public struct AssistantDrawerUI: View {
                 voicifySTT.clearHandlers()
                 //add out of the box effect
                 voicifyAssistant.onEffect(effectName: "closeAssistant", callback: closeAssistantCallback)
+                if let onErrorCallback = assistantSettingsProps.onAssistantError{
+                    voicifyAssistant.onError(callback: onErrorCallback)
+                }
                 inputSpeech = ""
                 inputText = ""
                 responseText = ""
@@ -232,6 +235,7 @@ public struct AssistantDrawerUI: View {
                 }
                 if(assistantSettingsProps.initializeWithWelcomeMessage)
                 {
+                    isFullScreen = true
                     if(assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true)
                     {
                         isUsingSpeech = true

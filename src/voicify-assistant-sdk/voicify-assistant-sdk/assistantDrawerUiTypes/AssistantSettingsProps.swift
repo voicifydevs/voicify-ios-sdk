@@ -29,10 +29,11 @@ public class AssistantSettingsProps
     public var effects: Array<String>? = nil
     public var onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil
     public var onAssistantClose: (() -> Void)? = nil
+    public var onAssistantError: ((String, CustomAssistantRequest) -> Void)? = nil
     public var sessionAttributes: Dictionary<String, Any>? = nil
     public var userAttributes: Dictionary<String, Any>? = nil
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, textToSpeechVoice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, useDraftContent: Bool, noTracking: Bool, initializeWithText: Bool, backgroundColor: String? = nil, effects: Array<String>? = nil, onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil, onAssistantClose: (() -> Void)? = nil, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
+    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, textToSpeechVoice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, useDraftContent: Bool, noTracking: Bool, initializeWithText: Bool, backgroundColor: String? = nil, effects: Array<String>? = nil, onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil, onAssistantClose: (() -> Void)? = nil, onAssistantError: ((String, CustomAssistantRequest) -> Void)? = nil, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey
@@ -52,6 +53,7 @@ public class AssistantSettingsProps
         self.effects = effects
         self.onEffect = onEffect
         self.onAssistantClose = onAssistantClose
+        self.onAssistantError = onAssistantError
         self.sessionAttributes = sessionAttributes
         self.userAttributes = userAttributes
     }

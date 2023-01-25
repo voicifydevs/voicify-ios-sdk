@@ -19,7 +19,7 @@ public class VoicifyAssistant : ObservableObject
     private var accessToken: String? = nil
     private var sessionAttributes: Dictionary<String, Any>? = nil
     private var userAttributes: Dictionary<String, Any>? = nil
-    private var errorHandlers: Array<(String) -> Void> = []
+    private var errorHandlers: Array<(String, CustomAssistantRequest) -> Void> = []
     private var effectHandlers: Array<EffectModel> = []
     private var requestStartedHandlers: Array<(CustomAssistantRequest) -> Void> = []
     private var responseHandlers: Array<(CustomAssistantResponse) -> Void> = []
@@ -61,7 +61,7 @@ public class VoicifyAssistant : ObservableObject
         self.effectHandlers.append(EffectModel(effect: effectName, callback: callback))
     }
     
-    public func onError(callback: @escaping (String) -> Void){
+    public func onError(callback: @escaping (String, CustomAssistantRequest) -> Void){
         self.errorHandlers.append(callback)
     }
     
@@ -104,7 +104,7 @@ public class VoicifyAssistant : ObservableObject
             switch result {
             case .failure(let error):
                 self.errorHandlers.forEach{errorHandler in
-                    errorHandler(error.localizedDescription)
+                    errorHandler(error.localizedDescription, request)
                 }
             case .success(let assistantResponse):
                 self.userDataRequest(inputType: inputType, assistantResponse: assistantResponse, request: request) // make the user data request
@@ -121,7 +121,7 @@ public class VoicifyAssistant : ObservableObject
                 URLSession.shared.dataTask(with: customAssistantRequest) { (data, response, error) in
                     if let error = error {
                         self.errorHandlers.forEach{errorHandler in
-                            errorHandler(error.localizedDescription)
+                            errorHandler(error.localizedDescription, request)
                         }
                         return
                     }
@@ -136,21 +136,27 @@ public class VoicifyAssistant : ObservableObject
                                 }
                                 else{
                                     self.errorHandlers.forEach{errorHandler in
-                                        errorHandler("empty response")
+                                        errorHandler("empty response", request)
                                     }
                                 }
                             }
                             catch let error {
                                 self.errorHandlers.forEach{errorHandler in
-                                    errorHandler(error.localizedDescription)
+                                    errorHandler(error.localizedDescription, request)
                                 }
                             }
+                    }
+                    else
+                    {
+                        self.errorHandlers.forEach{errorHandler in
+                            errorHandler("Assistant Call Failed", request)
+                        }
                     }
                 }.resume()
         }
         catch let error{
             self.errorHandlers.forEach{errorHandler in
-                errorHandler(error.localizedDescription)
+                errorHandler(error.localizedDescription, request)
             }
         }
     }
@@ -237,7 +243,7 @@ public class VoicifyAssistant : ObservableObject
             URLSession.shared.dataTask(with: userDataRequest) { (data, response, error) in
                 if let error = error {
                     self.errorHandlers.forEach{errorHandler in
-                        errorHandler(error.localizedDescription)
+                        errorHandler(error.localizedDescription, request)
                     }
                     return
                 }
@@ -276,14 +282,14 @@ public class VoicifyAssistant : ObservableObject
                     }
                     catch let error {
                         self.errorHandlers.forEach{errorHandler in
-                            errorHandler(error.localizedDescription)
+                            errorHandler(error.localizedDescription, request)
                         }
                     }
                 }
                 else{
                     self.errorHandlers.forEach{errorHandler in
                         if let description = error?.localizedDescription{
-                            errorHandler(description)
+                            errorHandler(description, request)
                         }
                     }
                 }
