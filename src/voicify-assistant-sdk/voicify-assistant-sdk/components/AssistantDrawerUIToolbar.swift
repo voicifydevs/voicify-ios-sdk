@@ -24,6 +24,7 @@ struct AssistantDrawerUIToolbar: View {
     @Binding var messages: Array<Message>
     @Binding var hints: Array<Hint>
     @Binding var equalizerGradientColors: Array<Color>
+    @EnvironmentObject var configurationHeaderProps: ConfigurationToolbarProps
     public var voicifySTT: VoicifySTTProvider
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant
@@ -134,7 +135,7 @@ struct AssistantDrawerUIToolbar: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             HStack{
-                if assistantSettingsProps.useVoiceInput {
+                if assistantSettingsProps.useVoiceInput ?? true {
                     Text("SPEAK")
                         .font(.custom(toolbarProps?.speakFontFamily ?? "SF Pro" , size: CGFloat(toolbarProps?.speakFontSize ?? 14)))
                         .foregroundColor(Color.init(hex: isUsingSpeech ? toolbarProps?.speakActiveTitleColor ?? "#3E77A5" : toolbarProps?.speakInactiveTitleColor ?? "#8F97A1"))
@@ -147,7 +148,7 @@ struct AssistantDrawerUIToolbar: View {
                 Spacer()
             }
             HStack{
-                if assistantSettingsProps.useVoiceInput {
+                if assistantSettingsProps.useVoiceInput ?? true {
                     Button(action: {
                         UIApplication.shared.endEditing()
                         isUsingSpeech = true

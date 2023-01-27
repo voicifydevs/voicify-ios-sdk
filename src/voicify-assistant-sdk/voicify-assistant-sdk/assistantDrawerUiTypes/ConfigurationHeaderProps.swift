@@ -1,39 +1,37 @@
 //
-//  HeaderProps.swift
+//  ConfigurationHeaderPROPS.swift
 //  voicify-assistant-sdk
 //
-//  Created by James McCarthy on 12/6/22.
+//  Created by James McCarthy on 1/26/23.
 //
 
-import Foundation
-
-public class HeaderProps: Decodable
+public class ConfigurationHeaderProps : ObservableObject
 {
-    public var fontSize: Float? = nil
-    public var backgroundColor: String? = nil
-    public var assistantImage: String? = nil
-    public var assistantImageColor: String? = nil
-    public var assistantImageHeight: Int? = nil
-    public var assistantImageWidth: Int? = nil
-    public var assistantImageBackgroundColor: String? = nil
-    public var assistantName: String? = nil
-    public var assistantNameTextColor: String? = nil
-    public var assistantImageBorderRadius: Float? = nil
-    public var assistantImageBorderColor: String? = nil
-    public var assistantImageBorderWidth: Int? = nil
-    public var closeAssistantButtonImage: String? = nil
-    public var closeAssistantButtonImageHeight: Int? = nil
-    public var closeAssistantButtonImageWidth: Int? = nil
-    public var closeAssistantButtonBorderRadius: Float? = nil
-    public var closeAssistantButtonBackgroundColor: String? = nil
-    public var closeAssistantButtonBorderWidth: Int? = nil
-    public var closeAssistantButtonBorderColor: String? = nil
-    public var paddingLeft: Int? = nil
-    public var paddingRight: Int? = nil
-    public var paddingTop: Int? = nil
-    public var paddingBottom: Int? = nil
-    public var fontFamily: String? = nil
-    public var closeAssistantColor: String? = nil
+    @Published public var fontSize: Float? = nil
+    @Published public var backgroundColor: String? = nil
+    @Published public var assistantImage: String? = nil
+    @Published public var assistantImageColor: String? = nil
+    @Published public var assistantImageHeight: Int? = nil
+    @Published public var assistantImageWidth: Int? = nil
+    @Published public var assistantImageBackgroundColor: String? = nil
+    @Published public var assistantName: String? = nil
+    @Published public var assistantNameTextColor: String? = nil
+    @Published public var assistantImageBorderRadius: Float? = nil
+    @Published public var assistantImageBorderColor: String? = nil
+    @Published public var assistantImageBorderWidth: Int? = nil
+    @Published public var closeAssistantButtonImage: String? = nil
+    @Published public var closeAssistantButtonImageHeight: Int? = nil
+    @Published public var closeAssistantButtonImageWidth: Int? = nil
+    @Published public var closeAssistantButtonBorderRadius: Float? = nil
+    @Published public var closeAssistantButtonBackgroundColor: String? = nil
+    @Published public var closeAssistantButtonBorderWidth: Int? = nil
+    @Published public var closeAssistantButtonBorderColor: String? = nil
+    @Published public var paddingLeft: Int? = nil
+    @Published public var paddingRight: Int? = nil
+    @Published public var paddingTop: Int? = nil
+    @Published public var paddingBottom: Int? = nil
+    @Published public var fontFamily: String? = nil
+    @Published public var closeAssistantColor: String? = nil
     
     public init(fontSize: Float? = nil, backgroundColor: String? = nil, assistantImage: String? = nil, assistantImageColor: String? = nil, assistantImageBackgroundColor: String? = nil,  assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantName: String? = nil, assistantNameTextColor: String? = nil, assistantImageBorderRadius: Float? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, closeAssistantButtonImage: String? = nil, closeAssistantButtonImageHeight: Int? = nil, closeAssistantButtonImageWidth: Int? = nil, closeAssistantButtonBorderRadius: Float? = nil, closeAssistantButtonBackgroundColor: String? = nil, closeAssistantButtonBorderWidth: Int? = nil, closeAssistantButtonBorderColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, fontFamily: String? = nil, closeAssistantColor: String? = nil) {
         self.fontSize = fontSize

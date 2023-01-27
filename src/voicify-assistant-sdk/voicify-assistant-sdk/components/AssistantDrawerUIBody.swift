@@ -15,6 +15,7 @@ struct AssistantDrawerUIBody: View {
     @Binding var hints: Array<Hint>
     @Binding var inputText: String
     @Binding var inputSpeech: String
+    @EnvironmentObject var configurationHeaderProps: ConfigurationBodyProps
     public var voicifySTT: VoicifySTTProvider
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant

@@ -61,67 +61,12 @@ struct SwiftUiContentView: View {
                 }
             }
             AssistantDrawerUI(
-             assistantSettings: AssistantSettingsProps(
+              assistantSettings: AssistantSettingsProps(
+              configurationId: "a0542ef6-f4cd-40b7-8653-ca4a2b949fe3",
               serverRootUrl: "https://dev-assistant.voicify.com",
               appId: "bc9fa6bf-6cea-4fad-af12-d388b64dbdb9",
-              appKey: "ZjcyNmNkNjEtNmY5My00NTg3LWI5ZmQtMjJkNzE3NGMwYTI4",
-              locale: "en-US",
-              channel: "My App",
-              device: "My device",
-              textToSpeechVoice: "",
-              autoRunConversation: false,
-              initializeWithWelcomeMessage: true,
-              textToSpeechProvider: "Google",
-              useVoiceInput: true,
-              useOutputSpeech: true,
-              useDraftContent: true,
-              noTracking: true,
-              initializeWithText: false,
-              backgroundColor: "#202C36,#3E77A5",
-              onAssistantError: onError
-            ),
-            headerProps: HeaderProps(
-              backgroundColor: "#00000000",
-              assistantName: "Age App",
-              assistantNameTextColor: "#FFFFFF",
-              fontFamily: "Muli",
-              closeAssistantColor: "#FFFFFF"
-            ),
-            bodyProps: BodyProps(
-              backgroundColor: "#00000000",
-              messageSentTextColor: "#FFFFFF",
-              messageSentBackgroundColor: "#3E77A5",
-              messageReceivedTextColor: "#FFFFFF",
-              messageReceivedBackgroundColor: nil,
-              messageSentFontFamily: "Muli",
-              messageReceivedFontFamily: "Muli",
-              hintsTextColor: "#FFFFFF",
-              hintsBackgroundColor: "#00000000",
-              hintsFontFamily: "Muli"
-            ),
-            toolbarProps: ToolbarProps(
-              backgroundColor: "#00000000",
-              speakActiveTitleColor: "#FFFFFF",
-              speakInactiveTitleColor: "#FFFFFF",
-              typeActiveTitleColor: "#FFFFFF",
-              typeInactiveTitleColor: "#FFFFFF",
-              partialSpeechResultTextColor: "#FFFFFF",
-              fullSpeechResultTextColor: "#FFFFFF",
-              speechResultBoxBackgroundColor: "#3E77A5",
-              textInputTextColor: "#FFFFFF",
-              helpTextFontColor: "#FFFFFF",
-              partialSpeechResultFontFamily: "Muli",
-              assistantStateFontFamily: "Muli",
-              helpTextFontFamily: "Muli",
-              speakFontFamily: "Muli",
-              typeFontFamily: "Muli",
-              textboxFontFamily: "Muli",
-              equalizerColor: "#ffffffb3,#ffffffb3",
-              micActiveColor: "#FFFFFF",
-              sendActiveColor: "#FFFFFF",
-              sendInactiveColor: "#FFFFFF",
-              assistantStateTextColor: "#FFFFFF"
-             )
+              appKey: "ZjcyNmNkNjEtNmY5My00NTg3LWI5ZmQtMjJkNzE3NGMwYTI4"
+            )
             )
             .ignoresSafeArea(.container)
         }

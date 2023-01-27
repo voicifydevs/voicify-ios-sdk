@@ -10,21 +10,22 @@ import SwiftUI
 
 public class AssistantSettingsProps
 {
+    public var configurationId: String? = nil
     public var serverRootUrl: String
     public var appId: String
     public var appKey: String
-    public var locale: String
-    public var textToSpeechVoice: String
-    public var channel: String
-    public var device: String
-    public var autoRunConversation: Bool
-    public var initializeWithWelcomeMessage: Bool
-    public var textToSpeechProvider: String
-    public var useVoiceInput: Bool
-    public var useOutputSpeech: Bool
-    public var useDraftContent: Bool
-    public var noTracking: Bool
-    public var initializeWithText: Bool
+    public var locale: String? = nil
+    public var textToSpeechVoice: String? = nil
+    public var channel: String? = nil
+    public var device: String? = nil
+    public var autoRunConversation: Bool? = nil
+    public var initializeWithWelcomeMessage: Bool? = nil
+    public var textToSpeechProvider: String? = nil
+    public var useVoiceInput: Bool? = nil
+    public var useOutputSpeech: Bool? = nil
+    public var useDraftContent: Bool? = nil
+    public var noTracking: Bool? = nil
+    public var initializeWithText: Bool? = nil
     public var backgroundColor: String? = nil
     public var effects: Array<String>? = nil
     public var onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil
@@ -33,7 +34,8 @@ public class AssistantSettingsProps
     public var sessionAttributes: Dictionary<String, Any>? = nil
     public var userAttributes: Dictionary<String, Any>? = nil
     
-    public init(serverRootUrl: String, appId: String, appKey: String, locale: String, channel: String, device: String, textToSpeechVoice: String, autoRunConversation: Bool, initializeWithWelcomeMessage: Bool, textToSpeechProvider: String, useVoiceInput: Bool, useOutputSpeech: Bool, useDraftContent: Bool, noTracking: Bool, initializeWithText: Bool, backgroundColor: String? = nil, effects: Array<String>? = nil, onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil, onAssistantClose: (() -> Void)? = nil, onAssistantError: ((String, CustomAssistantRequest) -> Void)? = nil, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
+    public init(configurationId: String? = nil, serverRootUrl: String, appId: String, appKey: String, locale: String? = nil, channel: String? = nil, device: String? = nil, textToSpeechVoice: String? = nil, autoRunConversation: Bool? = nil, initializeWithWelcomeMessage: Bool? = nil, textToSpeechProvider: String? = nil, useVoiceInput: Bool? = nil, useOutputSpeech: Bool? = nil, useDraftContent: Bool? = nil, noTracking: Bool? = nil, initializeWithText: Bool? = nil, backgroundColor: String? = nil, effects: Array<String>? = nil, onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil, onAssistantClose: (() -> Void)? = nil, onAssistantError: ((String, CustomAssistantRequest) -> Void)? = nil, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
+        self.configurationId = configurationId
         self.serverRootUrl = serverRootUrl
         self.appId = appId
         self.appKey = appKey
