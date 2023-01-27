@@ -15,12 +15,13 @@ struct AssistantDrawerUIBody: View {
     @Binding var hints: Array<Hint>
     @Binding var inputText: String
     @Binding var inputSpeech: String
-    @EnvironmentObject var configurationHeaderProps: ConfigurationBodyProps
+    @EnvironmentObject var configurationBodyProps: ConfigurationBodyProps
     public var voicifySTT: VoicifySTTProvider
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant
     public var bodyProps: BodyProps? = nil
     public var assistantSettings: AssistantSettingsProps? = nil
+    @State var hintsParams: HintsViewParameters = HintsViewParameters()
     public init(messages: Binding<Array<Message>>, isUsingSpeech: Binding<Bool>, keyboardToggled: Binding<Bool>, hints: Binding<Array<Hint>>, inputText: Binding<String>, inputSpeech: Binding<String>, voicifySTT: VoicifySTTProvider, voicifyTTS: VoicifyTTSProivder, voicifyAssistant: VoicifyAssistant, bodyProps: BodyProps? = nil, assistantSettings: AssistantSettingsProps? = nil) {
         self._messages = messages
         self._isUsingSpeech = isUsingSpeech
@@ -43,25 +44,26 @@ struct AssistantDrawerUIBody: View {
                             if message.origin == "Received"{
                                 HStack{
                                     VStack{
-                                        KFImage(URL(string: bodyProps?.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                                        KFImage(URL(string: bodyProps?.assistantImage ?? configurationBodyProps.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
                                             .resizable()
-                                            .renderingMode(!(bodyProps?.assistantImageColor ?? "").isEmpty ? .template : .none)
-                                            .foregroundColor(Color.init(hex: bodyProps?.assistantImageColor ?? ""))
+                                            .renderingMode(!(bodyProps?.assistantImageColor ??  configurationBodyProps.assistantImageColor ?? "").isEmpty ? .template : .none)
+                                            .foregroundColor(Color.init(hex: bodyProps?.assistantImageColor ??  configurationBodyProps.assistantImageColor ?? ""))
                                             .padding(.all, 4)
-                                            .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: bodyProps?.assistantImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.assistantImageBorderWidth ?? 2)))
-                                            .frame(width: CGFloat(bodyProps?.assistantImageWidth ?? 35), height: CGFloat(bodyProps?.assistantImageHeight ?? 35))
-                                            .background(Color.init(hex: bodyProps?.assistantImageBackgroundColor ?? "#ffffff"))
-                                            .cornerRadius(CGFloat(bodyProps?.assistantImageBorderRadius ?? 20))
+                                            .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.assistantImageBorderRadius ??  configurationBodyProps.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: bodyProps?.assistantImageBorderColor ??  configurationBodyProps.assistantImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.assistantImageBorderWidth ??  configurationBodyProps.assistantImageBorderWidth ?? 2)))
+                                            .frame(width: CGFloat(bodyProps?.assistantImageWidth ?? configurationBodyProps.assistantImageWidth ?? 35), height: CGFloat(bodyProps?.assistantImageHeight ??  configurationBodyProps.assistantImageHeight ?? 35))
+                                            .background(Color.init(hex: bodyProps?.assistantImageBackgroundColor ??  configurationBodyProps.assistantImageBackgroundColor ?? "#ffffff"))
+                                            .cornerRadius(CGFloat(bodyProps?.assistantImageBorderRadius ??  configurationBodyProps.assistantImageBorderRadius ?? 20))
                                         Spacer()
                                     }
                                     VStack{
                                         Text(.init(message.text) )
                                             .accessibilityIdentifier("messageReceivedText")
-                                            .foregroundColor(Color.init(hex: bodyProps?.messageReceivedTextColor ?? "#000000"))
-                                            .font(.custom(bodyProps?.messageReceivedFontFamily ?? "SF Pro" , size: CGFloat(bodyProps?.messageReceivedFontSize ?? 14)))
+                                            .foregroundColor(Color.init(hex: bodyProps?.messageReceivedTextColor ??  configurationBodyProps.messageReceivedTextColor ?? "#000000"))
+                                            .font(.custom(bodyProps?.messageReceivedFontFamily ??  configurationBodyProps.messageReceivedFontFamily ?? "SF Pro" , size: CGFloat(bodyProps?.messageReceivedFontSize ??  configurationBodyProps.messageReceivedFontSize ?? 14)))
                                             .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                            .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).stroke(Color.init(hex: bodyProps?.messageReceivedBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 1)))
-                                            .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ?? 10)).fill(Color.init(hex: bodyProps?.messageReceivedBackgroundColor ?? "#0000000d")!))
+                                            .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ??  configurationBodyProps.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ??  configurationBodyProps.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ??  configurationBodyProps.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ??  configurationBodyProps.messageReceivedBorderBottomRightRadius ?? 10)).stroke(Color.init(hex: bodyProps?.messageReceivedBorderColor ??  configurationBodyProps.messageReceivedBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ??  configurationBodyProps.messageReceivedBorderWidth ?? 1)))
+                                            .background(RoundedCorners(tl: CGFloat(bodyProps?.messageReceivedBorderTopLeftRadius ??  configurationBodyProps.messageReceivedBorderTopLeftRadius ?? 0), tr: CGFloat(bodyProps?.messageReceivedBorderTopRightRadius ??  configurationBodyProps.messageReceivedBorderTopRightRadius ?? 10), bl: CGFloat(bodyProps?.messageReceivedBorderBottomLeftRadius ??  configurationBodyProps.messageReceivedBorderBottomLeftRadius ?? 10), br: CGFloat(bodyProps?.messageReceivedBorderBottomRightRadius ??  configurationBodyProps.messageReceivedBorderBottomRightRadius ?? 10))
+                                                .fill(Color.init(hex: bodyProps?.messageReceivedBackgroundColor ??  configurationBodyProps.messageReceivedBackgroundColor ?? "#0000000d")!))
                                     }
                                     .padding(.top, 20)
                                     Spacer()
@@ -75,21 +77,22 @@ struct AssistantDrawerUIBody: View {
                                     Spacer()
                                     Text(message.text)
                                         .accessibilityIdentifier("messageSentText")
-                                        .font(.custom(bodyProps?.messageSentFontFamily ?? "SF Pro" , size: CGFloat(bodyProps?.messageSentFontSize ?? 14)))
-                                        .foregroundColor(Color.init(hex:bodyProps?.messageSentTextColor ?? "#ffffff"))
+                                        .font(.custom(bodyProps?.messageSentFontFamily ??  configurationBodyProps.messageSentFontFamily ?? "SF Pro" , size: CGFloat(bodyProps?.messageSentFontSize ?? configurationBodyProps.messageSentFontSize ?? 14)))
+                                        .foregroundColor(Color.init(hex:bodyProps?.messageSentTextColor ??  configurationBodyProps.messageSentTextColor ?? "#ffffff"))
                                         .padding(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
-                                        .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).stroke(Color.init(hex: bodyProps?.messageSentBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.messageReceivedBorderWidth ?? 0)))
-                                        .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ?? 8)).fill(Color.init(hex: bodyProps?.messageSentBackgroundColor ?? "#00000080")!))
+                                        .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ??  configurationBodyProps.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ??  configurationBodyProps.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ??  configurationBodyProps.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ??  configurationBodyProps.messageSentBorderBottomRightRadius ?? 8)).stroke(Color.init(hex: bodyProps?.messageSentBorderColor ??  configurationBodyProps.messageSentBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.messageSentBorderWidth ??  configurationBodyProps.messageSentBorderWidth ?? 0)))
+                                        .background(RoundedCorners(tl: CGFloat(bodyProps?.messageSentBorderTopLeftRadius ??  configurationBodyProps.messageSentBorderTopLeftRadius ?? 8), tr: CGFloat(bodyProps?.messageSentBorderTopRightRadius ??  configurationBodyProps.messageSentBorderTopRightRadius ?? 0), bl: CGFloat(bodyProps?.messageSentBorderBottomLeftRadius ??  configurationBodyProps.messageSentBorderBottomLeftRadius ?? 8), br: CGFloat(bodyProps?.messageSentBorderBottomRightRadius ??  configurationBodyProps.messageSentBorderBottomRightRadius ?? 8))
+                                            .fill(Color.init(hex: bodyProps?.messageSentBackgroundColor ?? configurationBodyProps.messageSentBackgroundColor ?? "#00000080")!))
                                 }
                                 .padding(.leading, 50)
                                 .padding(.top, 30)
                             }
                         }
                     }
-                    .padding(.top, CGFloat(bodyProps?.paddingTop ?? 20))
-                    .padding(.bottom, CGFloat(bodyProps?.paddingBottom ?? 10))
-                    .padding(.leading, CGFloat(bodyProps?.paddingLeft ?? 20))
-                    .padding(.trailing, CGFloat(bodyProps?.paddingRight ?? 20))
+                    .padding(.top, CGFloat(bodyProps?.paddingTop ?? configurationBodyProps.paddingTop ?? 20))
+                    .padding(.bottom, CGFloat(bodyProps?.paddingBottom ?? configurationBodyProps.paddingBottom ?? 10))
+                    .padding(.leading, CGFloat(bodyProps?.paddingLeft ?? configurationBodyProps.paddingLeft ?? 20))
+                    .padding(.trailing, CGFloat(bodyProps?.paddingRight ?? configurationBodyProps.paddingRight ?? 20))
                 }
                 .onChange(of: messages.count, perform: { _ in
                         if(messages.count > 0)
@@ -145,12 +148,12 @@ struct AssistantDrawerUIBody: View {
                                 }){
                                     Text(hint.text)
                                         .lineLimit(1)
-                                        .font(.custom(bodyProps?.hintsFontFamily ?? "SF Pro" , size: CGFloat(bodyProps?.hintsFontSize ?? 14)))
-                                        .foregroundColor(Color.init(hex: bodyProps?.hintsTextColor ?? "#000000"))
-                                        .padding(EdgeInsets(top: CGFloat(bodyProps?.hintsPaddingTop ?? 8), leading: CGFloat(bodyProps?.hintsPaddingLeft ?? 8), bottom: CGFloat(bodyProps?.hintsPaddingBottom ?? 8), trailing: CGFloat(bodyProps?.hintsPaddingRight ??  8)))
-                                        .background(Color.init(hex: bodyProps?.hintsBackgroundColor ?? "#ffffff"))
-                                        .cornerRadius(CGFloat(bodyProps?.hintsBorderRadius ?? 20))
-                                        .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.hintsBorderRadius ?? 20)).strokeBorder(Color.init(hex: bodyProps?.hintsBorderColor ?? "#CCCCCC")!, lineWidth: CGFloat(bodyProps?.hintsBorderWidth ?? 1.5)))
+                                        .font(.custom(hintsParams.font , size: CGFloat(hintsParams.fontSize)))
+                                        .foregroundColor(Color.init(hex: hintsParams.foregroundColor))
+                                        .padding(EdgeInsets(top: CGFloat(hintsParams.paddingTop), leading: CGFloat(hintsParams.paddingLeft), bottom: CGFloat(hintsParams.paddingBottom), trailing: CGFloat(hintsParams.paddingRight)))
+                                        .background(Color.init(hex: bodyProps?.hintsBackgroundColor ??  configurationBodyProps.hintsBackgroundColor ?? "#ffffff"))
+                                        .cornerRadius(CGFloat(bodyProps?.hintsBorderRadius ?? configurationBodyProps.hintsBorderRadius ?? 20))
+                                        .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.hintsBorderRadius ??  configurationBodyProps.hintsBorderRadius ?? 20)).strokeBorder(Color.init(hex: bodyProps?.hintsBorderColor ?? configurationBodyProps.hintsBorderColor ?? "#CCCCCC")!, lineWidth: CGFloat(bodyProps?.hintsBorderWidth ?? configurationBodyProps.hintsBorderWidth ?? 1.5)))
                                 }
                             }
                         }
@@ -161,8 +164,21 @@ struct AssistantDrawerUIBody: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .border(width: CGFloat(bodyProps?.borderTopWidth ?? 1), edges: [.top], color: Color.init(hex: bodyProps?.borderTopColor ?? "#8F97A1")!)
-        .border(width: CGFloat(bodyProps?.borderBottomWidth ?? 1), edges: [.bottom], color: Color.init(hex: bodyProps?.borderBottomColor ?? "#8F97A1")!)
-        .background(Color(hex: !(bodyProps?.backgroundColor ?? "").isEmpty ? bodyProps?.backgroundColor ?? "" : !(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? "" : "#F4F4F6"))
+        .border(width: CGFloat(bodyProps?.borderTopWidth ?? configurationBodyProps.borderTopWidth ?? 1), edges: [.top], color: Color.init(hex: bodyProps?.borderTopColor ??  configurationBodyProps.borderTopColor ?? "#8F97A1")!)
+        .border(width: CGFloat(bodyProps?.borderBottomWidth ?? configurationBodyProps.borderBottomWidth ?? 1), edges: [.bottom], color: Color.init(hex: bodyProps?.borderBottomColor ?? configurationBodyProps.borderBottomColor ?? "#8F97A1")!)
+        .background(Color(hex: !(bodyProps?.backgroundColor ?? "").isEmpty ? bodyProps?.backgroundColor ?? "" :
+                            !(configurationBodyProps.backgroundColor ?? "").isEmpty ? configurationBodyProps.backgroundColor ?? "" : !(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? "" : "#F4F4F6"))
+        .onAppear{
+            //have to map prop logic outside of view modifiers to avoid compile error "unable to type check in time"
+            hintsParams =  HintsViewParameters(
+                font: bodyProps?.hintsFontFamily ?? configurationBodyProps.hintsFontFamily ?? "SF Pro",
+                fontSize: bodyProps?.hintsFontSize ?? configurationBodyProps.hintsFontSize ?? 14,
+                foregroundColor: bodyProps?.hintsTextColor ?? configurationBodyProps.hintsTextColor ?? "#000000",
+                paddingTop: bodyProps?.hintsPaddingTop ?? configurationBodyProps.hintsPaddingTop ?? 8,
+                paddingRight: bodyProps?.hintsPaddingBottom ?? configurationBodyProps.hintsPaddingBottom ?? 8,
+                paddingBottom: bodyProps?.hintsPaddingRight ?? configurationBodyProps.hintsPaddingRight ??  8,
+                paddingLeft: bodyProps?.hintsPaddingLeft ?? configurationBodyProps.hintsPaddingLeft ?? 8
+            )
+        }
     }
 }

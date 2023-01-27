@@ -15,7 +15,7 @@ public class CustomAssistantConfigurationService
         if let configId = configurationId {
             guard let getConfigurationURL = URL(string: "\(serverRootUrl)/api/CustomAssistantConfiguration/\(configId)?applicationId=\(appId)&applicationSecret=\(appKey)") else { fatalError("Missing URL") }
             let customAssistantRequest = generateGetRequest(url: getConfigurationURL)
-            var session = URLSession.shared
+            let session = URLSession.shared
             let (data, response) = try await session.data(for: customAssistantRequest)
             guard let httpResponse = response as? HTTPURLResponse,
                     httpResponse.statusCode == 200
