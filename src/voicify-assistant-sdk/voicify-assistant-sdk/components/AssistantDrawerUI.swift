@@ -12,9 +12,9 @@ public struct AssistantDrawerUI: View {
     var headerProps: HeaderProps? = nil
     var bodyProps: BodyProps? = nil
     var toolbarProps: ToolbarProps? = nil
-    var voicifySTT: VoicifySTTProvider
-    var voicifyTTS: VoicifyTTSProivder
-    var voicifyAssistant: VoicifyAssistant
+    @State var voicifySTT: VoicifySTTProvider? = nil
+    @State var voicifyTTS: VoicifyTTSProivder? = nil
+    @State var voicifyAssistant: VoicifyAssistant? = nil
     @State var assistantBackgroundGradientColors: Array<Color> = []
     @State var equalizerGradientColors: Array<Color> = []
     var openAssistantNotifcation = NotificationCenter.default.publisher(for: NSNotification.Name.openAssistant)
@@ -48,42 +48,11 @@ public struct AssistantDrawerUI: View {
         bodyProps: BodyProps? = nil,
         toolbarProps: ToolbarProps? = nil
     ) {
-        do{
-            self.assistantSettingsProps = assistantSettings
-            self.headerProps = headerProps
-            self.bodyProps = bodyProps
-            self.toolbarProps = toolbarProps
-            voicifySTT = VoicifySTTProvider()
-            voicifyTTS = VoicifyTTSProivder(
-                settings: VoicifyTextToSpeechSettings(
-                    appId: assistantSettings.appId,
-                    appKey: assistantSettings.appKey,
-                    voice: assistantSettings.textToSpeechVoice ?? "",
-                    serverRootUrl: assistantSettings.serverRootUrl,
-                    provider: assistantSettings.textToSpeechProvider ?? "Google"
-                )
-            )
-            voicifyAssistant = VoicifyAssistant(
-                speechToTextProvider: voicifySTT,
-                textToSpeechProvider: voicifyTTS,
-                settings: VoicifyAssistantSettings(
-                    serverRootUrl: assistantSettings.serverRootUrl,
-                    appId: assistantSettings.appId,
-                    appKey: assistantSettings.appKey,
-                    locale: assistantSettings.locale ?? "en-US",
-                    channel: assistantSettings.channel ?? "iOS",
-                    device: assistantSettings.device ?? "Mobile",
-                    autoRunConversation: assistantSettings.autoRunConversation ?? false,
-                    initializeWithWelcomeMessage: assistantSettings.initializeWithWelcomeMessage ?? false,
-                    initializeWithText: assistantSettings.initializeWithText ?? false,
-                    useVoiceInput: assistantSettings.useVoiceInput ?? true,
-                    useDraftContent: assistantSettings.useDraftContent ?? false,
-                    useOutputSpeech: assistantSettings.useOutputSpeech ?? true,
-                    noTracking: assistantSettings.noTracking ?? false
-                )
-            )
-            voicifyAssistant.initializeAndStart()
-        }
+        
+        self.assistantSettingsProps = assistantSettings
+        self.headerProps = headerProps
+        self.bodyProps = bodyProps
+        self.toolbarProps = toolbarProps
     }
     
     public var body: some View {
@@ -94,50 +63,55 @@ public struct AssistantDrawerUI: View {
             showTopIndicator: false)
         {
             VStack(spacing: 0){
-                if isFullScreen {
-                    AssistantDrawerUIHeader(
+                if let tts = voicifyTTS,
+                   let stt = voicifySTT,
+                   let assistant = voicifyAssistant{
+                    if isFullScreen {
+                        AssistantDrawerUIHeader(
+                            assistantIsOpen: $assistantIsOpen,
+                            headerProps: headerProps,
+                            assistantSettings: assistantSettingsProps
+                        )
+                        AssistantDrawerUIBody(
+                            messages: $messages,
+                            isUsingSpeech: $isUsingSpeech,
+                            keyboardToggled: $keyboardToggled,
+                            hints: $hints,
+                            inputText: $inputText,
+                            inputSpeech: $inputSpeech,
+                            voicifySTT: stt,
+                            voicifyTTS: tts,
+                            voicifyAssistant: assistant,
+                            bodyProps: bodyProps,
+                            assistantSettings: assistantSettingsProps
+                        )
+                    }
+                    AssistantDrawerUIToolbar(
                         assistantIsOpen: $assistantIsOpen,
-                        headerProps: headerProps,
-                        assistantSettings: assistantSettingsProps
-                    )
-                    AssistantDrawerUIBody(
-                        messages: $messages,
+                        isFullScreen: $isFullScreen,
                         isUsingSpeech: $isUsingSpeech,
-                        keyboardToggled: $keyboardToggled,
-                        hints: $hints,
-                        inputText: $inputText,
+                        isSpeaking: $isSpeaking,
+                        animationValues: $animationValues,
+                        assistatStateText: $assistantStateText,
                         inputSpeech: $inputSpeech,
-                        voicifySTT: voicifySTT,
-                        voicifyTTS: voicifyTTS,
-                        voicifyAssistant: voicifyAssistant,
-                        bodyProps: bodyProps,
-                        assistantSettings: assistantSettingsProps
+                        inputText: $inputText,
+                        isFinalSpeech: $isFinalSpeech,
+                        isListening: $isListening,
+                        showPermissionAlert: $showPermissionAlert,
+                        keyboardToggled:$keyboardToggled,
+                        messages: $messages,
+                        hints: $hints,
+                        equalizerGradientColors: $equalizerGradientColors,
+                        voicifySTT: stt,
+                        voicifyTTS: tts,
+                        voicifyAssistant: assistant,
+                        headerProps: headerProps,
+                        toolbarProps: toolbarProps,
+                        assistantSettingsProps: assistantSettingsProps
                     )
+                    .padding(.bottom, isFullScreen ? self.keyboardHeightHelper.keyboardHeight : 0)
                 }
-                AssistantDrawerUIToolbar(
-                    assistantIsOpen: $assistantIsOpen,
-                    isFullScreen: $isFullScreen,
-                    isUsingSpeech: $isUsingSpeech,
-                    isSpeaking: $isSpeaking,
-                    animationValues: $animationValues,
-                    assistatStateText: $assistantStateText,
-                    inputSpeech: $inputSpeech,
-                    inputText: $inputText,
-                    isFinalSpeech: $isFinalSpeech,
-                    isListening: $isListening,
-                    showPermissionAlert: $showPermissionAlert,
-                    keyboardToggled:$keyboardToggled,
-                    messages: $messages,
-                    hints: $hints,
-                    equalizerGradientColors: $equalizerGradientColors,
-                    voicifySTT: voicifySTT,
-                    voicifyTTS: voicifyTTS,
-                    voicifyAssistant: voicifyAssistant,
-                    headerProps: headerProps,
-                    toolbarProps: toolbarProps,
-                    assistantSettingsProps: assistantSettingsProps
-                )
-                .padding(.bottom, isFullScreen ? self.keyboardHeightHelper.keyboardHeight : 0)
+                
             }
             .background(
                 !assistantBackgroundGradientColors.isEmpty ?
@@ -149,160 +123,229 @@ public struct AssistantDrawerUI: View {
         .onAppear{
             let customAssistantConfigurationService = CustomAssistantConfigurationService()
             Task{
-                let configuration = try await customAssistantConfigurationService.getCustomAssistantConfiguration(configurationId:assistantSettingsProps.configurationId, serverRootUrl: assistantSettingsProps.serverRootUrl, appId: assistantSettingsProps.appId, appKey: assistantSettingsProps.appKey)
-                mapHeaderProps(configuration: configuration)
-                mapBodyProps(configuration: configuration)
-                mapToolbarProps(configuration: configuration)
+                do{
+                    let configuration = try await customAssistantConfigurationService.getCustomAssistantConfiguration(configurationId:assistantSettingsProps.configurationId, serverRootUrl: assistantSettingsProps.serverRootUrl, appId: assistantSettingsProps.appId, appKey: assistantSettingsProps.appKey)
+                    mapHeaderProps(configuration: configuration)
+                    mapBodyProps(configuration: configuration)
+                    mapToolbarProps(configuration: configuration)
+                    voicifySTT = VoicifySTTProvider()
+                    voicifyTTS = VoicifyTTSProivder(
+                        settings: VoicifyTextToSpeechSettings(
+                            appId: configuration.applicationId!,
+                            appKey: configuration.applicationSecret!,
+                            voice: configuration.textToSpeechVoice ?? "",
+                            serverRootUrl: self.assistantSettingsProps.serverRootUrl,
+                            provider: configuration.textToSpeechProvider ?? "Google"
+                        )
+                    )
+                    voicifyAssistant = VoicifyAssistant(
+                        speechToTextProvider: voicifySTT,
+                        textToSpeechProvider: voicifyTTS,
+                        settings: VoicifyAssistantSettings(
+                            serverRootUrl: assistantSettingsProps.serverRootUrl,
+                            appId: configuration.applicationId!,
+                            appKey: configuration.applicationSecret!,
+                            locale: configuration.locale ?? "en-US",
+                            channel: configuration.channel ?? "iOS",
+                            device: configuration.device ?? "Mobile",
+                            autoRunConversation: configuration.autoRunConversation ?? false,
+                            initializeWithWelcomeMessage: configuration.initializeWithWelcomeMessage ?? false,
+                            initializeWithText: configuration.activeInput == "textbox" ? true : false,
+                            useVoiceInput: configuration.useVoiceInput ?? true,
+                            useDraftContent: configuration.useDraftContent ?? false,
+                            useOutputSpeech: configuration.useOutputSpeech ?? true,
+                            noTracking: configuration.noTracking ?? false
+                        )
+                    )
+                    voicifyAssistant?.initializeAndStart()
+                }
+                catch {
+                    voicifySTT = VoicifySTTProvider()
+                    voicifyTTS = VoicifyTTSProivder(
+                        settings: VoicifyTextToSpeechSettings(
+                            appId: assistantSettingsProps.appId,
+                            appKey: assistantSettingsProps.appKey,
+                            voice: assistantSettingsProps.textToSpeechVoice ?? "",
+                            serverRootUrl: assistantSettingsProps.serverRootUrl,
+                            provider: assistantSettingsProps.textToSpeechProvider ?? "Google"
+                        )
+                    )
+                    voicifyAssistant = VoicifyAssistant(
+                        speechToTextProvider: voicifySTT,
+                        textToSpeechProvider: voicifyTTS,
+                        settings: VoicifyAssistantSettings(
+                            serverRootUrl: assistantSettingsProps.serverRootUrl,
+                            appId: assistantSettingsProps.appId,
+                            appKey: assistantSettingsProps.appKey,
+                            locale: assistantSettingsProps.locale ?? "en-US",
+                            channel: assistantSettingsProps.channel ?? "iOS",
+                            device: assistantSettingsProps.device ?? "Mobile",
+                            autoRunConversation: assistantSettingsProps.autoRunConversation ?? false,
+                            initializeWithWelcomeMessage: assistantSettingsProps.initializeWithWelcomeMessage ?? false,
+                            initializeWithText: assistantSettingsProps.initializeWithText ?? false,
+                            useVoiceInput: assistantSettingsProps.useVoiceInput ?? true,
+                            useDraftContent: assistantSettingsProps.useDraftContent ?? false,
+                            useOutputSpeech: assistantSettingsProps.useOutputSpeech ?? true,
+                            noTracking: assistantSettingsProps.noTracking ?? false
+                        )
+                    )
+                    voicifyAssistant?.initializeAndStart()
+                }
+                
             }
         }
         .environmentObject(configurationHeaderProps)
         .environmentObject(configurationBodyProps)
         .environmentObject(configurationToolbarProps)
         .onChange(of: assistantIsOpen){ _ in
-            if(assistantIsOpen == true){
-                if(assistantBackgroundGradientColors.isEmpty)
-                {
-                    if let backgroundGradientColors = assistantSettingsProps.backgroundColor{
-                        let splitColors = backgroundGradientColors.components(separatedBy: ",")
-                        if (splitColors.count > 1)
-                        {
-                            splitColors.forEach{ color in
-                                self.assistantBackgroundGradientColors.append(Color.init(hex: color)!)
+            if let tts = voicifyTTS,
+               let stt = voicifySTT,
+               let assistant = voicifyAssistant{
+                if(assistantIsOpen == true){
+                    if(assistantBackgroundGradientColors.isEmpty)
+                    {
+                        if let backgroundGradientColors = assistantSettingsProps.backgroundColor{
+                            let splitColors = backgroundGradientColors.components(separatedBy: ",")
+                            if (splitColors.count > 1)
+                            {
+                                splitColors.forEach{ color in
+                                    self.assistantBackgroundGradientColors.append(Color.init(hex: color)!)
+                                }
                             }
                         }
                     }
-                }
-                
-                if (equalizerGradientColors.isEmpty)
-                {
-                    if let equalizerGradColors = toolbarProps?.equalizerColor{
-                        let splitColors = equalizerGradColors.components(separatedBy: ",")
-                        if (splitColors.count > 1)
-                        {
-                            splitColors.forEach{ color in
-                                self.equalizerGradientColors.append(Color.init(hex: color)!)
+                    
+                    if (equalizerGradientColors.isEmpty)
+                    {
+                        if let equalizerGradColors = toolbarProps?.equalizerColor{
+                            let splitColors = equalizerGradColors.components(separatedBy: ",")
+                            if (splitColors.count > 1)
+                            {
+                                splitColors.forEach{ color in
+                                    self.equalizerGradientColors.append(Color.init(hex: color)!)
+                                }
                             }
                         }
                     }
-                }
-                
-                voicifyTTS.cancelSpeech = false
-                voicifySTT.cancel = false
-                voicifyAssistant.ClearHandlers()
-                voicifySTT.clearHandlers()
-                //add out of the box effect
-                voicifyAssistant.onEffect(effectName: "closeAssistant", callback: closeAssistantCallback)
-                if let onErrorCallback = assistantSettingsProps.onAssistantError{
-                    voicifyAssistant.onError(callback: onErrorCallback)
-                }
-                inputSpeech = ""
-                inputText = ""
-                responseText = ""
-                voicifySTT.addPartialListener{(partialResult:String) -> Void in
-                    inputSpeech = partialResult
-                }
-                voicifySTT.addFinalResultListener{(fullResult: String) -> Void  in
-                    isFinalSpeech = true
-                    assistantStateText = " "
-                    inputSpeech = fullResult
-                    voicifyAssistant.makeTextRequest(text: inputSpeech, inputType: "Speech")
-                }
-                voicifySTT.addVolumeListener{(volume: Float) -> Void in
-                    for i in 0...7 {
-                        let value = CGFloat.random(in: 0...CGFloat(volume))
-                        animationValues[i] = value
+                    
+                    tts.cancelSpeech = false
+                    stt.cancel = false
+                    assistant.ClearHandlers()
+                    stt.clearHandlers()
+                    //add out of the box effect
+                    assistant.onEffect(effectName: "closeAssistant", callback: closeAssistantCallback)
+                    if let onErrorCallback = assistantSettingsProps.onAssistantError{
+                        assistant.onError(callback: onErrorCallback)
                     }
-                    if isSpeaking == false{
-                        isSpeaking = true
+                    inputSpeech = ""
+                    inputText = ""
+                    responseText = ""
+                    stt.addPartialListener{(partialResult:String) -> Void in
+                        inputSpeech = partialResult
                     }
-                }
-                voicifySTT.addStartListener {
-                    isListening = true
-                    isFinalSpeech = false
-                    assistantStateText = "Listening..."
-                }
-                voicifySTT.addEndListener {
-                    if(isListening){
-                        isListening = false
-                        isSpeaking = false
-                        if(inputSpeech.isEmpty)
-                        {
-                            assistantStateText = "I didn't catch that..."
-                        }
-                        else {
-                            assistantStateText = " "
-                        }
+                    stt.addFinalResultListener{(fullResult: String) -> Void  in
+                        isFinalSpeech = true
+                        assistantStateText = " "
+                        inputSpeech = fullResult
+                        assistant.makeTextRequest(text: inputSpeech, inputType: "Speech")
+                    }
+                    stt.addVolumeListener{(volume: Float) -> Void in
                         for i in 0...7 {
-                            animationValues[i] = CGFloat(1)
+                            let value = CGFloat.random(in: 0...CGFloat(volume))
+                            animationValues[i] = value
+                        }
+                        if isSpeaking == false{
+                            isSpeaking = true
                         }
                     }
-                }
-                voicifyAssistant.onResponseReceived{response in
-                    if(!inputSpeech.isEmpty)
-                    {
-                        messages.append(Message(id: UUID().uuidString,text: inputSpeech, origin: "Sent"))
-                        inputSpeech = ""
+                    stt.addStartListener {
+                        isListening = true
+                        isFinalSpeech = false
+                        assistantStateText = "Listening..."
                     }
-                    isFullScreen = true
-                    hints = []
-                    response.hints.forEach{ hint in
-                        hints.append(Hint(text: hint))
+                    stt.addEndListener {
+                        if(isListening){
+                            isListening = false
+                            isSpeaking = false
+                            if(inputSpeech.isEmpty)
+                            {
+                                assistantStateText = "I didn't catch that..."
+                            }
+                            else {
+                                assistantStateText = " "
+                            }
+                            for i in 0...7 {
+                                animationValues[i] = CGFloat(1)
+                            }
+                        }
                     }
-                    messages.append(Message(id: UUID().uuidString,text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
-                }
-                if let initializeWithWlecome = assistantSettingsProps.initializeWithWelcomeMessage
-                {
-                    if(initializeWithWlecome == true)
-                    {
-                        isFullScreen = true
-                        if(assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true)
+                    assistant.onResponseReceived{response in
+                        if(!inputSpeech.isEmpty)
                         {
+                            messages.append(Message(id: UUID().uuidString,text: inputSpeech, origin: "Sent"))
+                            inputSpeech = ""
+                        }
+                        isFullScreen = true
+                        hints = []
+                        response.hints.forEach{ hint in
+                            hints.append(Hint(text: hint))
+                        }
+                        messages.append(Message(id: UUID().uuidString,text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
+                    }
+                    if let initializeWithWlecome = assistantSettingsProps.initializeWithWelcomeMessage
+                    {
+                        if(initializeWithWlecome == true)
+                        {
+                            isFullScreen = true
+                            if(assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true)
+                            {
+                                isUsingSpeech = true
+                            }
+                            else{
+                                isUsingSpeech = false
+                            }
+                        }
+                    }
+                    else if (assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true){
+                        if(stt.hasPermission)
+                        {
+                            stt.startListening()
                             isUsingSpeech = true
                         }
-                        else{
-                            isUsingSpeech = false
-                        }
                     }
-                }
-                else if (assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true){
-                    if(voicifySTT.hasPermission)
-                    {
-                        voicifySTT.startListening()
-                        isUsingSpeech = true
+                    else{
+                        isUsingSpeech = false
                     }
-                }
-                else{
-                    isUsingSpeech = false
-                }
-                if let assistantEffect = assistantSettingsProps.effects {
-                    assistantEffect.forEach{effect in
-                        voicifyAssistant.onEffect(effectName: effect){data in
-                            if let onEffectCallback = assistantSettingsProps.onEffect {
-                                onEffectCallback(effect, data)
+                    if let assistantEffect = assistantSettingsProps.effects {
+                        assistantEffect.forEach{effect in
+                            assistant.onEffect(effectName: effect){data in
+                                if let onEffectCallback = assistantSettingsProps.onEffect {
+                                    onEffectCallback(effect, data)
+                                }
                             }
                         }
                     }
+                    
+                    assistant.startNewSession(sessionId: nil, userId: nil, sessionAttributes: assistantSettingsProps.sessionAttributes, userAttributes: assistantSettingsProps.userAttributes)
                 }
-                
-                voicifyAssistant.startNewSession(sessionId: nil, userId: nil, sessionAttributes: assistantSettingsProps.sessionAttributes, userAttributes: assistantSettingsProps.userAttributes)
-            }
-            else{
-                UIApplication.shared.endEditing()
-                inputSpeech = ""
-                messages = []
-                voicifyTTS.cancelSpeech = true
-                voicifySTT.cancel = true
-                isFullScreen = false
-                if(isListening)
-                {
-                    voicifySTT.stopListening()
-                }
-                voicifyTTS.stop()
-                voicifyTTS.clearHandlers()
-                voicifySTT.clearHandlers()
-                voicifyAssistant.ClearHandlers()
-                if let onCloseCallback = assistantSettingsProps.onAssistantClose{
-                    onCloseCallback()
+                else{
+                    UIApplication.shared.endEditing()
+                    inputSpeech = ""
+                    messages = []
+                    tts.cancelSpeech = true
+                    stt.cancel = true
+                    isFullScreen = false
+                    if(isListening)
+                    {
+                        stt.stopListening()
+                    }
+                    tts.stop()
+                    tts.clearHandlers()
+                    stt.clearHandlers()
+                    assistant.ClearHandlers()
+                    if let onCloseCallback = assistantSettingsProps.onAssistantClose{
+                        onCloseCallback()
+                    }
                 }
             }
         }
