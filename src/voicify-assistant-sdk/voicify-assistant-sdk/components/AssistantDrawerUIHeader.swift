@@ -11,6 +11,7 @@ import Kingfisher
 struct AssistantDrawerUIHeader: View {
     @Binding var assistantIsOpen: Bool
     @EnvironmentObject var configurationHeaderProps: ConfigurationHeaderProps
+    @EnvironmentObject var configurationSettingsProps: ConfigurationSettingsProps
     public var headerProps: HeaderProps? = nil
     public var assistantSettings: AssistantSettingsProps? = nil
     
@@ -61,6 +62,6 @@ struct AssistantDrawerUIHeader: View {
         .padding(.top, CGFloat(headerProps?.paddingTop ?? configurationHeaderProps.paddingTop ?? 50))
         .padding(.bottom, CGFloat(headerProps?.paddingBottom ?? configurationHeaderProps.paddingBottom ?? 20))
         .background(Color(hex: !(headerProps?.backgroundColor ?? "").isEmpty ? headerProps?.backgroundColor ?? "" :
-                            !(configurationHeaderProps.backgroundColor ?? "").isEmpty ? configurationHeaderProps.backgroundColor ?? "" :!(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? "" : "#ffffff"))
+                            !(configurationHeaderProps.backgroundColor ?? "").isEmpty ? configurationHeaderProps.backgroundColor ?? "" :!(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? "" :!(configurationSettingsProps.backgroundColor ?? "").isEmpty ? configurationSettingsProps.backgroundColor ?? "" : "#ffffff"))
     }
 }

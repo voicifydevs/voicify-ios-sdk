@@ -27,6 +27,7 @@ struct AssistantDrawerUIToolbar: View {
     @State var toolbarParameters: ToolbarParameters = ToolbarParameters()
     @EnvironmentObject var configurationToolbarProps: ConfigurationToolbarProps
     @EnvironmentObject var configurationHeaderProps: ConfigurationHeaderProps
+    @EnvironmentObject var configurationSettingsProps: ConfigurationSettingsProps
     public var voicifySTT: VoicifySTTProvider
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant
@@ -245,7 +246,8 @@ struct AssistantDrawerUIToolbar: View {
         .padding(.top, CGFloat(toolbarParameters.paddingTop))
         .background(Color(hex: !(toolbarProps?.backgroundColor ?? "").isEmpty ? toolbarProps?.backgroundColor ?? "" :
                             !(configurationToolbarProps.backgroundColor ?? "").isEmpty ? configurationToolbarProps.backgroundColor ?? "" :
-                             !(assistantSettingsProps.backgroundColor ?? "").isEmpty ? assistantSettingsProps.backgroundColor ?? "" : "#ffffff"))
+                             !(assistantSettingsProps.backgroundColor ?? "").isEmpty ? assistantSettingsProps.backgroundColor ?? ""
+                          :!(configurationSettingsProps.backgroundColor ?? "").isEmpty ? configurationSettingsProps.backgroundColor ?? "" : "#ffffff"))
         .onChange(of: isListening){ _ in
             if(isListening == false)
             {

@@ -8,6 +8,5 @@
 import Foundation
 
 public func closeAssistantCallback (data: Dictionary<String, Any>) -> Void{
-    print("closing after specified time")
     NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
 }

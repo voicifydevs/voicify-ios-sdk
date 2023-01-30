@@ -16,6 +16,7 @@ struct AssistantDrawerUIBody: View {
     @Binding var inputText: String
     @Binding var inputSpeech: String
     @EnvironmentObject var configurationBodyProps: ConfigurationBodyProps
+    @EnvironmentObject var configurationSettingsProps: ConfigurationSettingsProps
     public var voicifySTT: VoicifySTTProvider
     public var voicifyTTS: VoicifyTTSProivder
     public var voicifyAssistant: VoicifyAssistant
@@ -167,7 +168,8 @@ struct AssistantDrawerUIBody: View {
         .border(width: CGFloat(bodyProps?.borderTopWidth ?? configurationBodyProps.borderTopWidth ?? 1), edges: [.top], color: Color.init(hex: bodyProps?.borderTopColor ??  configurationBodyProps.borderTopColor ?? "#8F97A1")!)
         .border(width: CGFloat(bodyProps?.borderBottomWidth ?? configurationBodyProps.borderBottomWidth ?? 1), edges: [.bottom], color: Color.init(hex: bodyProps?.borderBottomColor ?? configurationBodyProps.borderBottomColor ?? "#8F97A1")!)
         .background(Color(hex: !(bodyProps?.backgroundColor ?? "").isEmpty ? bodyProps?.backgroundColor ?? "" :
-                            !(configurationBodyProps.backgroundColor ?? "").isEmpty ? configurationBodyProps.backgroundColor ?? "" : !(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? "" : "#F4F4F6"))
+                            !(configurationBodyProps.backgroundColor ?? "").isEmpty ? configurationBodyProps.backgroundColor ?? "" : !(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? ""
+                          :!(configurationSettingsProps.backgroundColor ?? "").isEmpty ? configurationSettingsProps.backgroundColor ?? "" : "#F4F4F6"))
         .onAppear{
             //have to map prop logic outside of view modifiers to avoid compile error "unable to type check in time"
             hintsParams =  HintsViewParameters(

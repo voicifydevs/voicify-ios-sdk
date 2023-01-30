@@ -37,6 +37,7 @@ public struct AssistantDrawerUI: View {
     @State var keyboardToggled = false
     @State var showPermissionAlert = false
     @State var isKeyboardActive = false
+    @StateObject var configurationSettingsProps = ConfigurationSettingsProps(serverRootUrl: "", appId: "", appKey: "")
     @StateObject var configurationHeaderProps = ConfigurationHeaderProps()
     @StateObject var configurationBodyProps = ConfigurationBodyProps()
     @StateObject var configurationToolbarProps = ConfigurationToolbarProps()
@@ -48,7 +49,6 @@ public struct AssistantDrawerUI: View {
         bodyProps: BodyProps? = nil,
         toolbarProps: ToolbarProps? = nil
     ) {
-        
         self.assistantSettingsProps = assistantSettings
         self.headerProps = headerProps
         self.bodyProps = bodyProps
@@ -125,17 +125,20 @@ public struct AssistantDrawerUI: View {
             Task{
                 do{
                     let configuration = try await customAssistantConfigurationService.getCustomAssistantConfiguration(configurationId:assistantSettingsProps.configurationId, serverRootUrl: assistantSettingsProps.serverRootUrl, appId: assistantSettingsProps.appId, appKey: assistantSettingsProps.appKey)
+                    
+                    mapSettingsProps(configuration: configuration)
                     mapHeaderProps(configuration: configuration)
                     mapBodyProps(configuration: configuration)
                     mapToolbarProps(configuration: configuration)
+                    
                     voicifySTT = VoicifySTTProvider()
                     voicifyTTS = VoicifyTTSProivder(
                         settings: VoicifyTextToSpeechSettings(
-                            appId: configuration.applicationId!,
-                            appKey: configuration.applicationSecret!,
-                            voice: configuration.textToSpeechVoice ?? "",
-                            serverRootUrl: self.assistantSettingsProps.serverRootUrl,
-                            provider: configuration.textToSpeechProvider ?? "Google"
+                            appId: assistantSettingsProps.appId,
+                            appKey: assistantSettingsProps.appKey,
+                            voice: assistantSettingsProps.textToSpeechVoice ?? configuration.textToSpeechVoice ?? "",
+                            serverRootUrl: assistantSettingsProps.serverRootUrl,
+                            provider: assistantSettingsProps.textToSpeechProvider ?? configuration.textToSpeechProvider ?? "Google"
                         )
                     )
                     voicifyAssistant = VoicifyAssistant(
@@ -143,18 +146,18 @@ public struct AssistantDrawerUI: View {
                         textToSpeechProvider: voicifyTTS,
                         settings: VoicifyAssistantSettings(
                             serverRootUrl: assistantSettingsProps.serverRootUrl,
-                            appId: configuration.applicationId!,
-                            appKey: configuration.applicationSecret!,
-                            locale: configuration.locale ?? "en-US",
-                            channel: configuration.channel ?? "iOS",
-                            device: configuration.device ?? "Mobile",
-                            autoRunConversation: configuration.autoRunConversation ?? false,
-                            initializeWithWelcomeMessage: configuration.initializeWithWelcomeMessage ?? false,
-                            initializeWithText: configuration.activeInput == "textbox" ? true : false,
-                            useVoiceInput: configuration.useVoiceInput ?? true,
-                            useDraftContent: configuration.useDraftContent ?? false,
-                            useOutputSpeech: configuration.useOutputSpeech ?? true,
-                            noTracking: configuration.noTracking ?? false
+                            appId: assistantSettingsProps.appId,
+                            appKey: assistantSettingsProps.appKey,
+                            locale: assistantSettingsProps.locale ?? configuration.locale ?? "en-US",
+                            channel: assistantSettingsProps.channel ?? configuration.channel ?? "iOS",
+                            device: assistantSettingsProps.device ?? configuration.device ?? "Mobile",
+                            autoRunConversation: assistantSettingsProps.autoRunConversation ?? configuration.autoRunConversation ?? false,
+                            initializeWithWelcomeMessage: assistantSettingsProps.initializeWithWelcomeMessage ?? configuration.initializeWithWelcomeMessage ?? false,
+                            initializeWithText: assistantSettingsProps.initializeWithText ?? (configuration.activeInput == "textbox"),
+                            useVoiceInput: assistantSettingsProps.useVoiceInput ?? configuration.useVoiceInput ?? true,
+                            useDraftContent: assistantSettingsProps.useDraftContent ?? configuration.useDraftContent ?? false,
+                            useOutputSpeech: assistantSettingsProps.useOutputSpeech ?? configuration.useOutputSpeech ?? true,
+                            noTracking: assistantSettingsProps.noTracking ?? configuration.noTracking ?? false
                         )
                     )
                     voicifyAssistant?.initializeAndStart()
@@ -194,6 +197,7 @@ public struct AssistantDrawerUI: View {
                 
             }
         }
+        .environmentObject(configurationSettingsProps)
         .environmentObject(configurationHeaderProps)
         .environmentObject(configurationBodyProps)
         .environmentObject(configurationToolbarProps)
@@ -213,12 +217,30 @@ public struct AssistantDrawerUI: View {
                                 }
                             }
                         }
+                        else if let configurationBackgroundGradientColors = configurationSettingsProps.backgroundColor {
+                            let splitColors = configurationBackgroundGradientColors.components(separatedBy: ",")
+                            if (splitColors.count > 1)
+                            {
+                                splitColors.forEach{ color in
+                                    self.assistantBackgroundGradientColors.append(Color.init(hex: color)!)
+                                }
+                            }
+                        }
                     }
                     
                     if (equalizerGradientColors.isEmpty)
                     {
                         if let equalizerGradColors = toolbarProps?.equalizerColor{
                             let splitColors = equalizerGradColors.components(separatedBy: ",")
+                            if (splitColors.count > 1)
+                            {
+                                splitColors.forEach{ color in
+                                    self.equalizerGradientColors.append(Color.init(hex: color)!)
+                                }
+                            }
+                        }
+                        else if let configurationEqualizerGradColors = configurationToolbarProps.equalizerColor {
+                            let splitColors = configurationEqualizerGradColors.components(separatedBy: ",")
                             if (splitColors.count > 1)
                             {
                                 splitColors.forEach{ color in
@@ -292,21 +314,19 @@ public struct AssistantDrawerUI: View {
                         }
                         messages.append(Message(id: UUID().uuidString,text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
                     }
-                    if let initializeWithWlecome = assistantSettingsProps.initializeWithWelcomeMessage
+                    
+                    if(assistantSettingsProps.initializeWithWelcomeMessage ?? configurationSettingsProps.initializeWithWelcomeMessage ?? true)
                     {
-                        if(initializeWithWlecome == true)
+                        isFullScreen = true
+                        if(!(assistantSettingsProps.initializeWithText ?? configurationSettingsProps.initializeWithText ?? false) && (assistantSettingsProps.useVoiceInput ?? configurationSettingsProps.useVoiceInput ?? true))
                         {
-                            isFullScreen = true
-                            if(assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true)
-                            {
-                                isUsingSpeech = true
-                            }
-                            else{
-                                isUsingSpeech = false
-                            }
+                            isUsingSpeech = true
+                        }
+                        else{
+                            isUsingSpeech = false
                         }
                     }
-                    else if (assistantSettingsProps.initializeWithText == false && assistantSettingsProps.useVoiceInput == true){
+                    else if (!(assistantSettingsProps.initializeWithText ?? configurationSettingsProps.initializeWithText ?? false) && (assistantSettingsProps.useVoiceInput ?? configurationSettingsProps.useVoiceInput ?? true)){
                         if(stt.hasPermission)
                         {
                             stt.startListening()
@@ -359,12 +379,59 @@ public struct AssistantDrawerUI: View {
         }
     }
     
+    func mapSettingsProps(configuration: CustomAssistantConfigurationResponse){
+        if let autoRunConversation = configuration.autoRunConversation {
+            configurationSettingsProps.autoRunConversation = autoRunConversation
+        }
+        if let useVoiceInput = configuration.useVoiceInput {
+            configurationSettingsProps.autoRunConversation = useVoiceInput
+        }
+        if let noTracking = configuration.noTracking {
+            configurationSettingsProps.noTracking = noTracking
+        }
+        if let useOutputSpeech = configuration.useOutputSpeech {
+            configurationSettingsProps.useOutputSpeech = useOutputSpeech
+        }
+        if let useDraftContent = configuration.useDraftContent {
+            configurationSettingsProps.useDraftContent = useDraftContent
+        }
+        if let initializeWithWelcomeMessage = configuration.initializeWithWelcomeMessage {
+            configurationSettingsProps.initializeWithWelcomeMessage = initializeWithWelcomeMessage
+        }
+        if let device = configuration.device {
+            configurationSettingsProps.device = device
+        }
+        if let channel = configuration.channel {
+            configurationSettingsProps.channel = channel
+        }
+        if let locale = configuration.locale {
+            configurationSettingsProps.locale = locale
+        }
+        if let textToSpeechProvider = configuration.textToSpeechProvider {
+            configurationSettingsProps.textToSpeechProvider = textToSpeechProvider
+        }
+        if let textToSpeechVoice = configuration.textToSpeechVoice {
+            configurationSettingsProps.textToSpeechVoice = textToSpeechVoice
+        }
+        if let activeInput = configuration.activeInput{
+            configurationSettingsProps.initializeWithText = (activeInput == "textbox")
+        }
+        if let backgroundColor = configuration.styles?.assistant.backgroundColor {
+            configurationSettingsProps.backgroundColor = backgroundColor
+        }
+        configurationSettingsProps.appId = assistantSettingsProps.appId
+        configurationSettingsProps.appKey = assistantSettingsProps.appKey
+        configurationSettingsProps.serverRootUrl = assistantSettingsProps.serverRootUrl
+    }
     func mapHeaderProps(configuration: CustomAssistantConfigurationResponse){
         if let backgroundColor = configuration.styles?.header.backgroundColor{
             configurationHeaderProps.backgroundColor = backgroundColor
         }
         if let assistantName = configuration.styles?.header.assistantName{
             configurationHeaderProps.assistantName = assistantName
+        }
+        if let assistantNameTextColor = configuration.styles?.header.assistantNameTextColor{
+            configurationHeaderProps.assistantNameTextColor = assistantNameTextColor
         }
         if let assistantImage = configuration.styles?.header.assistantImage{
             configurationHeaderProps.assistantImage = assistantImage

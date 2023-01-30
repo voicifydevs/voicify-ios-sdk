@@ -26,8 +26,6 @@ public class CustomAssistantConfigurationService
             {
                 let decoder = JSONDecoder()
                 let configurationResponse = try decoder.decode(CustomAssistantConfigurationResponse.self, from: data)
-                print("service call")
-                print(configurationResponse.applicationId)
                 return configurationResponse
             }
             else{
