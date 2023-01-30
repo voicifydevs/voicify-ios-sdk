@@ -130,6 +130,30 @@ struct SwiftUiContentView: View {
               appId: "bc9fa6bf-6cea-4fad-af12-d388b64dbdb9",
               appKey: "ZjcyNmNkNjEtNmY5My00NTg3LWI5ZmQtMjJkNzE3NGMwYTI4"
             )
+//              ,
+//              toolbarProps: ToolbarProps(
+//                            backgroundColor: "#000000",
+//                            speakActiveTitleColor: "#FFFFFF",
+//                            speakInactiveTitleColor: "#ffffff",
+//                            typeActiveTitleColor: "#FFFFFF",
+//                            typeInactiveTitleColor: "#ffffff",
+//                            partialSpeechResultTextColor: "#FFFFFF",
+//                            fullSpeechResultTextColor: "#FFFFFF",
+//                            speechResultBoxBackgroundColor: "#3E77A5",
+//                            textInputTextColor: "#FFFFFF",
+//                            helpTextFontColor: "#ffffff",
+//                            partialSpeechResultFontFamily: "Muli",
+//                            assistantStateFontFamily: "Muli",
+//                            helpTextFontFamily: "Muli",
+//                            speakFontFamily: "Muli",
+//                            typeFontFamily: "Muli",
+//                            textboxFontFamily: "Muli",
+//                            equalizerColor: "#ffffffb3,#ffffffb3",
+//                            micActiveColor: "#FFFFFF",
+//                            sendActiveColor: "#FFFFFF",
+//                            sendInactiveColor: "#FFFFFF",
+//                            assistantStateTextColor: "#ffffff"
+//                           )
             )
             .ignoresSafeArea(.container)
         }
