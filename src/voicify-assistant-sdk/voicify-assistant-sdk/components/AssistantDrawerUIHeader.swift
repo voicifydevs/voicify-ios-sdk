@@ -10,13 +10,15 @@ import Kingfisher
 
 struct AssistantDrawerUIHeader: View {
     @Binding var assistantIsOpen: Bool
+    @Binding var showNoInternetCloseButton: Bool
     @EnvironmentObject var configurationHeaderProps: ConfigurationHeaderProps
     @EnvironmentObject var configurationSettingsProps: ConfigurationSettingsProps
     public var headerProps: HeaderProps? = nil
     public var assistantSettings: AssistantSettingsProps? = nil
     
-    public init(assistantIsOpen: Binding<Bool>, headerProps: HeaderProps? = nil, assistantSettings: AssistantSettingsProps? = nil) {
+    public init(assistantIsOpen: Binding<Bool>, showNoInternetCloseButton: Binding<Bool>, headerProps: HeaderProps? = nil, assistantSettings: AssistantSettingsProps? = nil) {
         self._assistantIsOpen = assistantIsOpen
+        self._showNoInternetCloseButton = showNoInternetCloseButton
         self.headerProps = headerProps
         self.assistantSettings = assistantSettings
     }
@@ -46,15 +48,22 @@ struct AssistantDrawerUIHeader: View {
             Button(action: {
                 assistantIsOpen = false
             }){
-                KFImage(URL(string: headerProps?.closeAssistantButtonImage ?? configurationHeaderProps.closeAssistantButtonImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
-                    .resizable()
-                    .renderingMode(!(headerProps?.closeAssistantColor ?? configurationHeaderProps.closeAssistantColor ?? "").isEmpty ? .template : .none)
-                    .foregroundColor(Color.init(hex: headerProps?.closeAssistantColor ?? configurationHeaderProps.closeAssistantColor ?? ""))
-                    .padding(.all, 4)
-                    .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? configurationHeaderProps.closeAssistantButtonBorderRadius ?? 0)).stroke(Color.init(hex: headerProps?.closeAssistantButtonBorderColor ?? configurationHeaderProps.closeAssistantButtonBorderColor ?? "#00000000")!, lineWidth: CGFloat(headerProps?.closeAssistantButtonBorderWidth ?? configurationHeaderProps.closeAssistantButtonBorderWidth ?? 0)))
-                    .frame(width: CGFloat(headerProps?.closeAssistantButtonImageWidth ?? configurationHeaderProps.closeAssistantButtonImageWidth ?? 35), height: CGFloat(headerProps?.closeAssistantButtonImageHeight ?? configurationHeaderProps.closeAssistantButtonImageHeight ?? 35))
-                    .background(Color.init(hex: headerProps?.closeAssistantButtonBackgroundColor ?? configurationHeaderProps.closeAssistantButtonBackgroundColor ?? "#00000000"))
-                    .cornerRadius(CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? configurationHeaderProps.closeAssistantButtonBorderRadius ?? 0))
+                if(showNoInternetCloseButton)
+                {
+                    Image("remove-circle")
+                }
+                else
+                {
+                    KFImage(URL(string: headerProps?.closeAssistantButtonImage ?? configurationHeaderProps.closeAssistantButtonImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/a6de04bb-e572-4a55-8cd9-1a7628285829/delete-2.png"))
+                        .resizable()
+                        .renderingMode(!(headerProps?.closeAssistantColor ?? configurationHeaderProps.closeAssistantColor ?? "").isEmpty ? .template : .none)
+                        .foregroundColor(Color.init(hex: headerProps?.closeAssistantColor ?? configurationHeaderProps.closeAssistantColor ?? ""))
+                        .padding(.all, 4)
+                        .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? configurationHeaderProps.closeAssistantButtonBorderRadius ?? 0)).stroke(Color.init(hex: headerProps?.closeAssistantButtonBorderColor ?? configurationHeaderProps.closeAssistantButtonBorderColor ?? "#00000000")!, lineWidth: CGFloat(headerProps?.closeAssistantButtonBorderWidth ?? configurationHeaderProps.closeAssistantButtonBorderWidth ?? 0)))
+                        .frame(width: CGFloat(headerProps?.closeAssistantButtonImageWidth ?? configurationHeaderProps.closeAssistantButtonImageWidth ?? 35), height: CGFloat(headerProps?.closeAssistantButtonImageHeight ?? configurationHeaderProps.closeAssistantButtonImageHeight ?? 35))
+                        .background(Color.init(hex: headerProps?.closeAssistantButtonBackgroundColor ?? configurationHeaderProps.closeAssistantButtonBackgroundColor ?? "#00000000"))
+                        .cornerRadius(CGFloat(headerProps?.closeAssistantButtonBorderRadius ?? configurationHeaderProps.closeAssistantButtonBorderRadius ?? 0))
+                }
             }
         }
         .padding(.leading, CGFloat(headerProps?.paddingLeft ?? configurationHeaderProps.paddingLeft ?? 20))

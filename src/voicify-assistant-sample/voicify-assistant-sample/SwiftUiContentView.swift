@@ -37,7 +37,7 @@ struct SwiftUiContentView: View {
     }
     
     func onError (errorMessage: String, request: CustomAssistantRequest) {
-        NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
+        //NotificationCenter.default.post(Notification(name: NSNotification.Name.closeAssistant))
         showAssistantUnavailableAlert = true
     }
     

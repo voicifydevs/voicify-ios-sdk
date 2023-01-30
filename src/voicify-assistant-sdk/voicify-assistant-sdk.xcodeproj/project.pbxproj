@@ -16,6 +16,7 @@
 		FE1F4E292910110900D1B447 /* VoicifyAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */; };
 		FE1FCE3129844DA50079C080 /* ToolbarParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1FCE3029844DA50079C080 /* ToolbarParameters.swift */; };
 		FE1FCE332984B6510079C080 /* ConfigurationSettingsProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1FCE322984B6510079C080 /* ConfigurationSettingsProps.swift */; };
+		FE1FCE35298810C70079C080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE1FCE34298810C70079C080 /* Assets.xcassets */; };
 		FE2333BF2949262500E605CF /* SpeakingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2333BE2949262500E605CF /* SpeakingAnimation.swift */; };
 		FE2333C12949295500E605CF /* AssistantDrawerUIBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2333C02949295500E605CF /* AssistantDrawerUIBody.swift */; };
 		FE3F68AA294D02B000021785 /* AssistantIsOpenObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3F68A9294D02B000021785 /* AssistantIsOpenObject.swift */; };
@@ -106,6 +107,7 @@
 		FE1F4E282910110900D1B447 /* VoicifyAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicifyAssistant.swift; sourceTree = "<group>"; };
 		FE1FCE3029844DA50079C080 /* ToolbarParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarParameters.swift; sourceTree = "<group>"; };
 		FE1FCE322984B6510079C080 /* ConfigurationSettingsProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSettingsProps.swift; sourceTree = "<group>"; };
+		FE1FCE34298810C70079C080 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE2333BE2949262500E605CF /* SpeakingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakingAnimation.swift; sourceTree = "<group>"; };
 		FE2333C02949295500E605CF /* AssistantDrawerUIBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantDrawerUIBody.swift; sourceTree = "<group>"; };
 		FE3F68A9294D02B000021785 /* AssistantIsOpenObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistantIsOpenObject.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				FE82DFD42907319D000275C2 /* models */,
 				C962F2EF282AB12800990915 /* voicify_assistant_sdk.h */,
 				C962F2F0282AB12800990915 /* voicify_assistant_sdk.docc */,
+				FE1FCE34298810C70079C080 /* Assets.xcassets */,
 			);
 			path = "voicify-assistant-sdk";
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE1FCE35298810C70079C080 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

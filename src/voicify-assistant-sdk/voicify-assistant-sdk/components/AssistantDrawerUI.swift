@@ -37,6 +37,7 @@ public struct AssistantDrawerUI: View {
     @State var keyboardToggled = false
     @State var showPermissionAlert = false
     @State var isKeyboardActive = false
+    @State var showNoInternetCloseButton = false
     @StateObject var configurationSettingsProps = ConfigurationSettingsProps(serverRootUrl: "", appId: "", appKey: "")
     @StateObject var configurationHeaderProps = ConfigurationHeaderProps()
     @StateObject var configurationBodyProps = ConfigurationBodyProps()
@@ -69,6 +70,7 @@ public struct AssistantDrawerUI: View {
                     if isFullScreen {
                         AssistantDrawerUIHeader(
                             assistantIsOpen: $assistantIsOpen,
+                            showNoInternetCloseButton: $showNoInternetCloseButton,
                             headerProps: headerProps,
                             assistantSettings: assistantSettingsProps
                         )
@@ -257,7 +259,13 @@ public struct AssistantDrawerUI: View {
                     //add out of the box effect
                     assistant.onEffect(effectName: "closeAssistant", callback: closeAssistantCallback)
                     if let onErrorCallback = assistantSettingsProps.onAssistantError{
-                        assistant.onError(callback: onErrorCallback)
+                        assistant.onError{error,request in
+                            if (request.context.requestName == "VoicifyWelcome")
+                            {
+                                showNoInternetCloseButton = true
+                            }
+                            onErrorCallback(error, request)
+                        }
                     }
                     inputSpeech = ""
                     inputText = ""
@@ -302,6 +310,7 @@ public struct AssistantDrawerUI: View {
                         }
                     }
                     assistant.onResponseReceived{response in
+                        showNoInternetCloseButton = false
                         if(!inputSpeech.isEmpty)
                         {
                             messages.append(Message(id: UUID().uuidString,text: inputSpeech, origin: "Sent"))
