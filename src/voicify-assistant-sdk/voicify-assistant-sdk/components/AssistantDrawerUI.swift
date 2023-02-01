@@ -208,6 +208,7 @@ public struct AssistantDrawerUI: View {
                let stt = voicifySTT,
                let assistant = voicifyAssistant{
                 if(assistantIsOpen == true){
+                    assistantStateText = " "
                     if(assistantBackgroundGradientColors.isEmpty)
                     {
                         if let backgroundGradientColors = assistantSettingsProps.backgroundColor{
@@ -323,7 +324,7 @@ public struct AssistantDrawerUI: View {
                         }
                         messages.append(Message(id: UUID().uuidString,text: response.displayText.trimmingCharacters(in: .whitespacesAndNewlines), origin: "Received"))
                     }
-                    if(assistantSettingsProps.initializeWithWelcomeMessage ?? configurationSettingsProps.initializeWithWelcomeMessage ?? true)
+                    if(assistantSettingsProps.initializeWithWelcomeMessage ?? configurationSettingsProps.initializeWithWelcomeMessage ?? false)
                     {
                         isFullScreen = true
                         if(!(assistantSettingsProps.initializeWithText ?? configurationSettingsProps.initializeWithText ?? false) && (assistantSettingsProps.useVoiceInput ?? configurationSettingsProps.useVoiceInput ?? true))
