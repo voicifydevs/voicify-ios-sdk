@@ -17,6 +17,7 @@ public class BodyProps: Decodable {
     public var assistantImageHeight: Int? = nil
     public var assistantImageWidth: Int? = nil
     public var assistantImageBackgroundColor: String? = nil
+    public var assistantImagePadding: Int? = nil
     public var messageSentTextColor: String? = nil
     public var messageSentBackgroundColor: String? = nil
     public var messageReceivedFontSize: Float? = nil
@@ -57,7 +58,7 @@ public class BodyProps: Decodable {
     public var hintsBorderRadius: Float? = nil
     public var hintsFontFamily: String? = nil
     
-    public init(backgroundColor: String? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, assistantImageBorderRadius: Float? = nil, assistantImage: String? = nil, assistantImageColor: String? = nil, assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantImageBackgroundColor: String? = nil, messageSentTextColor: String? = nil, messageSentBackgroundColor: String? = nil, messageReceivedFontSize: Float? = nil, messageReceivedTextColor: String? = nil, messageReceivedBackgroundColor: String? = nil, messageSentFontSize: Float? = nil, messageSentBorderWidth: Int? = nil, messageSentBorderColor: String? = nil, messageSentFontFamily: String? = nil, messageReceivedBorderWidth: Int? = nil, messageReceivedBorderColor: String? = nil, messageSentBorderTopLeftRadius: Float? = nil, messageSentBorderTopRightRadius: Float? = nil, messageSentBorderBottomLeftRadius: Float? = nil, messageSentBorderBottomRightRadius: Float? = nil, messageReceivedBorderTopLeftRadius: Float? = nil, messageReceivedBorderTopRightRadius: Float? = nil, messageReceivedBorderBottomLeftRadius: Float? = nil, messageReceivedBorderBottomRightRadius: Float? = nil, messageReceivedFontFamily: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, borderTopColor: String? = nil, borderBottomColor: String? = nil, borderTopWidth: Float? = nil, borderBottomWidth: Float? = nil, hintsTextColor: String? = nil, hintsFontSize: Float? = nil, hintsPaddingTop: Int? = nil, hintsPaddingBottom: Int? = nil, hintsPaddingRight: Int? = nil, hintsPaddingLeft: Int? = nil, hintsBackgroundColor: String? = nil, hintsBorderWidth: Float? = nil, hintsBorderColor: String? = nil, hintsBorderRadius: Float? = nil, hintsFontFamily: String? = nil) {
+    public init(backgroundColor: String? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, assistantImageBorderRadius: Float? = nil, assistantImage: String? = nil, assistantImageColor: String? = nil, assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantImageBackgroundColor: String? = nil, assistantImagePadding: Int? = nil, messageSentTextColor: String? = nil, messageSentBackgroundColor: String? = nil, messageReceivedFontSize: Float? = nil, messageReceivedTextColor: String? = nil, messageReceivedBackgroundColor: String? = nil, messageSentFontSize: Float? = nil, messageSentBorderWidth: Int? = nil, messageSentBorderColor: String? = nil, messageSentFontFamily: String? = nil, messageReceivedBorderWidth: Int? = nil, messageReceivedBorderColor: String? = nil, messageSentBorderTopLeftRadius: Float? = nil, messageSentBorderTopRightRadius: Float? = nil, messageSentBorderBottomLeftRadius: Float? = nil, messageSentBorderBottomRightRadius: Float? = nil, messageReceivedBorderTopLeftRadius: Float? = nil, messageReceivedBorderTopRightRadius: Float? = nil, messageReceivedBorderBottomLeftRadius: Float? = nil, messageReceivedBorderBottomRightRadius: Float? = nil, messageReceivedFontFamily: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, borderTopColor: String? = nil, borderBottomColor: String? = nil, borderTopWidth: Float? = nil, borderBottomWidth: Float? = nil, hintsTextColor: String? = nil, hintsFontSize: Float? = nil, hintsPaddingTop: Int? = nil, hintsPaddingBottom: Int? = nil, hintsPaddingRight: Int? = nil, hintsPaddingLeft: Int? = nil, hintsBackgroundColor: String? = nil, hintsBorderWidth: Float? = nil, hintsBorderColor: String? = nil, hintsBorderRadius: Float? = nil, hintsFontFamily: String? = nil) {
         self.backgroundColor = backgroundColor
         self.assistantImageBorderColor = assistantImageBorderColor
         self.assistantImageBorderWidth = assistantImageBorderWidth
@@ -67,6 +68,7 @@ public class BodyProps: Decodable {
         self.assistantImageHeight = assistantImageHeight
         self.assistantImageWidth = assistantImageWidth
         self.assistantImageBackgroundColor = assistantImageBackgroundColor
+        self.assistantImagePadding = assistantImagePadding
         self.messageSentTextColor = messageSentTextColor
         self.messageSentBackgroundColor = messageSentBackgroundColor
         self.messageReceivedFontSize = messageReceivedFontSize

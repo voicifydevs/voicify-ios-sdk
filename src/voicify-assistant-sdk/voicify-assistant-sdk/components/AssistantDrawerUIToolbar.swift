@@ -175,11 +175,21 @@ struct AssistantDrawerUIToolbar: View {
                     })
                     {
                         VStack{
-                            KFImage(URL(string: isUsingSpeech ? toolbarProps?.micActiveImage ?? configurationToolbarProps.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png" : toolbarProps?.micInactiveImage ?? configurationToolbarProps.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
-                                .resizable()
-                                .renderingMode((isUsingSpeech && !(toolbarProps?.micActiveColor ?? configurationToolbarProps.micActiveColor ?? "").isEmpty) ? .template : (!isUsingSpeech && !(toolbarProps?.micInactiveColor ?? configurationToolbarProps.micInactiveColor ?? "").isEmpty) ? .template : .none)
-                                .foregroundColor(isUsingSpeech ? Color.init(hex: toolbarProps?.micActiveColor ?? configurationToolbarProps.micActiveColor ?? "") : Color.init(hex: toolbarProps?.micInactiveColor ?? configurationToolbarProps.micInactiveColor ?? ""))
-                                .frame(width: CGFloat(toolbarProps?.micImageWidth ?? configurationToolbarProps.micImageWidth ?? 40), height: CGFloat(toolbarProps?.micImageHeight ?? configurationToolbarProps.micImageHeight ?? 40))
+                            if isUsingSpeech {
+                                KFImage(URL(string: toolbarProps?.micActiveImage ?? configurationToolbarProps.micActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/daca643f-6730-4af5-8817-8d9d0d9db0b5/mic-image.png"))
+                                    .resizable()
+                                    .renderingMode((!(toolbarProps?.micActiveColor ?? configurationToolbarProps.micActiveColor ?? "").isEmpty) ? .template : .none)
+                                    .foregroundColor(Color.init(hex: toolbarProps?.micActiveColor ?? configurationToolbarProps.micActiveColor ?? ""))
+                                    .frame(width: CGFloat(toolbarProps?.micImageWidth ?? configurationToolbarProps.micImageWidth ?? 40), height: CGFloat(toolbarProps?.micImageHeight ?? configurationToolbarProps.micImageHeight ?? 40))
+                            }
+                            else{
+                                KFImage(URL(string: toolbarProps?.micInactiveImage ?? configurationToolbarProps.micInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/3f10b6d7-eb71-4427-adbc-aadacbe8940e/mic-image-1-.png"))
+                                    .resizable()
+                                    .renderingMode((!(toolbarProps?.micInactiveColor ?? configurationToolbarProps.micInactiveColor ?? "").isEmpty) ? .template : .none)
+                                    .foregroundColor(Color.init(hex: toolbarProps?.micInactiveColor ?? configurationToolbarProps.micInactiveColor ?? ""))
+                                    .frame(width: CGFloat(toolbarProps?.micImageWidth ?? configurationToolbarProps.micImageWidth ?? 40), height: CGFloat(toolbarProps?.micImageHeight ?? configurationToolbarProps.micImageHeight ?? 40))
+                            }
+                            
                         }
                         .padding(.all, CGFloat(toolbarProps?.micImagePadding ?? configurationToolbarProps.micImagePadding ?? 4))
                         .overlay(RoundedRectangle(cornerRadius: CGFloat(toolbarProps?.micBorderRadius ?? configurationToolbarProps.micBorderRadius ?? 40)).stroke(Color.init(hex: toolbarProps?.micImageBorderColor ?? configurationToolbarProps.micImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(toolbarProps?.micImageBorderWidth ?? configurationToolbarProps.micImageBorderWidth ?? 0)))
@@ -196,7 +206,7 @@ struct AssistantDrawerUIToolbar: View {
                     Spacer()
                 }
                 HStack{
-                    TextField(toolbarProps?.placeholder ?? "Enter a message...", text: $inputText){focused in
+                    TextField(toolbarProps?.placeholder ?? configurationToolbarProps.placeholder ?? "Enter a message...", text: $inputText){focused in
                         if(focused){
                             isUsingSpeech = false
                             keyboardToggled.toggle()
@@ -222,12 +232,20 @@ struct AssistantDrawerUIToolbar: View {
                             hints = []
                         }
                     }){
-                        KFImage(URL(string: isUsingSpeech ? toolbarProps?.sendInactiveImage ?? configurationToolbarProps.sendInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/0c5aa61c-7d6c-4272-abd2-75d9f5771214/Send-2-.png":
-                                        toolbarProps?.sendActiveImage ?? configurationToolbarProps.sendActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/7a39bc6f-eef5-4185-bcf8-2a645aff53b2/Send-3-.png"))
-                        .resizable()
-                        .renderingMode((isUsingSpeech && !(toolbarProps?.sendInactiveColor ?? configurationToolbarProps.sendInactiveColor ?? "").isEmpty) ? .template : (!isUsingSpeech && !(toolbarProps?.sendActiveColor ?? configurationToolbarProps.sendActiveColor ?? "").isEmpty) ? .template : .none)
-                        .foregroundColor(isUsingSpeech ? Color.init(hex: toolbarProps?.sendInactiveColor ?? configurationToolbarProps.sendInactiveColor ?? "") : Color.init(hex: toolbarProps?.sendActiveColor ?? configurationToolbarProps.sendActiveColor ?? ""))
-                        .frame(width: CGFloat(toolbarProps?.sendImageWidth ?? configurationToolbarProps.sendImageWidth ?? 28), height: CGFloat(toolbarProps?.sendImageHeight ?? configurationToolbarProps.sendImageHeight ?? 28))
+                        if isUsingSpeech {
+                            KFImage(URL(string: toolbarProps?.sendInactiveImage ?? configurationToolbarProps.sendInactiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/0c5aa61c-7d6c-4272-abd2-75d9f5771214/Send-2-.png"))
+                            .resizable()
+                            .renderingMode((!(toolbarProps?.sendInactiveColor ?? configurationToolbarProps.sendInactiveColor ?? "").isEmpty) ? .template :  .none)
+                            .foregroundColor(Color.init(hex: toolbarProps?.sendInactiveColor ?? configurationToolbarProps.sendInactiveColor ?? ""))
+                            .frame(width: CGFloat(toolbarProps?.sendImageWidth ?? configurationToolbarProps.sendImageWidth ?? 28), height: CGFloat(toolbarProps?.sendImageHeight ?? configurationToolbarProps.sendImageHeight ?? 28))
+                        }
+                        else{
+                            KFImage(URL(string: toolbarProps?.sendActiveImage ?? configurationToolbarProps.sendActiveImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/7a39bc6f-eef5-4185-bcf8-2a645aff53b2/Send-3-.png"))
+                            .resizable()
+                            .renderingMode((!isUsingSpeech && !(toolbarProps?.sendActiveColor ?? configurationToolbarProps.sendActiveColor ?? "").isEmpty) ? .template : .none)
+                            .foregroundColor(Color.init(hex: toolbarProps?.sendActiveColor ?? configurationToolbarProps.sendActiveColor ?? ""))
+                            .frame(width: CGFloat(toolbarProps?.sendImageWidth ?? configurationToolbarProps.sendImageWidth ?? 28), height: CGFloat(toolbarProps?.sendImageHeight ?? configurationToolbarProps.sendImageHeight ?? 28))
+                        }
                         
                     }
                     .accessibilityIdentifier("sendButton")

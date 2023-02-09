@@ -30,12 +30,13 @@ struct AssistantDrawerUIHeader: View {
                     .resizable()
                     .renderingMode(!(headerProps?.assistantImageColor ?? configurationHeaderProps.assistantImageColor ?? "").isEmpty ? .template : .none)
                     .foregroundColor(Color.init(hex: headerProps?.assistantImageColor ?? configurationHeaderProps.assistantImageColor ?? ""))
-                    .frame(width: CGFloat(headerProps?.assistantImageWidth ?? configurationHeaderProps.assistantImageWidth ?? 32), height: CGFloat(headerProps?.assistantImageHeight ?? configurationHeaderProps.assistantImageHeight ?? 32))
+                    .frame(width: CGFloat(headerProps?.assistantImageWidth ?? configurationHeaderProps.assistantImageWidth ?? 40), height: CGFloat(headerProps?.assistantImageHeight ?? configurationHeaderProps.assistantImageHeight ?? 40))
+                    .cornerRadius(CGFloat(100))
                     .fixedSize()
             }
-            .padding(.all, 4)
-            .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.assistantImageBorderRadius ?? configurationHeaderProps.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: headerProps?.assistantImageBorderColor ?? configurationHeaderProps.assistantImageBorderColor ?? "#8F97A1")!, lineWidth: CGFloat(headerProps?.assistantImageBorderWidth ?? configurationHeaderProps.assistantImageBorderWidth ?? 2)))
-            .background(Color.init(hex: headerProps?.assistantImageBackgroundColor ?? configurationHeaderProps.assistantImageBackgroundColor ?? "#ffffff"))
+            .padding(.all, CGFloat(headerProps?.assistantImagePadding ?? 0))
+            .overlay(RoundedRectangle(cornerRadius: CGFloat(headerProps?.assistantImageBorderRadius ?? configurationHeaderProps.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: headerProps?.assistantImageBorderColor ?? configurationHeaderProps.assistantImageBorderColor ?? "#00000000")!, lineWidth: CGFloat(headerProps?.assistantImageBorderWidth ?? configurationHeaderProps.assistantImageBorderWidth ?? 0)))
+            .background(Color.init(hex: headerProps?.assistantImageBackgroundColor ?? configurationHeaderProps.assistantImageBackgroundColor ?? "#00000000"))
             .cornerRadius(CGFloat(headerProps?.assistantImageBorderRadius ?? configurationHeaderProps.assistantImageBorderRadius ?? 20))
             
             Text(headerProps?.assistantName ?? configurationHeaderProps.assistantName ?? "Voicify Assistant")

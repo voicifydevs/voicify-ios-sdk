@@ -15,6 +15,7 @@ public class HeaderProps: Decodable
     public var assistantImageColor: String? = nil
     public var assistantImageHeight: Int? = nil
     public var assistantImageWidth: Int? = nil
+    public var assistantImagePadding: Int? = nil
     public var assistantImageBackgroundColor: String? = nil
     public var assistantName: String? = nil
     public var assistantNameTextColor: String? = nil
@@ -35,11 +36,12 @@ public class HeaderProps: Decodable
     public var fontFamily: String? = nil
     public var closeAssistantColor: String? = nil
     
-    public init(fontSize: Float? = nil, backgroundColor: String? = nil, assistantImage: String? = nil, assistantImageColor: String? = nil, assistantImageBackgroundColor: String? = nil,  assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantName: String? = nil, assistantNameTextColor: String? = nil, assistantImageBorderRadius: Float? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, closeAssistantButtonImage: String? = nil, closeAssistantButtonImageHeight: Int? = nil, closeAssistantButtonImageWidth: Int? = nil, closeAssistantButtonBorderRadius: Float? = nil, closeAssistantButtonBackgroundColor: String? = nil, closeAssistantButtonBorderWidth: Int? = nil, closeAssistantButtonBorderColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, fontFamily: String? = nil, closeAssistantColor: String? = nil) {
+    public init(fontSize: Float? = nil, backgroundColor: String? = nil, assistantImage: String? = nil, assistantImageColor: String? = nil, assistantImagePadding: Int? = nil, assistantImageBackgroundColor: String? = nil,  assistantImageHeight: Int? = nil, assistantImageWidth: Int? = nil, assistantName: String? = nil, assistantNameTextColor: String? = nil, assistantImageBorderRadius: Float? = nil, assistantImageBorderColor: String? = nil, assistantImageBorderWidth: Int? = nil, closeAssistantButtonImage: String? = nil, closeAssistantButtonImageHeight: Int? = nil, closeAssistantButtonImageWidth: Int? = nil, closeAssistantButtonBorderRadius: Float? = nil, closeAssistantButtonBackgroundColor: String? = nil, closeAssistantButtonBorderWidth: Int? = nil, closeAssistantButtonBorderColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, fontFamily: String? = nil, closeAssistantColor: String? = nil) {
         self.fontSize = fontSize
         self.backgroundColor = backgroundColor
         self.assistantImage = assistantImage
         self.assistantImageColor = assistantImageColor
+        self.assistantImagePadding = assistantImagePadding
         self.assistantImageBackgroundColor = assistantImageBackgroundColor
         self.assistantImageHeight = assistantImageHeight
         self.assistantImageWidth = assistantImageWidth
