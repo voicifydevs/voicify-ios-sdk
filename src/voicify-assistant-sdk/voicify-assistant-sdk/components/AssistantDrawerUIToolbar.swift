@@ -221,7 +221,7 @@ struct AssistantDrawerUIToolbar: View {
                     .padding(.leading, 10)
                     .overlay(VStack{Divider().background(Color(hex: isUsingSpeech ? toolbarProps?.textInputLineColor ?? configurationToolbarProps.textInputTextColor ?? "#CCCCCC" : toolbarProps?.textInputActiveLineColor ?? configurationToolbarProps.textInputLineColor ?? "#CCCCCC")).offset(x: 0, y: 15)}.padding(.leading, 10))
                     .accentColor(Color.init(hex: toolbarProps?.textInputCursorColor ?? configurationToolbarProps.textInputCursorColor ?? "#A3A3A3"))
-                    .foregroundColor(Color.init(hex: toolbarProps?.textInputTextColor ?? configurationToolbarProps.textInputTextColor ?? "#000000"))
+                    .foregroundColor(Color.init(hex: toolbarProps?.textInputTextColor ?? configurationToolbarProps.textInputTextColor ?? "8F97A1"))
                     .accessibilityIdentifier("messageInputField")
                     Button(action:{
                         if !inputText.isEmpty {
