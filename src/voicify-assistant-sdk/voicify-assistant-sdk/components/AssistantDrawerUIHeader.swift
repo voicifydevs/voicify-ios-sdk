@@ -26,7 +26,7 @@ struct AssistantDrawerUIHeader: View {
     var body: some View {
         HStack{
             VStack{
-                KFImage(URL(string: headerProps?.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
+                KFImage(URL(string: headerProps?.assistantImage ?? configurationHeaderProps.assistantImage ?? "https://voicify-prod-files.s3.amazonaws.com/99a803b7-5b37-426c-a02e-63c8215c71eb/eb7d2538-a3dc-4304-b58c-06fdb34e9432/Mark-Color-3-.png"))
                     .resizable()
                     .renderingMode(!(headerProps?.assistantImageColor ?? configurationHeaderProps.assistantImageColor ?? "").isEmpty ? .template : .none)
                     .foregroundColor(Color.init(hex: headerProps?.assistantImageColor ?? configurationHeaderProps.assistantImageColor ?? ""))

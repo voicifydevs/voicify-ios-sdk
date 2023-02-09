@@ -124,12 +124,12 @@ struct SwiftUiContentView: View {
 //            )
 //            .ignoresSafeArea(.container)
             AssistantDrawerUI(
-              assistantSettings: AssistantSettingsProps(
-              configurationId:"3d65b1d8-b5e0-46c0-91fc-6a104906753b",
-              serverRootUrl: "https://dev-assistant.voicify.com",
-              appId: "bc9fa6bf-6cea-4fad-af12-d388b64dbdb9",
-              appKey: "ZjcyNmNkNjEtNmY5My00NTg3LWI5ZmQtMjJkNzE3NGMwYTI4"
-            )
+                assistantSettings: AssistantSettingsProps(
+                configurationId: "a0326b82-000e-4bbd-aa21-6f5b2e414b11",
+                serverRootUrl: "https://dev-assistant.voicify.com",
+                appId: "52dfe3a1-b44e-4ff1-ac02-04f0a139cd51",
+                appKey: "NmYxNjM3ZDAtYzdiOC00NGVjLWE1OGMtZGNmMjJlOWYxMDAx"
+                )
 //              ,
 //              toolbarProps: ToolbarProps(
 //                            backgroundColor: "#000000",

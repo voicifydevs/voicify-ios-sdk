@@ -13,7 +13,7 @@ public class CustomAssistantConfigurationService
         
     public func getCustomAssistantConfiguration(configurationId: String? = "", serverRootUrl: String, appId: String, appKey: String) async throws -> CustomAssistantConfigurationResponse{
         if let configId = configurationId {
-            guard let getConfigurationURL = URL(string: "\(serverRootUrl)/api/CustomAssistantConfiguration/\(configId)?applicationId=\(appId)&applicationSecret=\(appKey)") else { fatalError("Missing URL") }
+            guard let getConfigurationURL = URL(string: "\(serverRootUrl)/api/CustomAssistantConfiguration/\(configId)/Swift?applicationId=\(appId)&applicationSecret=\(appKey)") else { fatalError("Missing URL") }
             let customAssistantRequest = generateGetRequest(url: getConfigurationURL)
             let session = URLSession.shared
             let (data, response) = try await session.data(for: customAssistantRequest)
