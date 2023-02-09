@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class BodyProps: Decodable {
+public class BodyProps: Codable {
     public var backgroundColor: String? = nil
     public var assistantImageBorderColor: String? = nil
     public var assistantImageBorderWidth: Int? = nil

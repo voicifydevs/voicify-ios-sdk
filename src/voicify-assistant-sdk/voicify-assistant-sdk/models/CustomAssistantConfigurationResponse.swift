@@ -5,7 +5,7 @@
 //  Created by James McCarthy on 1/26/23.
 //
 
-public class CustomAssistantConfigurationResponse: Decodable
+public class CustomAssistantConfigurationResponse: Codable
 {
     public var id: String? = nil
     public var applicationId: String? = nil

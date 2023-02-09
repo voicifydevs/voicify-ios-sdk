@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-public class ToolbarProps: Decodable {
+public class ToolbarProps: Codable {
     public var drawerSpeechHeight: Float? = nil
     public var drawerTextHeight: Float? = nil
     public var backgroundColor: String? = nil

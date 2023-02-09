@@ -125,35 +125,11 @@ struct SwiftUiContentView: View {
 //            .ignoresSafeArea(.container)
             AssistantDrawerUI(
                 assistantSettings: AssistantSettingsProps(
-                configurationId: "a0326b82-000e-4bbd-aa21-6f5b2e414b11",
-                serverRootUrl: "https://dev-assistant.voicify.com",
-                appId: "52dfe3a1-b44e-4ff1-ac02-04f0a139cd51",
-                appKey: "NmYxNjM3ZDAtYzdiOC00NGVjLWE1OGMtZGNmMjJlOWYxMDAx"
+                    configurationId: "b8ee863c-6e8e-4aef-8e59-a10082430d50",
+                    serverRootUrl: "https://dev-assistant.voicify.com",
+                    appId: "c7681d20-b19e-407a-a475-320c681880e8",
+                    appKey: "MzA4ZTQ5MWQtMzQzNy00N2Q0LTg5OWEtMzQzMGYwMTk5Y2Ex"
                 )
-//              ,
-//              toolbarProps: ToolbarProps(
-//                            backgroundColor: "#000000",
-//                            speakActiveTitleColor: "#FFFFFF",
-//                            speakInactiveTitleColor: "#ffffff",
-//                            typeActiveTitleColor: "#FFFFFF",
-//                            typeInactiveTitleColor: "#ffffff",
-//                            partialSpeechResultTextColor: "#FFFFFF",
-//                            fullSpeechResultTextColor: "#FFFFFF",
-//                            speechResultBoxBackgroundColor: "#3E77A5",
-//                            textInputTextColor: "#FFFFFF",
-//                            helpTextFontColor: "#ffffff",
-//                            partialSpeechResultFontFamily: "Muli",
-//                            assistantStateFontFamily: "Muli",
-//                            helpTextFontFamily: "Muli",
-//                            speakFontFamily: "Muli",
-//                            typeFontFamily: "Muli",
-//                            textboxFontFamily: "Muli",
-//                            equalizerColor: "#ffffffb3,#ffffffb3",
-//                            micActiveColor: "#FFFFFF",
-//                            sendActiveColor: "#FFFFFF",
-//                            sendInactiveColor: "#FFFFFF",
-//                            assistantStateTextColor: "#ffffff"
-//                           )
             )
             .ignoresSafeArea(.container)
         }

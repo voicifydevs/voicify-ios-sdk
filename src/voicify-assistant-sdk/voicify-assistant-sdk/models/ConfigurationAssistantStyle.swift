@@ -5,7 +5,7 @@
 //  Created by James McCarthy on 1/26/23.
 //
 
-public class ConfigurationAssistantStyle: Decodable
+public class ConfigurationAssistantStyle: Codable
 {
     public var height: String? = nil
     public var width: String? = nil

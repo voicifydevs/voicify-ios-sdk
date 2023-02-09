@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class HeaderProps: Decodable
+public class HeaderProps: Codable
 {
     public var fontSize: Float? = nil
     public var backgroundColor: String? = nil

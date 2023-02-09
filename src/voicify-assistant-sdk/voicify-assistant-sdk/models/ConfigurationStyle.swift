@@ -5,7 +5,7 @@
 //  Created by James McCarthy on 1/26/23.
 //
 
-public class ConfigurationStyles: Decodable
+public class ConfigurationStyles: Codable
 {
     public var assistant: ConfigurationAssistantStyle
     public var body: BodyProps
