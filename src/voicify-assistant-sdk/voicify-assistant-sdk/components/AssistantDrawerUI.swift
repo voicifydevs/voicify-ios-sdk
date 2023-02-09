@@ -39,6 +39,7 @@ public struct AssistantDrawerUI: View {
     @State var isKeyboardActive = false
     @State var showNoInternetCloseButton = false
     @State var isLoading = true
+    @State private var isPortrait = false
     @StateObject var configurationSettingsProps = ConfigurationSettingsProps(serverRootUrl: "", appId: "", appKey: "")
     @StateObject var configurationHeaderProps = ConfigurationHeaderProps()
     @StateObject var configurationBodyProps = ConfigurationBodyProps()
@@ -60,7 +61,7 @@ public struct AssistantDrawerUI: View {
     public var body: some View {
         BottomSheet(
             isPresented: $assistantIsOpen,
-            height: isLoading ? 100 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolbarProps?.drawerTextHeight ?? 220) : CGFloat(toolbarProps?.drawerSpeechHeight ?? 330),
+            height: !isPortrait ? UIScreen.main.bounds.height : isLoading ? 100 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolbarProps?.drawerTextHeight ?? 220) : CGFloat(toolbarProps?.drawerSpeechHeight ?? 330),
             topBarHeight: 0 ,
             showTopIndicator: false)
         {
@@ -144,43 +145,20 @@ public struct AssistantDrawerUI: View {
                     initializeAssistantWithConfiguration(configuration: configuration, customAssistantConfigurationService: customAssistantConfigurationService)
                 }
                 catch {
-                    //The Call threw, try to grab configuration from User Defaults
-                    if let configurationData = UserDefaults.standard.object(forKey: "configuration") as? Data,
-                       let configuration = try? JSONDecoder().decode(CustomAssistantConfigurationResponse.self, from: configurationData) {
-                        initializeAssistantWithConfiguration(configuration: configuration, customAssistantConfigurationService: customAssistantConfigurationService)
+                    //The Call threw, try to grab configuration from User Defaults IF configurationId is specified
+                    if(assistantSettingsProps.configurationId != nil && assistantSettingsProps.configurationId?.isEmpty == false)
+                    {
+                        if let configurationData = UserDefaults.standard.object(forKey: "configuration") as? Data,
+                           let configuration = try? JSONDecoder().decode(CustomAssistantConfigurationResponse.self, from: configurationData) {
+                            initializeAssistantWithConfiguration(configuration: configuration, customAssistantConfigurationService: customAssistantConfigurationService)
+                        }
+                        else{
+                            initializeAssistantWithoutConfiguration()
+                        }
                     }
+                    
                     else{
-                        voicifySTT = VoicifySTTProvider()
-                        voicifyTTS = VoicifyTTSProivder(
-                            settings: VoicifyTextToSpeechSettings(
-                                appId: assistantSettingsProps.appId,
-                                appKey: assistantSettingsProps.appKey,
-                                voice: assistantSettingsProps.textToSpeechVoice ?? "",
-                                serverRootUrl: assistantSettingsProps.serverRootUrl,
-                                provider: assistantSettingsProps.textToSpeechProvider ?? "Google"
-                            )
-                        )
-                        voicifyAssistant = VoicifyAssistant(
-                            speechToTextProvider: voicifySTT,
-                            textToSpeechProvider: voicifyTTS,
-                            settings: VoicifyAssistantSettings(
-                                serverRootUrl: assistantSettingsProps.serverRootUrl,
-                                appId: assistantSettingsProps.appId,
-                                appKey: assistantSettingsProps.appKey,
-                                locale: assistantSettingsProps.locale ?? "en-US",
-                                channel: assistantSettingsProps.channel ?? "iOS",
-                                device: assistantSettingsProps.device ?? "Mobile",
-                                autoRunConversation: assistantSettingsProps.autoRunConversation ?? false,
-                                initializeWithWelcomeMessage: assistantSettingsProps.initializeWithWelcomeMessage ?? false,
-                                initializeWithText: assistantSettingsProps.initializeWithText ?? false,
-                                useVoiceInput: assistantSettingsProps.useVoiceInput ?? true,
-                                useDraftContent: assistantSettingsProps.useDraftContent ?? false,
-                                useOutputSpeech: assistantSettingsProps.useOutputSpeech ?? true,
-                                noTracking: assistantSettingsProps.noTracking ?? false
-                            )
-                        )
-                        voicifyAssistant?.initializeAndStart()
-                        isLoading = false
+                        initializeAssistantWithoutConfiguration()
                     }
                 }
                 
@@ -230,6 +208,44 @@ public struct AssistantDrawerUI: View {
         .onReceive(closeAssistantNotification){data in
             self.assistantIsOpen = false
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+            guard let scene = UIApplication.shared.windows.first?.windowScene else { return }
+            self.isPortrait = scene.interfaceOrientation.isPortrait
+            print(scene.interfaceOrientation.isPortrait)
+        }
+    }
+    private func initializeAssistantWithoutConfiguration(){
+        voicifySTT = VoicifySTTProvider()
+        voicifyTTS = VoicifyTTSProivder(
+            settings: VoicifyTextToSpeechSettings(
+                appId: assistantSettingsProps.appId,
+                appKey: assistantSettingsProps.appKey,
+                voice: assistantSettingsProps.textToSpeechVoice ?? "",
+                serverRootUrl: assistantSettingsProps.serverRootUrl,
+                provider: assistantSettingsProps.textToSpeechProvider ?? "Google"
+            )
+        )
+        voicifyAssistant = VoicifyAssistant(
+            speechToTextProvider: voicifySTT,
+            textToSpeechProvider: voicifyTTS,
+            settings: VoicifyAssistantSettings(
+                serverRootUrl: assistantSettingsProps.serverRootUrl,
+                appId: assistantSettingsProps.appId,
+                appKey: assistantSettingsProps.appKey,
+                locale: assistantSettingsProps.locale ?? "en-US",
+                channel: assistantSettingsProps.channel ?? "iOS",
+                device: assistantSettingsProps.device ?? "Mobile",
+                autoRunConversation: assistantSettingsProps.autoRunConversation ?? false,
+                initializeWithWelcomeMessage: assistantSettingsProps.initializeWithWelcomeMessage ?? false,
+                initializeWithText: assistantSettingsProps.initializeWithText ?? false,
+                useVoiceInput: assistantSettingsProps.useVoiceInput ?? true,
+                useDraftContent: assistantSettingsProps.useDraftContent ?? false,
+                useOutputSpeech: assistantSettingsProps.useOutputSpeech ?? true,
+                noTracking: assistantSettingsProps.noTracking ?? false
+            )
+        )
+        voicifyAssistant?.initializeAndStart()
+        isLoading = false
     }
     private func initializeAssistantWithConfiguration(configuration: CustomAssistantConfigurationResponse, customAssistantConfigurationService: CustomAssistantConfigurationService) {
         customAssistantConfigurationService.mapSettingsProps(configuration: configuration,configurationSettingsProps: configurationSettingsProps, assistantSettingsProps: assistantSettingsProps)
