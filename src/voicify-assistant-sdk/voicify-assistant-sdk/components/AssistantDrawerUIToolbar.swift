@@ -134,7 +134,7 @@ struct AssistantDrawerUIToolbar: View {
                 Line()
                     .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
                     .padding(.top, (isFullScreen || isUsingSpeech) ? 15 : 0)
-                    .foregroundColor(Color.init(hex: "#8F97A1"))
+                    .foregroundColor(Color.init(hex: "cbccd2"))
                     .fixedSize(horizontal: false, vertical: true)
             }
             HStack{
@@ -219,8 +219,8 @@ struct AssistantDrawerUIToolbar: View {
                     }
                     .font(.custom(toolbarProps?.textboxFontFamily ?? configurationToolbarProps.textboxFontFamily ?? "SF Pro" , size: CGFloat(toolbarProps?.textboxFontSize ?? configurationToolbarProps.textboxFontSize ?? 16)))
                     .padding(.leading, 10)
-                    .overlay(VStack{Divider().background(Color(hex: isUsingSpeech ? toolbarProps?.textInputLineColor ?? configurationToolbarProps.textInputTextColor ?? "#000000" : toolbarProps?.textInputActiveLineColor ?? configurationToolbarProps.textInputActiveLineColor ?? "#000000")).offset(x: 0, y: 15)}.padding(.leading, 10))
-                    .accentColor(Color.init(hex: toolbarProps?.textInputCursorColor ?? configurationToolbarProps.textInputCursorColor ?? "#000000"))
+                    .overlay(VStack{Divider().background(Color(hex: isUsingSpeech ? toolbarProps?.textInputLineColor ?? configurationToolbarProps.textInputTextColor ?? "#CCCCCC" : toolbarProps?.textInputActiveLineColor ?? configurationToolbarProps.textInputLineColor ?? "#CCCCCC")).offset(x: 0, y: 15)}.padding(.leading, 10))
+                    .accentColor(Color.init(hex: toolbarProps?.textInputCursorColor ?? configurationToolbarProps.textInputCursorColor ?? "#A3A3A3"))
                     .foregroundColor(Color.init(hex: toolbarProps?.textInputTextColor ?? configurationToolbarProps.textInputTextColor ?? "#000000"))
                     .accessibilityIdentifier("messageInputField")
                     Button(action:{

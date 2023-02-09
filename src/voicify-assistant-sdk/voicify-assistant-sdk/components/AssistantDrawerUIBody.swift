@@ -52,7 +52,7 @@ struct AssistantDrawerUIBody: View {
                                             .cornerRadius(CGFloat(bodyProps?.assistantImageBorderRadius ??  configurationBodyProps.assistantImageBorderRadius ?? 20))
                                             .padding(.all, CGFloat(bodyProps?.assistantImagePadding ?? 0))
                                             .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.assistantImageBorderRadius ??  configurationBodyProps.assistantImageBorderRadius ?? 20)).stroke(Color.init(hex: bodyProps?.assistantImageBorderColor ??  configurationBodyProps.assistantImageBorderColor ?? "#00000000")!, lineWidth: CGFloat(bodyProps?.assistantImageBorderWidth ??  configurationBodyProps.assistantImageBorderWidth ?? 0)))
-                                            .frame(width: CGFloat(bodyProps?.assistantImageWidth ?? configurationBodyProps.assistantImageWidth ?? 35), height: CGFloat(bodyProps?.assistantImageHeight ??  configurationBodyProps.assistantImageHeight ?? 35))
+                                            .frame(width: CGFloat(bodyProps?.assistantImageWidth ?? configurationBodyProps.assistantImageWidth ?? 30), height: CGFloat(bodyProps?.assistantImageHeight ??  configurationBodyProps.assistantImageHeight ?? 30))
                                             .background(Color.init(hex: bodyProps?.assistantImageBackgroundColor ??  configurationBodyProps.assistantImageBackgroundColor ?? "#00000000"))
                                             .cornerRadius(CGFloat(bodyProps?.assistantImageBorderRadius ??  configurationBodyProps.assistantImageBorderRadius ?? 20))
                                         Spacer()
@@ -167,8 +167,8 @@ struct AssistantDrawerUIBody: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .border(width: CGFloat(bodyProps?.borderTopWidth ?? configurationBodyProps.borderTopWidth ?? 1), edges: [.top], color: Color.init(hex: bodyProps?.borderTopColor ??  configurationBodyProps.borderTopColor ?? "#8F97A1")!)
-        .border(width: CGFloat(bodyProps?.borderBottomWidth ?? configurationBodyProps.borderBottomWidth ?? 1), edges: [.bottom], color: Color.init(hex: bodyProps?.borderBottomColor ?? configurationBodyProps.borderBottomColor ?? "#8F97A1")!)
+        .border(width: CGFloat(bodyProps?.borderTopWidth ?? configurationBodyProps.borderTopWidth ?? 1.5), edges: [.top], color: Color.init(hex: bodyProps?.borderTopColor ??  configurationBodyProps.borderTopColor ?? "cbccd2")!)
+        .border(width: CGFloat(bodyProps?.borderBottomWidth ?? configurationBodyProps.borderBottomWidth ?? 1.5), edges: [.bottom], color: Color.init(hex: bodyProps?.borderBottomColor ?? configurationBodyProps.borderBottomColor ?? "cbccd2")!)
         .background(Color(hex: !(bodyProps?.backgroundColor ?? "").isEmpty ? bodyProps?.backgroundColor ?? "" :
                             !(configurationBodyProps.backgroundColor ?? "").isEmpty ? configurationBodyProps.backgroundColor ?? "" : !(assistantSettings?.backgroundColor ?? "").isEmpty ? assistantSettings?.backgroundColor ?? ""
                           :!(configurationSettingsProps.backgroundColor ?? "").isEmpty ? configurationSettingsProps.backgroundColor ?? "" : "#F4F4F6"))

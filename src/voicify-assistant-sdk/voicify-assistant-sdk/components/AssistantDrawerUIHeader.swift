@@ -30,7 +30,7 @@ struct AssistantDrawerUIHeader: View {
                     .resizable()
                     .renderingMode(!(headerProps?.assistantImageColor ?? configurationHeaderProps.assistantImageColor ?? "").isEmpty ? .template : .none)
                     .foregroundColor(Color.init(hex: headerProps?.assistantImageColor ?? configurationHeaderProps.assistantImageColor ?? ""))
-                    .frame(width: CGFloat(headerProps?.assistantImageWidth ?? configurationHeaderProps.assistantImageWidth ?? 40), height: CGFloat(headerProps?.assistantImageHeight ?? configurationHeaderProps.assistantImageHeight ?? 40))
+                    .frame(width: CGFloat(headerProps?.assistantImageWidth ?? configurationHeaderProps.assistantImageWidth ?? 35), height: CGFloat(headerProps?.assistantImageHeight ?? configurationHeaderProps.assistantImageHeight ?? 35))
                     .cornerRadius(CGFloat(100))
                     .fixedSize()
             }
