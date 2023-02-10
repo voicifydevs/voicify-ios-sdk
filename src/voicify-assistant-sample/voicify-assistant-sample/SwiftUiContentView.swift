@@ -60,6 +60,17 @@ struct SwiftUiContentView: View {
                     )
                 }
             }
+            //config needed for tests
+                    AssistantDrawerUI(
+                        assistantSettings: AssistantSettingsProps(
+                            serverRootUrl: "https://assistant.voicify.com",
+                            appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
+                            appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
+                            effects: ["Play"],
+                            onEffect: onEffect
+                        )
+                    )
+                    .ignoresSafeArea((.container))
 //            AssistantDrawerUI(
 //             assistantSettings: AssistantSettingsProps(
 //              serverRootUrl: "https://dev-assistant.voicify.com",
@@ -123,16 +134,15 @@ struct SwiftUiContentView: View {
 //             )
 //            )
 //            .ignoresSafeArea(.container)
-            AssistantDrawerUI(
-                assistantSettings: AssistantSettingsProps(
+//            AssistantDrawerUI(
+//                assistantSettings: AssistantSettingsProps(
 //                    configurationId: "b8ee863c-6e8e-4aef-8e59-a10082430d50",
-                    serverRootUrl: "https://dev-assistant.voicify.com",
-                    appId: "c7681d20-b19e-407a-a475-320c681880e8",
-                    appKey: "MzA4ZTQ5MWQtMzQzNy00N2Q0LTg5OWEtMzQzMGYwMTk5Y2Ex",
-                    initializeWithText: false
-                )
-            )
-            .ignoresSafeArea(.container)
+//                    serverRootUrl: "https://dev-assistant.voicify.com",
+//                    appId: "c7681d20-b19e-407a-a475-320c681880e8",
+//                    appKey: "MzA4ZTQ5MWQtMzQzNy00N2Q0LTg5OWEtMzQzMGYwMTk5Y2Ex"
+//                )
+//            )
+//            .ignoresSafeArea(.container)
         }
     }
 }

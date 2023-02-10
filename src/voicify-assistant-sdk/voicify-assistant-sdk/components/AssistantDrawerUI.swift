@@ -39,7 +39,7 @@ public struct AssistantDrawerUI: View {
     @State var isKeyboardActive = false
     @State var showNoInternetCloseButton = false
     @State var isLoading = true
-    @State private var isPortrait = false
+    @State private var isLandscape = false
     @StateObject var configurationSettingsProps = ConfigurationSettingsProps(serverRootUrl: "", appId: "", appKey: "")
     @StateObject var configurationHeaderProps = ConfigurationHeaderProps()
     @StateObject var configurationBodyProps = ConfigurationBodyProps()
@@ -61,7 +61,7 @@ public struct AssistantDrawerUI: View {
     public var body: some View {
         BottomSheet(
             isPresented: $assistantIsOpen,
-            height: !isPortrait ? UIScreen.main.bounds.height : isLoading ? 100 : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolbarProps?.drawerTextHeight ?? 220) : CGFloat(toolbarProps?.drawerSpeechHeight ?? 330),
+            height: (isLandscape && isFullScreen) ? UIScreen.main.bounds.height : (isLandscape && isUsingSpeech && !isFullScreen) ? CGFloat(330) : (isLandscape && !isFullScreen && !isUsingSpeech) ? CGFloat(180) : isLoading ? CGFloat(100) : isFullScreen ? UIScreen.main.bounds.height : !isUsingSpeech ? CGFloat(toolbarProps?.drawerTextHeight ?? 220) : CGFloat(toolbarProps?.drawerSpeechHeight ?? 330),
             topBarHeight: 0 ,
             showTopIndicator: false)
         {
@@ -125,6 +125,7 @@ public struct AssistantDrawerUI: View {
                     }
                 }
             }
+            .padding(.horizontal, isLandscape ? 25 : 0)
             .background(
                 !assistantBackgroundGradientColors.isEmpty ?
                  LinearGradient(gradient: Gradient(colors: assistantBackgroundGradientColors), startPoint: .top, endPoint: .bottom)
@@ -210,7 +211,7 @@ public struct AssistantDrawerUI: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
             guard let scene = UIApplication.shared.windows.first?.windowScene else { return }
-            self.isPortrait = scene.interfaceOrientation.isPortrait
+            self.isLandscape = !scene.interfaceOrientation.isPortrait
             print(scene.interfaceOrientation.isPortrait)
         }
     }
