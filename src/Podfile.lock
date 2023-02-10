@@ -1,0 +1,21 @@
+PODS:
+  - BottomSheet (1.0.6)
+  - Kingfisher (7.4.1)
+
+DEPENDENCIES:
+  - BottomSheet (~> 1.0.6)
+  - Kingfisher (~> 7.4.1)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Kingfisher
+  https://github.com/voicifydevs/voicify-ios-sdk-pod-specs.git:
+    - BottomSheet
+
+SPEC CHECKSUMS:
+  BottomSheet: 0825555fbd373bd6e649aaa5db3ef24133444777
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+
+PODFILE CHECKSUM: 64810d0a1485975a3261fe14d695ea930b24e9a6
+
+COCOAPODS: 1.11.3

@@ -1,0 +1,692 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C962F313282AB14D00990915 /* voicify_assistant_sampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F312282AB14D00990915 /* voicify_assistant_sampleApp.swift */; };
+		C962F315282AB14D00990915 /* SwiftUiContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F314282AB14D00990915 /* SwiftUiContentView.swift */; };
+		C962F317282AB14F00990915 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C962F316282AB14F00990915 /* Assets.xcassets */; };
+		C962F31A282AB14F00990915 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C962F319282AB14F00990915 /* Preview Assets.xcassets */; };
+		C962F324282AB14F00990915 /* voicify_assistant_sampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F323282AB14F00990915 /* voicify_assistant_sampleTests.swift */; };
+		C962F32E282AB14F00990915 /* voicify_assistant_sampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F32D282AB14F00990915 /* voicify_assistant_sampleUITests.swift */; };
+		C962F330282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C962F32F282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift */; };
+		FEEAEDCE29552C43003AE9F2 /* voicify_assistant_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE82DFC729072BD6000275C2 /* voicify_assistant_sdk.framework */; };
+		FEEAEDCF29552C43003AE9F2 /* voicify_assistant_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE82DFC729072BD6000275C2 /* voicify_assistant_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C962F320282AB14F00990915 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C962F307282AB14D00990915 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C962F30E282AB14D00990915;
+			remoteInfo = "voicify-assistant-sample";
+		};
+		C962F32A282AB14F00990915 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C962F307282AB14D00990915 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C962F30E282AB14D00990915;
+			remoteInfo = "voicify-assistant-sample";
+		};
+		FE82DFC629072BD6000275C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C962F2EC282AB12800990915;
+			remoteInfo = "voicify-assistant-sdk";
+		};
+		FE82DFC829072BD6000275C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C962F2F6282AB12800990915;
+			remoteInfo = "voicify-assistant-sdkTests";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FEEAEDD029552C43003AE9F2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FEEAEDCF29552C43003AE9F2 /* voicify_assistant_sdk.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C962F30F282AB14D00990915 /* voicify-assistant-sample-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "voicify-assistant-sample-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C962F312282AB14D00990915 /* voicify_assistant_sampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleApp.swift; sourceTree = "<group>"; };
+		C962F314282AB14D00990915 /* SwiftUiContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUiContentView.swift; sourceTree = "<group>"; };
+		C962F316282AB14F00990915 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C962F319282AB14F00990915 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C962F31F282AB14F00990915 /* voicify-assistant-sample-swiftuiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sample-swiftuiTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C962F323282AB14F00990915 /* voicify_assistant_sampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleTests.swift; sourceTree = "<group>"; };
+		C962F329282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "voicify-assistant-sample-swiftuiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C962F32D282AB14F00990915 /* voicify_assistant_sampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleUITests.swift; sourceTree = "<group>"; };
+		C962F32F282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicify_assistant_sampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FE1F4E27290CE8C900D1B447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FE5558C72953D7FB001224D6 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE5558CC2953D805001224D6 /* BottomSheet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BottomSheet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE5558D22953D854001224D6 /* Pods_voicify_assistant_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE5558DB2953D8C2001224D6 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE5558E22953DA31001224D6 /* Pods_voicify_assistant_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "voicify-assistant-sdk.xcodeproj"; path = "../../voicify-assistant-sdk/voicify-assistant-sdk.xcodeproj"; sourceTree = "<group>"; };
+		FECE1ACF2955285B002F157E /* voicify_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = voicify_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FECE1AD829552903002F157E /* voicify_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = voicify_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FECE1ADC29552934002F157E /* Pods_voicify_assistant_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_voicify_assistant_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FECE1AE22955295A002F157E /* voicify_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = voicify_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEEE440F2953DCF7003EFD3D /* libBottomSheet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBottomSheet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C962F30C282AB14D00990915 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEEAEDCE29552C43003AE9F2 /* voicify_assistant_sdk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C962F31C282AB14F00990915 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C962F326282AB14F00990915 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C962F306282AB14D00990915 = {
+			isa = PBXGroup;
+			children = (
+				C962F311282AB14D00990915 /* voicify-assistant-sample */,
+				C962F322282AB14F00990915 /* voicify-assistant-sampleTests */,
+				C962F32C282AB14F00990915 /* voicify-assistant-sampleUITests */,
+				C962F310282AB14D00990915 /* Products */,
+				FE82DFCA29072C03000275C2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C962F310282AB14D00990915 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C962F30F282AB14D00990915 /* voicify-assistant-sample-swiftui.app */,
+				C962F31F282AB14F00990915 /* voicify-assistant-sample-swiftuiTests.xctest */,
+				C962F329282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C962F311282AB14D00990915 /* voicify-assistant-sample */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F4E27290CE8C900D1B447 /* Info.plist */,
+				C962F312282AB14D00990915 /* voicify_assistant_sampleApp.swift */,
+				FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */,
+				C962F314282AB14D00990915 /* SwiftUiContentView.swift */,
+				C962F316282AB14F00990915 /* Assets.xcassets */,
+				C962F318282AB14F00990915 /* Preview Content */,
+			);
+			path = "voicify-assistant-sample";
+			sourceTree = "<group>";
+		};
+		C962F318282AB14F00990915 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C962F319282AB14F00990915 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C962F322282AB14F00990915 /* voicify-assistant-sampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				C962F323282AB14F00990915 /* voicify_assistant_sampleTests.swift */,
+			);
+			path = "voicify-assistant-sampleTests";
+			sourceTree = "<group>";
+		};
+		C962F32C282AB14F00990915 /* voicify-assistant-sampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C962F32D282AB14F00990915 /* voicify_assistant_sampleUITests.swift */,
+				C962F32F282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift */,
+			);
+			path = "voicify-assistant-sampleUITests";
+			sourceTree = "<group>";
+		};
+		FE82DFC229072BD6000275C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE82DFC729072BD6000275C2 /* voicify_assistant_sdk.framework */,
+				FE82DFC929072BD6000275C2 /* voicify-assistant-sdkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE82DFCA29072C03000275C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FECE1AE22955295A002F157E /* voicify_ios_sdk.framework */,
+				FECE1ADC29552934002F157E /* Pods_voicify_assistant_sdk.framework */,
+				FECE1AD829552903002F157E /* voicify_ios_sdk.framework */,
+				FECE1ACF2955285B002F157E /* voicify_ios_sdk.framework */,
+				FEEE440F2953DCF7003EFD3D /* libBottomSheet.a */,
+				FE5558E22953DA31001224D6 /* Pods_voicify_assistant_sdk.framework */,
+				FE5558DB2953D8C2001224D6 /* Kingfisher.framework */,
+				FE5558D22953D854001224D6 /* Pods_voicify_assistant_sdk.framework */,
+				FE5558CC2953D805001224D6 /* BottomSheet.framework */,
+				FE5558C72953D7FB001224D6 /* Kingfisher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C962F30E282AB14D00990915 /* voicify-assistant-sample-swiftui */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C962F333282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftui" */;
+			buildPhases = (
+				C962F30B282AB14D00990915 /* Sources */,
+				C962F30C282AB14D00990915 /* Frameworks */,
+				C962F30D282AB14D00990915 /* Resources */,
+				FEEAEDD029552C43003AE9F2 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "voicify-assistant-sample-swiftui";
+			productName = "voicify-assistant-sample";
+			productReference = C962F30F282AB14D00990915 /* voicify-assistant-sample-swiftui.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C962F31E282AB14F00990915 /* voicify-assistant-sample-swiftuiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C962F336282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftuiTests" */;
+			buildPhases = (
+				C962F31B282AB14F00990915 /* Sources */,
+				C962F31C282AB14F00990915 /* Frameworks */,
+				C962F31D282AB14F00990915 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C962F321282AB14F00990915 /* PBXTargetDependency */,
+			);
+			name = "voicify-assistant-sample-swiftuiTests";
+			productName = "voicify-assistant-sampleTests";
+			productReference = C962F31F282AB14F00990915 /* voicify-assistant-sample-swiftuiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C962F328282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C962F339282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftuiUITests" */;
+			buildPhases = (
+				C962F325282AB14F00990915 /* Sources */,
+				C962F326282AB14F00990915 /* Frameworks */,
+				C962F327282AB14F00990915 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C962F32B282AB14F00990915 /* PBXTargetDependency */,
+			);
+			name = "voicify-assistant-sample-swiftuiUITests";
+			productName = "voicify-assistant-sampleUITests";
+			productReference = C962F329282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C962F307282AB14D00990915 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					C962F30E282AB14D00990915 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					C962F31E282AB14F00990915 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = C962F30E282AB14D00990915;
+					};
+					C962F328282AB14F00990915 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = C962F30E282AB14D00990915;
+					};
+				};
+			};
+			buildConfigurationList = C962F30A282AB14D00990915 /* Build configuration list for PBXProject "voicify-assistant-sample-swiftui" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C962F306282AB14D00990915;
+			productRefGroup = C962F310282AB14D00990915 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FE82DFC229072BD6000275C2 /* Products */;
+					ProjectRef = FE82DFC129072BD6000275C2 /* voicify-assistant-sdk.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				C962F30E282AB14D00990915 /* voicify-assistant-sample-swiftui */,
+				C962F31E282AB14F00990915 /* voicify-assistant-sample-swiftuiTests */,
+				C962F328282AB14F00990915 /* voicify-assistant-sample-swiftuiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FE82DFC729072BD6000275C2 /* voicify_assistant_sdk.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = voicify_assistant_sdk.framework;
+			remoteRef = FE82DFC629072BD6000275C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FE82DFC929072BD6000275C2 /* voicify-assistant-sdkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "voicify-assistant-sdkTests.xctest";
+			remoteRef = FE82DFC829072BD6000275C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C962F30D282AB14D00990915 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C962F31A282AB14F00990915 /* Preview Assets.xcassets in Resources */,
+				C962F317282AB14F00990915 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C962F31D282AB14F00990915 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C962F327282AB14F00990915 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C962F30B282AB14D00990915 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C962F315282AB14D00990915 /* SwiftUiContentView.swift in Sources */,
+				C962F313282AB14D00990915 /* voicify_assistant_sampleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C962F31B282AB14F00990915 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C962F324282AB14F00990915 /* voicify_assistant_sampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C962F325282AB14F00990915 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C962F32E282AB14F00990915 /* voicify_assistant_sampleUITests.swift in Sources */,
+				C962F330282AB14F00990915 /* voicify_assistant_sampleUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C962F321282AB14F00990915 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C962F30E282AB14D00990915 /* voicify-assistant-sample-swiftui */;
+			targetProxy = C962F320282AB14F00990915 /* PBXContainerItemProxy */;
+		};
+		C962F32B282AB14F00990915 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C962F30E282AB14D00990915 /* voicify-assistant-sample-swiftui */;
+			targetProxy = C962F32A282AB14F00990915 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C962F331282AB14F00990915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = R6Q36R4DVT;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C962F332282AB14F00990915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = R6Q36R4DVT;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C962F334282AB14F00990915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"voicify-assistant-sample/Preview Content\"";
+				DEVELOPMENT_TEAM = R6Q36R4DVT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "voicify-assistant-sample/Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to capture your input for the assistant";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "You can talk to the voicify assistant";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voicify.voicify-assistant-sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C962F335282AB14F00990915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"voicify-assistant-sample/Preview Content\"";
+				DEVELOPMENT_TEAM = R6Q36R4DVT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "voicify-assistant-sample/Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to capture your input for the assistant";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "You can talk to the voicify assistant";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voicify.voicify-assistant-sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C962F337282AB14F00990915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R6Q36R4DVT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voicify.voicify-assistant-sampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/voicify-assistant-sample-swiftui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/voicify-assistant-sample-swiftui";
+			};
+			name = Debug;
+		};
+		C962F338282AB14F00990915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R6Q36R4DVT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voicify.voicify-assistant-sampleTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/voicify-assistant-sample-swiftui.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/voicify-assistant-sample-swiftui";
+			};
+			name = Release;
+		};
+		C962F33A282AB14F00990915 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R6Q36R4DVT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voicify.voicify-assistant-sampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "voicify-assistant-sample-swiftui";
+			};
+			name = Debug;
+		};
+		C962F33B282AB14F00990915 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R6Q36R4DVT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voicify.voicify-assistant-sampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "voicify-assistant-sample-swiftui";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C962F30A282AB14D00990915 /* Build configuration list for PBXProject "voicify-assistant-sample-swiftui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C962F331282AB14F00990915 /* Debug */,
+				C962F332282AB14F00990915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C962F333282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C962F334282AB14F00990915 /* Debug */,
+				C962F335282AB14F00990915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C962F336282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftuiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C962F337282AB14F00990915 /* Debug */,
+				C962F338282AB14F00990915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C962F339282AB14F00990915 /* Build configuration list for PBXNativeTarget "voicify-assistant-sample-swiftuiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C962F33A282AB14F00990915 /* Debug */,
+				C962F33B282AB14F00990915 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C962F307282AB14D00990915 /* Project object */;
+}
