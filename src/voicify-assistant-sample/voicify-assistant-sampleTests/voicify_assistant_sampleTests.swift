@@ -13,7 +13,10 @@ class voicify_assistant_tests: XCTestCase {
     public var voiceAssistant: VoicifyAssistant? = nil
     override func setUpWithError() throws {
         super.setUp()
-        voiceAssistant = VoicifyAssistant(speechToTextProvider: nil, textToSpeechProvider: nil, settings: VoicifyAssistantSettings(serverRootUrl: "https://assistant.voicify.com", appId: "99a803b7-5b37-426c-a02e-63c8215c71eb", appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3", locale: "en-US", channel: "channel", device: "device", autoRunConversation: true, initializeWithWelcomeMessage: false, initializeWithText: false, useVoiceInput: true, useDraftContent: false, useOutputSpeech: true, noTracking: false))
+        let serverRoot = "https://assistant.voicify.com"
+        let appId = "99a803b7-5b37-426c-a02e-63c8215c71eb"
+        let appKey = "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3"
+        voiceAssistant = VoicifyAssistant(speechToTextProvider: nil, textToSpeechProvider: nil, settings: VoicifyAssistantSettings(serverRootUrl: serverRoot, appId: appId, appKey: appKey, locale: "en-US", channel: "channel", device: "device", autoRunConversation: true, initializeWithWelcomeMessage: false, initializeWithText: false, useVoiceInput: true, useDraftContent: false, useOutputSpeech: true, noTracking: false))
     }
 
     override func tearDownWithError() throws {
