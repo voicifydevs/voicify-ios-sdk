@@ -279,7 +279,9 @@ The following settings can be used during initialization to change the behavior 
 
 This SDK supports both "static" and "dynamic" Custom Assistant configuration code exports from the Voicify CMS Deployments page. Static configurations require users to manually update the properties passed to the AssistantDrawerUI every time a change is made to the assistant configuration inside Voicify. Dynamic onfigurations pasted into your Assistant Drawer initialization use a configurationId property to automatically sync with configuration updates inside Voicify.
 
-What does this translate to? In short, static configurations require manual prop updates, allowing for more security, whereas dynamic configurations are updating real-time, allowing for speedier deployments.
+Dynamic: This type of configuration is only available to assistants created inside the Voicify CMS. From the CMS, users are prompted to paste a shortened assistant settings object into their Assistant Drawer UI. This includes a configurationId property that enables automatic assistant deployments when updates made in the Voicify platform are saved.
+
+Static: This type of configuration continues to be available to SDK users, requiring them to manually update Assistant Drawer UI properties every time a change is made to the assistant configuration inside Voicify.
 
 You can read more about static and dynamic Custom Assistant configuration deployments [here](support.voicify.com/en/knowledge/how-do-i-configure-my-custom-assistant-to-dynamically-update).
 
