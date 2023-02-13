@@ -66,11 +66,15 @@ struct SwiftUiContentView: View {
                     serverRootUrl: "https://assistant.voicify.com",
                     appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
                     appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
+                    autoRunConversation: true,
+                    initializeWithWelcomeMessage: true,
+                    initializeWithText: false,
                     effects: ["Play"],
                     onEffect: onEffect
                 )
             )
-            .ignoresSafeArea((.container))
+            .ignoresSafeArea(.container)
+            
         }
     }
 }
