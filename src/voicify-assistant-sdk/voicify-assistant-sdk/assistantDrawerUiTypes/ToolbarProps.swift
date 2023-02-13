@@ -20,13 +20,9 @@ public class ToolbarProps: Codable {
     public var micImageWidth: Int? = nil
     public var sendImageWidth: Int? = nil
     public var sendImageHeight: Int? = nil
-    public var micActiveImage: String? = nil
-    public var micInactiveImage: String? = nil
     public var micInactiveColor: String? = nil
     public var micActiveHighlightColor: String? = nil
     public var micInactiveHighlightColor: String? = nil
-    public var sendActiveImage: String? = nil
-    public var sendInactiveImage: String? = nil
     public var speakFontSize: Float? = nil
     public var speakActiveTitleColor: String? = nil
     public var speakInactiveTitleColor: String? = nil
@@ -64,7 +60,11 @@ public class ToolbarProps: Codable {
     public var sendActiveColor: String? = nil
     public var sendInactiveColor: String? = nil
     public var assistantStateTextColor: String? = nil
-    public init(drawerSpeechHeight: Float? = nil, drawerTextHeight: Float? = nil, backgroundColor: String? = nil, micBorderRadius: Float? = nil, micImagePadding: Float? = nil, micImageBorderWidth: Int? = nil, micImageBorderColor: String? = nil, micImageHeight: Int? = nil, micImageWidth: Int? = nil, micActiveImage: String? = nil, sendImageWidth: Int? = nil, sendImageHeight: Int? = nil, micInactiveImage: String? = nil, micInactiveColor: String? = nil, micActiveHighlightColor: String? = nil, micInactiveHighlightColor: String? = nil, sendActiveImage: String? = nil, sendInactiveImage: String? = nil, speakFontSize: Float? = nil, speakActiveTitleColor: String? = nil, speakInactiveTitleColor: String? = nil, typeFontSize: Float? = nil, typeActiveTitleColor: String? = nil, typeInactiveTitleColor: String? = nil, textboxFontSize: Float? = nil, textboxInactiveHighlightColor: String? = nil, partialSpeechResultTextColor: String? = nil, fullSpeechResultTextColor: String? = nil, speechResultBoxBackgroundColor: String? = nil, textInputCursorColor: String? = nil, textInputTextColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, placeholder: String? = nil, helpText: String? = nil, helpTextFontSize: Float? = nil, helpTextFontColor: String? = nil, assistantStateFontSize: Float? = nil, partialSpeechResultFontFamily: String? = nil, assistantStateFontFamily: String? = nil, helpTextFontFamily: String? = nil, speakFontFamily: String? = nil, typeFontFamily: String? = nil, textboxFontFamily: String? = nil, partialSpeechResultFonySize: Float? = nil, textInputActiveLineColor: String? = nil, textInputLineColor: String? = nil, textboxActiveHighlightColor: String? = nil, equalizerColor: String? = nil, micActiveColor: String? = nil, sendActiveColor: String? = nil, sendInactiveColor: String? = nil, assistantStateTextColor: String? = nil) {
+    public var micActiveImage: String? = nil
+    public var micInactiveImage: String? = nil
+    public var sendActiveImage: String? = nil
+    public var sendInactiveImage: String? = nil
+    public init(drawerSpeechHeight: Float? = nil, drawerTextHeight: Float? = nil, backgroundColor: String? = nil, micBorderRadius: Float? = nil, micImagePadding: Float? = nil, micImageBorderWidth: Int? = nil, micImageBorderColor: String? = nil, micImageHeight: Int? = nil, micImageWidth: Int? = nil, sendImageWidth: Int? = nil, sendImageHeight: Int? = nil, micInactiveColor: String? = nil, micActiveHighlightColor: String? = nil, micInactiveHighlightColor: String? = nil, speakFontSize: Float? = nil, speakActiveTitleColor: String? = nil, speakInactiveTitleColor: String? = nil, typeFontSize: Float? = nil, typeActiveTitleColor: String? = nil, typeInactiveTitleColor: String? = nil, textboxFontSize: Float? = nil, textboxInactiveHighlightColor: String? = nil, partialSpeechResultTextColor: String? = nil, fullSpeechResultTextColor: String? = nil, speechResultBoxBackgroundColor: String? = nil, textInputCursorColor: String? = nil, textInputTextColor: String? = nil, paddingLeft: Int? = nil, paddingRight: Int? = nil, paddingTop: Int? = nil, paddingBottom: Int? = nil, placeholder: String? = nil, helpText: String? = nil, helpTextFontSize: Float? = nil, helpTextFontColor: String? = nil, assistantStateFontSize: Float? = nil, partialSpeechResultFontFamily: String? = nil, assistantStateFontFamily: String? = nil, helpTextFontFamily: String? = nil, speakFontFamily: String? = nil, typeFontFamily: String? = nil, textboxFontFamily: String? = nil, partialSpeechResultFonySize: Float? = nil, textInputActiveLineColor: String? = nil, textInputLineColor: String? = nil, textboxActiveHighlightColor: String? = nil, equalizerColor: String? = nil, micActiveColor: String? = nil, sendActiveColor: String? = nil, sendInactiveColor: String? = nil, assistantStateTextColor: String? = nil, micActiveImage: String? = nil, micInactiveImage: String? = nil, sendActiveImage: String? = nil, sendInactiveImage: String? = nil) {
         self.drawerSpeechHeight = drawerSpeechHeight
         self.drawerTextHeight = drawerTextHeight
         self.backgroundColor = backgroundColor
@@ -76,13 +76,9 @@ public class ToolbarProps: Codable {
         self.micImageWidth = micImageWidth
         self.sendImageWidth = sendImageWidth
         self.sendImageHeight = sendImageHeight
-        self.micActiveImage = micActiveImage
-        self.micInactiveImage = micInactiveImage
         self.micInactiveColor = micInactiveColor
         self.micActiveHighlightColor = micActiveHighlightColor
         self.micInactiveHighlightColor = micInactiveHighlightColor
-        self.sendActiveImage = sendActiveImage
-        self.sendInactiveImage = sendInactiveImage
         self.speakFontSize = speakFontSize
         self.speakActiveTitleColor = speakActiveTitleColor
         self.speakInactiveTitleColor = speakInactiveTitleColor
@@ -120,5 +116,9 @@ public class ToolbarProps: Codable {
         self.sendActiveColor = sendActiveColor
         self.sendInactiveColor = sendInactiveColor
         self.assistantStateTextColor = assistantStateTextColor
+        self.micActiveImage = micActiveImage
+        self.micInactiveImage = micInactiveImage
+        self.sendActiveImage = sendActiveImage
+        self.sendInactiveImage = sendInactiveImage
     }
 }

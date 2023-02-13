@@ -61,16 +61,29 @@ struct SwiftUiContentView: View {
                 }
             }
             //config needed for tests
+//            AssistantDrawerUI(
+//                assistantSettings: AssistantSettingsProps(
+//                    serverRootUrl: "https://assistant.voicify.com",
+//                    appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
+//                    appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
+//                    autoRunConversation: true,
+//                    initializeWithWelcomeMessage: true,
+//                    initializeWithText: false,
+//                    effects: ["Play"],
+//                    onEffect: onEffect
+//                )
+//            )
+//            .ignoresSafeArea(.container)
+            
             AssistantDrawerUI(
-                assistantSettings: AssistantSettingsProps(
-                    serverRootUrl: "https://assistant.voicify.com",
-                    appId: "99a803b7-5b37-426c-a02e-63c8215c71eb",
-                    appKey: "MTAzM2RjNDEtMzkyMC00NWNhLThhOTYtMjljMDc3NWM5NmE3",
-                    effects: ["Play"],
-                    onEffect: onEffect
-                )
+              assistantSettings:
+               AssistantSettingsProps(
+                configurationId: "10d0bfc5-7ca6-4068-a7f8-d4c738c71923",
+                serverRootUrl: "https://dev-assistant.voicify.com",
+                appId: "bc9fa6bf-6cea-4fad-af12-d388b64dbdb9",
+                appKey: "ZjcyNmNkNjEtNmY5My00NTg3LWI5ZmQtMjJkNzE3NGMwYTI4"
+               )
             )
-            .ignoresSafeArea((.container))
         }
     }
 }
