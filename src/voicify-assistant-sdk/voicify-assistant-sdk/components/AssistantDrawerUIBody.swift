@@ -149,14 +149,14 @@ struct AssistantDrawerUIBody: View {
                                     hints = []
                                 }){
                                     Text(hint.text)
-                                        .lineLimit(1)
-                                        .font(.custom(hintsParams.font , size: CGFloat(hintsParams.fontSize)))
-                                        .foregroundColor(Color.init(hex: hintsParams.foregroundColor))
-                                        .padding(EdgeInsets(top: CGFloat(hintsParams.paddingTop), leading: CGFloat(hintsParams.paddingLeft), bottom: CGFloat(hintsParams.paddingBottom), trailing: CGFloat(hintsParams.paddingRight)))
-                                        .background(Color.init(hex: bodyProps?.hintsBackgroundColor ??  configurationBodyProps.hintsBackgroundColor ?? "#ffffff"))
-                                        .cornerRadius(CGFloat(bodyProps?.hintsBorderRadius ?? configurationBodyProps.hintsBorderRadius ?? 20))
-                                        .frame(minWidth: CGFloat(80))
-                                        .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.hintsBorderRadius ??  configurationBodyProps.hintsBorderRadius ?? 20)).strokeBorder(Color.init(hex: bodyProps?.hintsBorderColor ?? configurationBodyProps.hintsBorderColor ?? "#CCCCCC")!, lineWidth: CGFloat(bodyProps?.hintsBorderWidth ?? configurationBodyProps.hintsBorderWidth ?? 1.5)))
+                                    .lineLimit(1)
+                                    .font(.custom(hintsParams.font , size: CGFloat(hintsParams.fontSize)))
+                                    .foregroundColor(Color.init(hex: hintsParams.foregroundColor))
+                                    .padding(EdgeInsets(top: CGFloat(hintsParams.paddingTop), leading: CGFloat(hintsParams.paddingLeft), bottom: CGFloat(hintsParams.paddingBottom), trailing: CGFloat(hintsParams.paddingRight)))
+                                    .frame(minWidth: CGFloat(80))
+                                    .overlay(RoundedRectangle(cornerRadius: CGFloat(bodyProps?.hintsBorderRadius ??  configurationBodyProps.hintsBorderRadius ?? 20)).strokeBorder(Color.init(hex: bodyProps?.hintsBorderColor ?? configurationBodyProps.hintsBorderColor ?? "#CCCCCC")!, lineWidth: CGFloat(bodyProps?.hintsBorderWidth ?? configurationBodyProps.hintsBorderWidth ?? 1.5)).frame(minWidth: CGFloat(80)))
+                                    .background(Color.init(hex: bodyProps?.hintsBackgroundColor ??  configurationBodyProps.hintsBackgroundColor ?? "#ffffff"))
+                                    .cornerRadius(CGFloat(bodyProps?.hintsBorderRadius ?? configurationBodyProps.hintsBorderRadius ?? 20))
                                 }
                             }
                         }
