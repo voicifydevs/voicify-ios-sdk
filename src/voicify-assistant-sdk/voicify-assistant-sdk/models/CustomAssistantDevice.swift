@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class CustomAssistantDevice : Encodable
+public class CustomAssistantDevice : Codable
 {
     public var id: String
     public var name: String

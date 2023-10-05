@@ -212,7 +212,6 @@ public struct AssistantDrawerUI: View {
         .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
             guard let scene = UIApplication.shared.windows.first?.windowScene else { return }
             self.isLandscape = !scene.interfaceOrientation.isPortrait
-            print(scene.interfaceOrientation.isPortrait)
         }
     }
     private func initializeAssistantWithoutConfiguration(){
@@ -376,6 +375,12 @@ public struct AssistantDrawerUI: View {
                     stt.addStartListener {
                         isListening = true
                         isFinalSpeech = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                            if(isListening && inputSpeech.isEmpty)
+                            {
+                                stt.stopListening()
+                            }
+                        }
                         assistantStateText = "Listening..."
                     }
                     stt.addEndListener {
@@ -439,7 +444,7 @@ public struct AssistantDrawerUI: View {
                         }
                     }
                     
-                    assistant.startNewSession(sessionId: nil, userId: nil, sessionAttributes: assistantSettingsProps.sessionAttributes, userAttributes: assistantSettingsProps.userAttributes)
+                    assistant.startNewSession(sessionId: nil, userId: nil, sessionAttributes: assistantSettingsProps.sessionAttributes, userAttributes: assistantSettingsProps.userAttributes, sessionFlags: assistantSettingsProps.sessionFlags)
                 }
             }
         }

@@ -12,6 +12,7 @@ struct SwiftUiContentView: View {
     @State var assistantIsOpen = false
     @State var currentSongTitle = ""
     @State var showAssistantUnavailableAlert = false
+    @State var testSession: [String: Any] = ["hello" : TestClass(text: "hello")]
     func onEffect (effectName: String, data: Dictionary<String, Any>) -> Void{
         if(effectName == "Play")
         {
@@ -70,7 +71,9 @@ struct SwiftUiContentView: View {
                     initializeWithWelcomeMessage: true,
                     initializeWithText: false,
                     effects: ["Play"],
-                    onEffect: onEffect
+                    onEffect: onEffect,
+                    sessionAttributes: ["test" : "hello from test"],
+                    sessionFlags: ["delivery"]
                 )
             )
             .ignoresSafeArea(.container)

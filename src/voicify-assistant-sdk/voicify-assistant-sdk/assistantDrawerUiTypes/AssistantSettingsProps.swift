@@ -31,10 +31,11 @@ public class AssistantSettingsProps
     public var onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil
     public var onAssistantClose: (() -> Void)? = nil
     public var onAssistantError: ((String, CustomAssistantRequest) -> Void)? = nil
-    public var sessionAttributes: Dictionary<String, Any>? = nil
-    public var userAttributes: Dictionary<String, Any>? = nil
+    public var sessionAttributes: Dictionary<String, String>? = nil
+    public var userAttributes: Dictionary<String, String>? = nil
+    public var sessionFlags: Array<String>? = nil
     
-    public init(configurationId: String? = nil, serverRootUrl: String, appId: String, appKey: String, locale: String? = nil, channel: String? = nil, device: String? = nil, textToSpeechVoice: String? = nil, autoRunConversation: Bool? = nil, initializeWithWelcomeMessage: Bool? = nil, textToSpeechProvider: String? = nil, useVoiceInput: Bool? = nil, useOutputSpeech: Bool? = nil, useDraftContent: Bool? = nil, noTracking: Bool? = nil, initializeWithText: Bool? = nil, backgroundColor: String? = nil, effects: Array<String>? = nil, onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil, onAssistantClose: (() -> Void)? = nil, onAssistantError: ((String, CustomAssistantRequest) -> Void)? = nil, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil) {
+    public init(configurationId: String? = nil, serverRootUrl: String, appId: String, appKey: String, locale: String? = nil, channel: String? = nil, device: String? = nil, textToSpeechVoice: String? = nil, autoRunConversation: Bool? = nil, initializeWithWelcomeMessage: Bool? = nil, textToSpeechProvider: String? = nil, useVoiceInput: Bool? = nil, useOutputSpeech: Bool? = nil, useDraftContent: Bool? = nil, noTracking: Bool? = nil, initializeWithText: Bool? = nil, backgroundColor: String? = nil, effects: Array<String>? = nil, onEffect: ((String, Dictionary<String, Any>) -> Void)? = nil, onAssistantClose: (() -> Void)? = nil, onAssistantError: ((String, CustomAssistantRequest) -> Void)? = nil, sessionAttributes: Dictionary<String, String>? = nil, userAttributes: Dictionary<String, String>? = nil, sessionFlags: Array<String>? = nil) {
         self.configurationId = configurationId
         self.serverRootUrl = serverRootUrl
         self.appId = appId
@@ -58,5 +59,6 @@ public class AssistantSettingsProps
         self.onAssistantError = onAssistantError
         self.sessionAttributes = sessionAttributes
         self.userAttributes = userAttributes
+        self.sessionFlags = sessionFlags
     }
 }
