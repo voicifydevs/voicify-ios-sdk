@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class CustomAssistantRequestContext
+public class CustomAssistantRequestContext : Codable
 {
     public var sessionId: String
     public var noTracking: Bool
@@ -18,11 +18,11 @@ public class CustomAssistantRequestContext
     public var channel: String
     public var requiresLanguageUnderstanding: Bool
     public var locale: String
-    public var additionalRequestAttributes: Dictionary<String, Any>
-    public var additionalSessionAttributes: Dictionary<String, Any>
+    public var additionalRequestAttributes: Dictionary<String, String>
+    public var additionalSessionAttributes: Dictionary<String, String>
     public var additionalSessionFlags: Array<String>
     
-    public init(sessionId: String, noTracking: Bool, requestType: String, requestName: String, slots: Dictionary<String, String>, originialInput: String, channel: String, requiresLanguageUnderstanding: Bool, locale: String, additionalRequestAttributes: Dictionary<String, Any>, additionalSessionAttributes: Dictionary<String, Any>, additionalSessionFlags: Array<String>) {
+    public init(sessionId: String, noTracking: Bool, requestType: String, requestName: String, slots: Dictionary<String, String>, originialInput: String, channel: String, requiresLanguageUnderstanding: Bool, locale: String, additionalRequestAttributes: Dictionary<String, String>, additionalSessionAttributes: Dictionary<String, String>, additionalSessionFlags: Array<String>) {
         self.sessionId = sessionId
         self.noTracking = noTracking
         self.requestType = requestType

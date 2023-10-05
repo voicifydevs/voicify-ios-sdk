@@ -17,8 +17,9 @@ public class VoicifyAssistant : ObservableObject
     private var sessionId: String? = nil
     private var userId: String? = nil
     private var accessToken: String? = nil
-    private var sessionAttributes: Dictionary<String, Any>? = nil
-    private var userAttributes: Dictionary<String, Any>? = nil
+    private var sessionAttributes: Dictionary<String, String>? = nil
+    private var userAttributes: Dictionary<String, String>? = nil
+    private var sessionFlags: Array<String>? = nil
     private var errorHandlers: Array<(String, CustomAssistantRequest) -> Void> = []
     private var effectHandlers: Array<EffectModel> = []
     private var requestStartedHandlers: Array<(CustomAssistantRequest) -> Void> = []
@@ -44,13 +45,19 @@ public class VoicifyAssistant : ObservableObject
         self.speechToTextProvider?.initialize(locale: settings.locale)
     }
     
-    public func startNewSession(sessionId: String? = nil, userId: String? = nil, sessionAttributes: Dictionary<String, Any>? = nil, userAttributes: Dictionary<String, Any>? = nil){
+    public func startNewSession(
+        sessionId: String? = nil, userId: String? = nil,
+        sessionAttributes: Dictionary<String, String>? = nil,
+        userAttributes: Dictionary<String, String>? = nil,
+        sessionFlags: Array<String>? = nil
+    ){
         self.sessionId = self.sessionId ?? UUID().uuidString
         self.userId = self.userId ?? UUID().uuidString
         self.sessionAttributes = sessionAttributes
         self.userAttributes = userAttributes
-        self.currentSessionInfo = VoicifySessionData(id: "", sessionFlags: [], sessionAttributes: [:])
-        self.currentUserInfo = VoicifyUserData(id: "", userFlags: [], userAttributes: [:])
+        self.sessionFlags = sessionFlags
+        self.currentSessionInfo = VoicifySessionData(id: "", sessionFlags: self.sessionFlags ?? [], sessionAttributes: self.sessionAttributes ?? [:])
+        self.currentUserInfo = VoicifyUserData(id: "", userFlags: [], userAttributes: self.userAttributes ?? [:])
         if(settings.initializeWithWelcomeMessage)
         {
             makeWelcomeMessage(requestAttributes: nil)
@@ -132,6 +139,10 @@ public class VoicifyAssistant : ObservableObject
                                 if let customAssistantResponseDictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any]
                                 {
                                     let customAssistantResponse = self.convertDictionaryToResponseObject(response: customAssistantResponseDictionary)
+                                    //only append flags / attributes once at the start
+                                    self.sessionAttributes = [:]
+                                    self.userAttributes = [:]
+                                    self.sessionFlags = []
                                     completion(.success(customAssistantResponse))
                                 }
                                 else{
@@ -302,7 +313,7 @@ public class VoicifyAssistant : ObservableObject
         makeRequest(request: request, inputType: inputType)
     }
     
-    public func generateTextRequest(text: String, requestAttributes: Dictionary<String, Any>? = nil) -> CustomAssistantRequest {
+    public func generateTextRequest(text: String, requestAttributes: Dictionary<String, String>? = nil) -> CustomAssistantRequest {
         return CustomAssistantRequest(
             requestId: UUID().uuidString,
             context: CustomAssistantRequestContext(
@@ -317,14 +328,14 @@ public class VoicifyAssistant : ObservableObject
                 locale: self.settings.locale,
                 additionalRequestAttributes: requestAttributes ?? [:],
                 additionalSessionAttributes: self.sessionAttributes ?? [:],
-                additionalSessionFlags: []
+                additionalSessionFlags: self.sessionFlags ?? []
             ),
             device: generateDevice(),
             user: generateUser()
         )
     }
     
-    public func makeWelcomeMessage(requestAttributes: Dictionary<String, Any>? = nil){
+    public func makeWelcomeMessage(requestAttributes: Dictionary<String, String>? = nil){
         let request = generateWelcomeRequest(requestAttributes: requestAttributes)
         if(settings.autoRunConversation && settings.initializeWithText == false)
         {
@@ -335,7 +346,7 @@ public class VoicifyAssistant : ObservableObject
         }
     }
     
-    public func generateWelcomeRequest (requestAttributes: Dictionary<String, Any>? = nil) -> CustomAssistantRequest{
+    public func generateWelcomeRequest (requestAttributes: Dictionary<String, String>? = nil) -> CustomAssistantRequest{
         return CustomAssistantRequest(
             requestId: UUID().uuidString,
             context: CustomAssistantRequestContext(
@@ -349,7 +360,7 @@ public class VoicifyAssistant : ObservableObject
                 locale: self.settings.locale,
                 additionalRequestAttributes: requestAttributes ?? [:],
                 additionalSessionAttributes: self.sessionAttributes ?? [:],
-                additionalSessionFlags: []
+                additionalSessionFlags: self.sessionFlags ?? []
             ),
             device: generateDevice(),
             user: generateUser()
@@ -380,11 +391,11 @@ public class VoicifyAssistant : ObservableObject
         )
     }
     
-    public func addSessionAttribute(key: String, value: Any){
+    public func addSessionAttribute(key: String, value: String){
         self.sessionAttributes?[key] = value
     }
     
-    public func addUserAttributes(key: String, value: Any){
+    public func addUserAttributes(key: String, value: String){
         self.userAttributes?[key] = value
     }
     
@@ -635,7 +646,8 @@ public class VoicifyAssistant : ObservableObject
                 "locale": "\(request.context.locale)",
                 "channel": "\(request.context.channel)",
                 "additionalSessionAttributes": request.context.additionalSessionAttributes,
-                "additionalRequestAttributes": request.context.additionalRequestAttributes
+                "additionalRequestAttributes": request.context.additionalRequestAttributes,
+                "additionalSessionFlags": request.context.additionalSessionFlags
               ]
             ]
         return json

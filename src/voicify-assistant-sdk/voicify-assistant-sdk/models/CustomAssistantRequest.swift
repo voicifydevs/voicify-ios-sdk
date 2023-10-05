@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class CustomAssistantRequest
+public class CustomAssistantRequest : Codable
 {
     public var requestId: String
     public var context: CustomAssistantRequestContext

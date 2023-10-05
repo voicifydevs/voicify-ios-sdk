@@ -68,14 +68,7 @@ public class VoicifySTTProvider : VoicifySpeechToTextProvider, ObservableObject
             self.speechStartHandlers.forEach{speechStart in
                 speechStart()
             }
-            self.speechTimeOut = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { timer in
-                self.audioEngine?.stop()
-                self.audioEngine?.inputNode.removeTap(onBus: 0)
-                self.reset()
-                self.speechEndHandlers.forEach{speechEndHandler in
-                    speechEndHandler()
-                }
-            }
+            
             DispatchQueue(label: "Speech Recognizer Queue", qos: .default).async { [weak self] in
                 guard let self = self, let recognizer = self.recognizer, recognizer.isAvailable else {
                     self?.speechErrorHandlers.forEach{ errorHandler in
